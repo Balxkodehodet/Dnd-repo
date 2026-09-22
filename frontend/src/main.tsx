@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import Layout from './Components/Layout.tsx'
+import Category from './Components/Category.tsx'
 
 const queryClient = new QueryClient()
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <App /> },
+      { path: '/:category', element: <Category /> }
     ]
 
   }

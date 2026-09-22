@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-export function getData(url: string) {
+export function useGetData(url: string) {
   return useQuery({
     queryKey: ["dnd", url],
     queryFn: () => fetch(url).then((res) => res.json()),

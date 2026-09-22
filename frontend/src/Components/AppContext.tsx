@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 type AppContextType = {
   url: string;
@@ -8,7 +8,7 @@ type AppContextType = {
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [url, setUrl] = useState("https://www.dnd5eapi.co/api"); 
+  const [url, setUrl] = useState("https://www.dnd5eapi.co/"); 
   return (
     <AppContext.Provider
       value={{
@@ -19,4 +19,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
       {children}
     </AppContext.Provider>
   );
+  
+}
+
+export function useAppContext() {
+  const context = useContext(AppContext);
+
+  if (context === undefined) {
+    throw new Error(
+      "useAppContext must be used inside AppProvider"
+    );
+  }
+
+  return context;
 }
