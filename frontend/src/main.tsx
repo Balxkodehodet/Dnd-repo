@@ -21,7 +21,14 @@ const router = createBrowserRouter([
       { path: '/:category', element: <Category /> }
     ]
 
-  }
+  },
+  {
+    path: '/home',
+    element: <Layout />,
+    children: [
+      { index: true, element: <App /> },
+    ]
+  }    
 ],
 { basename: import.meta.env.BASE_URL } // viktig!
 )
