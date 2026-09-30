@@ -7,8 +7,9 @@ import './index.css'
 import App from './App.tsx'
 import LandingPage from './Components/LandingPage.tsx'
 import Layout from './Components/Layout.tsx'
-import Category from './Components/Category.tsx'
 import LayoutLandingpage from './Components/LayoutLandingpage.tsx'
+import CreateUser from './Components/CreateUser.tsx'
+import LoginUser from './Components/LoginUser.tsx'
 
 const queryClient = new QueryClient()
 
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     element: <LayoutLandingpage />,
     children: [
       { index: true, element: <LandingPage /> },
-      { path: '/:category', element: <Category /> }
+      { path: '/create-user', element: <CreateUser /> },
+      { path: '/login-user', element: <LoginUser /> },
     ]
 
   },
