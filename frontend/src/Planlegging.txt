@@ -1,0 +1,2 @@
+1. Lage en landings side med "Lag bruker" "Logg inn" eller "Fortsett som gjest".
+
