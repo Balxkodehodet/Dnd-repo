@@ -19,7 +19,7 @@ function App() {
     {data && (
       <ul className="categories1-container">
       {Object.entries(data).map(([key]) => (
-        <Link to={`/${key}`} key={key}>
+        <Link to={key} key={key}>
           <li className="categories1">
             <strong>{key}</strong>
           </li>

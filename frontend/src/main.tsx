@@ -10,6 +10,7 @@ import Layout from './Components/Layout.tsx'
 import LayoutLandingpage from './Components/LayoutLandingpage.tsx'
 import CreateUser from './Components/CreateUser.tsx'
 import LoginUser from './Components/LoginUser.tsx'
+import Category from './Components/Category.tsx'
 
 const queryClient = new QueryClient()
 
@@ -19,8 +20,8 @@ const router = createBrowserRouter([
     element: <LayoutLandingpage />,
     children: [
       { index: true, element: <LandingPage /> },
-      { path: '/create-user', element: <CreateUser /> },
-      { path: '/login-user', element: <LoginUser /> },
+      { path: 'create-user', element: <CreateUser /> },
+      { path: 'login-user', element: <LoginUser /> },
     ]
 
   },
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <App /> },
+      { path: ':category', element: <Category /> },
     ]
   }    
 ],
