@@ -1,4 +1,4 @@
-export default function CreateUser() {
+export default function CreateUser(): React.JSX.Element {
     return (
         <div className="create-userform-container">
             <h2 className="create-userform-title">Create User</h2>

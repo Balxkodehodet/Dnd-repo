@@ -1,6 +1,6 @@
 // LandingPage.tsx
 import {Link} from 'react-router-dom';
-export default function LandingPage() {
+export default function LandingPage(): React.JSX.Element {
   return (
     <>
     <div className="landing-page-container">

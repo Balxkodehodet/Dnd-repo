@@ -1,6 +1,6 @@
 // LayoutLandingpage.tsx
 import {Outlet} from 'react-router-dom'
-export default function LayoutLandingpage() {
+export default function LayoutLandingpage(): React.JSX.Element {
     return (
         <>
             <header className="header">

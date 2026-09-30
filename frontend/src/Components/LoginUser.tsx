@@ -1,5 +1,5 @@
 // LoginUser.tsx
-export default function LoginUser() {
+export default function LoginUser(): React.JSX.Element {
     return (
         <div className="login-user-container">
             <h2 className="login-user-title">Login</h2>

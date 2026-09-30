@@ -22,7 +22,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   
 }
 
-export function useAppContext() {
+export function useAppContext(): AppContextType {
   const context = useContext(AppContext);
 
   if (context === undefined) {
