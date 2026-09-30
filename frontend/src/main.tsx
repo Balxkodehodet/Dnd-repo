@@ -5,17 +5,19 @@ import {AppProvider} from './Components/AppContext.tsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
+import LandingPage from './Components/LandingPage.tsx'
 import Layout from './Components/Layout.tsx'
 import Category from './Components/Category.tsx'
+import LayoutLandingpage from './Components/LayoutLandingpage.tsx'
 
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <LayoutLandingpage />,
     children: [
-      { index: true, element: <App /> },
+      { index: true, element: <LandingPage /> },
       { path: '/:category', element: <Category /> }
     ]
 
