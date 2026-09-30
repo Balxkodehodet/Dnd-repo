@@ -1,6 +1,7 @@
 export default function LandingPage() {
   return (
     <>
+    <div className="landing-page-container">
         <div className="create-user-container">
             <h3 className="create-user-title">Create User</h3>
         </div>
@@ -10,6 +11,7 @@ export default function LandingPage() {
         <div className="guest-user-container">
             <h3 className="guest-user-title">Guest User</h3>
         </div>
+    </div>
     </>
   );
 }

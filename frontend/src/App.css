@@ -24,3 +24,30 @@
   border-radius: 0.3rem;
   transition: background-color 0.3s ease;
 }
+header{
+  background-color: #ffc400;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+.header-title-container{
+  background-color: #ffae00;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+.landing-page-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-evenly;
+  height: 200px;
+  background-color: #ffae00;
+  border-radius: 0.3rem;
+  margin-top: 10rem;
+}
+.create-user-container, .login-user-container, .guest-user-container{
+  gap: 1rem;
+  background-color: #f1f0ea;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #2e2e2e;
+}
