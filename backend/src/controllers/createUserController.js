@@ -1,10 +1,11 @@
-import pool from '../db.js'
+import pool from '../database.js'
 import bcrypt from 'bcrypt';
 
 const createUser = async (req, res) => {
-    const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+
     try {
+        const { username, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
         const result = await pool.query(
             "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email",
             [username, email, hashedPassword]
