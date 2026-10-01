@@ -6,10 +6,13 @@ const editUser = async (req, res) => {
     try {
         const {id} = req.params;
         const { username, email, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
+        let hashedPassword = null;
+        if (password !== undefined) {
+            hashedPassword = await bcrypt.hash(password, 10);
+        }
         const result = await pool.query(
-            "UPDATE users SET username = $1, email = $2, password = $3 WHERE id = $4 RETURNING id, username, email",
-            [username, email, hashedPassword, id]
+            "UPDATE users SET username = Coalesce($1, username), email = Coalesce($2, email), password = Coalesce($3, password) WHERE id = $4 RETURNING id, username, email",
+            [username ?? null, email ?? null, hashedPassword, id]
         );
         if(result.rows.length === 0) {
             return res.status(404).json({ error: "User not found" });
