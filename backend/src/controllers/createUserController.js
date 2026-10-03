@@ -20,6 +20,10 @@ const createUser = async (req, res) => {
             return res.status(400).json({ error: "Username must be 1-20 characters long and can only contain letters, numbers, underscores, and hyphens" }).send();
         }
         
+        const existingUser = await pool.query(`SELECT * FROM users WHERE username = $1 OR email = $2`, [username, email]);
+        if (existingUser) {
+            return res.status(400).json({ error: "Username or email already exists" }).send();
+        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const result = await pool.query(
