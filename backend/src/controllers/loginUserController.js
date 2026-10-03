@@ -9,7 +9,7 @@ const loginUser = async (req, res) => {
         email = email.trim();
 
         if(!email || !password) {
-            return res.status(400).json({ error: "Email and password are required" });
+            return res.status(400).json({ error: "All fields are required" });
         }
 
         if (!validator.isEmail(email)) {
