@@ -18,6 +18,6 @@ export async function getCurrentUser(req, res) {
 
     } catch (error) {
         console.error("Error fetching user:", error);
-        res.status(500).json({ isLoggedIn: false, error: "Internal Server Error" });
+        return res.status(500).json({ isLoggedIn: false, error: "Internal Server Error" });
     }
 }
