@@ -1,10 +1,26 @@
 import pool from '../database.js'
+import validator from 'validator';
 import bcrypt from 'bcrypt';
 
 const createUser = async (req, res) => {
 
     try {
         const { username, email, password } = req.body;
+
+        username = username.trim();
+        email = email.trim();    
+        if(!username || !email || !password) {
+            return res.status(400).json({ error: "Username, email, and password are required" }).send();
+        }
+        if(!validator.isEmail(email)) {
+            return res.status(400).json({ error: "Invalid email format" }).send();
+        }
+        const regex = /^[a-zA-Z0-9_-]{1,20}$/
+        if(!regex.test(username)) {
+            return res.status(400).json({ error: "Username must be 1-20 characters long and can only contain letters, numbers, underscores, and hyphens" }).send();
+        }
+        
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const result = await pool.query(
             "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email",
