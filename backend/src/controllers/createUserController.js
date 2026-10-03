@@ -2,6 +2,7 @@ import pool from '../database.js'
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 
+
 const createUser = async (req, res) => {
 
     try {
