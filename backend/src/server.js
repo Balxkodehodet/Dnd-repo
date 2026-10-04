@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import generalUserRoute from "./routes/generalUserRoute.js";
 import loginUserRoute from "./routes/loginUserRoute.js";
 import session from 'express-session';
+import logoutUserRoute from "./routes/logoutUser.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(session({
 app.use(cors());
 app.use("/api/", generalUserRoute);
 app.use("/api/", loginUserRoute);
+app.use("/api/", logoutUserRoute);
 
 app.get("/", (req, res) => {
     res.json({ message: "Hello from the backend!" });
