@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 const createUser = async (req, res) => {
 
     try {
-        const { username, email, password } = req.body;
+        let { username, email, password } = req.body;
 
         username = username.trim();
         email = email.trim();    
@@ -22,19 +22,19 @@ const createUser = async (req, res) => {
         }
         
         const existingUser = await pool.query(`SELECT * FROM users WHERE username = $1 OR email = $2`, [username, email]);
-        if (existingUser) {
+        if (existingUser.username || existingUser.email) {
             return res.status(400).json({ error: "Username or email already exists" }).send();
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const result = await pool.query(
-            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email",
+        await pool.query(
+            "INSERT INTO users (username, email, passwordhash) VALUES ($1, $2, $3) RETURNING id, username, email",
             [username, email, hashedPassword]
         );
-        res.status(201).json({ message: "User created successfully"});
+        return res.status(201).json({ message: "User created successfully"});
     } catch (error) {
         console.error("Error creating user:", error);
-        res.status(500).json({ error: "Internal server error" });
+        return res.status(500).json({ error: error.message || "Internal server error" }).send();
     }
 };
 

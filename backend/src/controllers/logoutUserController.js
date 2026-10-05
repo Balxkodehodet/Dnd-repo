@@ -1,4 +1,4 @@
-export async function logoutUser(req, res) {
+export default async function logoutUser(req, res) {
     try {
         req.session.destroy((err) => {
             if (err) {

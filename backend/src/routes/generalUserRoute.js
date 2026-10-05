@@ -8,7 +8,7 @@ import authMiddleware from '../middleware/auth.js';
 const router = express.Router();
 
 // CRUD Create Read Update Delete
-router.post('/users', authMiddleware, createUser);
+router.post('/users', createUser);
 router.get('/users/:id', authMiddleware, getUser);
 router.patch('/users/:id', authMiddleware, editUser);
 router.delete('/users/:id', authMiddleware, deleteUser);
