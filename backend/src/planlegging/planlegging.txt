@@ -1,2 +1,3 @@
 Lag routes controllers til CRUD for bruker. Lag bruker, rediger bruker, osv.. Gjort!
-Lag Login routes og controllers for bruker... 
+Lag Login routes og controllers for bruker...Gjort!
+Lag "Me" route for bruker

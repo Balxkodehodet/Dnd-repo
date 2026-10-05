@@ -4,31 +4,31 @@ import validator from 'validator';
 
 const loginUser = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        let { email, passwordhash } = req.body;
 
         email = email.trim();
 
-        if(!email || !password) {
+        if(!email || !passwordhash) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
         if (!validator.isEmail(email)) {
             return res.status(400).json({ error: "Invalid email format" });
         }
-        const result = await pool.query("SELECT id, username, email, password FROM users WHERE email = $1", [email]);
+        const result = await pool.query("SELECT id, username, email, passwordhash FROM users WHERE email = $1", [email]);
 
         if (!result) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
 
         const user = result.rows[0];
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(passwordhash, user.passwordhash);
         const emailMatch = user.email === email;
 
         if (!isMatch || !emailMatch) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
-
+        req.session.userId = user.id;
         return res.status(200).json({ message: "Login successful" });
     } catch (error) {
         console.error("Error logging in user:", error);
