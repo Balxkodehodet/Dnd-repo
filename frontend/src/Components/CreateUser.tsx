@@ -26,7 +26,7 @@ export default function CreateUser(): React.JSX.Element {
 
         }
     })    
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const userData: CreateUserData = {
