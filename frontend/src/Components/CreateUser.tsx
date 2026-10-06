@@ -1,31 +1,14 @@
 // CreateUser.tsx
 import {useMutation} from '@tanstack/react-query';
-
-type CreateUserData = {
-    username: string;
-    email: string;
-    password: string;
-};
+import usePostData from '../Hooks/usePostData';
+import { type CreateUserData } from '../types/types';
 
 export default function CreateUser(): React.JSX.Element {
 
 
-    const createUserMutation = useMutation({
-        mutationFn: async (userData: CreateUserData) => {
-            const response = await fetch('/api/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            })
-        if (!response.ok) {
-            throw new Error('Failed to create user');
-        }
-        return response.json();
-
-        }
-    })    
+    const url = 'http://localhost:3000/api/users';
+    const createUserMutation = usePostData(url);
+    
     function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
