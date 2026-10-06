@@ -11,8 +11,13 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
+    origin: allowedOrigins,
     credentials: true
 }));
 app.use(express.json());
