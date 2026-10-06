@@ -8,7 +8,7 @@ export default function Layout(): React.JSX.Element {
       </header>
       <menu>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </nav>
       </menu>
     <main>

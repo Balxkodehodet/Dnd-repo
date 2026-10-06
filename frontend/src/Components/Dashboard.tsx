@@ -12,9 +12,13 @@ export default function dashBoard(): React.JSX.Element {
     }
 
     return (
+        <>
+        
         <div className="dashboard-container">
             <h2 className="dashboard-title">Dashboard</h2>
-            <p>Welcome to the dashboard!</p>
+            <p>Welcome to the dashboard!{data.username}</p>
+            <p>Email: {data.email}</p>
         </div>
+        </>
     );
 }

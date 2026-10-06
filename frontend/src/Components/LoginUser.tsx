@@ -7,20 +7,19 @@ export default function LoginUser(): React.JSX.Element {
 
         const url = 'http://localhost:3000/api/login';
         const loginUserMutation = usePostData<LoginUserData>(url);
-    
-        function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+        const navigate = useNavigate();
+
+        async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             const userData: LoginUserData = {
                 email: formData.get('email') as string,
                 password: formData.get('password') as string,
             };
-            loginUserMutation.mutate(userData);
             try {
 
-            loginUserMutation.mutateAsync(userData);
-                const navigate = useNavigate();
-                navigate('/dashboard'); // Redirect to dashboard on successful login
+            await loginUserMutation.mutateAsync(userData);
+            navigate('/home/dashboard'); // Redirect to dashboard on successful login
             
             } catch (error) {
                 console.error('Login failed:', error);
