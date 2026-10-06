@@ -3,3 +3,7 @@ export type CreateUserData = {
     email: string;
     password: string;
 };
+export type LoginUserData = {
+    email: string;
+    passwordhash: string;
+};

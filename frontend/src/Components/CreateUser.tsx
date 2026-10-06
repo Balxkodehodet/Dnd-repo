@@ -8,7 +8,7 @@ export default function CreateUser(): React.JSX.Element {
 
     const url = 'http://localhost:3000/api/users';
     const createUserMutation = usePostData(url);
-    
+
     function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -34,10 +34,11 @@ export default function CreateUser(): React.JSX.Element {
                     <button type="submit">Create User</button>
                 </form>
             </div>
-
-            {createUserMutation.isPending && <p>Creating user...</p>}
-            {createUserMutation.isError && <p>Error: {createUserMutation.error.message}</p>}
-            {createUserMutation.isSuccess && <p>User created successfully!</p>}
+            <div className="create-userform-status">
+                {createUserMutation.isPending && <p>Creating user...</p>}
+                {createUserMutation.isError && <p>Error: {createUserMutation.error.message}</p>}
+                {createUserMutation.isSuccess && <p>User created successfully!</p>}
+            </div>
         </>
     );
 }

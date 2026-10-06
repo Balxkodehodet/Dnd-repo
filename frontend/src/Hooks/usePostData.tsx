@@ -1,10 +1,9 @@
-import { type CreateUserData } from "../types/types";
 import { useMutation } from "@tanstack/react-query";
 
-export default function usePostData(url: string) {
+export default function usePostData<TVariables>(url: string) {
     
-    const createUserMutation = useMutation({
-        mutationFn: async (userData: CreateUserData) => {
+    const userMutation = useMutation({
+        mutationFn: async (userData: TVariables) => {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -19,5 +18,5 @@ export default function usePostData(url: string) {
 
         }
     })
-    return createUserMutation;   
+    return userMutation;   
 }
