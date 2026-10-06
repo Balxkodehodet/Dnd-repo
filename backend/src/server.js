@@ -11,6 +11,10 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors({
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
+    credentials: true
+}));
 app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -23,7 +27,6 @@ app.use(session({
         sameSite: 'lax' // Adjust based on your needs
     }    
 }));
-app.use(cors());
 app.use("/api/", generalUserRoute);
 app.use("/api/", loginUserRoute);
 app.use("/api/", meRoute);

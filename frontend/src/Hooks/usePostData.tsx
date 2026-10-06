@@ -6,6 +6,7 @@ export default function usePostData<TVariables>(url: string) {
         mutationFn: async (userData: TVariables) => {
             const response = await fetch(url, {
                 method: 'POST',
+                credentials: 'include', // Include cookies in the request
                 headers: {
                     'Content-Type': 'application/json',
                 },
