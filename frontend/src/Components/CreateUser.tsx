@@ -5,7 +5,7 @@ import { type CreateUserData } from '../types/types';
 export default function CreateUser(): React.JSX.Element {
 
 
-    const url = 'http://localhost:3000/api/users';
+    const url = `${import.meta.env.VITE_API_URL}/api/users`;
     const createUserMutation = usePostData(url);
 
     function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
