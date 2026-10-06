@@ -19,10 +19,9 @@ export default function LoginUser(): React.JSX.Element {
             try {
 
             loginUserMutation.mutateAsync(userData);
-            if (loginUserMutation.isSuccess) {
                 const navigate = useNavigate();
                 navigate('/dashboard'); // Redirect to dashboard on successful login
-            }
+            
             } catch (error) {
                 console.error('Login failed:', error);
             }
@@ -42,7 +41,7 @@ export default function LoginUser(): React.JSX.Element {
         <div className="create-userform-status">
                 {loginUserMutation.isPending && <p>Logging in...</p>}
                 {loginUserMutation.isError && <p>Error: {loginUserMutation.error.message}</p>}
-                {loginUserMutation.isSuccess && <p>Login successful! {setLoggedIn(true)}</p> }
+                {loginUserMutation.isSuccess && <p>Login successful!</p> }
         </div>
         </>
     );

@@ -1,4 +1,4 @@
-import useGetData from "../hooks/useGetData";
+import useGetData from "../Hooks/useGetData";
 
 export default function dashBoard(): React.JSX.Element {
     const {data, isLoading, isError} = useGetData('http://localhost:3000/api/dashboard');

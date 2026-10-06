@@ -4,11 +4,11 @@ import validator from 'validator';
 
 const loginUser = async (req, res) => {
     try {
-        let { email, passwordhash } = req.body;
+        let { email, password } = req.body;
 
         email = email.trim();
 
-        if(!email || !passwordhash) {
+        if(!email || !password) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
@@ -22,7 +22,7 @@ const loginUser = async (req, res) => {
         }
 
         const user = result.rows[0];
-        const isMatch = await bcrypt.compare(passwordhash, user.passwordhash);
+        const isMatch = await bcrypt.compare(password, user.passwordhash);
         const emailMatch = user.email === email;
 
         if (!isMatch || !emailMatch) {

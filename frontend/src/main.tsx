@@ -11,6 +11,7 @@ import LayoutLandingpage from './Components/LayoutLandingpage.tsx'
 import CreateUser from './Components/CreateUser.tsx'
 import LoginUser from './Components/LoginUser.tsx'
 import Category from './Components/Category.tsx'
+import Dashboard from './Components/Dashboard.tsx'
 
 const queryClient = new QueryClient()
 
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <App /> },
       { path: ':category', element: <Category /> },
+      { path: 'dashboard', element: <Dashboard/>}
     ]
   }    
 ],

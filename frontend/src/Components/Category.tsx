@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom'
 import config from '../config.ts'
-import {useGetData} from '../Hooks/useGetData.tsx'
+import useGetData from '../Hooks/useGetData.tsx'
 
 export default function Category(): React.JSX.Element {
   const {category} = useParams();

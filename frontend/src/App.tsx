@@ -1,5 +1,5 @@
 import './App.css'
-import {useGetData} from './Hooks/useGetData.tsx'
+import useGetData from './Hooks/useGetData.tsx'
 import {Link} from 'react-router-dom'
 import {useAppContext} from './Components/AppContext.tsx'
 

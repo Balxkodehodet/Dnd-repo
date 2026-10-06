@@ -1,5 +1,4 @@
 // CreateUser.tsx
-import {useMutation} from '@tanstack/react-query';
 import usePostData from '../Hooks/usePostData';
 import { type CreateUserData } from '../types/types';
 
