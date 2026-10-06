@@ -5,5 +5,5 @@ export type CreateUserData = {
 };
 export type LoginUserData = {
     email: string;
-    passwordhash: string;
+    password: string;
 };

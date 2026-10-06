@@ -33,7 +33,7 @@ header{
   padding: 0.3rem;
   border-radius: 0.3rem;
 }
-.landing-page-container, .create-userform-container, .login-user-container{
+.landing-page-container, .create-userform-container, .login-userform-container{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,4 +57,5 @@ header{
   border-radius: 0.3rem;
   transition: background-color 0.3s ease;
   background-color: #1900ff;
+  color:white;
 }

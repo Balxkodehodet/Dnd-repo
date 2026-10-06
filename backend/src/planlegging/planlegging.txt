@@ -1,3 +1,4 @@
 Lag routes controllers til CRUD for bruker. Lag bruker, rediger bruker, osv.. Gjort!
 Lag Login routes og controllers for bruker...Gjort!
-Koble sammen logikken i backend , login og logout med logikk i frontend
+Koble sammen logikken i backend , login og logout med logikk i frontend Gjort
+Lag dashboard i frontend og koble det sammen med brukerdata fra backend

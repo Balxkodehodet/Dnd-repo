@@ -1,5 +1,6 @@
 import {type LoginUserData} from '../types/types';
 import usePostData from '../Hooks/usePostData';
+import {useNavigate} from 'react-router-dom';
 
 // LoginUser.tsx
 export default function LoginUser(): React.JSX.Element {
@@ -12,16 +13,25 @@ export default function LoginUser(): React.JSX.Element {
             const formData = new FormData(event.currentTarget);
             const userData: LoginUserData = {
                 email: formData.get('email') as string,
-                passwordhash: formData.get('password') as string,
+                password: formData.get('password') as string,
             };
             loginUserMutation.mutate(userData);
+            try {
+
+            loginUserMutation.mutateAsync(userData);
+            if (loginUserMutation.isSuccess) {
+                const navigate = useNavigate();
+                navigate('/dashboard'); // Redirect to dashboard on successful login
+            }
+            } catch (error) {
+                console.error('Login failed:', error);
+            }
         }
     return (
-        <div className="login-user-container">
+        <>
+        <div className="login-userform-container">
             <h2 className="login-user-title">Login</h2>
             <form className="login-user-form" onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" required />
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" name="email" required />
                 <label htmlFor="password">Password:</label>
@@ -29,5 +39,11 @@ export default function LoginUser(): React.JSX.Element {
                 <button type="submit">Login</button>
             </form>
         </div>
+        <div className="create-userform-status">
+                {loginUserMutation.isPending && <p>Logging in...</p>}
+                {loginUserMutation.isError && <p>Error: {loginUserMutation.error.message}</p>}
+                {loginUserMutation.isSuccess && <p>Login successful! {setLoggedIn(true)}</p> }
+        </div>
+        </>
     );
 }
