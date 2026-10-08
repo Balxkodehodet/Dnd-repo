@@ -35,9 +35,9 @@ export default function LoginUser(): React.JSX.Element {
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" required />
                 <button type="submit">Login</button>
+                <button onClick={() => navigate('/')}>Back to start</button>
             </form>
         </div>
-        <button onClick={() => navigate('/')}>Back to start</button>
         <div className="create-userform-status">
                 {loginUserMutation.isPending && <p>Logging in...</p>}
                 {loginUserMutation.isError && <p>Error: {loginUserMutation.error.message}</p>}
