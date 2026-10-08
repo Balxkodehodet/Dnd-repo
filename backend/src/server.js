@@ -29,7 +29,7 @@ app.use(session({
     { 
         httpOnly: true,
         secure: true, // Set to true if using HTTPS
-        sameSite: 'lax' // Adjust based on your needs
+        sameSite: 'none' // Adjust based on your needs
     }    
 }));
 app.use("/api/", generalUserRoute);

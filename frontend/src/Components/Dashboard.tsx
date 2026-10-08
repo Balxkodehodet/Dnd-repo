@@ -1,7 +1,7 @@
 import useGetData from "../Hooks/useGetData";
 import {Link} from "react-router-dom";
 export default function dashBoard(): React.JSX.Element {
-    const {data, isLoading, isError} = useGetData(`${import.meta.env.VITE_API_URL}/api/dashboard`);
+    const {data, isLoading, isError} = useGetData(`${import.meta.env.VITE_API_URL}api/dashboard`);
 
     if (isLoading) {
         return <p>Loading dashboard...</p>;
@@ -23,7 +23,9 @@ export default function dashBoard(): React.JSX.Element {
             <li>    
                 <Link to="/profile">Profile</Link>
             </li>    
+            <li>
                 <Link to="/settings">Settings</Link>
+            </li>
             <li>    
                 <Link to="/logout">Logout</Link>
 
@@ -32,7 +34,7 @@ export default function dashBoard(): React.JSX.Element {
         {data && (
             <div className="dashboard-container">
                 <h2 className="dashboard-title">Dashboard</h2>
-                <p>Welcome to the dashboard, {data.username}!</p>
+                <p>Welcome to the dashboard, {data.username || data.error}!</p>
             </div>
         )}
         </>
