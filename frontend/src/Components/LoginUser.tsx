@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 // LoginUser.tsx
 export default function LoginUser(): React.JSX.Element {
 
-        const url = `${import.meta.env.VITE_API_URL}api/login`;
+        const url = `${import.meta.env.VITE_API_URL}/api/login`;
         const loginUserMutation = usePostData<LoginUserData>(url);
         const navigate = useNavigate();
 
