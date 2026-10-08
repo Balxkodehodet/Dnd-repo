@@ -12,10 +12,11 @@ export default function usePostData<TVariables>(url: string) {
                 },
                 body: JSON.stringify(userData),
             })
+        const result = await response.json();
         if (!response.ok) {
-            throw new Error('Failed to create user');
+            throw new Error(result.error || 'An error occurred while processing the request.');
         }
-        return response.json();
+        return result;
 
         }
     })
