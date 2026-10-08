@@ -17,7 +17,7 @@ const loginUser = async (req, res) => {
         }
         const result = await pool.query("SELECT id, username, email, passwordhash FROM users WHERE email = $1", [email]);
 
-        if (!result) {
+        if (result.rows.length === 0) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
 
@@ -29,6 +29,10 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ error: "Invalid credentials" });
         }
         req.session.userId = user.id;
+        console.log("=== LOGIN ===");
+        console.log("Session ID:", req.sessionID);
+        console.log("User ID:", req.session.userId);
+        console.log("Session:", req.session);
         return res.status(200).json({ username: user.username, email: user.email, message: "Login successful" });
     } catch (error) {
         console.error("Error logging in user:", error);

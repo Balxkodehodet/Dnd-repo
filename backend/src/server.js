@@ -10,7 +10,7 @@ import meRoute from "./routes/meRoute.js";
 dotenv.config();
 
 const app = express();
-
+const nodeEnv = process.env.NODE_ENV;
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL
@@ -28,8 +28,8 @@ app.use(session({
     cookie: 
     { 
         httpOnly: true,
-        secure: true, // Set to true if using HTTPS
-        sameSite: 'none' // Adjust based on your needs
+        secure: nodeEnv === "production", // Set to true if production else false (development)
+        sameSite: nodeEnv === "production" ? 'none' : 'lax' // Adjust based on your needs
     }    
 }));
 app.use("/api/", generalUserRoute);
