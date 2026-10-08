@@ -16,10 +16,14 @@ export default function dashBoard(): React.JSX.Element {
         <ul>
             <li>
                 <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>    
                 <Link to="/profile">Profile</Link>
+            </li>    
                 <Link to="/settings">Settings</Link>
+            <li>    
                 <Link to="/logout">Logout</Link>
-                
+                            
             </li>
         </ul>
         {data && (

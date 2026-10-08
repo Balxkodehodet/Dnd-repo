@@ -1,9 +1,10 @@
 // CreateUser.tsx
 import usePostData from '../Hooks/usePostData';
 import { type CreateUserData } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateUser(): React.JSX.Element {
-
+    const navigate = useNavigate();
 
     const url = `${import.meta.env.VITE_API_URL}/api/users`;
     const createUserMutation = usePostData(url);
@@ -33,6 +34,7 @@ export default function CreateUser(): React.JSX.Element {
                     <button type="submit">Create User</button>
                 </form>
             </div>
+            <button onClick={() => navigate('/')}>Back to start</button>
             <div className="create-userform-status">
                 {createUserMutation.isPending && <p>Creating user...</p>}
                 {createUserMutation.isError && <p>Error: {createUserMutation.error.message}</p>}
