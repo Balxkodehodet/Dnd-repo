@@ -16,6 +16,10 @@ const allowedOrigins = [
   process.env.FRONTEND_URL
 ];
 
+if (nodeEnv === "production") {
+    app.set("trust proxy", 1);
+}
+
 app.use(cors({
     origin: allowedOrigins,
     credentials: true
