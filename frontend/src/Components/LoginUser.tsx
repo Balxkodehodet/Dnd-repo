@@ -18,11 +18,11 @@ export default function LoginUser(): React.JSX.Element {
             };
             try {
 
-            const result = await loginUserMutation.mutateAsync(userData);
-            console.log('Login successful:', result);
+            await loginUserMutation.mutateAsync(userData);
             navigate('/home/dashboard'); // Redirect to dashboard on successful login
             
             } catch (error) {
+                navigate('/login-user'); // Redirect back to login page on error
                 console.error('Login failed:', error);
             }
         }
