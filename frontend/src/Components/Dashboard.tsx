@@ -10,7 +10,10 @@ export default function dashBoard(): React.JSX.Element {
     if (isError) {
         return <p>Error loading dashboard.</p>;
     }
-
+    if(data)
+    {
+        console.log("Dashboard data:", data);
+    }
     return (
         <>
         <ul>
@@ -23,7 +26,7 @@ export default function dashBoard(): React.JSX.Element {
                 <Link to="/settings">Settings</Link>
             <li>    
                 <Link to="/logout">Logout</Link>
-                            
+
             </li>
         </ul>
         {data && (
