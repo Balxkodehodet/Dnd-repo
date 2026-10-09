@@ -6,10 +6,12 @@ import loginUserRoute from "./routes/loginUserRoute.js";
 import session from 'express-session';
 import logoutUserRoute from "./routes/logoutUser.js";
 import meRoute from "./routes/meRoute.js";
+import helmet from "helmet";
 
 dotenv.config();
 
 const app = express();
+app.use(helmet());
 const nodeEnv = process.env.NODE_ENV;
 const allowedOrigins = [
   "http://localhost:5173",
