@@ -29,10 +29,6 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ error: "Invalid credentials" });
         }
         req.session.userId = user.id;
-        console.log("=== LOGIN ===");
-        console.log("Session ID:", req.sessionID);
-        console.log("User ID:", req.session.userId);
-        console.log("Session:", req.session);
         return res.status(200).json({ username: user.username, email: user.email, message: "Login successful" });
     } catch (error) {
         console.error("Error logging in user:", error);

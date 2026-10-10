@@ -8,7 +8,24 @@ export default function Layout(): React.JSX.Element {
       </header>
       <menu>
       <nav>
-        <Link to="/home">Home</Link>
+        <ul className="menu">
+            <li>
+            <Link to="/home">Home</Link>
+            </li>
+            <li>
+                <Link to="/home/dashboard">Dashboard</Link>
+            </li>
+            <li>    
+                <Link to="/home/profile">Profile</Link>
+            </li>    
+            <li>
+                <Link to="/home/settings">Settings</Link>
+            </li>
+            <li>    
+                <Link to="/home/logout">Logout</Link>
+
+            </li>
+        </ul>
       </nav>
       </menu>
     <main>

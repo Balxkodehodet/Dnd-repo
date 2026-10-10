@@ -10,8 +10,8 @@ const router = express.Router();
 
 // CRUD Create Read Update Delete
 router.post('/users', createUser);
-router.get('/users/:id', authMiddleware, authorization, getUser);
-router.patch('/users/:id', authMiddleware, authorization, editUser);
-router.delete('/users/:id', authMiddleware, authorization, deleteUser);
+router.get('/users/:id', authMiddleware, getUser);
+router.patch('/users/:id', authMiddleware, editUser);
+router.delete('/users/:id', authMiddleware, deleteUser);
 
 export default router;
