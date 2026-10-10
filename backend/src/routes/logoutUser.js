@@ -6,6 +6,6 @@ import authorization from '../middleware/authorization.js';
 const router = express.Router();
 
 // Define your logout route
-router.get('/logout', authMiddleware, logoutUser);
+router.post('/logout', authMiddleware, logoutUser);
 
 export default router;

@@ -1,24 +1,42 @@
-import useGetData from "../Hooks/useGetData"
+import usePostData from "../Hooks/usePostData"
 import { Link } from "react-router-dom";
+import {useQueryClient} from "@tanstack/react-query"
+import {useEffect, useRef} from "react"
 export default function Logout() {
-    const { data, isLoading, isError} = useGetData(`${import.meta.env.VITE_API_URL}/api/logout`);
+    const logoutUserMutation = usePostData<void>(`${import.meta.env.VITE_API_URL}/api/logout`);
+    let logOutStarted = useRef(false);
+    const { mutateAsync } = logoutUserMutation;
+    const queryClient = useQueryClient();
 
-    if (isLoading)
-    {
-        return <p>Loading...</p>
-    }
-    if (isError) {
-        return <p>Error loading dashboard.</p>;
-    }
+    useEffect(() => {
+        if(logOutStarted.current) return;
+        logOutStarted.current = true;
+        async function logOutUser()
+        {
+            try {
+                 await mutateAsync();
+                queryClient.removeQueries({
+                queryKey: ["dnd", `${import.meta.env.VITE_API_URL}/api/dashboard`]
+                });
+                }
+            catch(err)
+            {
+               throw new Error("Error logging out")
+            }
+    
+        }
+            logOutUser();
+        },[mutateAsync, queryClient])
+    
     return (
         <>
-            {data && (
+            {logoutUserMutation.isSuccess && (
             <div className="dashboard-container">
-                <h2 className="dashboard-title">Dashboard</h2>
-                <p>Welcome to the dashboard, Guest!</p>
+                <h2 className="dashboard-title">Logged out</h2>
+                <p>You successfully logged out!</p>
             </div>
         ) }
-        {data && <><p>{data.message}</p> <Link to='/login-user'><button>Login</button></Link></>}
+        {logoutUserMutation.isSuccess && <><p>{logoutUserMutation.data.message}</p> <Link to='/login-user'><button>Login</button></Link></>}
         </>
     )
 }

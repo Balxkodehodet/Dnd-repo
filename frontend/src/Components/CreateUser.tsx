@@ -32,7 +32,7 @@ export default function CreateUser(): React.JSX.Element {
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" required />
                     <button type="submit">Create User</button>
-                    <button onClick={() => navigate('/')}>Back to start</button>
+                    <button type="button" onClick={() => navigate('/')}>Back to start</button>
                 </form>
             </div>
             <div className="create-userform-status">

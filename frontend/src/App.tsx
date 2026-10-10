@@ -9,7 +9,7 @@ function App() {
   let {url} = useAppContext();
 
   //let url2 = config().main_url + 'api';
-  const {data, isLoading, error} = useGetData(url + 'api');
+  const {data, isLoading, error} = useGetData<Record<string, string>>(url + 'api');
   console.log(data);
 
   return (

@@ -5,7 +5,16 @@ export default async function logoutUser(req, res) {
                 console.error("Error logging out user:", err);
                 return res.status(500).json({ error: "Internal server error" });
             }
-            return res.json({ message: "Logout successful" });
+        res.clearCookie("connect.sid", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite:
+                process.env.NODE_ENV === "production"
+                    ? "none"
+                    : "lax",
+            path: "/"
+        });
+            return res.json({ isLoggedIn: false, message: "Logout successful" });
         });
     } catch (error) {
         console.error("Error logging out user:", error);

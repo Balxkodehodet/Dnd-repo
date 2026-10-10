@@ -1,5 +1,5 @@
-1. Lage en landings side med "Lag bruker" "Logg inn" eller "Fortsett som gjest".
-2. Lag en layout for landings siden , deretter forandre layout i routingen til "Bruker"/"gjest" layout
+1. Lage en landings side med "Lag bruker" "Logg inn" eller "Fortsett som gjest".!Gjort
+2. Lag en layout for landings siden , deretter forandre layout i routingen til "Bruker"/"gjest" layout!Gjort
 3. Behold layout for landings siden gjennom hele "Lag bruker" prosessen og "Log inn" prosessen.. forandre kun når gjest er logget inn
-   eller bruker er logget inn.
+   eller bruker er logget inn.!pågår
    
