@@ -5,18 +5,18 @@ export default function DashBoard(): React.JSX.Element {
     const {data, isLoading, isError} = useGetData<DashboardData>(`${import.meta.env.VITE_API_URL}/api/dashboard`);
 
     if (isLoading) {
-        return <p>Loading dashboard...</p>;
+        return <p className="messages">Loading dashboard...</p>;
     }
 
     if (isError) {
         return <>
-                    <p>Error loading dashboard.</p>
+                    <p className="messages">Error loading dashboard.</p>
                     <Link className="log-btn" to="/login-user"><button>Log in</button></Link>
-                    <Link className="log-btn" to="/dashboard-guest"><button>Continue as guest</button></Link>
+                    <Link className="log-btn" to="/home/dashboard-guest"><button>Continue as guest</button></Link>
                </>
     }
    if (!data) {
-        return <p>Loading dashboard...</p>;
+        return <p className="messages">Loading dashboard...</p>;
     }
 
     return (
@@ -24,7 +24,7 @@ export default function DashBoard(): React.JSX.Element {
         {data && (
             <div className="dashboard-container">
                 <h2 className="dashboard-title">Dashboard</h2>
-                <p>Welcome to the dashboard, {data.isLoggedIn ? data.username : "guest"}!</p>
+                <p className="messages">Welcome to the dashboard, {data.isLoggedIn ? data.username : "guest"}!</p>
             </div>
         )}
         {data.isLoggedIn ? <Link className="log-btn" to='/home/logout'><button>Logout</button></Link> : <Link className="log-btn" to='/login-user'><button>Login</button></Link>}

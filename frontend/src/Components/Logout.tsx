@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {useQueryClient} from "@tanstack/react-query"
 import {useEffect, useRef} from "react"
 export default function Logout() {
+
     const logoutUserMutation = usePostData<void>(`${import.meta.env.VITE_API_URL}/api/logout`);
     let logOutStarted = useRef(false);
     const { mutateAsync } = logoutUserMutation;
@@ -36,7 +37,8 @@ export default function Logout() {
                 <p>You successfully logged out!</p>
             </div>
         ) }
-        {logoutUserMutation.isSuccess && <><p>{logoutUserMutation.data.message}</p> <Link to='/login-user'><button>Login</button></Link></>}
+        {logoutUserMutation.isSuccess && <><p className="messages">{logoutUserMutation.data.message}</p> <Link to='/login-user'><button>Login</button></Link></>}
+        {logoutUserMutation.isError && <p className="messages">You could not log out</p>}
         </>
     )
 }
