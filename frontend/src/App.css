@@ -228,6 +228,7 @@ header{
 {
   width:200px;
   height:auto;
+  border: 10px solid black
 }
 /* Responsive design */
 @media(max-width: 800px) {
