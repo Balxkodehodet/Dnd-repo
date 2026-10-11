@@ -18,6 +18,7 @@ export default function CreateCharacter(){
            <div className="classCardParent">
            <h2 className="classes-h2">Classes</h2>
            <Gallery className="galleryimg-minimize" singleImg={id}/>
+           <div className="classCardParent1">
             {Classes.map((characterClass, index) => {
                 return ( 
                     <div key={index} className="classCard">
@@ -32,6 +33,7 @@ export default function CreateCharacter(){
             </div>
             </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(2)}>Finish Class selection</button>
+            </div>
            </>}
            {characterCreationStage === 2 && <>
            <Gallery className="galleryimg-minimize" singleImg={id}/>
