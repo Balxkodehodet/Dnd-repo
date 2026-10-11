@@ -29,5 +29,5 @@ export type CategoryData = {
     }[];
 };
 export type singleImgData = {
-    singleImg: number;
+    singleImg: string | undefined;
 }
