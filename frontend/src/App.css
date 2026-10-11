@@ -142,11 +142,29 @@ header{
   margin-top:8%;
 
 }
+.chooseportrait-link
+{
+   position: absolute;
+   bottom:10px;
+   left:10px;
+}
 .selected-container-parent
 {
   display:flex;
   justify-content: center;
   align-items: center;
+}
+.characterbtn
+{
+  margin-top:20px;
+  padding:10px;
+}
+.portrait-containerparent
+{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 /* Responsive design */
 @media(max-width: 800px) {

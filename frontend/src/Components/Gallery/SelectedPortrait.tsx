@@ -12,7 +12,8 @@ export default function SelectedPortrait() {
             <div className="selected-container">
                 <img className="selected" src={portrait}/>
                 <Link to='/home/gallery'><img className="x" src={x}/></Link>
-            </div>   
+                <Link className="chooseportrait-link" to={`/home/create-character/${id}`}><button>Choose portrait</button></Link>  
+            </div> 
         </div>    
         </>
     )

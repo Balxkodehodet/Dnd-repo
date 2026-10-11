@@ -12,10 +12,10 @@ import CreateUser from './Components/CreateUser.tsx'
 import LoginUser from './Components/LoginUser.tsx'
 import Category from './Components/Category.tsx'
 import Dashboard from './Components/Dashboard.tsx'
-import DashboardGuest from './Components/DashboardGuest.tsx'
 import Logout from './Components/Logout.tsx'
 import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
+import CreateCharacter from './Components/CreateCharacter.tsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -36,10 +36,11 @@ const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: ':category', element: <Category /> },
       { path: 'dashboard', element: <Dashboard/>},
-      { path: 'dashboard-guest', element: <DashboardGuest/>},
       { path: 'logout', element: <Logout/>},
       { path: 'gallery', element: <Gallery/>},
       { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
+      { path: 'create-character', element: <CreateCharacter/>},
+      { path: 'create-character/:id', element: <CreateCharacter/>},
     ]
   }    
 ],

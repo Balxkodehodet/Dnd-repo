@@ -1,6 +1,5 @@
 // LandingPage.tsx
 import {Link} from 'react-router-dom';
-import Gallery from './Gallery/Gallery.tsx';
 export default function LandingPage(): React.JSX.Element {
   return (
     <>
@@ -21,7 +20,6 @@ export default function LandingPage(): React.JSX.Element {
             </div>
         </Link>
     </div>
-    <Gallery/>
     </>
   );
 }

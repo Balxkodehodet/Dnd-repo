@@ -25,6 +25,20 @@ export default function DashBoard(): React.JSX.Element {
             <div className="dashboard-container">
                 <h2 className="dashboard-title">Dashboard</h2>
                 <p className="messages">Welcome to the dashboard, {data.isLoggedIn ? data.username : "guest"}!</p>
+                <br></br>
+                <Link to='/home/create-character'><button className="characterbtn">Create Character</button></Link>
+                <br></br>
+                <button className="characterbtn">Delete Character</button>
+                <br></br>
+                <button className="characterbtn">Create Character</button>
+                <br></br>
+                <button className="characterbtn">Create Character</button>
+                <br></br>
+                <button className="characterbtn">Create Character</button>
+                <br></br>
+                <button className="characterbtn">Create Character</button>
+                <br></br>
+                <button className="characterbtn">Create Character</button>
             </div>
         )}
         {data.isLoggedIn ? <Link className="log-btn" to='/home/logout'><button>Logout</button></Link> : <Link className="log-btn" to='/login-user'><button>Login</button></Link>}

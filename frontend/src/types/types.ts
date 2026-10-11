@@ -28,3 +28,6 @@ export type CategoryData = {
         url: string;
     }[];
 };
+export type singleImgData = {
+    singleImg: number;
+}

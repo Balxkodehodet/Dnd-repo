@@ -1,12 +1,17 @@
 import {Link} from "react-router-dom"
 import portraits from '../../data/portraits.ts'
-export default function Gallery() {
+import {type singleImgData} from '../../types/types.ts'
 
+export default function Gallery({singleImg}: singleImgData):React.JSX.Element {
 
-            
+            let portraitIndex = Number(singleImg);
+            let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0 && portraitIndex < portraits.length;
+
+            let portrait = hasValidPortrait ? portraits[Number(singleImg)] : undefined;
             return (
                 <>
-                        <h2>Portrett</h2>
+                    {!hasValidPortrait && <div className="portrait-containerparent">
+                        <h2>Choose portrait</h2>
                         <div className="portraitcontainer">
                     {portraits.map((portrait, index) => {
                        return (
@@ -22,7 +27,13 @@ export default function Gallery() {
                         
                     })}
                     
-                    </div> 
+                    </div>
+                    </div>
+                    } 
+                    {hasValidPortrait && <><h2>Chosen portrait</h2>
+                                            <img src={portrait}/>
+                    </>}
+
                 </>
             )
 }
