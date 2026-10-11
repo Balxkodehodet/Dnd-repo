@@ -32,3 +32,9 @@ export type singleImgData = {
     singleImg: string | undefined;
     className?: string;
 }
+export type characterData = {
+    class: string,
+    likes: string,
+    primaryAbility: string,
+    Complexity: string
+}

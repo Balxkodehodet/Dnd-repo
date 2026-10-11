@@ -122,6 +122,8 @@ header{
 .portraitcontainer
 {
   display:flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap:wrap;
 }
 .x
@@ -164,6 +166,43 @@ header{
   margin-top:40px;
   padding:10px;
 }
+.classCard
+{
+  margin:10px;
+  margin-left:20px;
+  padding:10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width:400px;
+  height:auto;
+}
+.classCard:hover
+{
+  transform:scale(1.1);
+  background-color: #5441ff;
+}
+.classCardParent{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.classes-h2
+{
+  display: flex;
+  padding:10px;
+  background-color: #7768ff;
+  border: 2px rgb(29, 28, 28) solid;
+  width:100vw;
+  align-items:center;
+  justify-content: center;
+}
+.classesParent
+{
+  display:flex;
+  flex-direction: column;
+}
 .selectionbtn
 {
   margin-top:120px;
@@ -179,7 +218,7 @@ header{
 }
 .galleryimg-minimize
 {
-  width:100px;
+  width:200px;
   height:auto;
 }
 /* Responsive design */

@@ -17,8 +17,8 @@ import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
 const queryClient = new QueryClient()
-let className="";
-let singleImg="";
+let className="empty";
+let singleImg="empty";
 const router = createBrowserRouter([
   {
     path: '/',

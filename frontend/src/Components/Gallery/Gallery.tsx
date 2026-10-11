@@ -5,7 +5,7 @@ import {type singleImgData} from '../../types/types.ts'
 export default function Gallery({singleImg, className}: singleImgData):React.JSX.Element {
 
             let portraitIndex = Number(singleImg);
-            let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0 && portraitIndex < portraits.length;
+            let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0;
 
             let portrait = hasValidPortrait ? portraits[Number(singleImg)] : undefined;
             return (
@@ -30,7 +30,7 @@ export default function Gallery({singleImg, className}: singleImgData):React.JSX
                     </div>
                     </div>
                     } 
-                    {hasValidPortrait && <><div className={className}><h2>Chosen portrait</h2>
+                    {hasValidPortrait && <><div><h2>Chosen portrait</h2>
                                             <img className={className} src={portrait}/>
                                             </div>
                     </>}
