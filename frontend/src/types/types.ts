@@ -36,5 +36,11 @@ export type characterData = {
     class: string,
     likes: string,
     primaryAbility: string,
-    Complexity: string
+    Complexity: string 
 }
+export type classProps = {
+    selectedClass: characterData | null;
+    setSelectedClass: React.Dispatch<
+        React.SetStateAction<characterData | null>
+    >;
+};

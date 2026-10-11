@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {AppProvider} from './Components/AppContext.tsx'
@@ -16,9 +16,12 @@ import Logout from './Components/Logout.tsx'
 import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
+import ClassesComponent from './Components/ClassesComponent.tsx'
+import type { characterData } from './types/types.ts'
 const queryClient = new QueryClient()
 let className="empty";
 let singleImg="empty";
+const [selectedClass, setselectedClass] = useState<characterData | null>(null);
 const router = createBrowserRouter([
   {
     path: '/',
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
       { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
       { path: 'create-character', element: <CreateCharacter/>},
       { path: 'create-character/:id', element: <CreateCharacter/>},
+      { path: 'classes', element: <ClassesComponent selectedClass={selectedClass} setSelectedClass={setselectedClass}/>},
     ]
   }    
 ],

@@ -180,6 +180,7 @@ header{
 {
   transform:scale(1.1);
   background-color: #5441ff;
+  cursor: pointer;
 }
 .classCardParent{
   display:flex;

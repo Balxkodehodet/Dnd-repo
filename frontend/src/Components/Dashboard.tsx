@@ -28,17 +28,17 @@ export default function DashBoard(): React.JSX.Element {
                 <br></br>
                 <Link to='/home/gallery'><button className="characterbtn">Create Character</button></Link>
                 <br></br>
-                <button className="characterbtn">Delete Character</button>
+                <button disabled className="characterbtn">Delete Character</button>
                 <br></br>
-                <button className="characterbtn">Create Character</button>
+                <button disabled className="characterbtn">Create Character</button>
                 <br></br>
-                <button className="characterbtn">Create Character</button>
+                <button disabled className="characterbtn">Create Character</button>
                 <br></br>
-                <button className="characterbtn">Create Character</button>
+                <button disabled className="characterbtn">Create Character</button>
                 <br></br>
-                <button className="characterbtn">Create Character</button>
+                <button disabled className="characterbtn">Create Character</button>
                 <br></br>
-                <button className="characterbtn">Create Character</button>
+                <button disabled className="characterbtn">Create Character</button>
             </div>
         )}
         {data.isLoggedIn ? <Link className="log-btn" to='/home/logout'><button>Logout</button></Link> : <Link className="log-btn" to='/login-user'><button>Login</button></Link>}
