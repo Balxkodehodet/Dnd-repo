@@ -231,6 +231,10 @@ header{
    bottom:-10px;
    left:-10px;
 }
+.characterbtn
+{
+  margin-top:10px;
+}
 }
 @media(max-width: 250px) {
 
@@ -252,5 +256,9 @@ header{
    position: absolute;
    bottom:-10px;
    left:-10px;
+}
+.characterbtn
+{
+  margin-top:10px;
 }
 }
