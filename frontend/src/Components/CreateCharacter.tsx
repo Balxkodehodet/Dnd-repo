@@ -29,14 +29,26 @@ export default function CreateCharacter(){
             </div>
            </>}
            {characterCreationStage === 2 && <>
+           <div className="classesParent">
+           <div className="classCardParent">
            <Gallery className="galleryimg-minimize" singleImg={id}/>
+           <div className="classCardParent1">
            <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
+           </div>
+           </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(3)}>Finish3</button>
+           </div>
            </>}
            {characterCreationStage === 3 && <>
+           <div className="classesParent">
+           <div className="classCardParent">
            <Gallery className="galleryimg-minimize" singleImg={id}/>
+           <div className="classCardParent1">
            <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
+           </div>
+           </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(4)}>Finish 4</button>
+           </div>
            </>}
         </>
     )
