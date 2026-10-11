@@ -14,7 +14,8 @@ import Category from './Components/Category.tsx'
 import Dashboard from './Components/Dashboard.tsx'
 import DashboardGuest from './Components/DashboardGuest.tsx'
 import Logout from './Components/Logout.tsx'
-
+import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
+import Gallery from './Components/Gallery/Gallery.tsx'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -37,6 +38,8 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard/>},
       { path: 'dashboard-guest', element: <DashboardGuest/>},
       { path: 'logout', element: <Logout/>},
+      { path: 'gallery', element: <Gallery/>},
+      { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
     ]
   }    
 ],
