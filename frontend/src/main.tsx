@@ -17,7 +17,8 @@ import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
 const queryClient = new QueryClient()
-
+let className="";
+let singleImg="";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       { path: ':category', element: <Category /> },
       { path: 'dashboard', element: <Dashboard/>},
       { path: 'logout', element: <Logout/>},
-      { path: 'gallery', element: <Gallery/>},
+      { path: 'gallery', element: <Gallery singleImg={singleImg} className={className}/>},
       { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
       { path: 'create-character', element: <CreateCharacter/>},
       { path: 'create-character/:id', element: <CreateCharacter/>},

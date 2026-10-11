@@ -30,4 +30,5 @@ export type CategoryData = {
 };
 export type singleImgData = {
     singleImg: string | undefined;
+    className?: string;
 }

@@ -113,6 +113,7 @@ header{
   border: 2px solid gold;
   width:550px;
   height:550px;
+  margin-top:50px;
 }
 .portrait:hover
 {
@@ -126,7 +127,7 @@ header{
 .x
 {
   position:absolute;
-  top: -90px;
+  top: -40px;
   right: -90px;
   width:40px;
   height:40px;
@@ -139,14 +140,18 @@ header{
 {
   position:relative;
   justify-content: center;
-  margin-top:8%;
+  margin-top:6%;
 
 }
 .chooseportrait-link
 {
    position: absolute;
-   bottom:10px;
-   left:10px;
+   bottom:-100px;
+   left:-100px;
+}
+.chooseportrait-link button
+{
+   padding:10px;
 }
 .selected-container-parent
 {
@@ -156,7 +161,12 @@ header{
 }
 .characterbtn
 {
-  margin-top:20px;
+  margin-top:40px;
+  padding:10px;
+}
+.selectionbtn
+{
+  margin-top:120px;
   padding:10px;
 }
 .portrait-containerparent
@@ -165,9 +175,19 @@ header{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top:2%;
+}
+.galleryimg-minimize
+{
+  width:100px;
+  height:auto;
 }
 /* Responsive design */
 @media(max-width: 800px) {
+  .characterbtn
+  {
+    margin-top:60px;
+  }
 
   .selected
   {
@@ -177,10 +197,16 @@ header{
   .x
 {
   position:absolute;
-  top: -40px;
+  top: 10px;
   right: -40px;
   width:40px;
   height:40px;
+}
+.chooseportrait-link
+{
+   position: absolute;
+   bottom:-10px;
+   left:-10px;
 }
 }
 
@@ -194,10 +220,16 @@ header{
   .x
 {
   position:absolute;
-  top: -20px;
+  top: 30px;
   right: -20px;
   width:40px;
   height:40px;
+}
+.chooseportrait-link
+{
+   position: absolute;
+   bottom:-10px;
+   left:-10px;
 }
 }
 @media(max-width: 250px) {
@@ -210,9 +242,15 @@ header{
   .x
 {
   position:absolute;
-  top: -20px;
+  top: 30px;
   right: -20px;
   width:25px;
   height:25px;
+}
+.chooseportrait-link
+{
+   position: absolute;
+   bottom:-10px;
+   left:-10px;
 }
 }
