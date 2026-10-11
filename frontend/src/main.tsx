@@ -21,7 +21,6 @@ import type { characterData } from './types/types.ts'
 const queryClient = new QueryClient()
 let className="empty";
 let singleImg="empty";
-const [selectedClass, setselectedClass] = useState<characterData | null>(null);
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,7 +44,6 @@ const router = createBrowserRouter([
       { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
       { path: 'create-character', element: <CreateCharacter/>},
       { path: 'create-character/:id', element: <CreateCharacter/>},
-      { path: 'classes', element: <ClassesComponent selectedClass={selectedClass} setSelectedClass={setselectedClass}/>},
     ]
   }    
 ],

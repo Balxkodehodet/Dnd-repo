@@ -2,10 +2,11 @@ import {useState} from "react"
 import Gallery from "./Gallery/Gallery";
 import {useParams} from 'react-router-dom'
 import ClassesComponent from "./ClassesComponent";
-import type {characterData} from '../types/types.ts'
+import type { characterData } from "../types/types";
 
 export default function CreateCharacter(){
 
+    const [selectedClass, setSelectedClass] = useState<characterData | null>(null)
     const {id} = useParams();
     let [characterCreationStage, setCharacterCreationStage] = useState<number | undefined>(0);
     return (
@@ -21,7 +22,7 @@ export default function CreateCharacter(){
            <h2 className="classes-h2">Classes</h2>
            <Gallery className="galleryimg-minimize" singleImg={id}/>
            <div className="classCardParent1">
-            <ClassesComponent selectedClass={selectedClass} setSelectedClass={setselectedClass}/>
+            <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
             </div>
             </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(2)}>Finish Class selection</button>
@@ -29,12 +30,12 @@ export default function CreateCharacter(){
            </>}
            {characterCreationStage === 2 && <>
            <Gallery className="galleryimg-minimize" singleImg={id}/>
-           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setselectedClass}/>
+           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(3)}>Finish3</button>
            </>}
            {characterCreationStage === 3 && <>
            <Gallery className="galleryimg-minimize" singleImg={id}/>
-           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setselectedClass}/>
+           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(4)}>Finish 4</button>
            </>}
         </>
