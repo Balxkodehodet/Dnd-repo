@@ -119,7 +119,7 @@ header{
 {
   transform: scale(1.1);
 }
-.portraitcontainer
+.portraitcontainer,.racecontainer
 {
   display:flex;
   justify-content: center;
@@ -161,12 +161,27 @@ header{
   justify-content: center;
   align-items: center;
 }
+.raceBtn
+{
+  padding:10px;
+  margin-bottom:10px;
+  width: 100%;
+  background-color: #9285ff;
+  border: 2px black solid;
+  cursor:pointer;
+}
+.raceCard:hover
+{
+  background-color: rgb(160, 149, 253);
+  transform: scale(1.1);
+  cursor:pointer;
+}
 .characterbtn
 {
   margin-top:40px;
   padding:10px;
 }
-.classCard
+.classCard, .raceCard
 {
   margin:10px;
   margin-left:20px;

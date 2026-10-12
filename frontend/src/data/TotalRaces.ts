@@ -1,4 +1,5 @@
-export const Races = [{
+import type { racetypes } from "../types/racetypes"
+export const TotalRaces:racetypes = [{
     Race: "Dragonborn",
     CreatureType: "Humanoid",
     Size: "Medium (about 5-7 feet tall)",
