@@ -13,7 +13,6 @@ import LoginUser from './Components/LoginUser.tsx'
 import Category from './Components/Category.tsx'
 import Dashboard from './Components/Dashboard.tsx'
 import Logout from './Components/Logout.tsx'
-import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
 import SelectedRace from './Components/Races/SelectedRace.tsx'
@@ -40,7 +39,6 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard/>},
       { path: 'logout', element: <Logout/>},
       { path: 'gallery', element: <Gallery singleImg={singleImg} className={className}/>},
-      { path: 'selected-portrait/:portraitId', element: <SelectedPortrait/>},
       { path: 'create-character', element: <CreateCharacter/>},
       { path: 'create-character/:raceId', element: <CreateCharacter/>},
       { path: 'create-character/:raceId/:portraitId', element: <CreateCharacter/>},

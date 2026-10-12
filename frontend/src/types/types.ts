@@ -47,5 +47,6 @@ export type galleryProps = {
     className: string | undefined    
 }
 export type raceProps = {
-    singleRace: string | undefined
+    singleRace: string | undefined,
+    stage: number 
 }

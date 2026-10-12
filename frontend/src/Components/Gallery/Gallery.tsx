@@ -2,6 +2,7 @@ import {Link} from "react-router-dom"
 import portraits from '../../data/portraits.ts'
 import type { galleryProps } from "../../types/types.ts";
 import { useParams } from "react-router-dom";
+import x from "../../assets/close.png"
 
 export default function Gallery({singleImg, className}: galleryProps):React.JSX.Element {
 
@@ -31,7 +32,8 @@ export default function Gallery({singleImg, className}: galleryProps):React.JSX.
                     </div>
                     </div>
                     } 
-                    {portrait && <><div><h2>Chosen portrait</h2>
+                    {portrait && <><div className="singleportrait"><h2>Chosen portrait</h2>
+                    <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>
                                             <img className={className} src={portrait}/>
                                             </div>
                     </>}

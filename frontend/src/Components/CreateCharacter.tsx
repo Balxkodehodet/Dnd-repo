@@ -16,12 +16,12 @@ export default function CreateCharacter(){
         <>
            {characterCreationStage === 0 && <>
            <div className="racecontainer">
-           <Races singleRace={raceId} /> 
+           <Races singleRace={raceId} stage={characterCreationStage} /> 
            <button disabled={raceId !== undefined ? false : true} className="selectionbtn" onClick={()=>setCharacterCreationStage(1)}>Finish Race selection</button>
            </div></>}
            {characterCreationStage === 1 && <>
            <div className="portrait-containerparent">
-           <Races singleRace={raceId}/>
+           <Races singleRace={raceId} stage={characterCreationStage}/>
            <Gallery className="" singleImg={portraitId}/>
            <button disabled={portraitId === undefined} className="selectionbtn" onClick={()=>setCharacterCreationStage(2)}>Finish portrait selection</button>
            </div></>}

@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom'
 import x from "../../assets/close.png"
 import RenderValue from '../RenderValue.tsx'
 import { useParams } from 'react-router-dom';
+import { useState} from 'react'
 
-export default function Races ({singleRace}: raceProps) {
+export default function Races ({singleRace, stage}: raceProps) {
 
     const singleRaceIndex = Number(singleRace);
     const isValidRaceIndex = Number.isInteger(singleRaceIndex) && singleRaceIndex !== undefined && singleRaceIndex >= 0 && singleRaceIndex < TotalRaces.length
     const singleRaceChosen: singleRace | undefined = isValidRaceIndex ? TotalRaces[Number(singleRace)] : undefined;
     const {portraitId} = useParams();
+    const [isChosenRace, setIsChosenRace] = useState(true);
     return (
         <>
             {!singleRaceChosen && TotalRaces.map((race, index) => {
@@ -31,16 +33,16 @@ export default function Races ({singleRace}: raceProps) {
             <div className="selected-container-parent">
             <div className="selected-container">
             <div className="raceCard-info">
-                <Link to={`/home/create-character`}><img className="x-race" src={x}/></Link>
+                {stage===0 && <Link to={`/home/create-character`}><img className="x-race" src={x}/></Link>}
                 <h2>Chosen Race:</h2>
 
-                {!portraitId && Object.entries(singleRaceChosen).map(([key, value]) => (
+                {stage===0 && Object.entries(singleRaceChosen).map(([key, value]) => (
                     
                     <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValue(value)}<br></br><br></br></div>
                                                                                                      
                  ))
                 }
-                {portraitId && <p>{singleRaceChosen.Race}</p>}
+                {stage > 0 && <p>{singleRaceChosen.Race}</p>}
             </div>
             </div> 
         </div> 
