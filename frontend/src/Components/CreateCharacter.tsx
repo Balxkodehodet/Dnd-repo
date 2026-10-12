@@ -22,7 +22,7 @@ export default function CreateCharacter(){
            {characterCreationStage === 1 && <>
            <div className="portrait-containerparent">
            <Races singleRace={raceId} stage={characterCreationStage}/>
-           <Gallery className="" singleImg={portraitId}/>
+           <Gallery className="selected" singleImg={portraitId}/>
            <button disabled={portraitId === undefined} className="selectionbtn" onClick={()=>setCharacterCreationStage(2)}>Finish portrait selection</button>
            </div></>}
            {characterCreationStage === 2 && <>

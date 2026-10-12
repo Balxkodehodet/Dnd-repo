@@ -12,7 +12,7 @@ export default function Gallery({singleImg, className}: galleryProps):React.JSX.
             let portrait = hasValidPortrait ? portraits[Number(singleImg)] : undefined;
             return (
                 <>
-                    {!portrait && <div className={className}>
+                    {!portrait && <div>
                         <h2>Choose portrait</h2>
                         <div className="portraitcontainer">
                     {portraits.map((portrait, index) => {
@@ -33,8 +33,8 @@ export default function Gallery({singleImg, className}: galleryProps):React.JSX.
                     </div>
                     } 
                     {portrait && <><div className="singleportrait"><h2>Chosen portrait</h2>
-                    <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>
                                             <img className={className} src={portrait}/>
+                    <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>
                                             </div>
                     </>}
 
