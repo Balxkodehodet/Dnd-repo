@@ -1,4 +1,3 @@
-import type { racetypes } from "./racetypes"
 type DraconicAncestors = {
                             Dragon: string,
                             DmgType: string,
@@ -46,13 +45,6 @@ type FiendishLegacies =
         }
     
 
-export type raceProps = {
-    selectedRace: singleRace | null;
-    setSelectedRace: React.Dispatch<
-        React.SetStateAction<singleRace | null>
-    >;
-};
-
 export type singleRace = {
     Race: string,
     CreatureType: string,
@@ -91,3 +83,4 @@ export type singleRace = {
     FiendishLegacies?: FiendishLegacies[],
     OtherworldlyPresence?: string
 }
+

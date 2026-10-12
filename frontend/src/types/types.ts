@@ -1,3 +1,4 @@
+
 export type CreateUserData = {
     username: string;
     email: string;
@@ -28,10 +29,7 @@ export type CategoryData = {
         url: string;
     }[];
 };
-export type singleImgData = {
-    singleImg: string | undefined;
-    className?: string;
-}
+
 export type characterData = {
     class: string,
     likes: string,
@@ -44,3 +42,10 @@ export type classProps = {
         React.SetStateAction<characterData | null>
     >;
 };
+export type galleryProps = {
+    singleImg: string | undefined,
+    className: string | undefined    
+}
+export type raceProps = {
+    singleRace: string | undefined
+}

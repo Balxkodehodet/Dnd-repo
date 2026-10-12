@@ -16,6 +16,7 @@ import Logout from './Components/Logout.tsx'
 import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
+import SelectedRace from './Components/Races/SelectedRace.tsx'
 const queryClient = new QueryClient()
 let className="empty";
 let singleImg="empty";
@@ -39,9 +40,12 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard/>},
       { path: 'logout', element: <Logout/>},
       { path: 'gallery', element: <Gallery singleImg={singleImg} className={className}/>},
-      { path: 'selected-portrait/:id', element: <SelectedPortrait/>},
+      { path: 'selected-portrait/:portraitId', element: <SelectedPortrait/>},
       { path: 'create-character', element: <CreateCharacter/>},
-      { path: 'create-character/:id', element: <CreateCharacter/>},
+      { path: 'create-character/:raceId', element: <CreateCharacter/>},
+      { path: 'create-character/:raceId/:portraitId', element: <CreateCharacter/>},
+      { path: 'create-character/:raceId/:portraitId/:classId', element: <CreateCharacter/>},
+      { path: 'selected-race/:raceId', element: <SelectedRace/>}
     ]
   }    
 ],

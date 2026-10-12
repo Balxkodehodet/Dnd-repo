@@ -237,8 +237,9 @@ header{
   display:flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   margin-top:2%;
+  width:90vw;
 }
 .galleryimg-minimize
 {
