@@ -16,8 +16,6 @@ import Logout from './Components/Logout.tsx'
 import SelectedPortrait from './Components/Gallery/SelectedPortrait.tsx'
 import Gallery from './Components/Gallery/Gallery.tsx'
 import CreateCharacter from './Components/CreateCharacter.tsx'
-import ClassesComponent from './Components/ClassesComponent.tsx'
-import type { characterData } from './types/types.ts'
 const queryClient = new QueryClient()
 let className="empty";
 let singleImg="empty";
