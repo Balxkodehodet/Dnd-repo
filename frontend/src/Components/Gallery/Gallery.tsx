@@ -1,12 +1,13 @@
 import {Link} from "react-router-dom"
 import portraits from '../../data/portraits.ts'
 import type { galleryProps } from "../../types/types.ts";
+import { useParams } from "react-router-dom";
 
 export default function Gallery({singleImg, className}: galleryProps):React.JSX.Element {
 
             let portraitIndex = Number(singleImg);
             let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0;
-
+            const {raceId} = useParams();
             let portrait = hasValidPortrait ? portraits[Number(singleImg)] : undefined;
             return (
                 <>
@@ -16,7 +17,7 @@ export default function Gallery({singleImg, className}: galleryProps):React.JSX.
                     {portraits.map((portrait, index) => {
                        return (
                             <div key={portrait}>
-                            <Link to={`/home/selected-portrait/${index}`}>
+                            <Link to={`/home/create-character/${raceId}/${index}`}>
                             <img className="portrait"
                                  src={portrait}
                                  alt="Human character portrait"/></Link>

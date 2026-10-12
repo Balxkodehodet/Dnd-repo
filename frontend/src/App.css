@@ -126,6 +126,14 @@ header{
   align-items: center;
   flex-wrap:wrap;
 }
+.x-race
+{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+  width:40px;
+  height:40px;
+}
 .x
 {
   position:absolute;
@@ -134,7 +142,7 @@ header{
   width:40px;
   height:40px;
 }
-.x:hover
+.x:hover, .x-race:hover
 {
   transform:scale(1.1);
 }
@@ -176,12 +184,22 @@ header{
   transform: scale(1.1);
   cursor:pointer;
 }
+.raceCard-info:hover
+{
+  background-color: rgb(160, 149, 253);
+  cursor:pointer;
+}
+.racecontainer a
+{
+  text-decoration: none;
+  color:#1d1d1d
+}
 .characterbtn
 {
   margin-top:40px;
   padding:10px;
 }
-.classCard, .raceCard
+.classCard, .raceCard, .raceCard-info
 {
   margin:10px;
   margin-left:20px;

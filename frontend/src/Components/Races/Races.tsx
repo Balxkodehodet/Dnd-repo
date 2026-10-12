@@ -3,44 +3,15 @@ import type { raceProps} from '../../types/types.ts';
 import type { singleRace } from '../../types/singleRaceType.ts';
 import { Link } from 'react-router-dom'
 import x from "../../assets/close.png"
+import RenderValue from '../RenderValue.tsx'
+import { useParams } from 'react-router-dom';
 
 export default function Races ({singleRace}: raceProps) {
 
     const singleRaceIndex = Number(singleRace);
     const isValidRaceIndex = Number.isInteger(singleRaceIndex) && singleRaceIndex !== undefined && singleRaceIndex >= 0 && singleRaceIndex < TotalRaces.length
     const singleRaceChosen: singleRace | undefined = isValidRaceIndex ? TotalRaces[Number(singleRace)] : undefined;
-
-
-    function renderValue(value:unknown ): React.ReactNode{
-            if (typeof value === "string" || typeof value === "number")
-            {
-                return value;
-            }
-
-            if (Array.isArray(value))
-            {
-                value.map((val, index) => {
-                    return (
-                        <div key={index}>
-                            {renderValue(val)};
-                        </div>
-                    )    
-                })
-            }
-            if (typeof value === "object" && value !== null)
-            {   
-                return (
-                    Object.entries(value).map(([key, val]) => {
-                        return (
-                            <div key={key}>
-                                <strong>{key}</strong>: {renderValue(val)}
-                            </div>
-                        )
-                    })
-                )
-            }
-        return null;
-    }
+    const {portraitId} = useParams();
     return (
         <>
             {!singleRaceChosen && TotalRaces.map((race, index) => {
@@ -59,15 +30,17 @@ export default function Races ({singleRace}: raceProps) {
             {singleRaceChosen && <>
             <div className="selected-container-parent">
             <div className="selected-container">
-            <div className="raceCard">
-                <img className="x" src={x}/>
+            <div className="raceCard-info">
+                <Link to={`/home/create-character`}><img className="x-race" src={x}/></Link>
                 <h2>Chosen Race:</h2>
-                {Object.entries(singleRaceChosen).map(([key, value]) => (
-                    <div key={key}>{key} {renderValue(value)}</div>
-                ))
-            }
-               
-            <Link to={`/home/create-character`}><button>Choose Race</button></Link>
+
+                {!portraitId && Object.entries(singleRaceChosen).map(([key, value]) => (
+                    
+                    <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValue(value)}<br></br><br></br></div>
+                                                                                                     
+                 ))
+                }
+                {portraitId && <p>{singleRaceChosen.Race}</p>}
             </div>
             </div> 
         </div> 
