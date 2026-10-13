@@ -4,8 +4,6 @@ import type { singleRace } from '../../types/singleRaceType.ts';
 import { Link } from 'react-router-dom'
 import x from "../../assets/close.png"
 import RenderValue from '../RenderValue.tsx'
-import { useParams } from 'react-router-dom';
-import { useState} from 'react'
 import CreateSlug from '../CreateSlug.tsx'
 
 export default function Races ({singleRace, stage}: raceProps) {
@@ -16,12 +14,12 @@ export default function Races ({singleRace, stage}: raceProps) {
         <>
             {!selectedRace && TotalRaces.map((race, index) => {
                 return (
-                <Link to={`/home/create-character/${CreateSlug(race.Race)}`}><div key={index}  className="raceCard">
+                <Link key={index} to={`/home/create-character/${CreateSlug(race.Race)}`}><div className="raceCard">
                     <button className="raceBtn">{race.Race}</button>
-                    <p>{race.CreatureType}</p>
-                    <p>{race.Size}</p>
-                    <p>{race.speed}</p>
-                    <p>{race.Information}</p>
+                    <p><strong>Creature Type: </strong>{race.CreatureType}</p>
+                    <p><strong>Size: </strong>{race.Size}</p>
+                    <p><strong>Speed: </strong>{race.speed}</p>
+                    <p><strong>Information: </strong>{race.Information}</p>
                     <p>Click to know more</p>
                 </div>
                 </Link>

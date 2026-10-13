@@ -4,7 +4,7 @@ import type { galleryProps } from "../../types/types.ts";
 import { useParams } from "react-router-dom";
 import x from "../../assets/close.png"
 
-export default function Gallery({singleImg, className}: galleryProps):React.JSX.Element {
+export default function Gallery({singleImg, className, stage}: galleryProps):React.JSX.Element {
 
             let portraitIndex = Number(singleImg);
             let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0;
@@ -34,7 +34,7 @@ export default function Gallery({singleImg, className}: galleryProps):React.JSX.
                     } 
                     {portrait && <><div className="singleportrait"><h2>Chosen portrait</h2>
                                             <img className={className} src={portrait}/>
-                    <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>
+                    {stage === 1 && <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>}
                                             </div>
                     </>}
 

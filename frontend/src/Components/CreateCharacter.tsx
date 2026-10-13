@@ -2,14 +2,13 @@ import {useState} from "react"
 import Gallery from "./Gallery/Gallery";
 import {useParams} from 'react-router-dom'
 import ClassesComponent from "./Classes/ClassesComponent.tsx";
-import type { characterData } from "../types/types";
-import type { singleRace} from '../types/singleRaceType.ts'
 import Races from './Races/Races.tsx'
 
 export default function CreateCharacter(){
 
     const {raceId, portraitId, classId} = useParams();
     const [characterCreationStage, setCharacterCreationStage] = useState(0);
+   
   
     return (
         <>
@@ -21,14 +20,15 @@ export default function CreateCharacter(){
            {characterCreationStage === 1 && <>
            <div className="portrait-containerparent">
            <Races singleRace={raceId} stage={characterCreationStage}/>
-           <Gallery className="selected" singleImg={portraitId}/>
+           <Gallery className="selected" singleImg={portraitId} stage={characterCreationStage}/>
            <button disabled={portraitId === undefined} className="selectionbtn" onClick={()=>setCharacterCreationStage(2)}>Finish portrait selection</button>
            </div></>}
            {characterCreationStage === 2 && <>
            <div className="classesParent">
            <div className="classCardParent">
            <h2 className="classes-h2">Classes</h2>
-           <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
+           <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage}/>
+           <Races singleRace={raceId} stage={characterCreationStage} />
            <div className="classCardParent1">
             <ClassesComponent singleClass={classId} stage={characterCreationStage} />
             </div>
@@ -39,7 +39,8 @@ export default function CreateCharacter(){
            {characterCreationStage === 3 && <>
            <div className="classesParent">
            <div className="classCardParent">
-           <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
+           <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage}/>
+           <Races singleRace={raceId} stage={characterCreationStage} />
            <div className="classCardParent1">
            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
            </div>
@@ -50,7 +51,8 @@ export default function CreateCharacter(){
            {characterCreationStage === 4 && <>
            <div className="classesParent">
            <div className="classCardParent">
-           <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
+           <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage}/>
+           <Races singleRace={raceId} stage={characterCreationStage} />
            <div className="classCardParent1">
            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
            </div>

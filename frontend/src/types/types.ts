@@ -30,7 +30,7 @@ export type CategoryData = {
     }[];
 };
 
-export type characterData = {
+export type classData = {
     class: string,
     likes: string,
     primaryAbility: string,
@@ -42,7 +42,8 @@ export type classProps = {
 };
 export type galleryProps = {
     singleImg: string | undefined,
-    className: string | undefined    
+    className: string | undefined,
+    stage: number    
 }
 export type raceProps = {
     singleRace: string | undefined,

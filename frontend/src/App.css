@@ -108,6 +108,18 @@ header{
 {
   position:relative;
 }
+.singleClassCard
+{
+  position:relative;
+  margin: 10px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 400px;
+  height: auto;
+}
 .selected
 {
   display:block;
@@ -138,6 +150,14 @@ header{
   width:40px;
   height:40px;
 }
+.x-class
+{
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  width:40px;
+  height:40px;
+}
 .x-race
 {
   position:absolute;
@@ -154,7 +174,7 @@ header{
   width:40px;
   height:40px;
 }
-.x:hover, .x-race:hover, .x-portrait:hover
+.x:hover, .x-race:hover, .x-portrait:hover, .x-class:hover
 {
   transform:scale(1.1);
 }
@@ -196,7 +216,7 @@ header{
   transform: scale(1.1);
   cursor:pointer;
 }
-.raceCard-info:hover
+.raceCard-info:hover, .singleClassCard:hover
 {
   background-color: rgb(160, 149, 253);
   cursor:pointer;
@@ -237,6 +257,11 @@ header{
   transform:scale(1.1);
   background-color: #5441ff;
   cursor: pointer;
+}
+.classCardParent1 a 
+{
+  text-decoration: none;
+  color:#1d1d1d
 }
 .classCardParent{
   display:flex;

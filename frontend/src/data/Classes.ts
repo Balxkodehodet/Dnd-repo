@@ -1,5 +1,5 @@
-import type { characterData } from '../types/types.ts'
-export const Classes: characterData[] = [ {
+import type { classData } from '../types/types.ts'
+export const Classes: classData[] = [ {
     class: "Barbarian",
     likes: "Battle",
     primaryAbility: "Strength",
