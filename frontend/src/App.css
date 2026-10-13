@@ -211,7 +211,18 @@ header{
   margin-top:40px;
   padding:10px;
 }
-.classCard, .raceCard, .raceCard-info
+.raceCard-info
+{
+  margin:10px;
+  margin-left:20px;
+  margin-bottom:40px;
+  padding:10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width:400px;
+  height:auto;  
+}
+.classCard, .raceCard 
 {
   margin:10px;
   margin-left:20px;

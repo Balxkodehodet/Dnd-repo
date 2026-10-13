@@ -37,10 +37,8 @@ export type characterData = {
     Complexity: string 
 }
 export type classProps = {
-    selectedClass: characterData | null;
-    setSelectedClass: React.Dispatch<
-        React.SetStateAction<characterData | null>
-    >;
+    singleClass: string | undefined,
+    stage: number
 };
 export type galleryProps = {
     singleImg: string | undefined,

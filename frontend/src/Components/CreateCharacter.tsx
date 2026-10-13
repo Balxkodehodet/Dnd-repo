@@ -1,14 +1,13 @@
 import {useState} from "react"
 import Gallery from "./Gallery/Gallery";
 import {useParams} from 'react-router-dom'
-import ClassesComponent from "./ClassesComponent";
+import ClassesComponent from "./Classes/ClassesComponent.tsx";
 import type { characterData } from "../types/types";
 import type { singleRace} from '../types/singleRaceType.ts'
 import Races from './Races/Races.tsx'
 
 export default function CreateCharacter(){
 
-    const [selectedClass, setSelectedClass] = useState<characterData | null>(null)
     const {raceId, portraitId, classId} = useParams();
     const [characterCreationStage, setCharacterCreationStage] = useState(0);
   
@@ -31,7 +30,7 @@ export default function CreateCharacter(){
            <h2 className="classes-h2">Classes</h2>
            <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
            <div className="classCardParent1">
-            <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
+            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
             </div>
             </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(3)}>Finish Class selection</button>
@@ -42,7 +41,7 @@ export default function CreateCharacter(){
            <div className="classCardParent">
            <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
            <div className="classCardParent1">
-           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
+           <ClassesComponent singleClass={classId} stage={characterCreationStage} />
            </div>
            </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(4)}>Finish3</button>
@@ -53,7 +52,7 @@ export default function CreateCharacter(){
            <div className="classCardParent">
            <Gallery className="galleryimg-minimize" singleImg={portraitId}/>
            <div className="classCardParent1">
-           <ClassesComponent selectedClass={selectedClass} setSelectedClass={setSelectedClass}/>
+           <ClassesComponent singleClass={classId} stage={characterCreationStage} />
            </div>
            </div>
            <button className="selectionbtn" onClick={()=>setCharacterCreationStage(5)}>Finish 4</button>
