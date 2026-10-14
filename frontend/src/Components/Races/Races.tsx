@@ -3,7 +3,7 @@ import type { raceProps} from '../../types/types.ts';
 import type { singleRace } from '../../types/singleRaceType.ts';
 import { Link } from 'react-router-dom'
 import x from "../../assets/close.png"
-import RenderValue from '../RenderValue.tsx'
+import RenderValueAll from '../RenderValueAll.tsx'
 import CreateSlug from '../CreateSlug.tsx'
 
 export default function Races ({singleRace, stage}: raceProps) {
@@ -34,7 +34,7 @@ export default function Races ({singleRace, stage}: raceProps) {
 
                 {stage===0 && Object.entries(selectedRace).map(([key, value]) => (
                     
-                    <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValue(value)}<br></br><br></br></div>
+                    <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValueAll(value)}<br></br><br></br></div>
                                                                                                      
                  ))
                 }

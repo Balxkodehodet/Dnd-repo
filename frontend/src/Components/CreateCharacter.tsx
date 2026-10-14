@@ -8,14 +8,14 @@ export default function CreateCharacter(){
 
     const {raceId, portraitId, classId} = useParams();
     const [characterCreationStage, setCharacterCreationStage] = useState(0);
-   
+    //const [character, setCharacter] = useState([]);
   
     return (
         <>
            {characterCreationStage === 0 && <>
            <div className="racecontainer">
            <Races singleRace={raceId} stage={characterCreationStage} /> 
-           <button disabled={raceId !== undefined ? false : true} className="selectionbtn" onClick={()=>setCharacterCreationStage(1)}>Finish Race selection</button>
+           <button disabled={raceId === undefined} className="selectionbtn" onClick={()=>setCharacterCreationStage(1)}>Finish Race selection</button>
            </div></>}
            {characterCreationStage === 1 && <>
            <div className="portrait-containerparent">
@@ -33,7 +33,7 @@ export default function CreateCharacter(){
             <ClassesComponent singleClass={classId} stage={characterCreationStage} />
             </div>
             </div>
-           <button className="selectionbtn" onClick={()=>setCharacterCreationStage(3)}>Finish Class selection</button>
+           <button disabled={classId===undefined} className="selectionbtn" onClick={()=>setCharacterCreationStage(3)}>Finish Class selection</button>
             </div>
            </>}
            {characterCreationStage === 3 && <>

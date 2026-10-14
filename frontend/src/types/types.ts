@@ -1,4 +1,8 @@
 
+export type CreateCharacterDate = {
+    race: string;
+    portrait: string;
+}
 export type CreateUserData = {
     username: string;
     email: string;
@@ -24,18 +28,12 @@ export type LogoutData = {
 
 export type CategoryData = {
     results: {
-        index: string;
-        name: string;
-        url: string;
+        index: string | undefined;
+        name: string | undefined;
+        url: string | undefined;
     }[];
 };
 
-export type classData = {
-    class: string,
-    likes: string,
-    primaryAbility: string,
-    Complexity: string 
-}
 export type classProps = {
     singleClass: string | undefined,
     stage: number
