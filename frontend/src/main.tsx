@@ -36,9 +36,10 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard/>},
       { path: 'logout', element: <Logout/>},
       { path: 'create-character', element: <CreateCharacter/>},
-      { path: 'create-character/:raceId', element: <CreateCharacter/>},
-      { path: 'create-character/:raceId/:portraitId', element: <CreateCharacter/>},
-      { path: 'create-character/:raceId/:portraitId/:classId', element: <CreateCharacter/>},
+      { path: 'create-character/:genderId', element: <CreateCharacter/>},
+      { path: 'create-character/:genderId/:raceId', element: <CreateCharacter/>},
+      { path: 'create-character/:genderId/:raceId/:portraitId', element: <CreateCharacter/>},
+      { path: 'create-character/:genderId/:raceId/:portraitId/:classId', element: <CreateCharacter/>},
     ]
   }    
 ],

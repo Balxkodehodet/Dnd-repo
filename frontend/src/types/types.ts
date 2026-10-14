@@ -1,4 +1,4 @@
-
+import type {Gender} from './Gender.ts'
 export type CreateCharacterDate = {
     race: string;
     portrait: string;
@@ -46,4 +46,8 @@ export type galleryProps = {
 export type raceProps = {
     singleRace: string | undefined,
     stage: number 
+}
+export type genderProps = {
+    singleGender: Gender
+    stage: number
 }

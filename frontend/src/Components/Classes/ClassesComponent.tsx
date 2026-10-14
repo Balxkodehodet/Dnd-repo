@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function ClassesComponent({ singleClass, stage }: classProps): React.JSX.Element {
 
     const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === singleClass);
-    const { raceId, portraitId } = useParams();
+    const {genderId, raceId, portraitId } = useParams();
     const [classStage, setClassStage] = useState<Number | null>(null)
 
     return (
@@ -18,7 +18,7 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
             {!selectedClass && Classes.map((characterClass, index) => {
                 return (
                     <>
-                        <Link key={index} className="classCard-link" to={`/home/create-character/${raceId}/${portraitId}/${CreateSlug(characterClass.class)}`}>
+                        <Link key={index} className="classCard-link" to={`/home/create-character/${genderId}/${raceId}/${portraitId}/${CreateSlug(characterClass.class)}`}>
                             <div className="classCard">
                                 <h2>{characterClass.class}</h2>
                                 <p>Likes: {characterClass.likes}</p>
@@ -34,7 +34,7 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
                 <>
                     {!classStage &&
                         <div className={"singleClassCard"}>
-                            {stage === 2 && <Link to={`/home/create-character/${raceId}/${portraitId}`}><img className="x-class" src={x} /></Link>}
+                            {stage === 3 && <Link to={`/home/create-character/${genderId}/${raceId}/${portraitId}`}><img className="x-class" src={x} /></Link>}
                             <h2>{selectedClass.class}</h2>
                             <p>Likes: {selectedClass.likes}</p>
                             <p>Primary Abillity: {selectedClass.primaryAbility}</p>

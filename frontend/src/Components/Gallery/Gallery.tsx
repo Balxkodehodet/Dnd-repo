@@ -8,7 +8,7 @@ export default function Gallery({singleImg, className, stage}: galleryProps):Rea
 
             let portraitIndex = Number(singleImg);
             let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0;
-            const {raceId} = useParams();
+            const {genderId, raceId} = useParams();
             let portrait = hasValidPortrait ? portraits[Number(singleImg)] : undefined;
             return (
                 <>
@@ -18,7 +18,7 @@ export default function Gallery({singleImg, className, stage}: galleryProps):Rea
                     {portraits.map((portrait, index) => {
                        return (
                             <div key={portrait}>
-                            <Link to={`/home/create-character/${raceId}/${index}`}>
+                            <Link to={`/home/create-character/${genderId}/${raceId}/${index}`}>
                             <img className="portrait"
                                  src={portrait}
                                  alt="Human character portrait"/></Link>
@@ -34,7 +34,7 @@ export default function Gallery({singleImg, className, stage}: galleryProps):Rea
                     } 
                     {portrait && <><div className="singleportrait"><h2>Chosen portrait</h2>
                                             <img className={className} src={portrait}/>
-                    {stage === 1 && <Link to={`/home/create-character/${raceId}`}><img className="x-portrait" src={x}/></Link>}
+                    {stage === 2 && <Link to={`/home/create-character/${genderId}/${raceId}`}><img className="x-portrait" src={x}/></Link>}
                                             </div>
                     </>}
 
