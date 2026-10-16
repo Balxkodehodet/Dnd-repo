@@ -1,2 +1,2 @@
 
-export type Gender = "Male" | "Female" | undefined
+export type Gender = "male" | "female" | ""

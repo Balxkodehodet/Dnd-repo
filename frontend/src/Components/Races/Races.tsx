@@ -10,12 +10,12 @@ import { useParams } from 'react-router-dom';
 export default function Races ({singleRace, stage}: raceProps) {
 
     const selectedRace: singleRace | undefined = TotalRaces.find(race => CreateSlug(race.Race) === singleRace);
-    const {genderId} = useParams();
+    const {nameId, genderId} = useParams();
     return (
         <>
-            {!selectedRace && TotalRaces.map((race, index) => {
+            {!singleRace && TotalRaces.map((race, index) => {
                 return (
-                <Link key={index} to={`/home/create-character/${genderId}/${CreateSlug(race.Race)}`}><div className="raceCard">
+                <Link key={index} to={`/home/create-character/${nameId}/${genderId}/${CreateSlug(race.Race)}`}><div className="raceCard">
                     <button className="raceBtn">{race.Race}</button>
                     <p><strong>Creature Type: </strong>{race.CreatureType}</p>
                     <p><strong>Size: </strong>{race.Size}</p>
@@ -26,20 +26,20 @@ export default function Races ({singleRace, stage}: raceProps) {
                 </Link>
                 )
             })}
-            {selectedRace && <>
+            {singleRace && <>
             <div className="selected-container-parent">
             <div className="selected-container">
             <div className="raceCard-info">
-                {stage===1 && <Link to={`/home/create-character/${genderId}`}><img className="x-race" src={x}/></Link>}
+                {stage===2 && <Link to={`/home/create-character/${nameId}/${genderId}`}><img className="x-race" src={x}/></Link>}
                 <h2>Chosen Race:</h2>
 
-                {stage===1 && Object.entries(selectedRace).map(([key, value]) => (
+                {stage===2 && Object.entries(selectedRace).map(([key, value]) => (
                     
                     <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValueAll(value)}<br></br><br></br></div>
                                                                                                      
                  ))
                 }
-                {stage > 1 && <p>{selectedRace.Race}</p>}
+                {stage > 2 && <p>{selectedRace.Race}</p>}
             </div>
             </div> 
         </div> 
