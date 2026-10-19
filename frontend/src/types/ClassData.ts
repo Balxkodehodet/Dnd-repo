@@ -1,4 +1,5 @@
 import type { Abilities } from "./Abilities.ts";
+import type { WeaponProficiency } from '../types/Weapons.ts'
 
 type skillInfo = {
 
@@ -9,23 +10,22 @@ type skillInfo = {
 
 type toolInfo = {
     toolName: string
-    choose: number,
-    options: string[]
+    choose?: number,
+    options?: string[]
 }
 
 
 type startInfo = {
 
     Choose: {
-        A: string[] | string,
+        A: string[] | string;
         B: string[] | string;
+        C?: string[] | string;
     }
 
 }
 
-type armor = "light" | "medium" | "heavy"
-
-type weapon = "simple" | "martial"
+type armor = "light" | "medium" | "heavy" | "none"
 
 type features = {
     level: number,
@@ -42,10 +42,10 @@ export type classData = {
     Proficiencies: {
         armor: armor[],
         shields: true | false,
-        weapon: weapon[],
+        weapon: WeaponProficiency[],
         skills: skillInfo,
         savingThrows: Abilities[],
-        tool: toolInfo[] | toolInfo
+        tool?: toolInfo[] | toolInfo
     },
     StartingEquipment: startInfo,
     Features: features,

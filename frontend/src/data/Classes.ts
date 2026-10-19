@@ -1,4 +1,7 @@
 import type { classData } from '../types/ClassData.ts'
+import { MusicalInstruments } from './MusicalInstruments.ts'
+import { ArtisanTools } from './ArtisanTools.ts'
+
 export const Classes: classData[] = [{
     class: "Barbarian",
     likes: "Battle",
@@ -8,7 +11,15 @@ export const Classes: classData[] = [{
     Proficiencies: {
         armor: ["light", "medium"],
         shields: true,
-        weapon: ["simple", "martial"],
+        weapon:
+            [
+                {
+                    category: "simple",
+                },
+                {
+                    category: "martial",
+                }
+            ],
         skills: {
             choose: 2,
             options: ["Animal Handling",
@@ -91,7 +102,7 @@ export const Classes: classData[] = [{
     {
         level: 2,
         name: "Danger Sense",
-        description: `You gain an uncanny sense of when things aren’t as 
+        description: `You gain an uncanny sense of when things aren't as 
                     they should be, giving you an edge when you dodge 
                     perils. You have Advantage on Dexterity saving 
                     throws unless you have the Incapacitated condition.`
@@ -253,7 +264,7 @@ export const Classes: classData[] = [{
                         scores increase by 4, to a maximum of 25.`
     },
     ],
-    Subclass:{
+    Subclass: {
         name: "Path of the Berserker",
         description: `Channel Rage into Violent Fury
                         Barbarians who walk the Path of the Berserker 
@@ -306,7 +317,7 @@ export const Classes: classData[] = [{
                             of your Rage (no action required) to restore your 
                             use of it.`
         },
-    ]
+        ]
     }
 
 }, {
@@ -318,7 +329,14 @@ export const Classes: classData[] = [{
     Proficiencies: {
         armor: ["light"],
         shields: false,
-        weapon: ["simple"],
+        weapon:
+            [
+                {
+                    category: "simple"
+
+                }
+
+            ],
         skills: {
             choose: 3,
             options: [
@@ -346,10 +364,10 @@ export const Classes: classData[] = [{
         tool: {
             toolName: "Musical Instruments",
             choose: 3,
-            options: ["Bagpipes", "Drum", "Dulcimer", "Flute", "Horn", "Lute", "Lyre", "Pan Flute", "Shawm", "Viol"]
-            }    
+            options: MusicalInstruments
+        }
     },
-    Features:[
+    Features: [
         {
             level: 1,
             name: "Bardic Inspiration",
@@ -364,7 +382,7 @@ export const Classes: classData[] = [{
                             a D20 Test, the creature can roll the Bardic Inspira
                             tion die and add the number rolled to the d20, po
                             tentially turning the failure into a success. A Bardic 
-                            Inspiration die is expended when it’s rolled.
+                            Inspiration die is expended when it's rolled.
                             Number of Uses. You can confer a Bardic Inspira
                             tion die a number of times equal to your Charisma 
                             modifier (minimum of once), and you regain all ex
@@ -374,13 +392,259 @@ export const Classes: classData[] = [{
                             shown in the Bardic Die column of the Bard Fea
                             tures table. The die becomes a d8 at level 5, a d10 at 
                             level 10, and a d12 at level 15`
+        },
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `You have learned to cast spells through your bardic 
+                            arts. See “Spells” for the rules on spellcasting. The 
+                            information below details how you use those rules 
+                            with Bard spells, which appear in the Bard spell list 
+                            later in the class's description.
+                            Cantrips. You know two cantrips of your choice 
+                            from the Bard spell list. Dancing Lights and Vicious 
+                            Mockery are recommended.
+                            Whenever you gain a Bard level, you can replace 
+                            one of your cantrips with another cantrip of your 
+                            choice from the Bard spell list.
+                            When you reach Bard levels 4 and 10, you learn 
+                            another cantrip of your choice from the Bard spell 
+                            list, as shown in the Cantrips column of the Bard 
+                            Features table.
+                            Spell Slots. The Bard Features table shows how 
+                            many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you to 
+                            cast with this feature. To start, choose four level 1 
+                            spells from the Bard spell list. Charm Person, Color 
+                            Spray, Dissonant Whispers, and Healing Word are 
+                            recommended.
+                            The number of spells on your list increases as you 
+                            gain Bard levels, as shown in the Prepared Spells 
+                            column of the Bard Features table. Whenever that 
+                            number increases, choose additional spells from the 
+                            Bard spell list until the number of spells on your list 
+                            matches the number on the table. The chosen spells 
+                            must be of a level for which you have spell slots. 
+                            For example, if you're a level 3 Bard, your list of prepared spells can include six spells of levels 1 and 
+                            2 in any combination.
+                            If another Bard feature gives you spells that you 
+                            always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Bard spells for you.`
+        },
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `You have learned to cast spells through your bardic 
+                            arts. See “Spells” for the rules on spellcasting. The 
+                            information below details how you use those rules 
+                            with Bard spells, which appear in the Bard spell list 
+                            later in the class's description.
+                            Cantrips. You know two cantrips of your choice 
+                            from the Bard spell list. Dancing Lights and Vicious 
+                            Mockery are recommended.
+                            Whenever you gain a Bard level, you can replace 
+                            one of your cantrips with another cantrip of your 
+                            choice from the Bard spell list.
+                            When you reach Bard levels 4 and 10, you learn 
+                            another cantrip of your choice from the Bard spell 
+                            list, as shown in the Cantrips column of the Bard 
+                            Features table.
+                            Spell Slots. The Bard Features table shows how 
+                            many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you to 
+                            cast with this feature. To start, choose four level 1 
+                            spells from the Bard spell list. Charm Person, Color 
+                            Spray, Dissonant Whispers, and Healing Word are 
+                            recommended.
+                            The number of spells on your list increases as you 
+                            gain Bard levels, as shown in the Prepared Spells 
+                            column of the Bard Features table. Whenever that 
+                            number increases, choose additional spells from the 
+                            Bard spell list until the number of spells on your list 
+                            matches the number on the table. The chosen spells 
+                            must be of a level for which you have spell slots. 
+                            For example, if you're a level 3 Bard, your list of prepared spells can include six spells of levels 1 and 
+                            2 in any combination.
+                            If another Bard feature gives you spells that you 
+                            always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Bard spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            gain a Bard level, you can replace one spell on your 
+                            list with another Bard spell for which you have spell 
+                            slots.
+                            Spellcasting Ability. Charisma is your spellcast
+                            ing ability for your Bard spells.
+                            Spellcasting Focus. You can use a Musical Instru
+                            ment as a Spellcasting Focus for your Bard spells.`
+        },
+        {
+            level: 2,
+            name: "Expertise",
+            description: `You gain Expertise (see “Rules Glossary”) in two of 
+                            your skill proficiencies of your choice. Performance 
+                            and Persuasion are recommended if you have profi
+                            ciency in them.
+                            At Bard level 9, you gain Expertise in two more of 
+                            your skill proficiencies of your choice.`
+        },
+        {
+            level: 2,
+            name: "Jack of All Trades",
+            description: `You can add half your Proficiency Bonus (round 
+                            down) to any ability check you make that uses a 
+                            skill proficiency you lack and that doesn't otherwise 
+                            use your Proficiency Bonus.
+                            For example, if you make a Strength (Athletics) 
+                            check and lack Athletics proficiency, you can add 
+                            half your Proficiency Bonus to the check.`
+        },
+        {
+            level: 3,
+            name: "Bard Subclass",
+            description: `You gain a Bard subclass of your choice. The College 
+                        of Lore subclass is detailed after this class's descrip
+                        tion. A subclass is a specialization that grants you 
+                        features at certain Bard levels. For the rest of your 
+                        career, you gain each of your subclass's features 
+                        that are of your Bard level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Bard levels 8, 
+                            12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Font of Inspiration",
+            description: `You now regain all your expended uses of Bardic In
+                            spiration when you finish a Short or Long Rest.
+                            In addition, you can expend a spell slot (no action 
+                            required) to regain one expended use of Bardic 
+                            Inspiration.`
+        },
+        {
+            level: 7,
+            name: "Countercharm",
+            description: `You can use musical notes or words of power to disrupt 
+                            mind-influencing effects. If you or a creature 
+                            within 30 feet of you fails a saving throw against an 
+                            effect that applies the Charmed or Frightened con
+                            dition, you can take a Reaction to cause the save to 
+                            be rerolled, and the new roll has Advantage.`
+        },
+        {
+            level: 10,
+            name: "Magical Secrets",
+            description: `You've learned secrets from various magical traditions. 
+                            Whenever you reach a Bard level (including 
+                            this level) and the Prepared Spells number in the 
+                            Bard Features table increases, you can choose any 
+                            of your new prepared spells from the Bard, Cleric, 
+                            Druid, and Wizard spell lists, and the chosen spells 
+                            count as Bard spells for you (see a class's section for 
+                            its spell list). In addition, whenever you replace a 
+                            spell prepared for this class, you can replace it with 
+                            a spell from those lists.`
+        },
+        {
+            level: 18,
+            name: "Superior Inspiration",
+            description: `When you roll Initiative, you regain expended uses 
+                            of Bardic Inspiration until you have two if you have 
+                            fewer than that.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Spell Recall is recommended.`
+        },
+        {
+            level: 20,
+            name: "Words of Creation",
+            description: `You have mastered two of the Words of Creation: 
+                            the words of life and death. You therefore always 
+                            have the Power Word Heal and Power Word Kill 
+                            spells prepared. When you cast either spell, you can 
+                            target a second creature with it if that creature is 
+                            within 10 feet of the first target.`
+        },
+    ],
+    Subclass: {
+        name: "College of Lore",
+        description: `Plumb the Depths of Magical Knowledge -
+                                Bards of the College of Lore collect spells and se
+                                crets from diverse sources, such as scholarly tomes, 
+                                mystical rites, and peasant tales. The college's mem
+                                bers gather in libraries and universities to share 
+                                their lore with one another. They also meet at festi
+                                vals or affairs of state, where they can expose cor
+                                ruption, unravel lies, and poke fun at self-important 
+                                figures of authority.`,
+        features: [{
+            level: 3,
+            name: "Bonus Proficiencies",
+            description: "You gain proficiency with three skills of your choice."
+        },
+        {
+            level: 3,
+            name: "Cutting Words",
+            description: `You learn to use your wit to supernaturally distract, 
+                                    confuse, and otherwise sap the confidence and com
+                                    petence of others. When a creature that you can see 
+                                    within 60 feet of yourself makes a damage roll or 
+                                    succeeds on an ability check or attack roll, you can 
+                                    take a Reaction to expend one use of your Bardic 
+                                    Inspiration; roll your Bardic Inspiration die, and 
+                                    subtract the number rolled from the creature's roll, 
+                                    reducing the damage or potentially turning the suc
+                                    cess into a failure.`
+        },
+        {
+            level: 6,
+            name: "Magical Discoveries",
+            description: `You learn two spells of your choice. These spells can 
+                                come from the Cleric, Druid, or Wizard spell list or 
+                                any combination thereof (see a class's section for its 
+                                spell list). A spell you choose must be a cantrip or a 
+                                spell for which you have spell slots, as shown in the 
+                                Bard Features table.
+                                You always have the chosen spells prepared, and 
+                                whenever you gain a Bard level, you can replace one 
+                                of the spells with another spell that meets these 
+                                requirements.`
+        },
+        {
+            level: 14,
+            name: "Peerless Skill",
+            description: `When you make an ability check or attack roll and 
+                                    fail, you can expend one use of Bardic Inspiration; 
+                                    roll the Bardic Inspiration die, and add the number 
+                                    rolled to the d20, potentially turning a failure into 
+                                    a success. On a failure, the Bardic Inspiration isn't 
+                                    expended`
         }
-    ]
-    Subclass:
+        ]
+    },
+
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Leather Armor", "2 Daggers", "Musical Instrument of your choice", "Entertainer's Pack", "15 GP"],
+            B: "90 GP",
         }
     }
 },
@@ -389,19 +653,279 @@ export const Classes: classData[] = [{
     likes: "Gods",
     primaryAbility: "Wisdom",
     Complexity: "Average",
-    HitPointDie: 12,
+    HitPointDie: 8,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light", "medium"],
+        shields: true,
+        weapon: [{
+            category: "simple"
+        }],
+        skills: {
+            choose: 2,
+            options: ["History", "Insight", "Medicine", "Persuasion", "Religion"]
+        },
+        savingThrows: ["wisdom", "charisma"],
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Chain Shirt", "Shield", "Mace", "Holy Symbol", "Priest's Pack", "7 GP"],
+            B: "110 GP",
         }
+    },
+    Features: [{
+        level: 1,
+        name: "Spellcasting",
+        description: `You have learned to cast spells through prayer and 
+                        meditation. See “Spells” for the rules on spellcast
+                        ing. The information below details how you use 
+                        those rules with Cleric spells, which appear on the 
+                        Cleric spell list later in the class's description.
+                        Cantrips. You know three cantrips of your choice 
+                        from the Cleric spell list. Guidance, Sacred Flame, 
+                        and Thaumaturgy are recommended.
+                        Whenever you gain a Cleric level, you can replace 
+                        one of your cantrips with another cantrip of your 
+                        choice from the Cleric spell list. When you reach Cleric levels 4 and 10, you learn 
+                        another cantrip of your choice from the Cleric spell 
+                        list, as shown in the Cantrips column of the Cleric 
+                        Features table.
+                        Spell Slots. The Cleric Features table shows how 
+                        many spell slots you have to cast your level 1+ 
+                        spells. You regain all expended slots when you fin
+                        ish a Long Rest.
+                        Prepared Spells of Level 1+. You prepare the list 
+                        of level 1+ spells that are available for you to cast 
+                        with this feature. To start, choose four level 1 spells 
+                        from the Cleric spell list. Bless, Cure Wounds, Guiding 
+                        Bolt, and Shield of Faith are recommended.
+                        The number of spells on your list increases as you 
+                        gain Cleric levels, as shown in the Prepared Spells 
+                        column of the Cleric Features table. Whenever that 
+                        number increases, choose additional spells from the 
+                        Cleric spell list until the number of spells on your 
+                        list matches the number on the table. The chosen 
+                        spells must be of a level for which you have spell 
+                        slots. For example, if you're a level 3 Cleric, your list 
+                        of prepared spells can include six spells of levels 1 
+                        and 2 in any combination.
+                        If another Cleric feature gives you spells that 
+                        you always have prepared, those spells don't count 
+                        against the number of spells you can prepare with 
+                        this feature, but those spells otherwise count as 
+                        Cleric spells for you.
+                        Changing Your Prepared Spells. Whenever you 
+                        finish a Long Rest, you can change your list of pre
+                        pared spells, replacing any of the spells there with 
+                        other Cleric spells for which you have spell slots.
+                        Spellcasting Ability. Wisdom is your spellcasting 
+                        ability for your Cleric spells.
+                        Spellcasting Focus. You can use a Holy Symbol as 
+                        a Spellcasting Focus for your Cleric spells.`
+    },
+    {
+        level: 1,
+        name: "Divine Order",
+        description: `You have dedicated yourself to one of the following 
+                        sacred roles of your choice.
+                        Protector. Trained for battle, you gain proficiency 
+                        with Martial weapons and training with Heavy 
+                        armor.
+                        Thaumaturge. You know one extra cantrip from 
+                        the Cleric spell list. In addition, your mystical con
+                        nection to the divine gives you a bonus to your 
+                        Intelligence (Arcana or Religion) checks. The bonus 
+                        equals your Wisdom modifier (minimum of +1).`
+    },
+    {
+        level: 2,
+        name: "Channel Divinity",
+        description: `You can channel divine energy directly from the 
+                        Outer Planes to fuel magical effects. You start with 
+                        two such effects: Divine Spark and Turn Undead, 
+                        each of which is described below. Each time you use 
+                        this class's Channel Divinity, choose which Channel 
+                        Divinity effect from this class to create. You gain ad
+                        ditional effect options at higher Cleric levels. 
+                        You can use this class's Channel Divinity twice. 
+                        You regain one of its expended uses when you finish 
+                        a Short Rest, and you regain all expended uses when 
+                        you finish a Long Rest. You gain additional uses 
+                        when you reach certain Cleric levels, as shown in 
+                        the Channel Divinity column of the Cleric Features 
+                        table.
+                        If a Channel Divinity effect requires a saving 
+                        throw, the DC equals the spell save DC from this 
+                        class's Spellcasting feature.
+                        Divine Spark. As a Magic action, you point your 
+                        Holy Symbol at another creature you can see within 
+                        30 feet of yourself and focus divine energy at it. 
+                        Roll 1d8 and add your Wisdom modifier. You either 
+                        restore Hit Points to the creature equal to that total 
+                        or force the creature to make a Constitution saving 
+                        throw. On a failed save, the creature takes Necrotic 
+                        or Radiant damage (your choice) equal to that to
+                        tal. On a successful save, the creature takes half as 
+                        much damage (round down).
+                        You roll an additional d8 when you reach Cleric 
+                        levels 7 (2d8), 13 (3d8), and 18 (4d8).
+                        Turn Undead. As a Magic action, you present your 
+                        Holy Symbol and censure Undead creatures. Each 
+                        Undead of your choice within 30 feet of you must 
+                        make a Wisdom saving throw. If the creature fails 
+                        its save, it has the Frightened and Incapacitated 
+                        conditions for 1 minute. For that duration, it tries 
+                        to move as far from you as it can on its turns. This 
+                        effect ends early on the creature if it takes any dam
+                        age, if you have the Incapacitated condition, or if 
+                        you die.`
+    },
+    {
+        level: 3,
+        name: "Cleric Subclass",
+        description: `You gain a Cleric subclass of your choice. The Life 
+                        Domain subclass is detailed after this class's de
+                        scription. A subclass is a specialization that grants 
+                        you features at certain Cleric levels. For the rest of 
+                        your career, you gain each of your subclass's fea
+                        tures that are of your Cleric level or lower.`
+    },
+    {
+        level: 4,
+        name: "Ability Score Improvement",
+        description: `You gain the Ability Score Improvement feat (see 
+                        “Feats”) or another feat of your choice for which you 
+                        qualify. You gain this feature again at Cleric levels 8, 
+                        12, and 16.`
+    },
+    {
+        level: 5,
+        name: "Sear Undead",
+        description: `Whenever you use Turn Undead, you can roll a 
+                        number of d8s equal to your Wisdom modifier 
+                        (minimum of 1d8) and add the rolls together. Each 
+                        Undead that fails its saving throw against that use 
+                        of Turn Undead takes Radiant damage equal to the 
+                        roll's total. This damage doesn't end the turn effect.`
+    },
+    {
+        level: 7,
+        name: "Blessed Strikes",
+        description: `Divine power infuses you in battle. You gain one of 
+                        the following options of your choice (if you get ei
+                        ther option from a Cleric subclass in an older book, 
+                        use only the option you choose for this feature).
+                        Divine Strike. Once on each of your turns when 
+                        you hit a creature with an attack roll using a 
+                        weapon, you can cause the target to take an extra 
+                        1d8 Necrotic or Radiant damage (your choice).
+                        Potent Spellcasting. Add your Wisdom modifier 
+                        to the damage you deal with any Cleric cantrip.`
+    },
+    {
+        level: 10,
+        name: "Divine Intervention",
+        description: `You can call on your deity or pantheon to inter
+                        vene on your behalf. As a Magic action, choose any 
+                        Cleric spell of level 5 or lower that doesn't require a 
+                        Reaction to cast. As part of the same action, you cast 
+                        that spell without expending a spell slot or needing 
+                        Material components. You can't use this feature 
+                        again until you finish a Long Rest.`
+    },
+    {
+        level: 14,
+        name: "Improved Blessed Strikes",
+        description: `The option you chose for Blessed Strikes grows 
+                        more powerful.
+                        Divine Strike. The extra damage of your Divine 
+                        Strike increases to 2d8.
+                        Potent Spellcasting. When you cast a Cleric can
+                        trip and deal damage to a creature with it, you can 
+                        give vitality to yourself or another creature within 
+                        60 feet of yourself, granting a number of Temporary 
+                        Hit Points equal to twice your Wisdom modifier.`
+    },
+    {
+        level: 19,
+        name: "Epic Boon",
+        description: `You gain an Epic Boon feat (see “Feats”) or another 
+                        feat of your choice for which you qualify. Boon of 
+                        Fate is recommended.`
+    },
+    {
+        level: 20,
+        name: "Greater Divine Intervention",
+        description: `You can call on even more powerful divine interven
+                        tion. When you use your Divine Intervention fea
+                        ture, you can choose Wish when you select a spell. 
+                        If you do so, you can't use Divine Intervention again 
+                        until you finish 2d4 Long Rests.`
+    },
+    ],
+    Subclass: {
+        name: "Life Domain",
+        description: `Soothe The Hurts Of the World -
+                        The Life Domain focuses on the positive energy that 
+                        helps sustain all life in the multiverse. Clerics who 
+                        tap into this domain are masters of healing, using 
+                        that life force to cure many hurts.
+                        Existence itself relies on the positive energy as
+                        sociated with this domain, so a Cleric of almost any 
+                        religious tradition might choose it. This domain is 
+                        particularly associated with agricultural deities, 
+                        gods of healing or endurance, and gods of home and 
+                        community. Religious orders of healing also seek 
+                        the magic of this domain.`,
+        features: [{
+            level: 3,
+            name: "Disciple of Life",
+            description: `When a spell you cast with a spell slot restores Hit 
+                            Points to a creature, that creature regains addi
+                            tional Hit Points on the turn you cast the spell. The 
+                            additional Hit Points equal 2 plus the spell slot's 
+                            level.`
+        },
+        {
+            level: 3,
+            name: "Life Domain Spells",
+            description: `Your connection to this divine domain ensures you 
+                            always have certain spells ready. When you reach 
+                            a Cleric level specified in the Life Domain Spells 
+                            table, you thereafter always have the listed spells 
+                            prepared.`
+        },
+        {
+            level: 3,
+            name: "Preserve Life",
+            description: `As a Magic action, you present your Holy Symbol 
+                            and expend a use of your Channel Divinity to evoke 
+                            healing energy that can restore a number of Hit 
+                            Points equal to five times your Cleric level. Choose 
+                            Bloodied creatures within 30 feet of yourself (which 
+                            can include you), and divide those Hit Points among 
+                            them. This feature can restore a creature to no 
+                            more than half its Hit Point maximum.`
+        },
+        {
+            level: 6,
+            name: "Blessed Healer",
+            description: `The healing spells you cast on others heal you as 
+                            well. Immediately after you cast a spell with a spell 
+                            slot that restores Hit Points to one or more crea
+                            tures other than yourself, you regain Hit Points 
+                            equal to 2 plus the spell slot's level.`
+        },
+        {
+            level: 17,
+            name: "Supreme Healing",
+            description: `When you would normally roll one or more dice to 
+                            restore Hit Points to a creature with a spell or Chan
+                            nel Divinity, don't roll those dice for the healing; in
+                            stead use the highest number possible for each die. 
+                            For example, instead of restoring 2d6 Hit Points to a 
+                            creature with a spell, you restore 12.`
+        },
+        ]
     }
 },
 {
@@ -409,18 +933,350 @@ export const Classes: classData[] = [{
     likes: "Nature",
     primaryAbility: "Wisdom",
     Complexity: "High",
-    HitPointDie: 12,
+    HitPointDie: 8,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light"],
+        shields: true,
+        weapon: [{ category: "simple" }],
+        skills: {
+            choose: 2,
+            options: ["Animal Handling", "Arcana", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"]
+        },
+        savingThrows: ["intelligence", "wisdom"],
+        tool: {
+            toolName: "Herbalism Kit"
+        }
     },
+    Features: [
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `You have learned to cast spells through studying 
+                            the mystical forces of nature. See “Spells” for the 
+                            rules on spellcasting. The information below details 
+                            how you use those rules with Druid spells, which 
+                            appear on the Druid spell list later in the class's 
+                            description.
+                            Cantrips. You know two cantrips of your choice 
+                            from the Druid spell list. Druidcraft and Produce 
+                            Flame are recommended.
+                            Whenever you gain a Druid level, you can replace 
+                            one of your cantrips with another cantrip of your 
+                            choice from the Druid spell list.
+                            When you reach Druid levels 4 and 10, you learn 
+                            another cantrip of your choice from the Druid spell 
+                            list, as shown in the Cantrips column of the Druid 
+                            Features table.
+                            Spell Slots. The Druid Features table shows how 
+                            many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you to 
+                            cast with this feature. To start, choose four level 1 
+                            spells from the Druid spell list. Animal Friendship, 
+                            Cure Wounds, Faerie Fire, and Thunderwave are 
+                            recommended.
+                            The number of spells on your list increases as you 
+                            gain Druid levels, as shown in the Prepared Spells 
+                            column of the Druid Features table. Whenever that 
+                            number increases, choose additional spells from the 
+                            Druid spell list until the number of spells on your 
+                            list matches the number on the table. The chosen 
+                            spells must be of a level for which you have spell 
+                            slots. For example, if you're a level 3 Druid, your list 
+                            of prepared spells can include six spells of levels 1 
+                            and 2 in any combination.
+                            If another Druid feature gives you spells that 
+                            you always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Druid spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            finish a Long Rest, you can change your list of pre
+                            pared spells, replacing any of the spells with other 
+                            Druid spells for which you have spell slots.
+                            Spellcasting Ability. Wisdom is your spellcasting 
+                            ability for your Druid spells.
+                            Spellcasting Focus. You can use a Druidic Focus 
+                            as a Spellcasting Focus for your Druid spells.`
+        },
+        {
+            level: 1,
+            name: "Druidic",
+            description: `You know Druidic, the secret language of Druids. 
+                            While learning this ancient tongue, you also un
+                            locked the magic of communicating with animals; 
+                            you always have the Speak with Animals spell 
+                            prepared.
+                            You can use Druidic to leave hidden messages. You 
+                            and others who know Druidic automatically spot 
+                            such a message. Others spot the message's presence 
+                            with a successful DC 15 Intelligence (Investigation) 
+                            check but can't decipher it without magic. `
+        },
+        {
+            level: 1,
+            name: "Primal Order",
+            description: `You have dedicated yourself to one of the following 
+                            sacred roles of your choice.
+                            Magician. You know one extra cantrip from the 
+                            Druid spell list. In addition, your mystical connec
+                            tion to nature gives you a bonus to your Intelligence 
+                            (Arcana or Nature) checks. The bonus equals your 
+                            Wisdom modifier (minimum bonus of +1).
+                            Warden. Trained for battle, you gain proficiency 
+                            with Martial weapons and training with Medium 
+                            armor. `
+        },
+        {
+            level: 2,
+            name: "Wild Shape",
+            description: `The power of nature allows you to assume the form 
+                            of an animal. As a Bonus Action, you shape-shift into 
+                            a Beast form that you have learned for this feature 
+                            (see “Known Forms” below). You stay in that form 
+                            for a number of hours equal to half your Druid level 
+                            or until you use Wild Shape again, have the Incapac
+                            itated condition, or die. You can also leave the form 
+                            early as a Bonus Action.
+                            Number of Uses. You can use Wild Shape twice. 
+                            You regain one expended use when you finish a 
+                            Short Rest, and you regain all expended uses when 
+                            you finish a Long Rest.
+                            You gain additional uses when you reach certain 
+                            Druid levels, as shown in the Wild Shape column of 
+                            the Druid Features table.
+                            Known Forms. You know four Beast forms for this 
+                            feature, chosen from among Beast stat blocks that 
+                            have a maximum Challenge Rating of 1/4 and that 
+                            lack a Fly Speed (see “Animals” in “Monsters” for 
+                            stat block options). The Rat, Riding Horse, Spider, 
+                            and Wolf are recommended. Whenever you finish a 
+                            Long Rest, you can replace one of your known forms 
+                            with another eligible form.
+                            When you reach certain Druid levels, your number 
+                            of known forms and the maximum Challenge Rating 
+                            for those forms increases, as shown in the Beast 
+                            Shapes table. In addition, starting at level 8, you can 
+                            adopt a form that has a Fly Speed.
+                            When choosing known forms, you may look in 
+                            other sources for eligible Beasts if the Game Master 
+                            permits you to do so. Rules While Shape-Shifted. While in a form, you 
+                            retain your personality, memories, and ability to 
+                            speak, and the following rules apply:
+                            Temporary Hit Points. When you assume a Wild 
+                            Shape form, you gain a number of Temporary Hit 
+                            Points equal to your Druid level.
+                            Game Statistics. Your game statistics are replaced 
+                            by the Beast's stat block, but you retain your crea
+                            ture type; Hit Points; Hit Point Dice; Intelligence, 
+                            Wisdom, and Charisma scores; class features; 
+                            languages; and feats. You also retain your skill 
+                            and saving throw proficiencies and use your Pro
+                            ficiency Bonus for them, in addition to gaining the 
+                            proficiencies of the creature. If a skill or saving 
+                            throw modifier in the Beast's stat block is higher 
+                            than yours, use the one in the stat block.
+                            No Spellcasting. You can't cast spells, but shape- 
+                            shifting doesn't break your Concentration or oth
+                            erwise interfere with a spell you've already cast.
+                            Objects. Your ability to handle objects is deter
+                            mined by the form's limbs rather than your own. 
+                            In addition, you choose whether your equipment 
+                            falls in your space, merges into your new form, or 
+                            is worn by it. Worn equipment functions as nor
+                            mal, but the GM decides whether it's practical for 
+                            the new form to wear a piece of equipment based 
+                            on the creature's size and shape. Your equipment 
+                            doesn't change size or shape to match the new 
+                            form, and any equipment that the new form can't 
+                            wear must either fall to the ground or merge with 
+                            the form. Equipment that merges with the form 
+                            has no effect while you're in that form. `
+        },
+        {
+            level: 2,
+            name: "Wild Companion",
+            description: `You can summon a nature spirit that assumes an 
+                            animal form to aid you. As a Magic action, you can 
+                            expend a spell slot or a use of Wild Shape to cast the 
+                            Find Familiar spell without Material components.
+                            When you cast the spell in this way, the familiar is 
+                            Fey and disappears when you finish a Long Rest.`
+        },
+        {
+            level: 3,
+            name: "Druid Subclass",
+            description: `You gain a Druid subclass of your choice. The Circle 
+                            of the Land subclass is detailed after this class's de
+                            scription. A subclass is a specialization that grants 
+                            you features at certain Druid levels. For the rest of 
+                            your career, you gain each of your subclass's fea
+                            tures that are of your Druid level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Druid levels 8, 
+                            12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Wild Resurgence",
+            description: `Once on each of your turns, if you have no uses of 
+                            Wild Shape left, you can give yourself one use by ex
+                            pending a spell slot (no action required).
+                            In addition, you can expend one use of Wild Shape 
+                            (no action required) to give yourself a level 1 spell 
+                            slot, but you can't do so again until you finish a Long 
+                            Rest.`
+        },
+        {
+            level: 7,
+            name: "Elemental Fury",
+            description: `The might of the elements flows through you. You 
+                            gain one of the following options of your choice.
+                            Potent Spellcasting. Add your Wisdom modifier 
+                            to the damage you deal with any Druid cantrip.
+                            Primal Strike. Once on each of your turns when 
+                            you hit a creature with an attack roll using a 
+                            weapon or a Beast form's attack in Wild Shape, you 
+                            can cause the target to take an extra 1d8 Cold, Fire, 
+                            Lightning, or Thunder damage (choose when you 
+                            hit).`
+        },
+        {
+            level: 15,
+            name: "Improved Elemental Fury",
+            description: `The option you chose for Elemental Fury grows 
+                            more powerful, as detailed below.
+                            Potent Spellcasting. When you cast a Druid can
+                            trip with a range of 10 feet or greater, the spell's 
+                            range increases by 300 feet.
+                            Primal Strike. The extra damage of your Primal 
+                            Strike increases to 2d8.`
+        },
+        {
+            level: 18,
+            name: "Beast Spells",
+            description: `While using Wild Shape, you can cast spells in Beast 
+                            form, except for any spell that has a Material com
+                            ponent with a cost specified or that consumes its 
+                            Material component.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of Di
+                            mensional Travel is recommended.`
+        },
+        {
+            level: 20,
+            name: "Archdruid",
+            description: `The vitality of nature constantly blooms within you, 
+                            granting you the following benefits.
+                            Evergreen Wild Shape. Whenever you roll Initia
+                            tive and have no uses of Wild Shape left, you regain 
+                            one expended use of it.
+                            Nature Magician. You can convert uses of Wild 
+                            Shape into a spell slot (no action required). Choose 
+                            a number of your unexpended uses of Wild Shape 
+                            and convert them into a single spell slot, with each 
+                            use contributing 2 spell levels. For example, if you 
+                            convert two uses of Wild Shape, you produce a level 
+                            4 spell slot. Once you use this benefit, you can't do 
+                            so again until you finish a Long Rest.
+                            Longevity. The primal magic that you wield 
+                            causes you to age more slowly. For every ten years 
+                            that pass, your body ages only one year.`
+        },
+    ],
+    Subclass: {
+        name: "Circle Of the Land",
+        description: `Celebrate Connection to the Natural World
+                        The Circle of the Land comprises mystics and sages 
+                        who safeguard ancient knowledge and rites. These 
+                        Druids meet within sacred circles of trees or stand
+                        ing stones to whisper primal secrets in Druidic. The 
+                        circle's wisest members preside as the chief priests 
+                        of their communities.`,
+        features: [
+            {
+                level: 3,
+                name: "Circle of the Land Spells",
+                description: `Whenever you finish a Long Rest, choose one type 
+                            of land: arid, polar, temperate, or tropical. Consult 
+                            the table below that corresponds to the chosen 
+                            type; you have the spells listed for your Druid level 
+                            and lower prepared.`
+            },
+            {
+                level: 3,
+                name: "Land's Aid",
+                description: `As a Magic action, you can expend a use of your Wild 
+                                Shape and choose a point within 60 feet of yourself. 
+                                Vitality-giving flowers and life-draining thorns 
+                                appear for a moment in a 10-foot-radius Sphere cen
+                                tered on that point. Each creature of your choice in 
+                                the Sphere must make a Constitution saving throw 
+                                against your spell save DC, taking 2d6 Necrotic 
+                                damage on a failed save or half as much damage on 
+                                a successful one. One creature of your choice in that 
+                                area regains 2d6 Hit Points.
+                                The damage and healing increase by 1d6 when 
+                                you reach Druid levels 10 (3d6) and 14 (4d6).`
+            },
+            {
+                level: 6,
+                name: "Natural Recovery",
+                description: `You can cast one of the level 1+ spells that you have 
+                                prepared from your Circle Spells feature without 
+                                expending a spell slot, and you must finish a Long 
+                                Rest before you do so again.
+                                In addition, when you finish a Short Rest, you can 
+                                choose expended spell slots to recover. The spell 
+                                slots can have a combined level that is equal to or 
+                                less than half your Druid level (round up), and none 
+                                of them can be level 6+. For example, if you're a level 
+                                6 Druid, you can recover up to three levels' worth of 
+                                spell slots. You can recover a level 3 spell slot, a level 
+                                2 and a level 1 spell slot, or three level 1 spell slots. 
+                                Once you recover spell slots with this feature, you 
+                                can't do so again until you finish a Long Rest.`
+            },
+            {
+                level: 10,
+                name: "Nature's Ward",
+                description: `You are immune to the Poisoned condition, and you 
+                                have Resistance to a damage type associated with 
+                                your current land choice in the Circle Spells feature, 
+                                as shown in the Nature's Ward table.`
+            },
+            {
+                level: 14,
+                name: "Nature's Sanctuary",
+                description: `As a Magic action, you can expend a use of your Wild 
+                                Shape and cause spectral trees and vines to appear 
+                                in a 15-foot Cube on the ground within 120 feet of 
+                                yourself. They last there for 1 minute or until you 
+                                have the Incapacitated condition or die. You and 
+                                your allies have Half Cover while in that area, and 
+                                your allies gain the current Resistance of your Na
+                                ture's Ward while there.
+                                As a Bonus Action, you can move the Cube up to 
+                                60 feet to ground within 120 feet of yourself.`
+            },
+        ]
+    },
+
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Leather Armor", "Shield", "Sickle", "Druidic Focus (Quarterstaff)", "Explorer's Pack", "Herbalism Kit", "9 GP"],
+            B: "50 GP",
         }
     }
 },
@@ -429,19 +1285,215 @@ export const Classes: classData[] = [{
     likes: "Weapons",
     primaryAbility: "Strength or Dexterity",
     Complexity: "Low",
-    HitPointDie: 12,
+    HitPointDie: 10,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["heavy", "light", "medium"],
+        shields: true,
+        weapon: [{ category: "martial" }, { category: "simple" }],
+        skills: {
+            choose: 2,
+            options: ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Persuasion", "Perception", "Survival"],
+        },
+        savingThrows: ["strength", "constitution"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Chain Mail", "Greatsword", "Flail", "8 Javelins", "Dungeoneer's Pack", "4 GP"],
+            B: ["Studded Leather Armor", "Scimitar", "Shortsword", "Longbow", "20 Arrows", "Quiver", "Dungeoneer's Pack", "11 GP"],
+            C: "155 GP"
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Fighting Style",
+            description: `You have honed your martial prowess and gain a 
+                        Fighting Style feat of your choice (see “Feats”). De
+                        fense is recommended.
+                        Whenever you gain a Fighter level, you can replace 
+                        the feat you chose with a different Fighting Style 
+                        feat.`
+        },
+        {
+            level: 1,
+            name: "Second Wind",
+            description: `You have a limited well of physical and mental 
+                            stamina that you can draw on. As a Bonus Action, 
+                            you can use it to regain Hit Points equal to 1d10 
+                            plus your Fighter level.
+                            You can use this feature twice. You regain one 
+                            expended use when you finish a Short Rest, and you 
+                            regain all expended uses when you finish a Long 
+                            Rest.
+                            When you reach certain Fighter levels, you gain 
+                            more uses of this feature, as shown in the Second 
+                            Wind column of the Fighter Features table.`
+        },
+        {
+            level: 1,
+            name: "Weapon Mastery",
+            description: `Your training with weapons allows you to use the 
+                            mastery properties of three kinds of Simple or Mar
+                            tial weapons of your choice. Whenever you finish 
+                            a Long Rest, you can practice weapon drills and 
+                            change one of those weapon choices.
+                            When you reach certain Fighter levels, you gain 
+                            the ability to use the mastery properties of more 
+                            kinds of weapons, as shown in the Weapon Mastery 
+                            column of the Fighter Features table.`
+        },
+        {
+            level: 2,
+            name: "Action Surge",
+            description: `You can push yourself beyond your normal limits 
+                            for a moment. On your turn, you can take one addi
+                            tional action, except the Magic action.
+                            Once you use this feature, you can't do so again 
+                            until you finish a Short or Long Rest. Starting at 
+                            level 17, you can use it twice before a rest but only 
+                            once on a turn.`
+        },
+        {
+            level: 2,
+            name: "Tactical Mind",
+            description: `You have a mind for tactics on and off the battle
+                            field. When you fail an ability check, you can expend 
+                            a use of your Second Wind to push yourself toward 
+                            success. Rather than regaining Hit Points, you roll 
+                            1d10 and add the number rolled to the ability check, 
+                            potentially turning it into a success. If the check still 
+                            fails, this use of Second Wind isn't expended.`
+        },
+        {
+            level: 3,
+            name: "Fighter Subclass",
+            description: `You gain a Fighter subclass of your choice. The 
+                            Champion subclass is detailed after this class's de
+                            scription. A subclass is a specialization that grants 
+                            you features at certain Fighter levels. For the rest 
+                            of your career, you gain each of your subclass's fea
+                            tures that are of your Fighter level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Fighter levels 
+                            6, 8, 12, 14, and 16.`
+        },
+        {
+            level: 5,
+            name: "Extra Attack",
+            description: `You can attack twice instead of once whenever you 
+                            take the Attack action on your turn.`
+        },
+        {
+            level: 5,
+            name: "Tactical Shift",
+            description: `Whenever you activate your Second Wind with a 
+                            Bonus Action, you can move up to half your Speed 
+                            without provoking Opportunity Attacks.`
+        },
+        {
+            level: 9,
+            name: "Indomitable",
+            description: `If you fail a saving throw, you can reroll it with a 
+                            bonus equal to your Fighter level. You must use the 
+                            new roll, and you can't use this feature again until 
+                            you finish a Long Rest.
+                            You can use this feature twice before a Long Rest 
+                            starting at level 13 and three times before a Long 
+                            Rest starting at level 17.`
+        },
+        {
+            level: 9,
+            name: "Tactical Master",
+            description: `When you attack with a weapon whose mastery 
+                            property you can use, you can replace that property 
+                            with the Push, Sap, or Slow property for that attack.`
+        },
+        {
+            level: 11,
+            name: "Two Extra Attacks",
+            description: `You can attack three times instead of once when
+                            ever you take the Attack action on your turn.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Combat Prowess is recommended.`
+        },
+        {
+            level: 20,
+            name: "Three Extra Attacks",
+            description: `You can attack four times instead of once whenever 
+                            you take the Attack action on your turn.`
+        },
+    ],
+    Subclass: {
+        name: "Champion",
+        description: `Pursue Physical Excellence in Combat
+                        A Champion focuses on the development of martial 
+                        prowess in a relentless pursuit of victory. Champi
+                        ons combine rigorous training with physical excel
+                        lence to deal devastating blows, withstand peril, 
+                        and garner glory. Whether in athletic contests or 
+                        bloody battle, Champions strive for the crown of the 
+                        victor.`,
+        features: [
+            {
+                level: 3,
+                name: "Improve Critical",
+                description: `Your attack rolls with weapons and Unarmed 
+                                Strikes can score a Critical Hit on a roll of 19 or 20 
+                                on the d20.`
+            },
+            {
+                level: 3,
+                name: "Remarkable Athlete",
+                description: `Thanks to your athleticism, you have Advantage on 
+                                Initiative rolls and Strength (Athletics) checks.
+                                In addition, immediately after you score a Critical 
+                                Hit, you can move up to half your Speed without 
+                                provoking Opportunity Attacks.`
+            },
+            {
+                level: 7,
+                name: "Additional Fighting Style",
+                description: `You gain another Fighting Style feat of your choice.`
+            },
+            {
+                level: 10,
+                name: "Heroic Warrior",
+                description: `The thrill of battle drives you toward victory. 
+                                During combat, you can give yourself Heroic Inspi
+                                ration whenever you start your turn without it.`
+            },
+            {
+                level: 15,
+                name: "Superior Critical",
+                description: `Your attack rolls with weapons and Unarmed 
+                                Strikes can now score a Critical Hit on a roll of 
+                                18-20 on the d20.`
+            },
+            {
+                level: 18,
+                name: "Survivor",
+                description: `You attain the pinnacle of resilience in battle, giving 
+                                you these benefits.
+                                Defy Death. You have Advantage on Death Saving 
+                                Throws. Moreover, when you roll 18-20 on a Death 
+                                Saving Throw, you gain the benefit of rolling a 20 on 
+                                it.
+                                Heroic Rally. At the start of each of your turns, 
+                                you regain Hit Points equal to 5 plus your Constitu
+                                tion modifier if you are Bloodied and have at least 1 
+                                Hit Point.`
+            },
+        ]
     }
 },
 {
@@ -449,39 +1501,683 @@ export const Classes: classData[] = [{
     likes: "Unarmed combat",
     primaryAbility: "Dexterity and wisdom",
     Complexity: "High",
-    HitPointDie: 12,
+    HitPointDie: 8,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["none"],
+        shields: false,
+        weapon: [{ category: "simple" }, { category: "martial", requiredProperty: "Light" }],
+        skills: {
+            choose: 2,
+            options: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"]
+        },
+        savingThrows: ["strength", "dexterity"],
+        tool: [{
+            toolName: "Artisan's Tools",
+            choose: 1,
+            options: ArtisanTools
+
+        },
+        {
+            toolName: "Musical Instrument",
+            choose: 1,
+            options: MusicalInstruments
+        }
+        ]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Spear", "5 Daggers", "Artisan's Tools or Musical Instrument chosen for the tool proficiency above", "Explorer's Pack", "11 GP"],
+            B: "50 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Martial Arts",
+            description: `Your practice of martial arts gives you mastery of 
+                            combat styles that use your Unarmed Strike and 
+                            Monk weapons, which are the following:
+                            • Simple Melee weapons
+                            • Martial Melee weapons that have the Light 
+                            property
+                            You gain the following benefits while you are un
+                            armed or wielding only Monk weapons and you ar
+                            en't wearing armor or wielding a Shield.
+                            Bonus Unarmed Strike. You can make an Un
+                            armed Strike as a Bonus Action.
+                            Martial Arts Die. You can roll 1d6 in place of the 
+                            normal damage of your Unarmed Strike or Monk 
+                            weapons. This die changes as you gain Monk levels, 
+                            as shown in the Martial Arts column of the Monk 
+                            Features table.
+                            Dexterous Attacks. You can use your Dexterity 
+                            modifier instead of your Strength modifier for the 
+                            attack and damage rolls of your Unarmed Strikes 
+                            and Monk weapons. In addition, when you use the 
+                            Grapple or Shove option of your Unarmed Strike, 
+                            you can use your Dexterity modifier instead of your 
+                            Strength modifier to determine the save DC.`
+        },
+        {
+            level: 1,
+            name: "Unarmored Defense",
+            description: `While you aren't wearing armor or wielding a 
+                            Shield, your base Armor Class equals 10 plus your 
+                            Dexterity and Wisdom modifiers.`
+        },
+        {
+            level: 2,
+            name: "Monk's Focus",
+            description: `Your focus and martial training allow you to har
+                            ness a well of extraordinary energy within yourself. 
+                            This energy is represented by Focus Points. Your 
+                            Monk level determines the number of points you 
+                            have, as shown in the Focus Points column of the 
+                            Monk Features table.
+                            You can expend these points to enhance or fuel 
+                            certain Monk features. You start knowing three 
+                            such features: Flurry of Blows, Patient Defense, and 
+                            Step of the Wind, each of which is detailed below.
+                            When you expend a Focus Point, it is unavailable 
+                            until you finish a Short or Long Rest, at the end of 
+                            which you regain all your expended points.
+                            Some features that use Focus Points require your 
+                            target to make a saving throw. The save DC equals 8 
+                            plus your Wisdom modifier and Proficiency Bonus.
+                            Flurry of Blows. You can expend 1 Focus Point to 
+                            make two Unarmed Strikes as a Bonus Action.
+                            Patient Defense. You can take the Disengage 
+                            action as a Bonus Action. Alternatively, 
+                            you can expend 1 Focus Point to take both the Disengage 
+                            and the Dodge actions as a Bonus Action.
+                            Step of the Wind. You can take the Dash action 
+                            as a Bonus Action. Alternatively, you can expend 1 
+                            Focus Point to take both the Disengage and Dash 
+                            actions as a Bonus Action, and your jump distance is 
+                            doubled for the turn..`
+        },
+        {
+            level: 2,
+            name: "Unarmored Movement",
+            description: `Your speed increases by 10 feet while you aren't 
+                            wearing armor or wielding a Shield. This bonus 
+                            increases when you reach certain Monk levels, as 
+                            shown on the Monk Features table.`
+        },
+        {
+            level: 2,
+            name: "Uncanny Metabolism",
+            description: `When you roll Initiative, you can regain all ex
+                            pended Focus Points. When you do so, roll your 
+                            Martial Arts die, and regain a number of Hit Points 
+                            equal to your Monk level plus the number rolled.
+                            Once you use this feature, you can't use it again 
+                            until you finish a Long Rest.`
+        },
+        {
+            level: 3,
+            name: "Deflect Attacks",
+            description: `When an attack roll hits you and its damage in
+                            cludes Bludgeoning, Piercing, or Slashing damage, 
+                            you can take a Reaction to reduce the attack's total 
+                            damage against you. The reduction equals 1d10 plus 
+                            your Dexterity modifier and Monk level.
+                            If you reduce the damage to 0, you can expend 1 
+                            Focus Point to redirect some of the attack's force. 
+                            If you do so, choose a creature you can see within 5 
+                            feet of yourself if the attack was a melee attack or a 
+                            creature you can see within 60 feet of yourself that 
+                            isn't behind Total Cover if the attack was a ranged 
+                            attack. That creature must succeed on a Dexterity 
+                            saving throw or take damage equal to two rolls of 
+                            your Martial Arts die plus your Dexterity modifier. 
+                            The damage is the same type dealt by the attack.`
+        },
+        {
+            level: 3,
+            name: "Monk Subclass",
+            description: `You gain a Monk subclass of your choice. The War
+                            rior of the Open Hand subclass is detailed after this 
+                            class's description. A subclass is a specialization 
+                            that grants you features at certain Monk levels. For 
+                            the rest of your career, you gain each of your sub
+                            class's features that are of your Monk level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you qualify. 
+                            You gain this feature again at Monk levels 8, 
+                            12, and 16.`
+        },
+        {
+            level: 4,
+            name: "Slow Fall",
+            description: `You can take a Reaction when you fall to reduce any 
+                            damage you take from the fall by an amount equal 
+                            to five times your Monk level.`
+        },
+        {
+            level: 5,
+            name: "Extra Attack",
+            description: `You can attack twice instead of once whenever you 
+                            take the Attack action on your turn.`
+        },
+        {
+            level: 5,
+            name: "Stunning Strike",
+            description: `Once per turn when you hit a creature with a Monk 
+                            weapon or an Unarmed Strike, you can expend 1 
+                            Focus Point to attempt a stunning strike. The target 
+                            must make a Constitution saving throw. On a failed 
+                            save, the target has the Stunned condition until the 
+                            start of your next turn. On a successful save, the 
+                            target's Speed is halved until the start of your next 
+                            turn, and the next attack roll made against the tar
+                            get before then has Advantage.`
+        },
+        {
+            level: 6,
+            name: "Empowered Strikes",
+            description: `Whenever you deal damage with your Unarmed 
+                            Strike, it can deal your choice of Force damage or its 
+                            normal damage type.`
+        },
+        {
+            level: 7,
+            name: "Evasion",
+            description: `When you're subjected to an effect that allows you 
+                            to make a Dexterity saving throw to take only half 
+                            damage, you instead take no damage if you succeed 
+                            on the saving throw and only half damage if you fail.
+                            You don't benefit from this feature if you have the 
+                            Incapacitated condition.`
+        },
+        {
+            level: 9,
+            name: "Acrobatic Movement",
+            description: `While you aren't wearing armor or wielding a 
+                            Shield, you gain the ability to move along vertical 
+                            surfaces and across liquids on your turn without 
+                            falling during the movement.`
+        },
+        {
+            level: 10,
+            name: "Heightened Focus",
+            description: `Your Flurry of Blows, Patient Defense, and Step of 
+                            the Wind gain the following benefits.
+                            Flurry of Blows. You can expend 1 Focus Point 
+                            to use Flurry of Blows and make three Unarmed 
+                            Strikes with it instead of two. Patient Defense. 
+                            When you expend a Focus Point 
+                            to use Patient Defense, you gain a number of Tem
+                            porary Hit Points equal to two rolls of your Martial 
+                            Arts die.
+                            Step of the Wind. When you expend a Focus Point 
+                            to use Step of the Wind, you can choose a willing 
+                            creature within 5 feet of yourself that is Large or 
+                            smaller. You move the creature with you until the 
+                            end of your turn. The creature's movement doesn't 
+                            provoke Opportunity Attacks.`
+        },
+        {
+            level: 10,
+            name: "Self-Restoration",
+            description: `Through sheer force of will, you can remove one 
+                            of the following conditions from yourself at the 
+                            end of each of your turns: Charmed, Frightened, or 
+                            Poisoned.
+                            In addition, forgoing food and drink doesn't give 
+                            you levels of Exhaustion.`
+        },
+        {
+            level: 13,
+            name: "Deflect Energy",
+            description: `You can now use your Deflect Attacks feature 
+                            against attacks that deal any damage type, not just 
+                            Bludgeoning, Piercing, or Slashing.`
+        },
+        {
+            level: 14,
+            name: "Disciplined Survivor",
+            description: `Your physical and mental discipline grant you proficiency 
+                            in all saving throws.
+                            Additionally, whenever you make a saving throw 
+                            and fail, you can expend 1 Focus Point to reroll it, 
+                            and you must use the new roll.`
+        },
+        {
+            level: 15,
+            name: "Perfect Focus",
+            description: `When you roll Initiative and don't use Uncanny Me
+                            tabolism, you regain expended Focus Points until 
+                            you have 4 if you have 3 or fewer.`
+        },
+        {
+            level: 18,
+            name: "Superior Defense",
+            description: `At the start of your turn, you can expend 3 Focus 
+                            Points to bolster yourself against harm for 1 min
+                            ute or until you have the Incapacitated condition. 
+                            During that time, you have Resistance to all damage 
+                            except Force damage.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Irresistible Offense is recommended.`
+        },
+        {
+            level: 20,
+            name: "Body and Mind",
+            description: `You have developed your body and mind to new 
+                            heights. Your Dexterity and Wisdom scores increase 
+                            by 4, to a maximum of 25.`
+        },
+    ],
+    Subclass: {
+        name: "Warrior of the Open Hand",
+        description: `Master Unarmed Combat Techniques
+                        Warriors of the Open Hand are masters of unarmed 
+                        combat. They learn techniques to push and trip 
+                        their opponents and manipulate their own energy 
+                        to protect themselves from harm.`,
+        features: [
+            {
+                level: 3,
+                name: "Open Hand Technique",
+                description: `Whenever you hit a creature with an attack granted 
+                                by your Flurry of Blows, you can impose one of the 
+                                following effects on that target.
+                                Addle. The target can't make Opportunity Attacks 
+                                until the start of its next turn.
+                                Push. The target must succeed on a Strength sav
+                                ing throw or be pushed up to 15 feet away from you.
+                                Topple. The target must succeed on a Dexterity 
+                                saving throw or have the Prone condition. `
+            },
+            {
+                level: 6,
+                name: "Wholeness of Body",
+                description: `You gain the ability to heal yourself. As a Bonus Ac
+                                tion, you can roll your Martial Arts die. You regain 
+                                a number of Hit Points equal to the number rolled 
+                                plus your Wisdom modifier (minimum of 1 Hit Point 
+                                regained).
+                                You can use this feature a number of times equal 
+                                to your Wisdom modifier (minimum of once), and 
+                                you regain all expended uses when you finish a 
+                                Long Rest. `
+            },
+            {
+                level: 11,
+                name: "Fleet Step",
+                description: `When you take a Bonus Action other than Step of 
+                                the Wind, you can also use Step of the Wind imme
+                                diately after that Bonus Action.`
+            },
+            {
+                level: 17,
+                name: "Quivering Palm",
+                description: `You gain the ability to set up lethal vibrations in 
+                                someone's body. When you hit a creature with an 
+                                Unarmed Strike, you can expend 4 Focus Points 
+                                to start these imperceptible vibrations, which last 
+                                for a number of days equal to your Monk level. The 
+                                vibrations are harmless unless you take an action 
+                                to end them. Alternatively, when you take the At
+                                tack action on your turn, you can forgo one of the 
+                                attacks to end the vibrations. To end them, you and 
+                                the target must be on the same plane of existence. 
+                                When you end them, the target must make a Consti
+                                tution saving throw, taking 10d12 Force damage on 
+                                a failed save or half as much damage on a successful 
+                                one.
+                                You can have only one creature under the effect 
+                                of this feature at a time. You can end the vibrations 
+                                harmlessly (no action required).`
+            },
+        ]
     }
+
+
 },
 {
     class: "Paladin",
     likes: "Defense",
     primaryAbility: "Strength and Charisma",
     Complexity: "Average",
-    HitPointDie: 12,
+    HitPointDie: 10,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light", "medium", "heavy"],
+        shields: true,
+        weapon: [
+            {
+                category: "simple"
+            },
+            {
+                category: "martial"
+            }
+        ],
+        skills: {
+            choose: 2,
+            options: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"]
+        },
+        savingThrows: ["wisdom", "charisma"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Chain Mail", "Shield", "Longsword", "6 Javelins", "Holy Symbol", "Priest's Pack", "9 GP"],
+            B: "150 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Lay on Hands",
+            description: `Your blessed touch can heal wounds. You have a 
+                            pool of healing power that replenishes when you 
+                            finish a Long Rest. With that pool, you can restore a 
+                            total number of Hit Points equal to five times your 
+                            Paladin level. As a Bonus Action, you can touch a creature 
+                            (which could be yourself) and draw power from the 
+                            pool of healing to restore a number of Hit Points to 
+                            that creature, up to the maximum amount remain
+                            ing in the pool.
+                            You can also expend 5 Hit Points from the pool of 
+                            healing power to remove the Poisoned condition 
+                            from the creature; those points don't also restore 
+                            Hit Points to the creature.`
+        },
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `You have learned to cast spells through prayer and 
+                            meditation. See “Spells” for the rules on spellcast
+                            ing. The information below details how you use 
+                            those rules with Paladin spells, which appear in the 
+                            Paladin spell list later in the class's description.
+                            Spell Slots. The Paladin Features table shows 
+                            how many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you to 
+                            cast with this feature. To start, choose two level 
+                            1 Paladin spells. Heroism and Searing Smite are 
+                            recommended.
+                            The number of spells on your list increases as 
+                            you gain Paladin levels, as shown in the Prepared 
+                            Spells column of the Paladin Features table. When
+                            ever that number increases, choose additional 
+                            Paladin spells until the number of spells on your 
+                            list matches the number in the Paladin Features 
+                            table. The chosen spells must be of a level for which 
+                            you have spell slots. For example, if you're a level 5 
+                            Paladin, your list of prepared spells can include six 
+                            Paladin spells of level 1 or 2 in any combination.
+                            If another Paladin feature gives you spells that 
+                            you always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Paladin spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            finish a Long Rest, you can replace one spell on your 
+                            list with another Paladin spell for which you have 
+                            spell slots.
+                            Spellcasting Ability. Charisma is your spellcast
+                            ing ability for your Paladin spells.
+                            Spellcasting Focus. You can use a Holy Symbol as 
+                            a Spellcasting Focus for your Paladin spells.`
+        },
+        {
+            level: 1,
+            name: "Weapon Mastery",
+            description: `Your training with weapons allows you to use the 
+                            mastery properties of two kinds of weapons of your 
+                            choice with which you have proficiency, such as 
+                            Longswords and Javelins. Whenever you finish a Long Rest, 
+                            you can change the kinds of weapons you chose. For example, you 
+                            could switch to using the mastery properties of Hal
+                            berds and Flails.`
+        },
+        {
+            level: 2,
+            name: "Fighting Style",
+            description: `You gain a Fighting Style feat of your choice (see 
+                            “Feats” for feats). Instead of choosing one of those 
+                            feats, you can choose the option below.
+                            Blessed Warrior. You learn two Cleric cantrips of 
+                            your choice (see the Cleric class's section for a list 
+                            of Cleric spells). Guidance and Sacred Flame are rec
+                            ommended. The chosen cantrips count as Paladin 
+                            spells for you, and Charisma is your spellcasting 
+                            ability for them. Whenever you gain a Paladin level, 
+                            you can replace one of these cantrips with another 
+                            Cleric cantrip.`
+        },
+        {
+            level: 2,
+            name: "Paladin's Smite",
+            description: `You always have the Divine Smite spell prepared. In 
+                            addition, you can cast it without expending a spell 
+                            slot, but you must finish a Long Rest before you can 
+                            cast it in this way again.`
+        },
+        {
+            level: 3,
+            name: "Channel Divinity",
+            description: `You can channel divine energy directly from the 
+                            Outer Planes, using it to fuel magical effects. You 
+                            start with one such effect: Divine Sense, which is 
+                            described below. Other Paladin features give addi
+                            tional Channel Divinity effect options. Each time 
+                            you use this class's Channel Divinity, you choose 
+                            which effect from this class to create.
+                            You can use this class's Channel Divinity twice. 
+                            You regain one of its expended uses when you finish 
+                            a Short Rest, and you regain all expended uses when 
+                            you finish a Long Rest. You gain an additional use 
+                            when you reach Paladin level 11. If a Channel Divinity effect requires a saving 
+                            throw, the DC equals the spell save DC from this 
+                            class's Spellcasting feature.
+                            Divine Sense. As a Bonus Action, you can open 
+                            your awareness to detect Celestials, Fiends, and 
+                            Undead. For the next 10 minutes or until you have 
+                            the Incapacitated condition, you know the location 
+                            of any creature of those types within 60 feet of 
+                            yourself, and you know its creature type. Within 
+                            the same radius, you also detect the presence of any 
+                            place or object that has been consecrated or dese
+                            crated, as with the Hallow spell.`
+        },
+        {
+            level: 3,
+            name: "Paladin Subclass",
+            description: `You gain a Paladin subclass of your choice. The Oath 
+                            of Devotion subclass is detailed after this class's de
+                            scription. A subclass is a specialization that grants 
+                            you features at certain Paladin levels. For the rest 
+                            of your career, you gain each of your subclass's fea
+                            tures that are of your Paladin level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Paladin levels 
+                            8, 12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Extra Attack",
+            description: `You can attack twice instead of once whenever you 
+                            take the Attack action on your turn.`
+        },
+        {
+            level: 5,
+            name: "Faithful Steed",
+            description: `You can call on the aid of an otherworldly steed. You 
+                            always have the Find Steed spell prepared.
+                            You can also cast the spell once without expend
+                            ing a spell slot, and you regain the ability to do so 
+                            when you finish a Long Rest.`
+        },
+        {
+            level: 6,
+            name: "Aura of Protection",
+            description: `You radiate a protective, unseeable aura in a 10-foot 
+                            Emanation that originates from you. The aura is in
+                            active while you have the Incapacitated condition.
+                            You and your allies in the aura gain a bonus to 
+                            saving throws equal to your Charisma modifier 
+                            (minimum bonus of +1).
+                            If another Paladin is present, a creature can ben
+                            efit from only one Aura of Protection at a time; the 
+                            creature chooses which aura while in them.`
+        },
+        {
+            level: 9,
+            name: "Abjure Foes",
+            description: `As a Magic action, you can expend one use of this 
+                            class's Channel Divinity to overwhelm foes with 
+                            awe. As you present your Holy Symbol or weapon, 
+                            you can target a number of creatures equal to your Charisma 
+                            modifier(minimum of one creature)
+                            that you can see within 60 feet of yourself. Each target 
+                            must succeed on a Wisdom saving throw or have the 
+                            Frightened condition for 1 minute or until it takes 
+                            any damage. While Frightened in this way, a target 
+                            can do only one of the following on its turns: move, 
+                            take an action, or take a Bonus Action.`
+        },
+        {
+            level: 10,
+            name: "Aura of Courage",
+            description: `You and your allies have Immunity to the Fright
+                            ened condition while in your Aura of Protection. If 
+                            a Frightened ally enters the aura, that condition has 
+                            no effect on that ally while there.`
+        },
+        {
+            level: 11,
+            name: "Radiant Strikes",
+            description: `Your strikes now carry supernatural power. When 
+                            you hit a target with an attack roll using a Melee 
+                            weapon or an Unarmed Strike, the target takes an 
+                            extra 1d8 Radiant damage.`
+        },
+        {
+            level: 14,
+            name: "Restoring Touch",
+            description: `When you use Lay On Hands on a creature, you can 
+                            also remove one or more of the following conditions 
+                            from the creature: Blinded, Charmed, Deafened, 
+                            Frightened, Paralyzed, or Stunned. You must ex
+                            pend 5 Hit Points from the healing pool of Lay On 
+                            Hands for each of these conditions you remove; 
+                            those points don't also restore Hit Points to the 
+                            creature.`
+        },
+        {
+            level: 18,
+            name: "Aura Expansion",
+            description: `Your Aura of Protection is now a 30-foot Emanation.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Truesight is recommended.`
+        },
+    ],
+    Subclass: {
+        name: "Oath of Devotion",
+        description: `Uphold the Ideals of Justice and Order
+                        The Oath of Devotion binds Paladins to the ideals 
+                        of justice and order. These Paladins meet the ar
+                        chetype of the knight in shining armor. They hold 
+                        themselves to the highest standards of conduct, and 
+                        some—for better or worse—hold the rest of the 
+                        world to the same standards.
+                        Many who swear this oath are devoted to gods 
+                        of law and good and use their gods' tenets as the 
+                        measure of personal devotion. Others hold angels as 
+                        their ideals and incorporate images of angelic wings 
+                        into their helmets or coats of arms. 
+                        These paladins share the following tenets:
+                        •  Let your word be your promise.
+                        •  Protect the weak and never fear to act.
+                        •  Let your honorable deeds be an example.`,
+        features: [
+            {
+                level: 3,
+                name: "Oath of Devotion Spells",
+                description: `The magic of your oath ensures you always have 
+                                certain spells ready; when you reach a Paladin level 
+                                specified in the Oath of Devotion Spells table, you 
+                                thereafter always have the listed spells prepared.`
+            },
+            {
+                level: 3,
+                name: "Sacred Weapon",
+                description: `When you take the Attack action, you can expend 
+                                one use of your Channel Divinity to imbue one 
+                                Melee weapon that you are holding with positive 
+                                energy. For 10 minutes or until you use this feature 
+                                again, you add your Charisma modifier to attack 
+                                rolls you make with that weapon (minimum bonus 
+                                of +1), and each time you hit with it, you cause it to 
+                                deal its normal damage type or Radiant damage.
+                                The weapon also emits Bright Light in a 20-foot 
+                                radius and Dim Light 20 feet beyond that.
+                                You can end this effect early (no action required). 
+                                This effect also ends if you aren't carrying the 
+                                weapon.`
+            },
+            {
+                level: 7,
+                name: "Aura of Devotion",
+                description: `You and your allies have Immunity to the Charmed 
+                                condition while in your Aura of Protection. If a 
+                                Charmed ally enters the aura, that condition has no 
+                                effect on that ally while there.`
+            },
+            {
+                level: 15,
+                name: "Smite of Protection",
+                description: `Your magical smite now radiates protective energy. 
+                                Whenever you cast Divine Smite, you and your allies 
+                                have Half Cover while in your Aura of Protection. 
+                                The aura has this benefit until the start of your next 
+                                turn.`
+            },
+            {
+                level: 20,
+                name: "Holy Nimbus",
+                description: `As a Bonus Action, you can imbue your Aura of Pro
+                                tection with holy power, granting the benefits be
+                                low for 10 minutes or until you end them (no action 
+                                required). Once you use this feature, you can't use it 
+                                again until you finish a Long Rest. You can also re
+                                store your use of it by expending a level 5 spell slot 
+                                (no action required).
+                                Holy Ward. You have Advantage on any saving 
+                                throw you are forced to make by a Fiend or an 
+                                Undead.
+                                Radiant Damage. Whenever an enemy starts its 
+                                turn in the aura, that creature takes Radiant dam
+                                age equal to your Charisma modifier plus your Pro
+                                ficiency Bonus.
+                                Sunlight. The aura is filled with Bright Light that 
+                                is sunlight.`
+            },
+        ]
     }
 },
 {
@@ -489,19 +2185,283 @@ export const Classes: classData[] = [{
     likes: "Survival",
     primaryAbility: "Dexterity and Wisdom",
     Complexity: "Average",
-    HitPointDie: 12,
+    HitPointDie: 10,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light", "medium"],
+        shields: true,
+        weapon: [{
+            category: "simple"
+        },
+        {
+            category: "martial"
+        }],
+        skills: {
+            choose: 3,
+            options: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"]
+        },
+        savingThrows: ["strength", "dexterity"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Studded Leather Armor", "Scimitar", "Shortsword", "Longbow", "20 Arrows", "Quiver", "Druidic Focus(sprig of mistletoe)", "Explorer's Pack", "7 GP"],
+            B: "150 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `You have learned to channel the magical essence of 
+                            nature to cast spells. See “Spells” for the rules on 
+                            spellcasting. The information below details how you 
+                            use those rules with Ranger spells, which appear in 
+                            the Ranger spell list later in the class's description.
+                            Spell Slots. The Ranger Features table shows 
+                            how many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.  Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you to 
+                            cast with this feature. To start, choose two level 1 
+                            Ranger spells. Cure Wounds and Ensnaring Strike are 
+                            recommended.
+                            The number of spells on your list increases as you 
+                            gain Ranger levels, as shown in the Prepared Spells 
+                            column of the Ranger Features table. Whenever that 
+                            number increases, choose additional Ranger spells 
+                            until the number of spells on your list matches the 
+                            number in the Ranger Features table. The chosen 
+                            spells must be of a level for which you have spell 
+                            slots. For example, if you're a level 5 Ranger, your 
+                            list of prepared spells can include six Ranger spells 
+                            of level 1 or 2 in any combination.
+                            If another Ranger feature gives you spells that 
+                            you always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Ranger spells for you. Changing Your Prepared Spells. Whenever you 
+                            finish a Long Rest, you can replace one spell on your 
+                            list with another Ranger spell for which you have 
+                            spell slots.
+                            Spellcasting Ability. Wisdom is your spellcasting 
+                            ability for your Ranger spells.
+                            Spellcasting Focus. You can use a Druidic Focus 
+                            as a Spellcasting Focus for your Ranger spells.`
+        },
+        {
+            level: 1,
+            name: "Favored Enemy",
+            description: `You always have the Hunter's Mark spell prepared. 
+                            You can cast it twice without expending a spell slot, 
+                            and you regain all expended uses of this ability 
+                            when you finish a Long Rest.
+                            The number of times you can cast the spell with
+                            out a spell slot increases when you reach certain 
+                            Ranger levels, as shown in the Favored Enemy col
+                            umn of the Ranger Features table.`
+        },
+        {
+            level: 1,
+            name: "Weapon Mastery",
+            description: `Your training with weapons allows you to use the 
+                            mastery properties of two kinds of weapons of your choice
+                            with which you have proficiency, such as Longbows and Shortswords.
+                            Whenever you finish a Long Rest, you can change 
+                            the kinds of weapons you chose. For example, you 
+                            could switch to using the mastery properties of 
+                            Scimitars and Longswords.`
+        },
+        {
+            level: 2,
+            name: "Deft Exporer",
+            description: `Thanks to your travels, you gain the following 
+                            benefits.
+                            Expertise. Choose one of your skill proficiencies 
+                            with which you lack Expertise. You gain Expertise 
+                            in that skill.
+                            Languages. You know two languages of your 
+                            choice from the language tables in “Character 
+                            Creation.”`
+        },
+        {
+            level: 2,
+            name: "Fighting Style",
+            description: `You gain a Fighting Style feat of your choice (see 
+                            “Feats”). Instead of choosing one of those feats, you 
+                            can choose the option below.
+                            Druidic Warrior. You learn two Druid cantrips of 
+                            your choice (see the Druid class's section for a list of 
+                            Druid spells). Guidance and Starry Wisp are recom
+                            mended. The chosen cantrips count as Ranger spells 
+                            for you, and Wisdom is your spellcasting ability for 
+                            them. Whenever you gain a Ranger level, you can 
+                            replace one of these cantrips with another Druid 
+                            cantrip.`
+        },
+        {
+            level: 3,
+            name: "Ranger Subclass",
+            description: `You gain a Ranger subclass of your choice. The 
+                            Hunter subclass is detailed after this class's de
+                            scription. A subclass is a specialization that grants 
+                            you features at certain Ranger levels. For the rest 
+                            of your career, you gain each of your subclass's fea
+                            tures that are of your Ranger level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Ranger levels 
+                            8, 12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Extra Attack",
+            description: `You can attack twice instead of once whenever you 
+                            take the Attack action on your turn.`
+        },
+        {
+            level: 6,
+            name: "Roving",
+            description: `Your Speed increases by 10 feet while you aren't 
+                            wearing Heavy armor. You also have a Climb Speed 
+                            and a Swim Speed equal to your Speed.`
+        },
+        {
+            level: 9,
+            name: "Expertise",
+            description: `Choose two of your skill proficiencies with which 
+                            you lack Expertise. You gain Expertise in those 
+                            skills.`
+        },
+        {
+            level: 10,
+            name: "Tireless",
+            description: `Primal forces now help fuel you on your journeys, 
+                            granting you the following benefits.
+                            Temporary Hit Points. As a Magic action, you can 
+                            give yourself a number of Temporary Hit Points 
+                            equal to 1d8 plus your Wisdom modifier (minimum 
+                            of 1). You can use this action a number of times 
+                            equal to your Wisdom modifier (minimum of once), 
+                            and you regain all expended uses when you finish a 
+                            Long Rest.
+                            Decrease Exhaustion. Whenever you finish a 
+                            Short Rest, your Exhaustion level, if any, decreases 
+                            by 1.`
+        },
+        {
+            level: 13,
+            name: "Relentless Hunter",
+            description: `Taking damage can't break your Concentration on 
+                            Hunter's Mark.`
+        },
+        {
+            level: 14,
+            name: "Nature's Veil",
+            description: `You invoke spirits of nature to magically hide your
+                            self. As a Bonus Action, you can give yourself the 
+                            Invisible condition until the end of your next turn.
+                            You can use this feature a number of times equal 
+                            to your Wisdom modifier (minimum of once), and 
+                            you regain all expended uses when you finish a 
+                            Long Rest.`
+        },
+        {
+            level: 17,
+            name: "Precise Hunter",
+            description: `You have Advantage on attack rolls against the crea
+                            ture currently marked by your Hunter's Mark.`
+        },
+        {
+            level: 18,
+            name: "Feral Senses",
+            description: `Your connection to the forces of nature grants you 
+                            Blindsight with a range of 30 feet.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of Di
+                            mensional Travel is recommended.`
+        },
+        {
+            level: 20,
+            name: "Foe Slayer",
+            description: `The damage die of your Hunter's Mark is a d10 
+                            rather than a d6.`
+        },
+    ],
+    Subclass: {
+        name: 'Hunter',
+        description: `Protect Nature and People from Destruction
+                        You stalk prey in the wilds and elsewhere, using 
+                        your abilities as a Hunter to protect nature and 
+                        people everywhere from forces that would destroy 
+                        them.`,
+        features: [
+            {
+                level: 3,
+                name: "Hunter's Lore",
+                description: `You can call on the forces of nature to reveal certain 
+                                strengths and weaknesses of your prey. While a 
+                                creature is marked by your Hunter's Mark, you know 
+                                whether that creature has any Immunities, Resis
+                                tances, or Vulnerabilities, and if the creature has 
+                                any, you know what they are.`
+            },
+            {
+                level: 3,
+                name: "Hunter's Prey",
+                description: `You gain one of the following feature options of your 
+                                choice. Whenever you finish a Short or Long Rest, 
+                                you can replace the chosen option with the other 
+                                one.
+                                Colossus Slayer. Your tenacity can wear down 
+                                even the most resilient foes. When you hit a crea
+                                ture with a weapon, the weapon deals an extra 1d8 
+                                damage to the target if it's missing any of its Hit 
+                                Points. You can deal this extra damage only once 
+                                per turn.
+                                Horde Breaker. Once on each of your turns when 
+                                you make an attack with a weapon, you can make 
+                                another attack with the same weapon against a dif
+                                ferent creature that is within 5 feet of the original 
+                                target, that is within the weapon's range, and that 
+                                you haven't attacked this turn.`
+            },
+            {
+                level: 7,
+                name: "Defensive Tactics",
+                description: `You gain one of the following feature options of your 
+                                choice. Whenever you finish a Short or Long Rest, 
+                                you can replace the chosen option with the other 
+                                one.
+                                Escape the Horde. Opportunity Attacks have Dis
+                                advantage against you.
+                                Multiattack Defense. When a creature hits you 
+                                with an attack roll, that creature has Disadvantage 
+                                on all other attack rolls against you this turn.`
+            },
+            {
+                level: 11,
+                name: "Superior Hunter's Prey",
+                description: `Once per turn when you deal damage to a creature 
+                                marked by your Hunter's Mark, you can also deal 
+                                that spell's extra damage to a different creature that 
+                                you can see within 30 feet of the first creature.`
+            },
+            {
+                level: 15,
+                name: "Superior Hunter's Defense",
+                description: `When you take damage, you can take a Reaction to 
+                                give yourself Resistance to that damage and any 
+                                other damage of the same type until the end of the 
+                                current turn.`
+            },
+        ]
     }
 },
 {
@@ -509,19 +2469,306 @@ export const Classes: classData[] = [{
     likes: "Stealth",
     primaryAbility: "Dexterity",
     Complexity: "Low",
-    HitPointDie: 12,
+    HitPointDie: 8,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light"],
+        shields: false,
+        weapon: [{
+            category: "simple"
+        }
+        {
+            category: "martial",
+            requiredProperty: ["Finesse", "Light"]
+        }
+        ],
+        skills: {
+            choose: 4,
+            options: ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Persuasion", "Sleight of Hand", "Stealth"]
+        },
+        savingThrows: ["dexterity", "intelligence"],
+        tool: {
+            toolName: "Thieves' Tools"
+        }
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Leather Armor", "2 Daggers", "Shortsword", "Shortbow", "20 Arrows", "Quiver", "Thieves' Tools", "Burglar's Pack", "8 GP"],
+            B: "100 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Expertise",
+            description: `You gain Expertise in two of your skill proficiencies 
+                            of your choice. Sleight of Hand and Stealth are rec
+                            ommended if you have proficiency in them.
+                            At Rogue level 6, you gain Expertise in two more 
+                            of your skill proficiencies of your choice.`
+        },
+        {
+            level: 1,
+            name: "Sneak Attack",
+            description: `You know how to strike subtly and exploit a foe's 
+                            distraction. Once per turn, you can deal an extra 
+                            1d6 damage to one creature you hit with an attack `
+        },
+        {
+            level: 1,
+            name: "Sneak Attack",
+            description: `You know how to strike subtly and exploit a foe's 
+                            distraction. Once per turn, you can deal an extra 
+                            1d6 damage to one creature you hit with an attack roll 
+                            if you have Advantage on the roll and the attack 
+                            uses a Finesse or a Ranged weapon. The extra dam
+                            age's type is the same as the weapon's type.
+                            You don't need Advantage on the attack roll if at 
+                            least one of your allies is within 5 feet of the target, 
+                            the ally doesn't have the Incapacitated condition, 
+                            and you don't have Disadvantage on the attack roll.
+                            The extra damage increases as you gain Rogue 
+                            levels, as shown in the Sneak Attack column of the 
+                            Rogue Features table.`
+        },
+        {
+            level: 1,
+            name: "Thieves' Cant",
+            description: `You picked up various languages in the commu
+                            nities where you plied your roguish talents. You 
+                            know Thieves' Cant and one other language of your 
+                            choice, which you choose from the language tables 
+                            in “Character Creation.”`
+        },
+        {
+            level: 1,
+            name: "Weapon Mastery",
+            description: `Your training with weapons allows you to use the 
+                            mastery properties of two kinds of weapons of your 
+                            choice with which you have proficiency, such as 
+                            Daggers and Shortbows. Whenever you finish a Long Rest, you can change 
+                            the kinds of weapons you chose. For example, you 
+                            could switch to using the mastery properties of 
+                            Scimitars and Shortswords.`
+        },
+        {
+            level: 2,
+            name: "Cunning Action",
+            description: `Your quick thinking and agility allow you to move 
+                            and act quickly. On your turn, you can take one of 
+                            the following actions as a Bonus Action: Dash, Dis
+                            engage, or Hide.`
+        },
+        {
+            level: 3,
+            name: "Rogue Subclass",
+            description: `You gain a Rogue subclass of your choice. The Thief 
+                            subclass is detailed after this class's description. A 
+                            subclass is a specialization that grants you features 
+                            at certain Rogue levels. For the rest of your career, 
+                            you gain each of your subclass's features that are of 
+                            your Rogue level or lower.`
+        },
+        {
+            level: 3,
+            name: "Steady Aim",
+            description: `As a Bonus Action, you give yourself Advantage on 
+                            your next attack roll on the current turn. You can 
+                            use this feature only if you haven't moved during 
+                            this turn, and after you use it, your Speed is 0 until 
+                            the end of the current turn.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Rogue levels 
+                            8, 10, 12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Cunning Strike",
+            description: `You've developed cunning ways to use your Sneak 
+                            Attack. When you deal Sneak Attack damage, you 
+                            can add one of the following Cunning Strike effects. 
+                            Each effect has a die cost, which is the number of 
+                            Sneak Attack damage dice you must forgo to add the 
+                            effect. You remove the die before rolling, and the 
+                            effect occurs immediately after the attack's damage 
+                            is dealt. For example, if you add the Poison effect, 
+                            remove 1d6 from the Sneak Attack's damage before 
+                            rolling.
+                            If a Cunning Strike effect requires a saving throw, 
+                            the DC equals 8 plus your Dexterity modifier and 
+                            Proficiency Bonus.
+                            Poison (Cost: 1d6). You add a toxin to your strike, 
+                            forcing the target to make a Constitution saving 
+                            throw. On a failed save, the target has the Poisoned 
+                            condition for 1 minute. At the end of each of its 
+                            turns, the Poisoned target repeats the save, ending 
+                            the effect on itself on a success.
+                            To use this effect, you must have a Poisoner's Kit 
+                            on your person.
+                            Trip (Cost: 1d6). If the target is Large or smaller, 
+                            it must succeed on a Dexterity saving throw or have 
+                            the Prone condition.
+                            Withdraw (Cost: 1d6). Immediately after the 
+                            attack, you move up to half your Speed without pro
+                            voking Opportunity Attacks.`
+        },
+        {
+            level: 5,
+            name: "Uncanny Dodge",
+            description: `When an attacker that you can see hits you with an 
+                            attack roll, you can take a Reaction to halve the at
+                            tack's damage against you (round down).`
+        },
+        {
+            level: 7,
+            name: "Evasion",
+            description: `You can nimbly dodge out of the way of certain dan
+                            gers. When you're subjected to an effect that allows 
+                            you to make a Dexterity saving throw to take only 
+                            half damage, you instead take no damage if you 
+                            succeed on the saving throw and only half damage 
+                            if you fail. You can't use this feature if you have the 
+                            Incapacitated condition.`
+        },
+        {
+            level: 7,
+            name: "Reliable Talent",
+            description: `Whenever you make an ability check that uses one 
+                            of your skill or tool proficiencies, you can treat a 
+                            d20 roll of 9 or lower as a 10.`
+        },
+        {
+            level: 11,
+            name: "Improved Cunning Strike",
+            description: `You can use up to two Cunning Strike effects when 
+                            you deal Sneak Attack damage, paying the die cost 
+                            for each effect.`
+        },
+        {
+            level: 14,
+            name: "Devious Strikes",
+            description: `You've practiced new ways to use your Sneak Attack 
+                            deviously. The following effects are now among 
+                            your Cunning Strike options.
+                            Daze (Cost: 2d6). The target must succeed on a 
+                            Constitution saving throw, or on its next turn, it can 
+                            do only one of the following: move or take an action 
+                            or a Bonus Action.
+                            Knock Out (Cost: 6d6). The target must succeed 
+                            on a Constitution saving throw, or it has the Uncon
+                            scious condition for 1 minute or until it takes any 
+                            damage. The Unconscious target repeats the save 
+                            at the end of each of its turns, ending the effect on 
+                            itself on a success.
+                            Obscure (Cost: 3d6). The target must succeed on 
+                            a Dexterity saving throw, or it has the Blinded con
+                            dition until the end of its next turn.`
+        },
+        {
+            level: 15,
+            name: "Slippery Mind",
+            description: `Your cunning mind is exceptionally difficult to con
+                            trol. You gain proficiency in Wisdom and Charisma 
+                            saving throws.`
+        },
+        {
+            level: 18,
+            name: "Elusive",
+            description: `You're so evasive that attackers rarely gain the 
+                            upper hand against you. No attack roll can have 
+                            Advantage against you unless you have the Incapac
+                            itated condition.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of the 
+                            Night Spirit is recommended.`
+        },
+        {
+            level: 20,
+            name: "Stroke of Luck",
+            description: `You have a marvelous knack for succeeding when 
+                            you need to. If you fail a D20 Test, you can turn the 
+                            roll into a 20.
+                            Once you use this feature, you can't use it again 
+                            until you finish a Short or Long Rest.`
+        },
+    ]
+    Subclass: {
+        name: "Thief",
+        description: `Hunt for Treasure as a Classic Adventurer
+                        A mix of burglar, treasure hunter, and explorer, you 
+                        are the epitome of an adventurer. In addition to im
+                        proving your agility and stealth, you gain abilities 
+                        useful for delving into ruins and getting maximum 
+                        benefit from the magic items you find there.`,
+        features: [
+            {
+                level: 3,
+                name: "Fast Hands",
+                description: `As a Bonus Action, you can do one of the following.
+                                Sleight of Hand. Make a Dexterity (Sleight of 
+                                Hand) check to pick a lock or disarm a trap with 
+                                Thieves' Tools or to pick a pocket.
+                                Use an Object. Take the Utilize action, or take the 
+                                Magic action to use a magic item that requires that 
+                                action.`
+            },
+            {
+                level: 3,
+                name: "Second Story Work",
+                description: `You've trained to get into especially hard-to-reach 
+                                places, granting you these benefits.
+                                Climber. You gain a Climb Speed equal to your 
+                                Speed.
+                                Jumper. You can determine your jump distance 
+                                using your Dexterity rather than your Strength.`
+            },
+            {
+                level: 9,
+                name: "Supreme Sneak",
+                description: `You gain the following Cunning Strike option.
+                                Stealth Attack (Cost: 1d6). If you have the Hide 
+                                action's Invisible condition, this attack doesn't end 
+                                that condition on you if you end the turn behind 
+                                Three-Quarters Cover or Total Cover.`
+            },
+            {
+                level: 13,
+                name: "Use Magic Device",
+                description: `You've learned how to maximize use of magic items, 
+                                granting you the following benefits.
+                                Attunement. You can attune to up to four magic 
+                                items at once.
+                                Charges. Whenever you use a magic item prop
+                                erty that expends charges, roll 1d6. On a roll of 
+                                6, you use the property without expending the 
+                                charges.
+                                Scrolls. You can use any Spell Scroll, using Intelli
+                                gence as your spellcasting ability for the spell. If the 
+                                spell is a cantrip or a level 1 spell, you can cast it re
+                                liably. If the scroll contains a higher-level spell, you 
+                                must first succeed on an Intelligence (Arcana) check 
+                                (DC 10 plus the spell's level). On a successful check, 
+                                you cast the spell from the scroll. On a failed check, 
+                                the scroll disintegrates.`
+            },
+            {
+                level: 17,
+                name: "Thief's Reflexes",
+                description: `You are adept at laying ambushes and quickly es
+                            caping danger. You can take two turns during the 
+                            first round of any combat. You take your first turn 
+                            at your normal Initiative and your second turn at 
+                            your Initiative minus 10.`
+            },
+        ]
     }
 },
 {
@@ -529,19 +2776,243 @@ export const Classes: classData[] = [{
     likes: "Power",
     primaryAbility: "Charisma",
     Complexity: "High",
-    HitPointDie: 12,
+    HitPointDie: 6,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["none"],
+        shields: false,
+        weapon: [{
+            category: "simple"
+        }],
+        skills: {
+            choose: 2,
+            options: ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"]
+        },
+        savingThrows: ["constitution", "charisma"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Spear", "2 Daggers", "Arcane Focus(crystal)", "Dungeoneer's Pack", "28 GP"],
+            B: "50 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `Drawing from your innate magic, you can cast 
+                            spells. See “Spells” for the rules on spellcasting. The 
+                            information below details how you use those rules 
+                            with Sorcerer spells, which appear in the Sorcerer 
+                            spell list later in the class's description.
+                            Cantrips. You know four Sorcerer cantrips of your 
+                            choice. Light, Prestidigitation, Shocking Grasp, and 
+                            Sorcerous Burst are recommended. Whenever you 
+                            gain a Sorcerer level, you can replace one of your 
+                            cantrips from this feature with another Sorcerer 
+                            cantrip of your choice.
+                            When you reach Sorcerer levels 4 and 10, you 
+                            learn another Sorcerer cantrip of your choice, as 
+                            shown in the Cantrips column of the Sorcerer Fea
+                            tures table.
+                            Spell Slots. The Sorcerer Features table shows 
+                            how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the list 
+                            of level 1+ spells that are available for you to cast 
+                            with this feature. To start, choose two level 1 Sor
+                            cerer spells. Burning Hands and Detect Magic are 
+                            recommended.
+                            The number of spells on your list increases as 
+                            you gain Sorcerer levels, as shown in the Prepared 
+                            Spells column of the Sorcerer Features table. When
+                            ever that number increases, choose additional 
+                            Sorcerer spells until the number of spells on your 
+                            list matches the number in the Sorcerer Features 
+                            table. The chosen spells must be of a level for which 
+                            you have spell slots. For example, if you're a level 3 
+                            Sorcerer, your list of prepared spells can include six 
+                            Sorcerer spells of level 1 or 2 in any combination.
+                            If another Sorcerer feature gives you spells that 
+                            you always have prepared, those spells dont count against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Sorcerer spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            gain a Sorcerer level, you can replace one spell on 
+                            your list with another Sorcerer spell for which you 
+                            have spell slots.
+                            Spellcasting Ability. Charisma is your spellcast
+                            ing ability for your Sorcerer spells.
+                            Spellcasting Focus. You can use an Arcane Focus 
+                            as a Spellcasting Focus for your Sorcerer spells.`
+        },
+        {
+            level: 1,
+            name: "Innate Sorcery",
+            description: `An event in your past left an indelible mark on you, 
+                        infusing you with simmering magic. As a Bonus 
+                        Action, you can unleash that magic for 1 minute, 
+                        during which you gain the following benefits: • The spell save DC of your Sorcerer spells 
+                        increases by 1.
+                        • You have Advantage on the attack rolls of 
+                        Sorcerer spells you cast.
+                        You can use this feature twice, and you regain all 
+                        expended uses of it when you finish a Long Rest.`
+        },
+        {
+            level: 2,
+            name: "Font of Magic",
+            description: `You can tap into the wellspring of magic within 
+                            yourself. This wellspring is represented by Sorcery 
+                            Points, which allow you to create a variety of magi
+                            cal effects.
+                            You have 2 Sorcery Points, and you gain more as 
+                            you reach higher levels, as shown in the Sorcery 
+                            Points column of the Sorcerer Features table. You 
+                            can't have more Sorcery Points than the number 
+                            shown in the table for your level. You regain all ex
+                            pended Sorcery Points when you finish a Long Rest.
+                            You can use your Sorcery Points to fuel the op
+                            tions below, along with other features, such as 
+                            Metamagic, that use those points.
+                            Converting Spell Slots to Sorcery Points. You 
+                            can expend a spell slot to gain a number of Sorcery 
+                            Points equal to the slot's level (no action required).
+                            Creating Spell Slots. As a Bonus Action, you can 
+                            transform unexpended Sorcery Points into one spell 
+                            slot. The Creating Spell Slots table shows the cost 
+                            of creating a spell slot of a given level, and it lists 
+                            the minimum Sorcerer level you must be to create 
+                            a slot. You can create a spell slot no higher than 
+                            level 5.
+                            Any spell slot you create with this feature van
+                            ishes when you finish a Long Rest.`
+        },
+        {
+            level: 2,
+            name: "Meta Magic",
+            description: `Because your magic flows from within, you can 
+                            alter your spells to suit your needs; you gain two 
+                            Metamagic options of your choice from “Meta magic 
+                            Options” later in this class's description. You use 
+                            the chosen options to temporarily modify spells you 
+                            cast. To use an option, you must spend the number 
+                            of Sorcery Points that it costs.
+                            You can use only one Metamagic option on a spell 
+                            when you cast it unless otherwise noted in one of 
+                            those options. Whenever you gain a Sorcerer level, you can re
+                            place one of your Metamagic options with one you 
+                            don't know. You gain two more options at Sorcerer 
+                            level 10 and two more at Sorcerer level 17.`
+        },
+        {
+            level: 3,
+            name: "Sorcerer Subclass",
+            description: `You gain a Sorcerer subclass of your choice. The 
+                            Draconic Sorcery subclass is detailed after this 
+                            class's description. A subclass is a specialization 
+                            that grants you features at certain Sorcerer levels. 
+                            For the rest of your career, you gain each of your 
+                            subclass's features that are of your Sorcerer level or 
+                            lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Sorcerer lev
+                            els 8, 12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Sorcerous Restoration",
+            description: `When you finish a Short Rest, you can regain ex
+                            pended Sorcery Points, but no more than a number 
+                            equal to half your Sorcerer level (round down). Once 
+                            you use this feature, you can't do so again until you 
+                            finish a Long Rest.`
+        },
+        {
+            level: 7,
+            name: "Sorcery Incarnate",
+            description: `If you have no uses of Innate Sorcery left, you can 
+                            use it if you spend 2 Sorcery Points when you take 
+                            the Bonus Action to activate it.
+                            In addition, while your Innate Sorcery feature is 
+                            active, you can use up to two of your Metamagic op
+                            tions on each spell you cast.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of Di
+                            mensional Travel is recommended.`
+        },
+        {
+            level: 20,
+            name: "Arcane Apotheosis",
+            description: `While your Innate Sorcery feature is active, you can 
+                            use one Metamagic option on each of your turns 
+                            without spending Sorcery Points on it.`
+        },
+    ],
+    Subclass: {
+        name: "Draconic Sorcery",
+        description: `Breathe the Magic of Dragons
+                        Your innate magic comes from the gift of a dragon. 
+                        Perhaps an ancient dragon facing death bequeathed 
+                        some of its magical power to you or your ancestor. 
+                        You might have absorbed magic from a site infused 
+                        with dragons' power. Or perhaps you handled a 
+                        treasure taken from a dragon's hoard that was 
+                        steeped in draconic power. Or you might have a 
+                        dragon for an ancestor.`,
+        features: [
+            {
+                level: 3,
+                name: "Draconic Resilience",
+                description: `The magic in your body manifests physical traits 
+                                of your draconic gift. Your Hit Point maximum in
+                                creases by 3, and it increases by 1 whenever you 
+                                gain another Sorcerer level.
+                                Parts of you are also covered by dragon-like 
+                                scales. While you aren't wearing armor, your base 
+                                Armor Class equals 10 plus your Dexterity and Cha
+                                risma modifiers.`
+            },
+            {
+                level: 3,
+                name: "Draconic Spells",
+                description: `When you reach a Sorcerer level specified in the 
+                                Draconic Spells table, you thereafter always have 
+                                the listed spells prepared.`
+            },
+            {
+                level: 14,
+                name: "Dragon Wings",
+                description: `As a Bonus Action, you can cause draconic wings to 
+                                appear on your back. The wings last for 1 hour or 
+                                until you dismiss them (no action required). For the 
+                                duration, you have a Fly Speed of 60 feet.
+                                Once you use this feature, you can't use it again 
+                                until you finish a Long Rest unless you spend 3 Sor
+                                cery Points (no action required) to restore your use 
+                                of it.`
+            },
+            {
+                level: 18,
+                name: "Dragon Companion",
+                description: `You can cast Summon Dragon without a Material 
+                                component. You can also cast it once without a spell 
+                                slot, and you regain the ability to cast it in this way 
+                                when you finish a Long Rest.
+                                Whenever you start casting the spell, you can 
+                                modify it so that it doesn't require Concentration. If 
+                                you do so, the spell's duration becomes 1 minute for 
+                                that casting.`
+            },
+        ]
     }
 },
 {
@@ -582,6 +3053,12 @@ export const Classes: classData[] = [{
             A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
             B: "75 GP",
         }
+    },
+    Features: [],
+    Subclass: {
+        name: '',
+        description: '',
+        features: []
     }
 },
 ]
