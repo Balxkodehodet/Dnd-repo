@@ -108,6 +108,20 @@ header{
 {
   position:relative;
 }
+.skillSpan
+{
+  display:block;
+  overflow-wrap: anywhere;
+  width:100%;
+}
+.classBtnNext
+{
+  padding:10px;
+  background-color:#ffc400;
+  position:fixed;
+  bottom:0%;
+  right:680px;
+}
 .singleClassCard
 {
   position:relative;

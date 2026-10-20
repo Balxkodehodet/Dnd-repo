@@ -2475,7 +2475,7 @@ export const Classes: classData[] = [{
         shields: false,
         weapon: [{
             category: "simple"
-        }
+        },
         {
             category: "martial",
             requiredProperty: ["Finesse", "Light"]
@@ -2699,7 +2699,7 @@ export const Classes: classData[] = [{
                             Once you use this feature, you can't use it again 
                             until you finish a Short or Long Rest.`
         },
-    ]
+    ],
     Subclass: {
         name: "Thief",
         description: `Hunt for Treasure as a Classic Adventurer
@@ -3020,19 +3020,253 @@ export const Classes: classData[] = [{
     likes: "Occult Lore",
     primaryAbility: "Charisma",
     Complexity: "High",
-    HitPointDie: 12,
+    HitPointDie: 8,
     Proficiencies: {
-        armor: armor,
-        shields: true | false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["light"],
+        shields: false,
+        weapon: [
+            {
+                category: "simple"
+            }
+        ],
+        skills: {
+            choose: 2,
+            options: ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"]
+        },
+        savingThrows: ["wisdom", "charisma"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["Leather Armor", "Sickle", "2 Daggers", "Arcane Focus(orb)", "Book (Occult Lore)", "Scholar's Pack", "15 GP"],
+            B: "100 GP",
         }
+    },
+    Features: [
+        {
+            level: 1,
+            name: "Eldritch Invocations",
+            description: `You have unearthed Eldritch Invocations, pieces of 
+                            forbidden knowledge that imbue you with an abid
+                            ing magical ability or other lessons. You gain one in
+                            vocation of your choice, such as Pact of the Tome. In
+                            vocations are described in the “Eldritch Invocation 
+                            Options” section later in this class's description.
+                            Prerequisites. If an invocation has a prerequi
+                            site, you must meet it to learn that invocation. For 
+                            example, if an invocation requires you to be a level 
+                            5+ Warlock, you can select the invocation once you 
+                            reach Warlock level 5.
+                            Replacing and Gaining Invocations. Whenever 
+                            you gain a Warlock level, you can replace one of 
+                            your invocations with another one for which you qualify. 
+                            You can't replace an invocation if it's a pre
+                            requisite for another invocation that you have.
+                            When you gain certain Warlock levels, you gain 
+                            more invocations of your choice, as shown in the In
+                            vocations column of the Warlock Features table.
+                            You can't pick the same invocation more than once 
+                            unless its description says otherwise.`
+        },
+        {
+            level: 1,
+            name: "Pact Magic",
+            description: `Through occult ceremony, you have formed a pact 
+                            with a mysterious entity to gain magical powers. 
+                            The entity is a voice in the shadows—its identity 
+                            unclear—but its boon to you is concrete: the ability 
+                            to cast spells. See “Spells” for the rules on spell
+                            casting. The information below details how you use 
+                            those rules with Warlock spells, which appear in the 
+                            Warlock spell list later in the class's description.
+                            Cantrips. You know two Warlock cantrips of your 
+                            choice. Eldritch Blast and Prestidigitation are rec
+                            ommended. Whenever you gain a Warlock level, you 
+                            can replace one of your cantrips from this feature 
+                            with another Warlock cantrip of your choice.
+                            When you reach Warlock levels 4 and 10, you 
+                            learn another Warlock cantrip of your choice, as 
+                            shown in the Cantrips column of the Warlock Fea
+                            tures table. Spell Slots. The Warlock Features table shows 
+                            how many spell slots you have to cast your Warlock 
+                            spells of levels 1-5. The table also shows the level 
+                            of those slots, all of which are the same level. You 
+                            regain all expended Pact Magic spell slots when you 
+                            finish a Short or Long Rest. For example, when you're a level 5 Warlock, you 
+                            have two level 3 spell slots. To cast the level 1 spell 
+                            Charm Person, you must spend one of those slots, 
+                            and you cast it as a level 3 spell.
+                            Prepared Spells of Level 1+. You prepare the 
+                            list of level 1+ spells that are available for you 
+                            to cast with this feature. To start, choose two 
+                            level 1 Warlock spells. Charm Person and Hex are 
+                            recommended.
+                            The number of spells on your list increases as you 
+                            gain Warlock levels, as shown in the Prepared Spells 
+                            column of the Warlock Features table. Whenever 
+                            that number increases, choose additional War
+                            lock spells until the number of spells on your list 
+                            matches the number in the table. The chosen spells 
+                            must be of a level no higher than what's shown in 
+                            the table's Slot Level column for your level. When 
+                            you reach level 6, for example, you learn a new War
+                            lock spell, which can be of levels 1-3.
+                            If another Warlock feature gives you spells that 
+                            you always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Warlock spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            gain a Warlock level, you can replace one spell on 
+                            your list with another Warlock spell of an eligible 
+                            level.
+                            Spellcasting Ability. Charisma is the spellcasting 
+                            ability for your Warlock spells.
+                            Spellcasting Focus. You can use an Arcane Focus 
+                            as a Spellcasting Focus for your Warlock spells.`
+        },
+        {
+            level: 2,
+            name: "Magical Cunning",
+            description: `You can perform an esoteric rite for 1 minute. At 
+                            the end of it, you regain expended Pact Magic spell 
+                            slots but no more than a number equal to half your 
+                            maximum (round up). Once you use this feature, you 
+                            can't do so again until you finish a Long Rest.`
+        },
+        {
+            level: 3,
+            name: "Warlock Subclass",
+            description: `You gain a Warlock subclass of your choice. The 
+                            Fiend Patron subclass is detailed after this class's 
+                            description. A subclass is a specialization that 
+                            grants you features at certain Warlock levels. For 
+                            the rest of your career, you gain each of your sub
+                            class's features that are of your Warlock level or 
+                            lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Warlock levels 
+                            8, 12, and 16.`
+        },
+        {
+            level: 9,
+            name: "Contact Patron",
+            description: `In the past, you usually contacted your patron 
+                            through intermediaries. Now you can communicate 
+                            directly; you always have the Contact Other Plane 
+                            spell prepared. With this feature, you can cast the 
+                            spell without expending a spell slot to contact your 
+                            patron, and you automatically succeed on the spell's 
+                            saving throw.
+                            Once you cast the spell with this feature, you can't 
+                            do so in this way again until you finish a Long Rest.`
+        },
+        {
+            level: 11,
+            name: "Mystic Arcanum",
+            description: `Your patron grants you a magical secret called an 
+                            arcanum. Choose one level 6 Warlock spell as this 
+                            arcanum.
+                            You can cast your arcanum spell once without ex
+                            pending a spell slot, and you must finish a Long Rest 
+                            before you can cast it in this way again.
+                            As shown in the Warlock Features table, you gain 
+                            another Warlock spell of your choice that can be 
+                            cast in this way when you reach Warlock levels 
+                            13 (level 7 spell), 15 (level 8 spell), and 17 (level 9 
+                            spell). You regain all uses of your Mystic Arcanum 
+                            when you finish a Long Rest. Whenever you gain a Warlock level, you can re
+                            place one of your arcanum spells with another War
+                            lock spell of the same level.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Fate is recommended.`
+        },
+        {
+            level: 20,
+            name: "Eldritch Master",
+            description: `When you use your Magical Cunning feature, you 
+                            regain all your expended Pact Magic spell slots.`
+        },
+    ],
+    Subclass: {
+        name: "Fiend Patron",
+        description: `Make a Deal with the Lower Planes
+                        Your pact draws on the Lower Planes, the realms of 
+                        perdition. You might forge a bargain with a demon 
+                        lord, an archdevil, or another fiend that is especially 
+                        mighty. That patron's aims are evil—the corruption 
+                        or destruction of all things, ultimately including 
+                        you—and your path is defined by the extent to 
+                        which you strive against those aims.`,
+        features: [
+            {
+                level: 3,
+                name: "Dark One's Blessing",
+                description: `When you reduce an enemy to 0 Hit Points, you gain 
+                                Temporary Hit Points equal to your Charisma mod
+                                ifier plus your Warlock level (minimum of 1 Tempo
+                                rary Hit Point). You also gain this benefit if someone 
+                                else reduces an enemy within 10 feet of you to 0 Hit 
+                                Points.`
+            },
+            {
+                level: 3,
+                name: "Fiend Spells",
+                description: `The magic of your patron ensures you always have 
+                                certain spells ready; when you reach a Warlock 
+                                level specified in the Fiend Spells table, you thereaf
+                                ter always have the listed spells prepared.`
+            },
+            {
+                level: 6,
+                name: "Dark One's Own Luck",
+                description: `You can call on your fiendish patron to alter fate 
+                                in your favor. When you make an ability check or a 
+                                saving throw, you can use this feature to add 1d10 
+                                to your roll. You can do so after seeing the roll but 
+                                before any of the roll's effects occur.
+                                You can use this feature a number of times equal 
+                                to your Charisma modifier (minimum of once), but 
+                                you can use it no more than once per roll. You regain 
+                                all expended uses when you finish a Long Rest.`
+            },
+            {
+                level: 10,
+                name: "Fiendish Resilience",
+                description: `Choose one damage type, other than Force, when
+                                ever you finish a Short or Long Rest. You have Resis
+                                tance to that damage type until you choose a differ
+                                ent one with this feature.`
+            },
+            {
+                level: 14,
+                name: "Hurl Through Hell",
+                description: `Once per turn when you hit a creature with an 
+                                attack roll, you can try to instantly transport the 
+                                target through the Lower Planes. The target must 
+                                succeed on a Charisma saving throw against your 
+                                spell save DC, or the target disappears and hurtles 
+                                through a nightmare landscape. The target takes 
+                                8d10 Psychic damage if it isn't a Fiend, and it has the 
+                                Incapacitated condition until the end of your next 
+                                turn, when it returns to the space it previously oc
+                                cupied or the nearest unoccupied space.
+                                Once you use this feature, you can't use it again 
+                                until you finish a Long Rest unless you expend a 
+                                Pact Magic spell slot (no action required) to restore 
+                                your use of it.`
+            },
+
+        ]
     }
 },
 {
@@ -3040,25 +3274,255 @@ export const Classes: classData[] = [{
     likes: "Spellbooks",
     primaryAbility: "Intelligence",
     Complexity: "High",
-    HitPointDie: 12,
+    HitPointDie: 6,
     Proficiencies: {
-        armor: armor,
-        shields: true || false,
-        weapon: weapon,
-        skills: skillInfo,
-        savingThrows: Abilities
+        armor: ["none"],
+        shields: false,
+        weapon: [{
+            category: "simple"
+        }],
+        skills: {
+            choose: 2,
+            options: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Nature", "Religion"]
+        },
+        savingThrows: ["intelligence", "wisdom"]
     },
     StartingEquipment: {
         Choose: {
-            A: "Greataxe, 4 handaxes, Explorer's Pack, and 15 GP",
-            B: "75 GP",
+            A: ["2 Daggers", "Arcane Focus(Quarterstaff)", "Robe", "Spellbook", "Scholar's Pack", "5 GP"],
+            B: "55 GP",
         }
     },
-    Features: [],
+    Features: [
+        {
+            level: 1,
+            name: "Spellcasting",
+            description: `As a student of arcane magic, you have learned to 
+                            cast spells. See “Spells” for the rules on spellcasting. 
+                            The information below details how you use those 
+                            rules with Wizard spells, which appear in the Wiz
+                            ard spell list later in the class's description.
+                            Cantrips. You know three Wizard cantrips of your 
+                            choice. Light, Mage Hand, and Ray of Frost are rec
+                            ommended. Whenever you finish a Long Rest, you 
+                            can replace one of your cantrips from this feature 
+                            with another Wizard cantrip of your choice. When you reach Wizard levels 4 and 10, you learn 
+                            another Wizard cantrip of your choice, as shown in 
+                            the Cantrips column of the Wizard Features table.
+                            Spellbook. Your wizardly apprenticeship cul
+                            minated in the creation of a unique book: your 
+                            spellbook. It is a Tiny object that weighs 3 pounds, 
+                            contains 100 pages, and can be read only by you or 
+                            someone casting Identify. You determine the book's 
+                            appearance and materials, such as a gilt-edged tome 
+                            or a collection of vellum bound with twine.
+                            The book contains the level 1+ spells you know. It 
+                            starts with six level 1 Wizard spells of your choice. 
+                            Detect Magic, Feather Fall, Mage Armor, Magic Mis
+                            sile, Sleep, and Thunderwave are recommended.
+                            Whenever you gain a Wizard level after 1, add two 
+                            Wizard spells of your choice to your spellbook. Each 
+                            of these spells must be of a level for which you have 
+                            spell slots, as shown in the Wizard Features table. 
+                            The spells are the culmination of arcane research 
+                            you do regularly.
+                            Spell Slots. The Wizard Features table shows 
+                            how many spell slots you have to cast your level 1+ 
+                            spells. You regain all expended slots when you fin
+                            ish a Long Rest.
+                            Prepared Spells of Level 1+. You prepare the list 
+                            of level 1+ spells that are available for you to cast 
+                            with this feature. To do so, choose four spells from 
+                            your spellbook. The chosen spells must be of a level 
+                            for which you have spell slots.
+                            The number of spells on your list increases as you 
+                            gain Wizard levels, as shown in the Prepared Spells 
+                            column of the Wizard Features table. Whenever that 
+                            number increases, choose additional Wizard spells 
+                            until the number of spells on your list matches the 
+                            number in the table. The chosen spells must be of a 
+                            level for which you have spell slots. For example, if 
+                            you're a level 3 Wizard, your list of prepared spells 
+                            can include six spells of levels 1 and 2 in any combi
+                            nation, chosen from your spellbook.
+                            If another Wizard feature gives you spells that 
+                            you always have prepared, those spells don't count 
+                            against the number of spells you can prepare with 
+                            this feature, but those spells otherwise count as 
+                            Wizard spells for you.
+                            Changing Your Prepared Spells. Whenever you 
+                            finish a Long Rest, you can change your list of pre
+                            pared spells, replacing any of the spells there with 
+                            spells from your spellbook.
+                            Spellcasting Ability. Intelligence is your spellcast
+                            ing ability for your Wizard spells.
+                            Spellcasting Focus. You can use an Arcane Focus 
+                            or your spellbook as a Spellcasting Focus for your 
+                            Wizard spells.`
+        },
+        {
+            level: 1,
+            name: "Ritual Adept",
+            description: `You can cast any spell as a Ritual if that spell has 
+                            the Ritual tag and the spell is in your spellbook. 
+                            You needn't have the spell prepared, but you must read 
+                            from the book to cast a spell in this way.`
+        },
+        {
+            level: 1,
+            name: "Arcane Recovery",
+            description: `You can regain some of your magical energy by 
+                            studying your spellbook. When you finish a Short 
+                            Rest, you can choose expended spell slots to re
+                            cover. The spell slots can have a combined level 
+                            equal to no more than half your Wizard level (round 
+                            up), and none of the slots can be level 6 or higher. 
+                            For example, if you're a level 4 Wizard, you can re
+                            cover up to two levels' worth of spell slots, regain
+                            ing either one level 2 spell slot or two level 1 spell 
+                            slots.
+                            Once you use this feature, you can't do so again 
+                            until you finish a Long Rest.`
+        },
+        {
+            level: 2,
+            name: "Scholar",
+            description: `While studying magic, you also specialized in an
+                            other field of study. Choose one of the following 
+                            skills in which you have proficiency: Arcana, His
+                            tory, Investigation, Medicine, Nature, or Religion. 
+                            You have Expertise in the chosen skill.`
+        },
+        {
+            level: 3,
+            name: "Wizard Subclass",
+            description: `You gain a Wizard subclass of your choice. The 
+                            Evoker subclass is detailed after this class's de
+                            scription. A subclass is a specialization that grants 
+                            you features at certain Wizard levels. For the rest 
+                            of your career, you gain each of your subclass's fea
+                            tures that are of your Wizard level or lower.`
+        },
+        {
+            level: 4,
+            name: "Ability Score Improvement",
+            description: `You gain the Ability Score Improvement feat (see 
+                            “Feats”) or another feat of your choice for which you 
+                            qualify. You gain this feature again at Wizard levels 
+                            8, 12, and 16.`
+        },
+        {
+            level: 5,
+            name: "Memorize Spell",
+            description: `Whenever you finish a Short Rest, you can study 
+                            your spellbook and replace one of the level 1+ Wiz
+                            ard spells you have prepared for your Spellcasting 
+                            feature with another level 1+ spell from the book.`
+        },
+        {
+            level: 18,
+            name: "Spell Mastery",
+            description: `You have achieved such mastery over certain spells 
+                            that you can cast them at will. Choose a level 1 and 
+                            a level 2 spell in your spellbook that have a casting 
+                            time of an action. You always have those spells pre
+                            pared, and you can cast them at their lowest level 
+                            without expending a spell slot. To cast either spell at 
+                            a higher level, you must expend a spell slot.
+                            Whenever you finish a Long Rest, you can study 
+                            your spellbook and replace one of those spells with 
+                            an eligible spell of the same level from the book.`
+        },
+        {
+            level: 19,
+            name: "Epic Boon",
+            description: `You gain an Epic Boon feat (see “Feats”) or another 
+                            feat of your choice for which you qualify. Boon of 
+                            Spell Recall is recommended.`
+        },
+        {
+            level: 20,
+            name: "Signature Spells",
+            description: `Choose two level 3 spells in your spellbook as your 
+                            signature spells. You always have these spells pre
+                            pared, and you can cast each of them once at level 3 
+                            without expending a spell slot. When you do so, you 
+                            can't cast them in this way again until you finish a 
+                            Short or Long Rest. To cast either spell at a higher 
+                            level, you must expend a spell slot.`
+        },
+        
+    ],
     Subclass: {
-        name: '',
-        description: '',
-        features: []
+        name: 'Evoker',
+        description: `Create Explosive Elemental Effects.
+                        Your studies focus on magic that creates powerful 
+                        elemental effects such as bitter cold, searing flame, 
+                        rolling thunder, crackling lightning, and burning 
+                        acid. Some Evokers find employment in military 
+                        forces, serving as artillery to blast armies from 
+                        afar. Others use their power to protect others, while 
+                        some seek their own gain.`,
+        features: [
+            {
+                level: 3,
+                name: "Evocation Savant",
+                description: `Choose two Wizard spells from the Evocation 
+                                school, each of which must be no higher than level 2, 
+                                and add them to your spellbook for free.
+                                In addition, whenever you gain access to a new 
+                                level of spell slots in this class, you can add one Wiz
+                                ard spell from the Evocation school to your spell
+                                book for free. The chosen spell must be of a level for 
+                                which you have spell slots.`
+            },
+            {
+                level: 3,
+                name: "Potent Cantrip",
+                description: `Your damaging cantrips affect even creatures that 
+                                avoid the brunt of the effect. When you cast a can
+                                trip at a creature and you miss with the attack roll 
+                                or the target succeeds on a saving throw against the 
+                                cantrip, the target takes half the cantrip's damage 
+                                (if any) but suffers no additional effect from the 
+                                cantrip.`
+            },
+            {
+                level: 6,
+                name: "Sculpt Spells",
+                description: `You can create pockets of relative safety within the 
+                                effects of your evocations. When you cast an Evoca
+                                tion spell that affects other creatures that you can 
+                                see, you can choose a number of them equal to 1 
+                                plus the spell's level. The chosen creatures automat
+                                ically succeed on their saving throws against the 
+                                spell, and they take no damage if they would nor
+                                mally take half damage on a successful save.`
+            },
+            {
+                level: 10,
+                name: "Empowered Evocation",
+                description: `Whenever you cast a Wizard spell from the Evoca
+                                tion school, you can add your Intelligence modifier 
+                                to one damage roll of that spell.`
+            },
+            {
+                level: 14,
+                name: "Overchannel",
+                description: `You can increase the power of your spells. When 
+                                you cast a Wizard spell with a spell slot of levels 1-5 
+                                that deals damage, you can deal maximum damage 
+                                with that spell on the turn you cast it.
+                                The first time you do so, you suffer no adverse ef
+                                fect. If you use this feature again before you finish a 
+                                Long Rest, you take 2d12 Necrotic damage for each 
+                                level of the spell slot immediately after you cast it. 
+                                This damage ignores Resistance and Immunity.
+                                Each time you use this feature again before finish
+                                ing a Long Rest, the Necrotic damage per spell level 
+                                increases by 1d12.`
+            },
+        ]
     }
 },
 ]

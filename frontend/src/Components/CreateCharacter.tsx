@@ -11,7 +11,7 @@ export default function CreateCharacter() {
     const { nameId, genderId, raceId, portraitId, classId } = useParams();
     const [characterCreationStage, setCharacterCreationStage] = useState(0);
     //const [character, setCharacter] = useState([]);
-    const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
+    const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : ""
     return (
         <>
             {characterCreationStage === 0 && <>
