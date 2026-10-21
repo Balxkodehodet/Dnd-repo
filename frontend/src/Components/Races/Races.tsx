@@ -33,13 +33,13 @@ export default function Races ({singleRace, stage}: raceProps) {
                 {stage===2 && <Link to={`/home/create-character/${nameId}/${genderId}`}><img className="x-race" src={x}/></Link>}
                 <h2>Chosen Race:</h2>
 
-                {stage===2 && Object.entries(selectedRace).map(([key, value]) => (
+                {selectedRace && stage===2 && Object.entries(selectedRace).map(([key, value]) => (
                     
                     <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValueAll(value)}<br></br><br></br></div>
                                                                                                      
                  ))
                 }
-                {stage > 2 && <p>{selectedRace.Race}</p>}
+                {stage > 2 && <p>{selectedRace?.Race}</p>}
             </div>
             </div> 
         </div> 

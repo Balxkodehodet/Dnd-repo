@@ -1,27 +1,28 @@
-*
-{
-  margin:0px;
-  padding:0px;
+* {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
+
 .categories1 {
   display: flex;
   flex-direction: row;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-top: 0.7rem;
   background-color: #fdad00;
-  width:200px;
+  width: 200px;
   padding: 0.5rem;
 }
-.categories1-container
-{
+
+.categories1-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.category-name{
+
+.category-name {
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
@@ -29,102 +30,141 @@
   border-radius: 0.3rem;
   transition: background-color 0.3s ease;
 }
-header{
+
+header {
   background-color: #ffc400;
   padding: 0.5rem;
   border-radius: 0.3rem;
 }
-.header-title-container{
+
+.header-title-container {
   background-color: #ffae00;
   padding: 0.3rem;
   border-radius: 0.3rem;
 }
-.landing-page-container, .create-userform-container, .login-userform-container{
+
+.landing-page-container,
+.create-userform-container,
+.login-userform-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   height: 200px;
   background-color: #ffae00;
   border-radius: 0.3rem;
   margin-top: 10rem;
   border: 1px solid #2e2e2e;
 }
-.create-userform-title
-{
+
+.create-userform-title {
   text-decoration: none;
-  margin-top:1rem;
+  margin-top: 1rem;
   border-radius: 0.3rem;
   transition: background-color 0.3s ease;
 }
-.create-userform-status
-{
-  margin-top:1rem;
+
+.create-userform-status {
+  margin-top: 1rem;
   border-radius: 0.3rem;
   transition: background-color 0.3s ease;
   background-color: #1900ff;
-  color:white;
+  color: white;
 }
-.menu
-{
-  display:flex;
+
+.menu {
+  display: flex;
   flex-direction: row;
-  list-style:none;
+  list-style: none;
   justify-content: space-between;
-  padding:5px;
+  padding: 5px;
   background-color: #2e2e2e;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
-.menu li a 
-{
+
+.menu li a {
   text-decoration: none;
   color: rgb(206, 205, 205);
   background-color: #646464;
-  padding:5px;
+  padding: 5px;
   border-radius: 10px;
 
 }
-.menu li:hover
-{
-  transform:scale(1.1)
+
+.menu li:hover {
+  transform: scale(1.1)
 }
-.dashboard-container, .log-btn
-{
-  margin:10px;
-  padding:5px;
+
+.dashboard-container,
+.log-btn {
+  margin: 10px;
+  padding: 5px;
 }
-.messages
-{
-  margin:30px;
+
+.messages {
+  margin: 30px;
 }
-.portrait
-{
-  margin:2px;
-  width:200px;
-  height:200px;
+
+.portrait {
+  margin: 2px;
+  width: 200px;
+  height: 200px;
   border: 2px solid black;
 }
-.singleportrait
-{
-  position:relative;
+.singleportrait {
+  position: relative;
 }
-.skillSpan
-{
-  display:block;
+
+.skillSpan {
+  padding: 10px;
+  display: block;
   overflow-wrap: anywhere;
-  width:100%;
+  width: 100%;
 }
-.classBtnNext
-{
-  padding:10px;
-  background-color:#ffc400;
-  position:fixed;
-  bottom:0%;
-  right:680px;
+
+.nameTxt,
+.genderContainer {
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #5441ff;
+  border: #1d1d1d 2px solid
 }
-.singleClassCard
-{
-  position:relative;
+
+.nameTxt:hover,
+.genderContainer:hover {
+  background-color: #9285ff;
+}
+
+.proficiencyParent,
+.equipParentContainer,
+.featureParent {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: #1d1d1d 2px solid;
+  background-color: rgba(252, 180, 26, 0.4);
+}
+
+.equipmentParent,
+.toolParent,
+.skillParent2 {
+  padding: 10px;
+  border-radius: 10px;
+  border: #1900ff solid 2px;
+  margin-bottom: 10px;
+}
+
+.classBtnNext {
+  padding: 10px;
+  background-color: #ffc400;
+  position: fixed;
+  bottom: 0%;
+  right: 680px;
+}
+
+.singleClassCard {
+  position: relative;
   margin: 10px;
   margin-left: 20px;
   margin-bottom: 40px;
@@ -134,280 +174,390 @@ header{
   width: 400px;
   height: auto;
 }
-.selected
-{
-  display:block;
-  transform:scale(1.4);
+
+.selected {
+  display: block;
+  transform: scale(1.4);
   transition: ease-in;
   transition-duration: 0.5s;
   border: 2px solid gold;
-  width:550px;
-  height:550px;
-  margin-top:50px;
+  width: 550px;
+  height: 550px;
+  margin-top: 50px;
 }
-.portrait:hover
-{
+
+.portrait:hover {
   transform: scale(1.1);
 }
-.portraitcontainer,.racecontainer
-{
-  display:flex;
+
+.portraitcontainer,
+.racecontainer {
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
-.x-portrait
-{
-  position:absolute;
+
+.x-gender {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 40px;
+}
+
+.x-portrait {
+  position: absolute;
   top: -25px;
   right: -100px;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
 }
-.x-class
-{
-  position:absolute;
+
+.x-class {
+  position: absolute;
   top: 0px;
   right: 0px;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
 }
-.x-race
-{
-  position:absolute;
+
+.x-race {
+  position: absolute;
   top: 15px;
   right: 15px;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
 }
-.x
-{
-  position:absolute;
+
+.x {
+  position: absolute;
   top: -40px;
   right: -90px;
-  width:40px;
-  height:40px;
+  width: 40px;
+  height: 40px;
 }
-.x:hover, .x-race:hover, .x-portrait:hover, .x-class:hover, .genderBtn:hover
-{
-  transform:scale(1.1);
+
+.x:hover,
+.x-race:hover,
+.x-portrait:hover,
+.x-class:hover,
+.genderBtn:hover {
+  transform: scale(1.1);
 }
-.selected-container
-{
-  position:relative;
+
+.selected-container {
+  position: relative;
   justify-content: center;
-  margin-top:6%;
+  margin-top: 6%;
 
 }
-.chooseportrait-link
-{
-   position: absolute;
-   bottom:-100px;
-   left:-100px;
+
+.chooseportrait-link {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
 }
-.chooseportrait-link button
-{
-   padding:10px;
+
+.chooseportrait-link button {
+  padding: 10px;
 }
-.selected-container-parent
-{
-  display:flex;
+
+.selected-container-parent {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.raceBtn
-{
-  padding:10px;
-  margin-bottom:10px;
+
+.raceBtn {
+  padding: 10px;
+  margin-bottom: 10px;
   width: 100%;
   background-color: #9285ff;
   border: 2px black solid;
-  cursor:pointer;
+  cursor: pointer;
 }
-.raceCard:hover
-{
+
+.raceCard:hover {
   background-color: rgb(160, 149, 253);
   transform: scale(1.1);
-  cursor:pointer;
+  cursor: pointer;
 }
-.raceCard-info:hover, .singleClassCard:hover
-{
+
+.raceCard-info:hover,
+.singleClassCard:hover,
+.skillParent:hover {
   background-color: rgb(160, 149, 253);
-  cursor:pointer;
+  cursor: pointer;
 }
-.racecontainer a
-{
+
+.racecontainer a {
   text-decoration: none;
-  color:#1d1d1d
+  color: #1d1d1d
 }
-.genderBtn
-{
-  padding:10px;
+
+.genderBtn {
+  cursor: pointer;
+  padding: 10px;
 }
-.characterbtn
-{
-  margin-top:40px;
-  padding:10px;
+
+.genderBtn2 {
+  background-color: #5441ff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: #1d1d1d 2px solid;
 }
-.raceCard-info
-{
-  margin:10px;
-  margin-left:20px;
-  margin-bottom:40px;
-  padding:10px;
+
+.genderBtn2:hover {
+  background-color: #9285ff;
+}
+
+.characterbtn {
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.raceCard-info {
+  margin: 10px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
   background-color: #7768ff;
   border: 2px black solid;
-  width:400px;
-  height:auto;  
+  width: 400px;
+  height: auto;
 }
-.classCard, .raceCard 
-{
-  margin:10px;
-  margin-left:20px;
-  padding:10px;
+
+.classCard,
+.raceCard,
+.skillParent {
+  margin: 10px;
+  margin-left: 20px;
+  padding: 10px;
   background-color: #7768ff;
   border: 2px black solid;
-  width:400px;
-  height:auto;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
 }
-.classCard:hover
-{
-  transform:scale(1.1);
+
+.classCard:hover {
+  transform: scale(1.1);
   background-color: #5441ff;
   cursor: pointer;
 }
-.classCardParent1 a 
-{
+
+.classCardParent1 a {
   text-decoration: none;
-  color:#1d1d1d
+  color: #1d1d1d
 }
-.classCardParent{
-  display:flex;
+
+.classCardParent {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
 }
-.classCardParent1
-{
-  display:flex;
+
+.classCardParent1 {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.classes-h2
-{
+
+.classes-h2 {
   display: flex;
-  padding:10px;
+  padding: 10px;
   background-color: #7768ff;
   border: 2px rgb(29, 28, 28) solid;
-  width:100vw;
-  align-items:center;
+  width: 100vw;
+  align-items: center;
   justify-content: center;
 }
-.classesParent
-{
-  display:flex;
+
+.classesParent {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.selectionbtn
-{
+
+.selectionbtn {
+  margin-top: 0px;
+  padding: 10px;
+}
+.selectionbtnPortrait{
   margin-top:120px;
-  padding:10px;
+  padding: 10px;
 }
-.portrait-containerparent
+
+.item {
+  flex: 0 0 auto;
+}
+
+.characterInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 90vw;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.character-containerparent h2
 {
-  display:flex;
+  margin-bottom: 10px;
+}
+.character-containerparent {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top:2%;
-  width:90vw;
+  margin-top: 2%;
+  width: 90vw;
 }
-.galleryimg-minimize
-{
-  width:200px;
-  height:auto;
+
+.character-containerparent a {
+  text-decoration: none;
+  color: #1d1d1d
+}
+
+.galleryimg-minimize {
+  width: 200px;
+  height: auto;
   border: 10px solid black
 }
+
 /* Responsive design */
 @media(max-width: 800px) {
-  .characterbtn
-  {
-    margin-top:60px;
+  .classCardParent1 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 90vw;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
-  .selected
-  {
-    width:300px;
-    height:300px;
+  .classCardParent1 a {
+    flex: 0 0 auto;
   }
-  .x
-{
-  position:absolute;
-  top: 10px;
-  right: -40px;
-  width:40px;
-  height:40px;
-}
-.chooseportrait-link
-{
-   position: absolute;
-   bottom:-10px;
-   left:-10px;
-}
+
+  .portraitcontainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 90vw;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .characterbtn {
+    margin-top: 60px;
+  }
+
+  .selected {
+    width: 300px;
+    height: 300px;
+  }
+
+  .x {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .chooseportrait-link {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+  }
 }
 
 @media(max-width: 500px) {
-
-  .selected
-  {
-    width:150px;
-    height:150px;
+.classCard,
+.raceCard,
+.skillParent {
+  margin: 10px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 90vw;
+  height: auto;
+  border-radius: 10px;
+}
+.raceCard-info
+{
+  width:90vw;
+}
+.x-gender, .x,.x-class,.x-race,.x-portrait
+{
+  width:20px;
+  height:auto;
+  top:-2px;
+  right:-2px;
+}
+  .selected {
+    width: 90vw;
+    height: auto;
+    transform: scale(1.0);
+    margin-top:0px;
   }
-  .x
-{
-  position:absolute;
-  top: 30px;
-  right: -20px;
-  width:40px;
-  height:40px;
+
+  .x {
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .chooseportrait-link {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+  }
+
+  .characterbtn {
+    margin-top: 10px;
+  }
 }
-.chooseportrait-link
-{
-   position: absolute;
-   bottom:-10px;
-   left:-10px;
-}
-.characterbtn
-{
-  margin-top:10px;
-}
-}
+
 @media(max-width: 250px) {
 
-  .selected
-  {
-    width:120px;
-    height:120px;
+  .selected {
+    width: 120px;
+    height: 120px;
   }
-  .x
-{
-  position:absolute;
-  top: 30px;
-  right: -20px;
-  width:25px;
-  height:25px;
-}
-.chooseportrait-link
-{
-   position: absolute;
-   bottom:-10px;
-   left:-10px;
-}
-.characterbtn
-{
-  margin-top:10px;
-}
+
+  .x {
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .chooseportrait-link {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+  }
+
+  .characterbtn {
+    margin-top: 10px;
+  }
 }

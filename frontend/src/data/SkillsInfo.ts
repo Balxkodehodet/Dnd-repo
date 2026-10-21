@@ -31,7 +31,7 @@ export const SkillsInfo = [{
 {
             skill: "Insight",
             ability: "Wisdom",
-            information: "Discern a person’s mood and intentions.",
+            information: "Discern a person's mood and intentions.",
 },          
 {  
             skill: "Intimidation",
@@ -56,7 +56,7 @@ export const SkillsInfo = [{
 {
             skill: "Perception",
             ability: "Wisdom",
-            information: "Using a combination of senses, notice something that’s easy to miss."
+            information: "Using a combination of senses, notice something that's easy to miss."
 },
 {
             skill: "Performance",

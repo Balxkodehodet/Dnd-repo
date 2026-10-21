@@ -5,29 +5,38 @@ import { useParams, Link } from 'react-router-dom'
 import CreateSlug from '../CreateSlug.tsx'
 import x from '../../assets/close.png'
 import { useState } from 'react';
+//import useGetData from '../../Hooks/useGetData.tsx';
+import { SkillsInfo } from '../../data/SkillsInfo.ts';
 
 export default function ClassesComponent({ singleClass, stage }: classProps): React.JSX.Element {
 
     const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === singleClass);
     const { nameId, genderId, raceId, portraitId } = useParams();
     const [classStage, setClassStage] = useState<Number | null>(null)
+    const [skill, setSkill] = useState<string | undefined>(undefined);
+    const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === skill)
+    //let skillUrl: string | null = skill ? `https://www.dnd5eapi.co/api/2024/skills/${skill?.toLowerCase()}` : null;
+
+    //let {data: skillData, isLoading: skillLoading, isError: skillError} = useGetData(skillUrl)
+
+
 
     return (
         <>
 
             {!selectedClass && Classes.map((characterClass, index) => {
                 return (
-                    <>
-                        <Link key={index} className="classCard-link" to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portraitId}/${CreateSlug(characterClass.class)}`}>
-                            <div className="classCard">
-                                <h2>{characterClass.class}</h2>
-                                <p>Likes: {characterClass.likes}</p>
-                                <p>Primary Abillity: {characterClass.primaryAbility}</p>
-                                <p>Complexity: {characterClass.Complexity}</p>
 
-                            </div>
-                        </Link>
-                    </>
+                    <Link key={index} className="classCard-link" to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portraitId}/${CreateSlug(characterClass.class)}`}>
+                        <div className="classCard">
+                            <h2>{characterClass.class}</h2>
+                            <p>Likes: {characterClass.likes}</p>
+                            <p>Primary Abillity: {characterClass.primaryAbility}</p>
+                            <p>Complexity: {characterClass.Complexity}</p>
+
+                        </div>
+                    </Link>
+
                 )
             })}
             {selectedClass &&
@@ -40,12 +49,19 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
                             <p>Primary Abillity: {selectedClass.primaryAbility}</p>
                             <p>Complexity: {selectedClass.Complexity}</p>
                             <p>Hitpoint Dice pr level: {selectedClass.HitPointDie}</p>
-                            <p>Proficiencies: <br></br>-Armor: {selectedClass.Proficiencies.armor.join("/")}
+                            <div className="proficiencyParent">Proficiencies: <br></br>-Armor: {selectedClass.Proficiencies.armor.join("/")}
                                 <br></br>-Saving Throws: {selectedClass.Proficiencies.savingThrows.join("/")}
                                 <br></br>-Shields: {selectedClass.Proficiencies.shields ? "Has shield training" : "No shield training"}
-                                <br></br>-Weapons: {selectedClass.Proficiencies.weapon.map((wep) => { return (<><span key={wep.category}>{wep.category} - {wep.requiredProperty ? wep.requiredProperty : ""}</span></>) })}
+                                <br></br>-Weapons: {selectedClass.Proficiencies.weapon.map((wep, index) => {
+                                    return (<div key={`${wep.category}-${index}`}>{wep.category} -
+                                        {wep.requiredProperty && Array.isArray(wep.requiredProperty) ?
+                                            wep.requiredProperty.map((reqprop) => <div className="equipmentParent">Weapon Property Required: {reqprop}</div>) :
+                                            wep.requiredProperty ?
+                                                <div className="equipmentParent">Required: {wep.requiredProperty}</div>
+                                                : null}</div>)
+                                })}
                                 <br></br>-Skills: Choose {selectedClass.Proficiencies.skills.choose} from:
-                                <br></br><span className="skillSpan">{selectedClass.Proficiencies.skills.options.join(",")}</span>
+                                <br></br><span className="skillSpan">{selectedClass.Proficiencies.skills.options.map((skill, index) => <div key={`${skill}-${index}`} className="skillParent2">{skill}</div>)}</span>
                                 {selectedClass.Proficiencies.tool && (Array.isArray(selectedClass.Proficiencies.tool) ? selectedClass.Proficiencies.tool?.map((tool, index) => (
 
                                     <span key={`${tool.toolName}-${index}`}>{tool.toolName}</span>
@@ -54,7 +70,7 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
                                     - {selectedClass.Proficiencies.tool?.choose ? "Choose - " + selectedClass.Proficiencies.tool?.choose : ""}<br></br>
                                     - {selectedClass.Proficiencies.tool?.options && (<>
                                         {selectedClass.Proficiencies.tool.options.map((tool, index) => (
-                                            <><br></br><span key={`${tool}-${index}`}>{tool}</span></>
+                                            <div className="toolParent" key={`${tool}-${index}`}><br></br>{tool}</div>
                                         ))}
                                     </>)}
                                 </span>
@@ -62,23 +78,29 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
                                 )}
 
 
-                            </p>
-                            <p>Choices of Starting Equipment: A:{Array.isArray(selectedClass.StartingEquipment.Choose.A) && selectedClass.StartingEquipment.Choose.A.join(" - ")}
-                                <br></br>  B:{selectedClass.StartingEquipment.Choose.B}
+
+                            </div>
+                            <div className="equipParentContainer">Choices of Starting Equipment:<br></br><strong> A:</strong>{Array.isArray(selectedClass.StartingEquipment.Choose.A) && selectedClass.StartingEquipment.Choose.A.map((eq, index) => <div key={`${eq}-${index}`} className="equipmentParent">{eq}</div>)}
+                                <br></br> <strong> B:</strong><br></br>{Array.isArray(selectedClass.StartingEquipment.Choose.B) ? selectedClass.StartingEquipment.Choose.B.map((eq) => <div className="equipmentParent">{eq}</div>) : <div className="equipmentParent">{selectedClass.StartingEquipment.Choose.B}</div>}
                                 {selectedClass.StartingEquipment.Choose.C && <><span>C:{selectedClass.StartingEquipment.Choose.C}</span></>}
-                            </p>
+
+                            </div>
                             <div><h2>Features</h2>{selectedClass.Features.map((feature, index) =>
                             (
-                                <>
-                                    <h3 key={`${feature.name}-${index}`}>{feature.name}</h3><br></br>
-                                        <h3>Level: {feature.level}</h3><br></br><span>{feature.description}</span><br></br><br></br>
-                                </>
+
+                                <div key={`${feature.name}-${index}`} className="featureParent">
+                                    <h3>{feature.name}</h3><br></br>
+                                    <h3>Level: {feature.level}</h3><br></br><span>{feature.description}</span><br></br><br></br>
+                                </div>
+
                             )
                             )
                             }
                             </div>
                             <button className="classBtnNext" onClick={() => setClassStage(1)}>Next</button>
                         </div>}
+                    {!skill && classStage === 1 && <>{selectedClass.Proficiencies.skills.options.map((skill, index) => <div onClick={() => setSkill(skill.toLowerCase())} key={`${skill}-${index}`} className='skillParent'>{skill}</div>)}</>}
+                    {skill && classStage === 1 && singleSkill && <div className='skillParent'>Skill:{singleSkill.skill}<br></br>Ability:{singleSkill.ability}<br></br>Info:{singleSkill.information}</div>}
                 </>
             }
         </>)

@@ -1,6 +1,7 @@
 import type { classData } from '../types/ClassData.ts'
 import { MusicalInstruments } from './MusicalInstruments.ts'
 import { ArtisanTools } from './ArtisanTools.ts'
+import { WeaponsObject } from './Weapons.ts'
 
 export const Classes: classData[] = [{
     class: "Barbarian",
@@ -76,6 +77,7 @@ export const Classes: classData[] = [{
                         Each time the Rage is extended, it lasts until the end 
                         of your next turn. You can maintain a Rage for up to 
                         10 minutes.`,
+        type: "Bonus Action"
     },
     {
         level: 1,
@@ -83,7 +85,8 @@ export const Classes: classData[] = [{
         description: `While you aren't wearing any armor, your base Ar
                         mor Class equals 10 plus your Dexterity and Consti
                         tution modifiers. You can use a Shield and still gain 
-                        this benefit.`
+                        this benefit.`,
+        type: "Passive"
     },
     {
         level: 1,
@@ -97,7 +100,12 @@ export const Classes: classData[] = [{
                         When you reach certain Barbarian levels, you gain 
                         the ability to use the mastery properties of more 
                         kinds of weapons, as shown in the Weapon Mastery 
-                        column of the Barbarian Features table.`
+                        column of the Barbarian Features table.`,
+        type: "Choice",
+        choice:{
+            choose: 2,
+            options: WeaponsObject
+        }
     },
     {
         level: 2,
@@ -105,7 +113,8 @@ export const Classes: classData[] = [{
         description: `You gain an uncanny sense of when things aren't as 
                     they should be, giving you an edge when you dodge 
                     perils. You have Advantage on Dexterity saving 
-                    throws unless you have the Incapacitated condition.`
+                    throws unless you have the Incapacitated condition.`,
+        type: "Passive"
     },
     {
         level: 2,
@@ -114,8 +123,10 @@ export const Classes: classData[] = [{
                     tack with increased ferocity. When you make your 
                     first attack roll on your turn, you can decide to at
                     tack recklessly. Doing so gives you Advantage on at
-                    tack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage 
-                    during that time.`
+                    tack rolls using Strength until the start of your next turn, 
+                    but attack rolls against you have Advantage 
+                    during that time.`,
+        type: "Action"
     },
     {
         level: 3,
@@ -126,7 +137,8 @@ export const Classes: classData[] = [{
                     that grants you features at certain Barbarian levels. 
                     For the rest of your career, you gain each of your 
                     subclass's features that are of your Barbarian level 
-                    or lower.`
+                    or lower.`,
+        type: "Choice"
     },
     {
         level: 3,
@@ -141,7 +153,8 @@ export const Classes: classData[] = [{
                     ent ability: Acrobatics, Intimidation, Perception, 
                     Stealth, or Survival. When you use this ability, your 
                     Strength represents primal power coursing through 
-                    you, honing your agility, bearing, and senses.`
+                    you, honing your agility, bearing, and senses.`,
+        type: "Choice"
     },
     {
         level: 4,
@@ -149,31 +162,36 @@ export const Classes: classData[] = [{
         description: `You gain the Ability Score Improvement feat (see 
                     “Feats”) or another feat of your choice for which you 
                     qualify. You gain this feature again at Barbarian lev
-                    els 8, 12, and 16.`
+                    els 8, 12, and 16.`,
+        type: "Choice"
     },
     {
         level: 5,
         name: "Extra Attack",
         description: `You can attack twice instead of once whenever you 
-                        take the Attack action on your turn.`
+                        take the Attack action on your turn.`,
+        type: "Passive"
     },
     {
         level: 5,
         name: "Fast Movement",
         description: `Your speed increases by 10 feet while you aren't 
-                        wearing Heavy armor.`
+                        wearing Heavy armor.`,
+        type: "Passive"
     },
     {
         level: 7,
         name: "Feral Instinct",
         description: `Your instincts are so honed that you have Advan-
-                        tage on Initiative rolls.`
+                        tage on Initiative rolls.`,
+        type: "Passive"
     },
     {
         level: 7,
         name: "Instinctive Pounce",
         description: `As part of the Bonus Action you take to enter your 
-                        Rage, you can move up to half your Speed.`
+                        Rage, you can move up to half your Speed.`,
+        type: "Triggered"
     },
     {
         level: 9,
@@ -192,7 +210,8 @@ export const Classes: classData[] = [{
                         provoking Opportunity Attacks. Hamstring Blow. The target's Speed is reduced by 
                         15 feet until the start of your next turn. A target can 
                         be affected by only one Hamstring Blow at a time—
-                        the most recent one.`
+                        the most recent one.`,
+        type: ["Triggered", "Choice"]
     },
     {
         level: 11,
@@ -205,7 +224,8 @@ export const Classes: classData[] = [{
                         twice your Barbarian level.
                         Each time you use this feature after the first, the 
                         DC increases by 5. When you finish a Short or Long 
-                        Rest, the DC resets to 10.`
+                        Rest, the DC resets to 10.`,
+        type: "Passive"
     },
     {
         level: 13,
@@ -220,7 +240,8 @@ export const Classes: classData[] = [{
                         Sundering Blow. Before the start of your next 
                         turn, the next attack roll made by another creature 
                         against the target gains a +5 bonus to the roll. An 
-                        attack roll can gain only one Sundering Blow bonus.`
+                        attack roll can gain only one Sundering Blow bonus.`,
+        type: ["Triggered", "Choice"]
     },
     {
         level: 15,
@@ -233,7 +254,8 @@ export const Classes: classData[] = [{
                         for 10 minutes without you needing to do anything 
                         to extend it from round to round. Your Rage ends 
                         early if you have the Unconscious condition (not just 
-                        the Incapacitated condition) or don Heavy armor.`
+                        the Incapacitated condition) or don Heavy armor.`,
+        type: ["Triggered", "Passive"]
     },
     {
         level: 17,
@@ -241,27 +263,31 @@ export const Classes: classData[] = [{
         description: `The extra damage of your Brutal Strike increases to 
                         2d10. In addition, you can use two different Brutal 
                         Strike effects whenever you use your Brutal Strike 
-                        feature.`
+                        feature.`,
+        type: "Passive"
     },
     {
         level: 18,
         name: "Indomitable Might",
         description: `If your total for a Strength check or Strength saving 
                         throw is less than your Strength score, you can use 
-                        that score in place of the total.`
+                        that score in place of the total.`,
+        type: "Passive"
     },
     {
         level: 19,
         name: "Epic Boon",
         description: `You gain an Epic Boon feat (see “Feats”) or another 
                         feat of your choice for which you qualify. Boon of 
-                        Irresistible Offense is recommended.`
+                        Irresistible Offense is recommended.`,
+        type: "Choice"
     },
     {
         level: 20,
         name: "Primal Champion",
         description: `You embody primal power. Your Strength and Constitution 
-                        scores increase by 4, to a maximum of 25.`
+                        scores increase by 4, to a maximum of 25.`,
+        type: "Passive"
     },
     ],
     Subclass: {
@@ -281,7 +307,8 @@ export const Classes: classData[] = [{
                             mine the extra damage, roll a number of d6s equal 
                             to your Rage Damage bonus, and add them together. 
                             The damage has the same type as the weapon or 
-                            Unarmed Strike used for the attack.`
+                            Unarmed Strike used for the attack.`,
+            type: "Passive"
         },
         {
             level: 6,
@@ -289,7 +316,8 @@ export const Classes: classData[] = [{
             description: `You have Immunity to the Charmed and Fright
                             ened conditions while your Rage is active. If you're 
                             Charmed or Frightened when you enter your Rage, 
-                            the condition ends on you.`
+                            the condition ends on you.`,
+            type: "Passive"
         },
         {
             level: 10,
@@ -297,7 +325,8 @@ export const Classes: classData[] = [{
             description: `When you take damage from a creature that is 
                             within 5 feet of you, you can take a Reaction to 
                             make one melee attack against that creature, using 
-                            a weapon or an Unarmed Strike.`
+                            a weapon or an Unarmed Strike.`,
+            type: "Reaction"
         },
         {
             level: 14,
@@ -315,7 +344,8 @@ export const Classes: classData[] = [{
                             Once you use this feature, you can't use it again 
                             until you finish a Long Rest unless you expend a use 
                             of your Rage (no action required) to restore your 
-                            use of it.`
+                            use of it.`,
+            type: ["Bonus Action","Choice"]
         },
         ]
     }
@@ -376,8 +406,8 @@ export const Classes: classData[] = [{
                             sented by your Bardic Inspiration die, which is a d6.
                             Using Bardic Inspiration. As a Bonus Action, you 
                             can inspire another creature within 60 feet of your
-                            self who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can 
-                            have only one Bardic Inspiration die at a time.
+                            self who can see or hear you. That creature gains one of your Bardic Inspiration dice. 
+                            A creature can have only one Bardic Inspiration die at a time.
                             Once within the next hour when the creature fails 
                             a D20 Test, the creature can roll the Bardic Inspira
                             tion die and add the number rolled to the d20, po
@@ -391,7 +421,8 @@ export const Classes: classData[] = [{
                             changes when you reach certain Bard levels, as 
                             shown in the Bardic Die column of the Bard Fea
                             tures table. The die becomes a d8 at level 5, a d10 at 
-                            level 10, and a d12 at level 15`
+                            level 10, and a d12 at level 15`,
+            type: ["Bonus Action"]
         },
         {
             level: 1,
@@ -428,64 +459,14 @@ export const Classes: classData[] = [{
                             Bard spell list until the number of spells on your list 
                             matches the number on the table. The chosen spells 
                             must be of a level for which you have spell slots. 
-                            For example, if you're a level 3 Bard, your list of prepared spells can include six spells of levels 1 and 
-                            2 in any combination.
+                            For example, if you're a level 3 Bard, your list of prepared spells 
+                            can include six spells of levels 1 and 2 in any combination.
                             If another Bard feature gives you spells that you 
                             always have prepared, those spells don't count 
                             against the number of spells you can prepare with 
                             this feature, but those spells otherwise count as 
-                            Bard spells for you.`
-        },
-        {
-            level: 1,
-            name: "Spellcasting",
-            description: `You have learned to cast spells through your bardic 
-                            arts. See “Spells” for the rules on spellcasting. The 
-                            information below details how you use those rules 
-                            with Bard spells, which appear in the Bard spell list 
-                            later in the class's description.
-                            Cantrips. You know two cantrips of your choice 
-                            from the Bard spell list. Dancing Lights and Vicious 
-                            Mockery are recommended.
-                            Whenever you gain a Bard level, you can replace 
-                            one of your cantrips with another cantrip of your 
-                            choice from the Bard spell list.
-                            When you reach Bard levels 4 and 10, you learn 
-                            another cantrip of your choice from the Bard spell 
-                            list, as shown in the Cantrips column of the Bard 
-                            Features table.
-                            Spell Slots. The Bard Features table shows how 
-                            many spell slots you have to cast your level 1+ 
-                            spells. You regain all expended slots when you fin
-                            ish a Long Rest.
-                            Prepared Spells of Level 1+. You prepare the 
-                            list of level 1+ spells that are available for you to 
-                            cast with this feature. To start, choose four level 1 
-                            spells from the Bard spell list. Charm Person, Color 
-                            Spray, Dissonant Whispers, and Healing Word are 
-                            recommended.
-                            The number of spells on your list increases as you 
-                            gain Bard levels, as shown in the Prepared Spells 
-                            column of the Bard Features table. Whenever that 
-                            number increases, choose additional spells from the 
-                            Bard spell list until the number of spells on your list 
-                            matches the number on the table. The chosen spells 
-                            must be of a level for which you have spell slots. 
-                            For example, if you're a level 3 Bard, your list of prepared spells can include six spells of levels 1 and 
-                            2 in any combination.
-                            If another Bard feature gives you spells that you 
-                            always have prepared, those spells don't count 
-                            against the number of spells you can prepare with 
-                            this feature, but those spells otherwise count as 
-                            Bard spells for you.
-                            Changing Your Prepared Spells. Whenever you 
-                            gain a Bard level, you can replace one spell on your 
-                            list with another Bard spell for which you have spell 
-                            slots.
-                            Spellcasting Ability. Charisma is your spellcast
-                            ing ability for your Bard spells.
-                            Spellcasting Focus. You can use a Musical Instru
-                            ment as a Spellcasting Focus for your Bard spells.`
+                            Bard spells for you.`,
+            type:["Passive"]
         },
         {
             level: 2,
@@ -495,7 +476,8 @@ export const Classes: classData[] = [{
                             and Persuasion are recommended if you have profi
                             ciency in them.
                             At Bard level 9, you gain Expertise in two more of 
-                            your skill proficiencies of your choice.`
+                            your skill proficiencies of your choice.`,
+            type: ["Choice"]
         },
         {
             level: 2,
@@ -506,7 +488,8 @@ export const Classes: classData[] = [{
                             use your Proficiency Bonus.
                             For example, if you make a Strength (Athletics) 
                             check and lack Athletics proficiency, you can add 
-                            half your Proficiency Bonus to the check.`
+                            half your Proficiency Bonus to the check.`,
+            type: ["Passive", "Choice"]
         },
         {
             level: 3,
@@ -516,7 +499,8 @@ export const Classes: classData[] = [{
                         tion. A subclass is a specialization that grants you 
                         features at certain Bard levels. For the rest of your 
                         career, you gain each of your subclass's features 
-                        that are of your Bard level or lower.`
+                        that are of your Bard level or lower.`,
+            type: ["Choice"]
         },
         {
             level: 4,
@@ -524,7 +508,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Bard levels 8, 
-                            12, and 16.`
+                            12, and 16.`,
+            type: ["Choice"]
         },
         {
             level: 5,
@@ -533,7 +518,8 @@ export const Classes: classData[] = [{
                             spiration when you finish a Short or Long Rest.
                             In addition, you can expend a spell slot (no action 
                             required) to regain one expended use of Bardic 
-                            Inspiration.`
+                            Inspiration.`,
+            type: ["Passive"]
         },
         {
             level: 7,
@@ -543,7 +529,8 @@ export const Classes: classData[] = [{
                             within 30 feet of you fails a saving throw against an 
                             effect that applies the Charmed or Frightened con
                             dition, you can take a Reaction to cause the save to 
-                            be rerolled, and the new roll has Advantage.`
+                            be rerolled, and the new roll has Advantage.`,
+            type: ["Triggered", "Choice","Reaction"]
         },
         {
             level: 10,
@@ -557,21 +544,24 @@ export const Classes: classData[] = [{
                             count as Bard spells for you (see a class's section for 
                             its spell list). In addition, whenever you replace a 
                             spell prepared for this class, you can replace it with 
-                            a spell from those lists.`
+                            a spell from those lists.`,
+            type: ["Passive", "Choice"]
         },
         {
             level: 18,
             name: "Superior Inspiration",
             description: `When you roll Initiative, you regain expended uses 
                             of Bardic Inspiration until you have two if you have 
-                            fewer than that.`
+                            fewer than that.`,
+            type: ["Passive"]
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Spell Recall is recommended.`
+                            Spell Recall is recommended.`,
+            type: "Choice"
         },
         {
             level: 20,
@@ -581,7 +571,8 @@ export const Classes: classData[] = [{
                             have the Power Word Heal and Power Word Kill 
                             spells prepared. When you cast either spell, you can 
                             target a second creature with it if that creature is 
-                            within 10 feet of the first target.`
+                            within 10 feet of the first target.`,
+            type: ["Passive"]
         },
     ],
     Subclass: {
@@ -598,7 +589,8 @@ export const Classes: classData[] = [{
         features: [{
             level: 3,
             name: "Bonus Proficiencies",
-            description: "You gain proficiency with three skills of your choice."
+            description: "You gain proficiency with three skills of your choice.",
+            type:["Choice"]
         },
         {
             level: 3,
@@ -612,7 +604,8 @@ export const Classes: classData[] = [{
                                     Inspiration; roll your Bardic Inspiration die, and 
                                     subtract the number rolled from the creature's roll, 
                                     reducing the damage or potentially turning the suc
-                                    cess into a failure.`
+                                    cess into a failure.`,
+            type: ["Reaction"]
         },
         {
             level: 6,
@@ -626,7 +619,8 @@ export const Classes: classData[] = [{
                                 You always have the chosen spells prepared, and 
                                 whenever you gain a Bard level, you can replace one 
                                 of the spells with another spell that meets these 
-                                requirements.`
+                                requirements.`,
+            type: ["Choice"]
         },
         {
             level: 14,
@@ -636,7 +630,8 @@ export const Classes: classData[] = [{
                                     roll the Bardic Inspiration die, and add the number 
                                     rolled to the d20, potentially turning a failure into 
                                     a success. On a failure, the Bardic Inspiration isn't 
-                                    expended`
+                                    expended`,
+            type: ["Choice", "Triggered"]
         }
         ]
     },
@@ -720,7 +715,8 @@ export const Classes: classData[] = [{
                         Spellcasting Ability. Wisdom is your spellcasting 
                         ability for your Cleric spells.
                         Spellcasting Focus. You can use a Holy Symbol as 
-                        a Spellcasting Focus for your Cleric spells.`
+                        a Spellcasting Focus for your Cleric spells.`,
+        type: "Passive"
     },
     {
         level: 1,
@@ -734,7 +730,8 @@ export const Classes: classData[] = [{
                         the Cleric spell list. In addition, your mystical con
                         nection to the divine gives you a bonus to your 
                         Intelligence (Arcana or Religion) checks. The bonus 
-                        equals your Wisdom modifier (minimum of +1).`
+                        equals your Wisdom modifier (minimum of +1).`,
+        type:["Choice"]
     },
     {
         level: 2,
@@ -777,7 +774,8 @@ export const Classes: classData[] = [{
                         to move as far from you as it can on its turns. This 
                         effect ends early on the creature if it takes any dam
                         age, if you have the Incapacitated condition, or if 
-                        you die.`
+                        you die.`,
+        type: ["Action"]
     },
     {
         level: 3,
@@ -787,7 +785,8 @@ export const Classes: classData[] = [{
                         scription. A subclass is a specialization that grants 
                         you features at certain Cleric levels. For the rest of 
                         your career, you gain each of your subclass's fea
-                        tures that are of your Cleric level or lower.`
+                        tures that are of your Cleric level or lower.`,
+        type: ["Choice"]
     },
     {
         level: 4,
@@ -795,7 +794,8 @@ export const Classes: classData[] = [{
         description: `You gain the Ability Score Improvement feat (see 
                         “Feats”) or another feat of your choice for which you 
                         qualify. You gain this feature again at Cleric levels 8, 
-                        12, and 16.`
+                        12, and 16.`,
+        type: ["Choice"]
     },
     {
         level: 5,
@@ -805,7 +805,8 @@ export const Classes: classData[] = [{
                         (minimum of 1d8) and add the rolls together. Each 
                         Undead that fails its saving throw against that use 
                         of Turn Undead takes Radiant damage equal to the 
-                        roll's total. This damage doesn't end the turn effect.`
+                        roll's total. This damage doesn't end the turn effect.`,
+        type: ["Triggered", "Passive"]
     },
     {
         level: 7,
@@ -819,7 +820,8 @@ export const Classes: classData[] = [{
                         weapon, you can cause the target to take an extra 
                         1d8 Necrotic or Radiant damage (your choice).
                         Potent Spellcasting. Add your Wisdom modifier 
-                        to the damage you deal with any Cleric cantrip.`
+                        to the damage you deal with any Cleric cantrip.`,
+        type: ["Choice", "Passive"]
     },
     {
         level: 10,
@@ -830,7 +832,8 @@ export const Classes: classData[] = [{
                         Reaction to cast. As part of the same action, you cast 
                         that spell without expending a spell slot or needing 
                         Material components. You can't use this feature 
-                        again until you finish a Long Rest.`
+                        again until you finish a Long Rest.`,
+        type:["Action"]
     },
     {
         level: 14,
@@ -843,14 +846,16 @@ export const Classes: classData[] = [{
                         trip and deal damage to a creature with it, you can 
                         give vitality to yourself or another creature within 
                         60 feet of yourself, granting a number of Temporary 
-                        Hit Points equal to twice your Wisdom modifier.`
+                        Hit Points equal to twice your Wisdom modifier.`,
+        type: ["Passive"]
     },
     {
         level: 19,
         name: "Epic Boon",
         description: `You gain an Epic Boon feat (see “Feats”) or another 
                         feat of your choice for which you qualify. Boon of 
-                        Fate is recommended.`
+                        Fate is recommended.`,
+        type: ["Choice"]
     },
     {
         level: 20,
@@ -859,7 +864,8 @@ export const Classes: classData[] = [{
                         tion. When you use your Divine Intervention fea
                         ture, you can choose Wish when you select a spell. 
                         If you do so, you can't use Divine Intervention again 
-                        until you finish 2d4 Long Rests.`
+                        until you finish 2d4 Long Rests.`,
+        type: ["Action"]
     },
     ],
     Subclass: {
@@ -883,7 +889,8 @@ export const Classes: classData[] = [{
                             Points to a creature, that creature regains addi
                             tional Hit Points on the turn you cast the spell. The 
                             additional Hit Points equal 2 plus the spell slot's 
-                            level.`
+                            level.`,
+            type: ["Triggered"]
         },
         {
             level: 3,
@@ -892,7 +899,8 @@ export const Classes: classData[] = [{
                             always have certain spells ready. When you reach 
                             a Cleric level specified in the Life Domain Spells 
                             table, you thereafter always have the listed spells 
-                            prepared.`
+                            prepared.`,
+            type: ["Triggered"]
         },
         {
             level: 3,
@@ -904,7 +912,8 @@ export const Classes: classData[] = [{
                             Bloodied creatures within 30 feet of yourself (which 
                             can include you), and divide those Hit Points among 
                             them. This feature can restore a creature to no 
-                            more than half its Hit Point maximum.`
+                            more than half its Hit Point maximum.`,
+            type:["Action"]
         },
         {
             level: 6,
@@ -913,7 +922,8 @@ export const Classes: classData[] = [{
                             well. Immediately after you cast a spell with a spell 
                             slot that restores Hit Points to one or more crea
                             tures other than yourself, you regain Hit Points 
-                            equal to 2 plus the spell slot's level.`
+                            equal to 2 plus the spell slot's level.`,
+            type: ["Triggered"]
         },
         {
             level: 17,
@@ -923,7 +933,8 @@ export const Classes: classData[] = [{
                             nel Divinity, don't roll those dice for the healing; in
                             stead use the highest number possible for each die. 
                             For example, instead of restoring 2d6 Hit Points to a 
-                            creature with a spell, you restore 12.`
+                            creature with a spell, you restore 12.`,
+            type: ["Triggered"]
         },
         ]
     }
@@ -999,7 +1010,8 @@ export const Classes: classData[] = [{
                             Spellcasting Ability. Wisdom is your spellcasting 
                             ability for your Druid spells.
                             Spellcasting Focus. You can use a Druidic Focus 
-                            as a Spellcasting Focus for your Druid spells.`
+                            as a Spellcasting Focus for your Druid spells.`,
+            type:["Passive"]
         },
         {
             level: 1,
@@ -1013,7 +1025,8 @@ export const Classes: classData[] = [{
                             and others who know Druidic automatically spot 
                             such a message. Others spot the message's presence 
                             with a successful DC 15 Intelligence (Investigation) 
-                            check but can't decipher it without magic. `
+                            check but can't decipher it without magic. `,
+            type:["Passive"]
         },
         {
             level: 1,
@@ -1027,7 +1040,8 @@ export const Classes: classData[] = [{
                             Wisdom modifier (minimum bonus of +1).
                             Warden. Trained for battle, you gain proficiency 
                             with Martial weapons and training with Medium 
-                            armor. `
+                            armor. `,
+            type:["Choice"]
         },
         {
             level: 2,
@@ -1093,7 +1107,8 @@ export const Classes: classData[] = [{
                             form, and any equipment that the new form can't 
                             wear must either fall to the ground or merge with 
                             the form. Equipment that merges with the form 
-                            has no effect while you're in that form. `
+                            has no effect while you're in that form. `,
+            type: ["Bonus Action"]
         },
         {
             level: 2,
@@ -1103,7 +1118,8 @@ export const Classes: classData[] = [{
                             expend a spell slot or a use of Wild Shape to cast the 
                             Find Familiar spell without Material components.
                             When you cast the spell in this way, the familiar is 
-                            Fey and disappears when you finish a Long Rest.`
+                            Fey and disappears when you finish a Long Rest.`,
+            type:["Action"]
         },
         {
             level: 3,
@@ -1113,7 +1129,8 @@ export const Classes: classData[] = [{
                             scription. A subclass is a specialization that grants 
                             you features at certain Druid levels. For the rest of 
                             your career, you gain each of your subclass's fea
-                            tures that are of your Druid level or lower.`
+                            tures that are of your Druid level or lower.`,
+            type: ["Choice"]
         },
         {
             level: 4,
@@ -1121,7 +1138,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Druid levels 8, 
-                            12, and 16.`
+                            12, and 16.`,
+            type: ["Choice"]
         },
         {
             level: 5,
@@ -1132,7 +1150,8 @@ export const Classes: classData[] = [{
                             In addition, you can expend one use of Wild Shape 
                             (no action required) to give yourself a level 1 spell 
                             slot, but you can't do so again until you finish a Long 
-                            Rest.`
+                            Rest.`,
+            type:["Choice"]
         },
         {
             level: 7,
@@ -1146,7 +1165,8 @@ export const Classes: classData[] = [{
                             weapon or a Beast form's attack in Wild Shape, you 
                             can cause the target to take an extra 1d8 Cold, Fire, 
                             Lightning, or Thunder damage (choose when you 
-                            hit).`
+                            hit).`,
+            type: ["Choice"]
         },
         {
             level: 15,
@@ -1157,7 +1177,8 @@ export const Classes: classData[] = [{
                             trip with a range of 10 feet or greater, the spell's 
                             range increases by 300 feet.
                             Primal Strike. The extra damage of your Primal 
-                            Strike increases to 2d8.`
+                            Strike increases to 2d8.`,
+            type: ["Passive"]
         },
         {
             level: 18,
@@ -1165,14 +1186,16 @@ export const Classes: classData[] = [{
             description: `While using Wild Shape, you can cast spells in Beast 
                             form, except for any spell that has a Material com
                             ponent with a cost specified or that consumes its 
-                            Material component.`
+                            Material component.`,
+            type: ["Passive"]
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of Di
-                            mensional Travel is recommended.`
+                            mensional Travel is recommended.`,
+            type:["Choice"]
         },
         {
             level: 20,
@@ -1192,7 +1215,8 @@ export const Classes: classData[] = [{
                             so again until you finish a Long Rest.
                             Longevity. The primal magic that you wield 
                             causes you to age more slowly. For every ten years 
-                            that pass, your body ages only one year.`
+                            that pass, your body ages only one year.`,
+            type:["Passive"]
         },
     ],
     Subclass: {
@@ -1212,7 +1236,8 @@ export const Classes: classData[] = [{
                             of land: arid, polar, temperate, or tropical. Consult 
                             the table below that corresponds to the chosen 
                             type; you have the spells listed for your Druid level 
-                            and lower prepared.`
+                            and lower prepared.`,
+                type:["Triggered", "Choice"]
             },
             {
                 level: 3,
@@ -1228,7 +1253,8 @@ export const Classes: classData[] = [{
                                 a successful one. One creature of your choice in that 
                                 area regains 2d6 Hit Points.
                                 The damage and healing increase by 1d6 when 
-                                you reach Druid levels 10 (3d6) and 14 (4d6).`
+                                you reach Druid levels 10 (3d6) and 14 (4d6).`,
+                type: ["Action"]
             },
             {
                 level: 6,
@@ -1246,7 +1272,8 @@ export const Classes: classData[] = [{
                                 spell slots. You can recover a level 3 spell slot, a level 
                                 2 and a level 1 spell slot, or three level 1 spell slots. 
                                 Once you recover spell slots with this feature, you 
-                                can't do so again until you finish a Long Rest.`
+                                can't do so again until you finish a Long Rest.`,
+                type:["Passive", "Choice"]
             },
             {
                 level: 10,
@@ -1254,7 +1281,8 @@ export const Classes: classData[] = [{
                 description: `You are immune to the Poisoned condition, and you 
                                 have Resistance to a damage type associated with 
                                 your current land choice in the Circle Spells feature, 
-                                as shown in the Nature's Ward table.`
+                                as shown in the Nature's Ward table.`,
+                type: ["Passive"]
             },
             {
                 level: 14,
@@ -1268,7 +1296,8 @@ export const Classes: classData[] = [{
                                 your allies gain the current Resistance of your Na
                                 ture's Ward while there.
                                 As a Bonus Action, you can move the Cube up to 
-                                60 feet to ground within 120 feet of yourself.`
+                                60 feet to ground within 120 feet of yourself.`,
+                type: ["Magic Action", "Bonus Action"]
             },
         ]
     },
@@ -1312,7 +1341,8 @@ export const Classes: classData[] = [{
                         fense is recommended.
                         Whenever you gain a Fighter level, you can replace 
                         the feat you chose with a different Fighting Style 
-                        feat.`
+                        feat.`,
+            type:["Choice"]
         },
         {
             level: 1,
@@ -1327,7 +1357,8 @@ export const Classes: classData[] = [{
                             Rest.
                             When you reach certain Fighter levels, you gain 
                             more uses of this feature, as shown in the Second 
-                            Wind column of the Fighter Features table.`
+                            Wind column of the Fighter Features table.`,
+            type:["Bonus Action"]
         },
         {
             level: 1,
@@ -1340,7 +1371,8 @@ export const Classes: classData[] = [{
                             When you reach certain Fighter levels, you gain 
                             the ability to use the mastery properties of more 
                             kinds of weapons, as shown in the Weapon Mastery 
-                            column of the Fighter Features table.`
+                            column of the Fighter Features table.`,
+            type:["Choice"]
         },
         {
             level: 2,
@@ -1351,7 +1383,8 @@ export const Classes: classData[] = [{
                             Once you use this feature, you can't do so again 
                             until you finish a Short or Long Rest. Starting at 
                             level 17, you can use it twice before a rest but only 
-                            once on a turn.`
+                            once on a turn.`,
+            type:["Choice"]
         },
         {
             level: 2,
@@ -1362,7 +1395,8 @@ export const Classes: classData[] = [{
                             success. Rather than regaining Hit Points, you roll 
                             1d10 and add the number rolled to the ability check, 
                             potentially turning it into a success. If the check still 
-                            fails, this use of Second Wind isn't expended.`
+                            fails, this use of Second Wind isn't expended.`,
+            type:["Triggered"]
         },
         {
             level: 3,
@@ -1372,7 +1406,8 @@ export const Classes: classData[] = [{
                             scription. A subclass is a specialization that grants 
                             you features at certain Fighter levels. For the rest 
                             of your career, you gain each of your subclass's fea
-                            tures that are of your Fighter level or lower.`
+                            tures that are of your Fighter level or lower.`,
+            type:["Choice"]
         },
         {
             level: 4,
@@ -1380,20 +1415,23 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Fighter levels 
-                            6, 8, 12, 14, and 16.`
+                            6, 8, 12, 14, and 16.`,
+            type:["Choice"]
         },
         {
             level: 5,
             name: "Extra Attack",
             description: `You can attack twice instead of once whenever you 
-                            take the Attack action on your turn.`
+                            take the Attack action on your turn.`,
+            type:["Passive"]
         },
         {
             level: 5,
             name: "Tactical Shift",
             description: `Whenever you activate your Second Wind with a 
                             Bonus Action, you can move up to half your Speed 
-                            without provoking Opportunity Attacks.`
+                            without provoking Opportunity Attacks.`,
+            type:["Triggered"]
         },
         {
             level: 9,
@@ -1404,33 +1442,38 @@ export const Classes: classData[] = [{
                             you finish a Long Rest.
                             You can use this feature twice before a Long Rest 
                             starting at level 13 and three times before a Long 
-                            Rest starting at level 17.`
+                            Rest starting at level 17.`,
+            type:["Triggered"]
         },
         {
             level: 9,
             name: "Tactical Master",
             description: `When you attack with a weapon whose mastery 
                             property you can use, you can replace that property 
-                            with the Push, Sap, or Slow property for that attack.`
+                            with the Push, Sap, or Slow property for that attack.`,
+            type:["Triggered", "Choice"]
         },
         {
             level: 11,
             name: "Two Extra Attacks",
             description: `You can attack three times instead of once when
-                            ever you take the Attack action on your turn.`
+                            ever you take the Attack action on your turn.`,
+            type:["Passive"]
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Combat Prowess is recommended.`
+                            Combat Prowess is recommended.`,
+            type: ["Choice"]
         },
         {
             level: 20,
             name: "Three Extra Attacks",
             description: `You can attack four times instead of once whenever 
-                            you take the Attack action on your turn.`
+                            you take the Attack action on your turn.`,
+            type:["Passive"]
         },
     ],
     Subclass: {
@@ -1449,7 +1492,8 @@ export const Classes: classData[] = [{
                 name: "Improve Critical",
                 description: `Your attack rolls with weapons and Unarmed 
                                 Strikes can score a Critical Hit on a roll of 19 or 20 
-                                on the d20.`
+                                on the d20.`,
+                type:["Passive"]
             },
             {
                 level: 3,
@@ -1458,26 +1502,30 @@ export const Classes: classData[] = [{
                                 Initiative rolls and Strength (Athletics) checks.
                                 In addition, immediately after you score a Critical 
                                 Hit, you can move up to half your Speed without 
-                                provoking Opportunity Attacks.`
+                                provoking Opportunity Attacks.`,
+                type:["Passive", "Triggered"]
             },
             {
                 level: 7,
                 name: "Additional Fighting Style",
-                description: `You gain another Fighting Style feat of your choice.`
+                description: `You gain another Fighting Style feat of your choice.`,
+                type:["Choice"]
             },
             {
                 level: 10,
                 name: "Heroic Warrior",
                 description: `The thrill of battle drives you toward victory. 
                                 During combat, you can give yourself Heroic Inspi
-                                ration whenever you start your turn without it.`
+                                ration whenever you start your turn without it.`,
+                type:["Choice"]
             },
             {
                 level: 15,
                 name: "Superior Critical",
                 description: `Your attack rolls with weapons and Unarmed 
                                 Strikes can now score a Critical Hit on a roll of 
-                                18-20 on the d20.`
+                                18-20 on the d20.`,
+                type:["Passive"]
             },
             {
                 level: 18,
@@ -1491,7 +1539,8 @@ export const Classes: classData[] = [{
                                 Heroic Rally. At the start of each of your turns, 
                                 you regain Hit Points equal to 5 plus your Constitu
                                 tion modifier if you are Bloodied and have at least 1 
-                                Hit Point.`
+                                Hit Point.`,
+                type:["Passive", "Triggered"]
             },
         ]
     }
@@ -1556,14 +1605,16 @@ export const Classes: classData[] = [{
                             and Monk weapons. In addition, when you use the 
                             Grapple or Shove option of your Unarmed Strike, 
                             you can use your Dexterity modifier instead of your 
-                            Strength modifier to determine the save DC.`
+                            Strength modifier to determine the save DC.`,
+            type:["Triggered"]
         },
         {
             level: 1,
             name: "Unarmored Defense",
             description: `While you aren't wearing armor or wielding a 
                             Shield, your base Armor Class equals 10 plus your 
-                            Dexterity and Wisdom modifiers.`
+                            Dexterity and Wisdom modifiers.`,
+            type:["Triggered"]
         },
         {
             level: 2,
@@ -1594,7 +1645,8 @@ export const Classes: classData[] = [{
                             as a Bonus Action. Alternatively, you can expend 1 
                             Focus Point to take both the Disengage and Dash 
                             actions as a Bonus Action, and your jump distance is 
-                            doubled for the turn..`
+                            doubled for the turn..`,
+            type:["Bonus Action", "Choice"]
         },
         {
             level: 2,
@@ -1602,7 +1654,8 @@ export const Classes: classData[] = [{
             description: `Your speed increases by 10 feet while you aren't 
                             wearing armor or wielding a Shield. This bonus 
                             increases when you reach certain Monk levels, as 
-                            shown on the Monk Features table.`
+                            shown on the Monk Features table.`,
+            type:["Triggered"]
         },
         {
             level: 2,
@@ -1612,7 +1665,8 @@ export const Classes: classData[] = [{
                             Martial Arts die, and regain a number of Hit Points 
                             equal to your Monk level plus the number rolled.
                             Once you use this feature, you can't use it again 
-                            until you finish a Long Rest.`
+                            until you finish a Long Rest.`,
+            type: ["Triggered", "Choice"]
         },
         {
             level: 3,
@@ -1631,7 +1685,8 @@ export const Classes: classData[] = [{
                             attack. That creature must succeed on a Dexterity 
                             saving throw or take damage equal to two rolls of 
                             your Martial Arts die plus your Dexterity modifier. 
-                            The damage is the same type dealt by the attack.`
+                            The damage is the same type dealt by the attack.`,
+            type:["Reaction"]
         },
         {
             level: 3,
@@ -1641,7 +1696,8 @@ export const Classes: classData[] = [{
                             class's description. A subclass is a specialization 
                             that grants you features at certain Monk levels. For 
                             the rest of your career, you gain each of your sub
-                            class's features that are of your Monk level or lower.`
+                            class's features that are of your Monk level or lower.`,
+            type:["Choice"]
         },
         {
             level: 4,
@@ -1649,20 +1705,23 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you qualify. 
                             You gain this feature again at Monk levels 8, 
-                            12, and 16.`
+                            12, and 16.`,
+            type:["Choice"]
         },
         {
             level: 4,
             name: "Slow Fall",
             description: `You can take a Reaction when you fall to reduce any 
                             damage you take from the fall by an amount equal 
-                            to five times your Monk level.`
+                            to five times your Monk level.`,
+            type:["Reaction"]
         },
         {
             level: 5,
             name: "Extra Attack",
             description: `You can attack twice instead of once whenever you 
-                            take the Attack action on your turn.`
+                            take the Attack action on your turn.`,
+            type:["Passive"]
         },
         {
             level: 5,
@@ -1675,14 +1734,16 @@ export const Classes: classData[] = [{
                             start of your next turn. On a successful save, the 
                             target's Speed is halved until the start of your next 
                             turn, and the next attack roll made against the tar
-                            get before then has Advantage.`
+                            get before then has Advantage.`,
+            type:["Choice"]
         },
         {
             level: 6,
             name: "Empowered Strikes",
             description: `Whenever you deal damage with your Unarmed 
                             Strike, it can deal your choice of Force damage or its 
-                            normal damage type.`
+                            normal damage type.`,
+            type:["Triggered", "Choice"]
         },
         {
             level: 7,
@@ -1692,7 +1753,8 @@ export const Classes: classData[] = [{
                             damage, you instead take no damage if you succeed 
                             on the saving throw and only half damage if you fail.
                             You don't benefit from this feature if you have the 
-                            Incapacitated condition.`
+                            Incapacitated condition.`,
+            type:["Passive"]
         },
         {
             level: 9,
@@ -1700,7 +1762,8 @@ export const Classes: classData[] = [{
             description: `While you aren't wearing armor or wielding a 
                             Shield, you gain the ability to move along vertical 
                             surfaces and across liquids on your turn without 
-                            falling during the movement.`
+                            falling during the movement.`,
+            type:["Passive", "Triggered"]
         },
         {
             level: 10,
@@ -1719,7 +1782,8 @@ export const Classes: classData[] = [{
                             creature within 5 feet of yourself that is Large or 
                             smaller. You move the creature with you until the 
                             end of your turn. The creature's movement doesn't 
-                            provoke Opportunity Attacks.`
+                            provoke Opportunity Attacks.`,
+            type:["Passive"]
         },
         {
             level: 10,
@@ -1729,14 +1793,16 @@ export const Classes: classData[] = [{
                             end of each of your turns: Charmed, Frightened, or 
                             Poisoned.
                             In addition, forgoing food and drink doesn't give 
-                            you levels of Exhaustion.`
+                            you levels of Exhaustion.`,
+            type: ["Triggered","Passive"]
         },
         {
             level: 13,
             name: "Deflect Energy",
             description: `You can now use your Deflect Attacks feature 
                             against attacks that deal any damage type, not just 
-                            Bludgeoning, Piercing, or Slashing.`
+                            Bludgeoning, Piercing, or Slashing.`,
+            type:["Passive"]
         },
         {
             level: 14,
@@ -1745,14 +1811,16 @@ export const Classes: classData[] = [{
                             in all saving throws.
                             Additionally, whenever you make a saving throw 
                             and fail, you can expend 1 Focus Point to reroll it, 
-                            and you must use the new roll.`
+                            and you must use the new roll.`,
+            type:["Passive","Triggered"]
         },
         {
             level: 15,
             name: "Perfect Focus",
             description: `When you roll Initiative and don't use Uncanny Me
                             tabolism, you regain expended Focus Points until 
-                            you have 4 if you have 3 or fewer.`
+                            you have 4 if you have 3 or fewer.`,
+            type:["Triggered"]
         },
         {
             level: 18,
@@ -1761,21 +1829,24 @@ export const Classes: classData[] = [{
                             Points to bolster yourself against harm for 1 min
                             ute or until you have the Incapacitated condition. 
                             During that time, you have Resistance to all damage 
-                            except Force damage.`
+                            except Force damage.`,
+            type:["Triggered","Choice"]
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Irresistible Offense is recommended.`
+                            Irresistible Offense is recommended.`,
+            type:["Choice"]
         },
         {
             level: 20,
             name: "Body and Mind",
             description: `You have developed your body and mind to new 
                             heights. Your Dexterity and Wisdom scores increase 
-                            by 4, to a maximum of 25.`
+                            by 4, to a maximum of 25.`,
+            type:["Passive"]
         },
     ],
     Subclass: {
@@ -1797,7 +1868,8 @@ export const Classes: classData[] = [{
                                 Push. The target must succeed on a Strength sav
                                 ing throw or be pushed up to 15 feet away from you.
                                 Topple. The target must succeed on a Dexterity 
-                                saving throw or have the Prone condition. `
+                                saving throw or have the Prone condition. `,
+                type:["Triggered", "Choice"]
             },
             {
                 level: 6,
@@ -1810,14 +1882,17 @@ export const Classes: classData[] = [{
                                 You can use this feature a number of times equal 
                                 to your Wisdom modifier (minimum of once), and 
                                 you regain all expended uses when you finish a 
-                                Long Rest. `
+                                Long Rest. `,
+                type:["Bonus Action"]
+                
             },
             {
                 level: 11,
                 name: "Fleet Step",
                 description: `When you take a Bonus Action other than Step of 
                                 the Wind, you can also use Step of the Wind imme
-                                diately after that Bonus Action.`
+                                diately after that Bonus Action.`,
+                type:["Passive"]
             },
             {
                 level: 17,
@@ -1838,7 +1913,8 @@ export const Classes: classData[] = [{
                                 one.
                                 You can have only one creature under the effect 
                                 of this feature at a time. You can end the vibrations 
-                                harmlessly (no action required).`
+                                harmlessly (no action required).`,
+                type:["Choice", "Triggered"]
             },
         ]
     }
@@ -1890,7 +1966,8 @@ export const Classes: classData[] = [{
                             You can also expend 5 Hit Points from the pool of 
                             healing power to remove the Poisoned condition 
                             from the creature; those points don't also restore 
-                            Hit Points to the creature.`
+                            Hit Points to the creature.`,
+            type:["Bonus Action"]
         },
         {
             level: 1,
@@ -1931,7 +2008,8 @@ export const Classes: classData[] = [{
                             Spellcasting Ability. Charisma is your spellcast
                             ing ability for your Paladin spells.
                             Spellcasting Focus. You can use a Holy Symbol as 
-                            a Spellcasting Focus for your Paladin spells.`
+                            a Spellcasting Focus for your Paladin spells.`,
+            type:["Passive"]
         },
         {
             level: 1,
@@ -1942,7 +2020,8 @@ export const Classes: classData[] = [{
                             Longswords and Javelins. Whenever you finish a Long Rest, 
                             you can change the kinds of weapons you chose. For example, you 
                             could switch to using the mastery properties of Hal
-                            berds and Flails.`
+                            berds and Flails.`,
+            type:["Choice"]
         },
         {
             level: 2,
@@ -1957,7 +2036,8 @@ export const Classes: classData[] = [{
                             spells for you, and Charisma is your spellcasting 
                             ability for them. Whenever you gain a Paladin level, 
                             you can replace one of these cantrips with another 
-                            Cleric cantrip.`
+                            Cleric cantrip.`,
+            type: ["Choice"]
         },
         {
             level: 2,
@@ -1965,7 +2045,8 @@ export const Classes: classData[] = [{
             description: `You always have the Divine Smite spell prepared. In 
                             addition, you can cast it without expending a spell 
                             slot, but you must finish a Long Rest before you can 
-                            cast it in this way again.`
+                            cast it in this way again.`,
+            type:["Passive"]
         },
         {
             level: 3,
@@ -1992,7 +2073,8 @@ export const Classes: classData[] = [{
                             yourself, and you know its creature type. Within 
                             the same radius, you also detect the presence of any 
                             place or object that has been consecrated or dese
-                            crated, as with the Hallow spell.`
+                            crated, as with the Hallow spell.`,
+            type: ["Bonus Action"]
         },
         {
             level: 3,
@@ -2002,7 +2084,8 @@ export const Classes: classData[] = [{
                             scription. A subclass is a specialization that grants 
                             you features at certain Paladin levels. For the rest 
                             of your career, you gain each of your subclass's fea
-                            tures that are of your Paladin level or lower.`
+                            tures that are of your Paladin level or lower.`,
+            type:["Choice"]
         },
         {
             level: 4,
@@ -2010,13 +2093,15 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Paladin levels 
-                            8, 12, and 16.`
+                            8, 12, and 16.`,
+            type:["Choice"]
         },
         {
             level: 5,
             name: "Extra Attack",
             description: `You can attack twice instead of once whenever you 
-                            take the Attack action on your turn.`
+                            take the Attack action on your turn.`,
+            type:["Passive"]
         },
         {
             level: 5,
@@ -2025,7 +2110,8 @@ export const Classes: classData[] = [{
                             always have the Find Steed spell prepared.
                             You can also cast the spell once without expend
                             ing a spell slot, and you regain the ability to do so 
-                            when you finish a Long Rest.`
+                            when you finish a Long Rest.`,
+            type:["Passive"]
         },
         {
             level: 6,
@@ -2038,7 +2124,8 @@ export const Classes: classData[] = [{
                             (minimum bonus of +1).
                             If another Paladin is present, a creature can ben
                             efit from only one Aura of Protection at a time; the 
-                            creature chooses which aura while in them.`
+                            creature chooses which aura while in them.`,
+            type: ["Passive"]
         },
         {
             level: 9,
@@ -2053,7 +2140,8 @@ export const Classes: classData[] = [{
                             Frightened condition for 1 minute or until it takes 
                             any damage. While Frightened in this way, a target 
                             can do only one of the following on its turns: move, 
-                            take an action, or take a Bonus Action.`
+                            take an action, or take a Bonus Action.`,
+            type:["Magic Action"]
         },
         {
             level: 10,
@@ -2061,7 +2149,8 @@ export const Classes: classData[] = [{
             description: `You and your allies have Immunity to the Fright
                             ened condition while in your Aura of Protection. If 
                             a Frightened ally enters the aura, that condition has 
-                            no effect on that ally while there.`
+                            no effect on that ally while there.`,
+            type: ["Passive"]
         },
         {
             level: 11,
@@ -2069,7 +2158,8 @@ export const Classes: classData[] = [{
             description: `Your strikes now carry supernatural power. When 
                             you hit a target with an attack roll using a Melee 
                             weapon or an Unarmed Strike, the target takes an 
-                            extra 1d8 Radiant damage.`
+                            extra 1d8 Radiant damage.`,
+            type: ["Passive"]
         },
         {
             level: 14,
@@ -2081,19 +2171,22 @@ export const Classes: classData[] = [{
                             pend 5 Hit Points from the healing pool of Lay On 
                             Hands for each of these conditions you remove; 
                             those points don't also restore Hit Points to the 
-                            creature.`
+                            creature.`,
+            type:["Triggered", "Choice"]
         },
         {
             level: 18,
             name: "Aura Expansion",
-            description: `Your Aura of Protection is now a 30-foot Emanation.`
+            description: `Your Aura of Protection is now a 30-foot Emanation.`,
+            type: ["Passive"]
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Truesight is recommended.`
+                            Truesight is recommended.`,
+            type:["Choice"]
         },
     ],
     Subclass: {
@@ -2121,7 +2214,8 @@ export const Classes: classData[] = [{
                 description: `The magic of your oath ensures you always have 
                                 certain spells ready; when you reach a Paladin level 
                                 specified in the Oath of Devotion Spells table, you 
-                                thereafter always have the listed spells prepared.`
+                                thereafter always have the listed spells prepared.`,
+                type:["Passive"]
             },
             {
                 level: 3,
@@ -2138,7 +2232,8 @@ export const Classes: classData[] = [{
                                 radius and Dim Light 20 feet beyond that.
                                 You can end this effect early (no action required). 
                                 This effect also ends if you aren't carrying the 
-                                weapon.`
+                                weapon.`,
+                type: ["Choice"],
             },
             {
                 level: 7,
@@ -2146,7 +2241,8 @@ export const Classes: classData[] = [{
                 description: `You and your allies have Immunity to the Charmed 
                                 condition while in your Aura of Protection. If a 
                                 Charmed ally enters the aura, that condition has no 
-                                effect on that ally while there.`
+                                effect on that ally while there.`,
+                type: ["Passive"],
             },
             {
                 level: 15,
@@ -2155,7 +2251,8 @@ export const Classes: classData[] = [{
                                 Whenever you cast Divine Smite, you and your allies 
                                 have Half Cover while in your Aura of Protection. 
                                 The aura has this benefit until the start of your next 
-                                turn.`
+                                turn.`,
+                type: ["Triggered"],
             },
             {
                 level: 20,
@@ -2175,7 +2272,8 @@ export const Classes: classData[] = [{
                                 age equal to your Charisma modifier plus your Pro
                                 ficiency Bonus.
                                 Sunlight. The aura is filled with Bright Light that 
-                                is sunlight.`
+                                is sunlight.`,
+                type: ["Bonus Action"],
             },
         ]
     }
@@ -2245,7 +2343,8 @@ export const Classes: classData[] = [{
                             Spellcasting Ability. Wisdom is your spellcasting 
                             ability for your Ranger spells.
                             Spellcasting Focus. You can use a Druidic Focus 
-                            as a Spellcasting Focus for your Ranger spells.`
+                            as a Spellcasting Focus for your Ranger spells.`,
+            type: ["Passive"],
         },
         {
             level: 1,
@@ -2257,7 +2356,8 @@ export const Classes: classData[] = [{
                             The number of times you can cast the spell with
                             out a spell slot increases when you reach certain 
                             Ranger levels, as shown in the Favored Enemy col
-                            umn of the Ranger Features table.`
+                            umn of the Ranger Features table.`,
+            type: ["Passive"],
         },
         {
             level: 1,
@@ -2268,11 +2368,12 @@ export const Classes: classData[] = [{
                             Whenever you finish a Long Rest, you can change 
                             the kinds of weapons you chose. For example, you 
                             could switch to using the mastery properties of 
-                            Scimitars and Longswords.`
+                            Scimitars and Longswords.`,
+            type: ["Choice"],
         },
         {
             level: 2,
-            name: "Deft Exporer",
+            name: "Deft Explorer",
             description: `Thanks to your travels, you gain the following 
                             benefits.
                             Expertise. Choose one of your skill proficiencies 
@@ -2280,7 +2381,8 @@ export const Classes: classData[] = [{
                             in that skill.
                             Languages. You know two languages of your 
                             choice from the language tables in “Character 
-                            Creation.”`
+                            Creation.”`,
+            type: ["Choice"],
         },
         {
             level: 2,
@@ -2295,7 +2397,8 @@ export const Classes: classData[] = [{
                             for you, and Wisdom is your spellcasting ability for 
                             them. Whenever you gain a Ranger level, you can 
                             replace one of these cantrips with another Druid 
-                            cantrip.`
+                            cantrip.`,
+            type: ["Choice"],
         },
         {
             level: 3,
@@ -2305,7 +2408,8 @@ export const Classes: classData[] = [{
                             scription. A subclass is a specialization that grants 
                             you features at certain Ranger levels. For the rest 
                             of your career, you gain each of your subclass's fea
-                            tures that are of your Ranger level or lower.`
+                            tures that are of your Ranger level or lower.`,
+            type: ["Choice"],
         },
         {
             level: 4,
@@ -2313,27 +2417,31 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Ranger levels 
-                            8, 12, and 16.`
+                            8, 12, and 16.`,
+            type: ["Choice"],
         },
         {
             level: 5,
             name: "Extra Attack",
             description: `You can attack twice instead of once whenever you 
-                            take the Attack action on your turn.`
+                            take the Attack action on your turn.`,
+            type: ["Passive"],
         },
         {
             level: 6,
             name: "Roving",
             description: `Your Speed increases by 10 feet while you aren't 
                             wearing Heavy armor. You also have a Climb Speed 
-                            and a Swim Speed equal to your Speed.`
+                            and a Swim Speed equal to your Speed.`,
+            type: ["Passive", "Triggered"],
         },
         {
             level: 9,
             name: "Expertise",
             description: `Choose two of your skill proficiencies with which 
                             you lack Expertise. You gain Expertise in those 
-                            skills.`
+                            skills.`,
+            type: ["Choice"],
         },
         {
             level: 10,
@@ -2349,13 +2457,15 @@ export const Classes: classData[] = [{
                             Long Rest.
                             Decrease Exhaustion. Whenever you finish a 
                             Short Rest, your Exhaustion level, if any, decreases 
-                            by 1.`
+                            by 1.`,
+            type: ["Magic Action", "Triggered"],
         },
         {
             level: 13,
             name: "Relentless Hunter",
             description: `Taking damage can't break your Concentration on 
-                            Hunter's Mark.`
+                            Hunter's Mark.`,
+            type: ["Passive"],
         },
         {
             level: 14,
@@ -2366,32 +2476,37 @@ export const Classes: classData[] = [{
                             You can use this feature a number of times equal 
                             to your Wisdom modifier (minimum of once), and 
                             you regain all expended uses when you finish a 
-                            Long Rest.`
+                            Long Rest.`,
+            type: ["Bonus Action"],
         },
         {
             level: 17,
             name: "Precise Hunter",
             description: `You have Advantage on attack rolls against the crea
-                            ture currently marked by your Hunter's Mark.`
+                            ture currently marked by your Hunter's Mark.`,
+            type: ["Triggered"],
         },
         {
             level: 18,
             name: "Feral Senses",
             description: `Your connection to the forces of nature grants you 
-                            Blindsight with a range of 30 feet.`
+                            Blindsight with a range of 30 feet.`,
+            type: ["Passive"],
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of Di
-                            mensional Travel is recommended.`
+                            mensional Travel is recommended.`,
+            type: ["Choice"],
         },
         {
             level: 20,
             name: "Foe Slayer",
             description: `The damage die of your Hunter's Mark is a d10 
-                            rather than a d6.`
+                            rather than a d6.`,
+            type: ["Passive"],
         },
     ],
     Subclass: {
@@ -2410,7 +2525,8 @@ export const Classes: classData[] = [{
                                 creature is marked by your Hunter's Mark, you know 
                                 whether that creature has any Immunities, Resis
                                 tances, or Vulnerabilities, and if the creature has 
-                                any, you know what they are.`
+                                any, you know what they are.`,
+                type: ["Passive"],
             },
             {
                 level: 3,
@@ -2430,7 +2546,8 @@ export const Classes: classData[] = [{
                                 another attack with the same weapon against a dif
                                 ferent creature that is within 5 feet of the original 
                                 target, that is within the weapon's range, and that 
-                                you haven't attacked this turn.`
+                                you haven't attacked this turn.`,
+                type: ["Choice"],
             },
             {
                 level: 7,
@@ -2443,7 +2560,8 @@ export const Classes: classData[] = [{
                                 advantage against you.
                                 Multiattack Defense. When a creature hits you 
                                 with an attack roll, that creature has Disadvantage 
-                                on all other attack rolls against you this turn.`
+                                on all other attack rolls against you this turn.`,
+                type: ["Choice"],
             },
             {
                 level: 11,
@@ -2451,7 +2569,8 @@ export const Classes: classData[] = [{
                 description: `Once per turn when you deal damage to a creature 
                                 marked by your Hunter's Mark, you can also deal 
                                 that spell's extra damage to a different creature that 
-                                you can see within 30 feet of the first creature.`
+                                you can see within 30 feet of the first creature.`,
+                type: ["Triggered"],
             },
             {
                 level: 15,
@@ -2459,7 +2578,8 @@ export const Classes: classData[] = [{
                 description: `When you take damage, you can take a Reaction to 
                                 give yourself Resistance to that damage and any 
                                 other damage of the same type until the end of the 
-                                current turn.`
+                                current turn.`,
+                type: ["Reaction"],
             },
         ]
     }
@@ -2504,14 +2624,8 @@ export const Classes: classData[] = [{
                             of your choice. Sleight of Hand and Stealth are rec
                             ommended if you have proficiency in them.
                             At Rogue level 6, you gain Expertise in two more 
-                            of your skill proficiencies of your choice.`
-        },
-        {
-            level: 1,
-            name: "Sneak Attack",
-            description: `You know how to strike subtly and exploit a foe's 
-                            distraction. Once per turn, you can deal an extra 
-                            1d6 damage to one creature you hit with an attack `
+                            of your skill proficiencies of your choice.`,
+            type: ["Choice"],
         },
         {
             level: 1,
@@ -2528,7 +2642,8 @@ export const Classes: classData[] = [{
                             and you don't have Disadvantage on the attack roll.
                             The extra damage increases as you gain Rogue 
                             levels, as shown in the Sneak Attack column of the 
-                            Rogue Features table.`
+                            Rogue Features table.`,
+            type: ["Triggered"],
         },
         {
             level: 1,
@@ -2537,7 +2652,8 @@ export const Classes: classData[] = [{
                             nities where you plied your roguish talents. You 
                             know Thieves' Cant and one other language of your 
                             choice, which you choose from the language tables 
-                            in “Character Creation.”`
+                            in “Character Creation.”`,
+            type: ["Passive","Choice"],
         },
         {
             level: 1,
@@ -2548,7 +2664,8 @@ export const Classes: classData[] = [{
                             Daggers and Shortbows. Whenever you finish a Long Rest, you can change 
                             the kinds of weapons you chose. For example, you 
                             could switch to using the mastery properties of 
-                            Scimitars and Shortswords.`
+                            Scimitars and Shortswords.`,
+            type: ["Choice"],
         },
         {
             level: 2,
@@ -2556,7 +2673,8 @@ export const Classes: classData[] = [{
             description: `Your quick thinking and agility allow you to move 
                             and act quickly. On your turn, you can take one of 
                             the following actions as a Bonus Action: Dash, Dis
-                            engage, or Hide.`
+                            engage, or Hide.`,
+            type: ["Bonus Action"],
         },
         {
             level: 3,
@@ -2566,7 +2684,8 @@ export const Classes: classData[] = [{
                             subclass is a specialization that grants you features 
                             at certain Rogue levels. For the rest of your career, 
                             you gain each of your subclass's features that are of 
-                            your Rogue level or lower.`
+                            your Rogue level or lower.`,
+            type: ["Choice"],
         },
         {
             level: 3,
@@ -2575,7 +2694,8 @@ export const Classes: classData[] = [{
                             your next attack roll on the current turn. You can 
                             use this feature only if you haven't moved during 
                             this turn, and after you use it, your Speed is 0 until 
-                            the end of the current turn.`
+                            the end of the current turn.`,
+            type: ["Bonus Action"],
         },
         {
             level: 4,
@@ -2583,7 +2703,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Rogue levels 
-                            8, 10, 12, and 16.`
+                            8, 10, 12, and 16.`,
+            type: ["Choice"],
         },
         {
             level: 5,
@@ -2614,14 +2735,16 @@ export const Classes: classData[] = [{
                             the Prone condition.
                             Withdraw (Cost: 1d6). Immediately after the 
                             attack, you move up to half your Speed without pro
-                            voking Opportunity Attacks.`
+                            voking Opportunity Attacks.`,
+            type: ["Triggered", "Choice"],
         },
         {
             level: 5,
             name: "Uncanny Dodge",
             description: `When an attacker that you can see hits you with an 
                             attack roll, you can take a Reaction to halve the at
-                            tack's damage against you (round down).`
+                            tack's damage against you (round down).`,
+            type: ["Reaction"],
         },
         {
             level: 7,
@@ -2632,21 +2755,24 @@ export const Classes: classData[] = [{
                             half damage, you instead take no damage if you 
                             succeed on the saving throw and only half damage 
                             if you fail. You can't use this feature if you have the 
-                            Incapacitated condition.`
+                            Incapacitated condition.`,
+            type: ["Passive"],
         },
         {
             level: 7,
             name: "Reliable Talent",
             description: `Whenever you make an ability check that uses one 
                             of your skill or tool proficiencies, you can treat a 
-                            d20 roll of 9 or lower as a 10.`
+                            d20 roll of 9 or lower as a 10.`,
+            type: ["Passive"],
         },
         {
             level: 11,
             name: "Improved Cunning Strike",
             description: `You can use up to two Cunning Strike effects when 
                             you deal Sneak Attack damage, paying the die cost 
-                            for each effect.`
+                            for each effect.`,
+            type: ["Passive"],
         },
         {
             level: 14,
@@ -2666,14 +2792,16 @@ export const Classes: classData[] = [{
                             itself on a success.
                             Obscure (Cost: 3d6). The target must succeed on 
                             a Dexterity saving throw, or it has the Blinded con
-                            dition until the end of its next turn.`
+                            dition until the end of its next turn.`,
+            type: ["Choice"],
         },
         {
             level: 15,
             name: "Slippery Mind",
             description: `Your cunning mind is exceptionally difficult to con
                             trol. You gain proficiency in Wisdom and Charisma 
-                            saving throws.`
+                            saving throws.`,
+            type: ["Passive"],
         },
         {
             level: 18,
@@ -2681,14 +2809,16 @@ export const Classes: classData[] = [{
             description: `You're so evasive that attackers rarely gain the 
                             upper hand against you. No attack roll can have 
                             Advantage against you unless you have the Incapac
-                            itated condition.`
+                            itated condition.`,
+            type: ["Passive"],
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of the 
-                            Night Spirit is recommended.`
+                            Night Spirit is recommended.`,
+            type: ["Choice"],
         },
         {
             level: 20,
@@ -2697,7 +2827,8 @@ export const Classes: classData[] = [{
                             you need to. If you fail a D20 Test, you can turn the 
                             roll into a 20.
                             Once you use this feature, you can't use it again 
-                            until you finish a Short or Long Rest.`
+                            until you finish a Short or Long Rest.`,
+            type: ["Triggered", "Choice"],
         },
     ],
     Subclass: {
@@ -2718,7 +2849,8 @@ export const Classes: classData[] = [{
                                 Thieves' Tools or to pick a pocket.
                                 Use an Object. Take the Utilize action, or take the 
                                 Magic action to use a magic item that requires that 
-                                action.`
+                                action.`,
+                type: ["Bonus Action", "Magic Action"],
             },
             {
                 level: 3,
@@ -2728,7 +2860,8 @@ export const Classes: classData[] = [{
                                 Climber. You gain a Climb Speed equal to your 
                                 Speed.
                                 Jumper. You can determine your jump distance 
-                                using your Dexterity rather than your Strength.`
+                                using your Dexterity rather than your Strength.`,
+                type: ["Passive"],
             },
             {
                 level: 9,
@@ -2737,7 +2870,8 @@ export const Classes: classData[] = [{
                                 Stealth Attack (Cost: 1d6). If you have the Hide 
                                 action's Invisible condition, this attack doesn't end 
                                 that condition on you if you end the turn behind 
-                                Three-Quarters Cover or Total Cover.`
+                                Three-Quarters Cover or Total Cover.`,
+                type: ["Choice"],
             },
             {
                 level: 13,
@@ -2757,7 +2891,8 @@ export const Classes: classData[] = [{
                                 must first succeed on an Intelligence (Arcana) check 
                                 (DC 10 plus the spell's level). On a successful check, 
                                 you cast the spell from the scroll. On a failed check, 
-                                the scroll disintegrates.`
+                                the scroll disintegrates.`,
+                type: ["Passive"],
             },
             {
                 level: 17,
@@ -2766,7 +2901,8 @@ export const Classes: classData[] = [{
                             caping danger. You can take two turns during the 
                             first round of any combat. You take your first turn 
                             at your normal Initiative and your second turn at 
-                            your Initiative minus 10.`
+                            your Initiative minus 10.`,
+                type: ["Triggered"],
             },
         ]
     }
@@ -2843,7 +2979,8 @@ export const Classes: classData[] = [{
                             Spellcasting Ability. Charisma is your spellcast
                             ing ability for your Sorcerer spells.
                             Spellcasting Focus. You can use an Arcane Focus 
-                            as a Spellcasting Focus for your Sorcerer spells.`
+                            as a Spellcasting Focus for your Sorcerer spells.`,
+            type: ["Passive"],
         },
         {
             level: 1,
@@ -2851,12 +2988,14 @@ export const Classes: classData[] = [{
             description: `An event in your past left an indelible mark on you, 
                         infusing you with simmering magic. As a Bonus 
                         Action, you can unleash that magic for 1 minute, 
-                        during which you gain the following benefits: • The spell save DC of your Sorcerer spells 
+                        during which you gain the following benefits: 
+                        • The spell save DC of your Sorcerer spells 
                         increases by 1.
                         • You have Advantage on the attack rolls of 
                         Sorcerer spells you cast.
                         You can use this feature twice, and you regain all 
-                        expended uses of it when you finish a Long Rest.`
+                        expended uses of it when you finish a Long Rest.`,
+            type: ["Bonus Action"],
         },
         {
             level: 2,
@@ -2885,7 +3024,8 @@ export const Classes: classData[] = [{
                             a slot. You can create a spell slot no higher than 
                             level 5.
                             Any spell slot you create with this feature van
-                            ishes when you finish a Long Rest.`
+                            ishes when you finish a Long Rest.`,
+            type: ["Bonus Action", "Choice"],
         },
         {
             level: 2,
@@ -2902,7 +3042,8 @@ export const Classes: classData[] = [{
                             those options. Whenever you gain a Sorcerer level, you can re
                             place one of your Metamagic options with one you 
                             don't know. You gain two more options at Sorcerer 
-                            level 10 and two more at Sorcerer level 17.`
+                            level 10 and two more at Sorcerer level 17.`,
+            type: ["Choice"],
         },
         {
             level: 3,
@@ -2913,7 +3054,8 @@ export const Classes: classData[] = [{
                             that grants you features at certain Sorcerer levels. 
                             For the rest of your career, you gain each of your 
                             subclass's features that are of your Sorcerer level or 
-                            lower.`
+                            lower.`,
+            type: ["Choice"],
         },
         {
             level: 4,
@@ -2921,7 +3063,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Sorcerer lev
-                            els 8, 12, and 16.`
+                            els 8, 12, and 16.`,
+            type: ["Choice"],
         },
         {
             level: 5,
@@ -2930,7 +3073,8 @@ export const Classes: classData[] = [{
                             pended Sorcery Points, but no more than a number 
                             equal to half your Sorcerer level (round down). Once 
                             you use this feature, you can't do so again until you 
-                            finish a Long Rest.`
+                            finish a Long Rest.`,
+            type: ["Triggered"],
         },
         {
             level: 7,
@@ -2940,21 +3084,24 @@ export const Classes: classData[] = [{
                             the Bonus Action to activate it.
                             In addition, while your Innate Sorcery feature is 
                             active, you can use up to two of your Metamagic op
-                            tions on each spell you cast.`
+                            tions on each spell you cast.`,
+            type: ["Bonus Action"],
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of Di
-                            mensional Travel is recommended.`
+                            mensional Travel is recommended.`,
+            type: ["Choice"],
         },
         {
             level: 20,
             name: "Arcane Apotheosis",
             description: `While your Innate Sorcery feature is active, you can 
                             use one Metamagic option on each of your turns 
-                            without spending Sorcery Points on it.`
+                            without spending Sorcery Points on it.`,
+            type: ["Passive"],
         },
     ],
     Subclass: {
@@ -2979,14 +3126,16 @@ export const Classes: classData[] = [{
                                 Parts of you are also covered by dragon-like 
                                 scales. While you aren't wearing armor, your base 
                                 Armor Class equals 10 plus your Dexterity and Cha
-                                risma modifiers.`
+                                risma modifiers.`,
+                type: ["Passive"],
             },
             {
                 level: 3,
                 name: "Draconic Spells",
                 description: `When you reach a Sorcerer level specified in the 
                                 Draconic Spells table, you thereafter always have 
-                                the listed spells prepared.`
+                                the listed spells prepared.`,
+                type: ["Passive"],
             },
             {
                 level: 14,
@@ -2998,7 +3147,8 @@ export const Classes: classData[] = [{
                                 Once you use this feature, you can't use it again 
                                 until you finish a Long Rest unless you spend 3 Sor
                                 cery Points (no action required) to restore your use 
-                                of it.`
+                                of it.`,
+                type: ["Bonus Action"],
             },
             {
                 level: 18,
@@ -3010,7 +3160,8 @@ export const Classes: classData[] = [{
                                 Whenever you start casting the spell, you can 
                                 modify it so that it doesn't require Concentration. If 
                                 you do so, the spell's duration becomes 1 minute for 
-                                that casting.`
+                                that casting.`,
+                type: ["Passive"],
             },
         ]
     }
@@ -3065,7 +3216,8 @@ export const Classes: classData[] = [{
                             more invocations of your choice, as shown in the In
                             vocations column of the Warlock Features table.
                             You can't pick the same invocation more than once 
-                            unless its description says otherwise.`
+                            unless its description says otherwise.`,
+            type: ["Choice"],
         },
         {
             level: 1,
@@ -3122,7 +3274,8 @@ export const Classes: classData[] = [{
                             Spellcasting Ability. Charisma is the spellcasting 
                             ability for your Warlock spells.
                             Spellcasting Focus. You can use an Arcane Focus 
-                            as a Spellcasting Focus for your Warlock spells.`
+                            as a Spellcasting Focus for your Warlock spells.`,
+            type: ["Passive"],
         },
         {
             level: 2,
@@ -3131,7 +3284,8 @@ export const Classes: classData[] = [{
                             the end of it, you regain expended Pact Magic spell 
                             slots but no more than a number equal to half your 
                             maximum (round up). Once you use this feature, you 
-                            can't do so again until you finish a Long Rest.`
+                            can't do so again until you finish a Long Rest.`,
+            type: ["Action"],
         },
         {
             level: 3,
@@ -3142,7 +3296,8 @@ export const Classes: classData[] = [{
                             grants you features at certain Warlock levels. For 
                             the rest of your career, you gain each of your sub
                             class's features that are of your Warlock level or 
-                            lower.`
+                            lower.`,
+            type: ["Choice"],
         },
         {
             level: 4,
@@ -3150,7 +3305,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Warlock levels 
-                            8, 12, and 16.`
+                            8, 12, and 16.`,
+            type: ["Choice"],
         },
         {
             level: 9,
@@ -3163,7 +3319,8 @@ export const Classes: classData[] = [{
                             patron, and you automatically succeed on the spell's 
                             saving throw.
                             Once you cast the spell with this feature, you can't 
-                            do so in this way again until you finish a Long Rest.`
+                            do so in this way again until you finish a Long Rest.`,
+            type: ["Passive"],
         },
         {
             level: 11,
@@ -3181,20 +3338,23 @@ export const Classes: classData[] = [{
                             spell). You regain all uses of your Mystic Arcanum 
                             when you finish a Long Rest. Whenever you gain a Warlock level, you can re
                             place one of your arcanum spells with another War
-                            lock spell of the same level.`
+                            lock spell of the same level.`,
+            type: ["Choice"],
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Fate is recommended.`
+                            Fate is recommended.`,
+            type: ["Choice"],
         },
         {
             level: 20,
             name: "Eldritch Master",
             description: `When you use your Magical Cunning feature, you 
-                            regain all your expended Pact Magic spell slots.`
+                            regain all your expended Pact Magic spell slots.`,
+            type: ["Passive"],
         },
     ],
     Subclass: {
@@ -3216,7 +3376,8 @@ export const Classes: classData[] = [{
                                 ifier plus your Warlock level (minimum of 1 Tempo
                                 rary Hit Point). You also gain this benefit if someone 
                                 else reduces an enemy within 10 feet of you to 0 Hit 
-                                Points.`
+                                Points.`,
+                type: ["Triggered"],
             },
             {
                 level: 3,
@@ -3224,7 +3385,8 @@ export const Classes: classData[] = [{
                 description: `The magic of your patron ensures you always have 
                                 certain spells ready; when you reach a Warlock 
                                 level specified in the Fiend Spells table, you thereaf
-                                ter always have the listed spells prepared.`
+                                ter always have the listed spells prepared.`,
+                type: ["Passive"],
             },
             {
                 level: 6,
@@ -3237,7 +3399,8 @@ export const Classes: classData[] = [{
                                 You can use this feature a number of times equal 
                                 to your Charisma modifier (minimum of once), but 
                                 you can use it no more than once per roll. You regain 
-                                all expended uses when you finish a Long Rest.`
+                                all expended uses when you finish a Long Rest.`,
+                type: ["Triggered"],
             },
             {
                 level: 10,
@@ -3245,7 +3408,8 @@ export const Classes: classData[] = [{
                 description: `Choose one damage type, other than Force, when
                                 ever you finish a Short or Long Rest. You have Resis
                                 tance to that damage type until you choose a differ
-                                ent one with this feature.`
+                                ent one with this feature.`,
+                type: ["Choice"],
             },
             {
                 level: 14,
@@ -3263,7 +3427,8 @@ export const Classes: classData[] = [{
                                 Once you use this feature, you can't use it again 
                                 until you finish a Long Rest unless you expend a 
                                 Pact Magic spell slot (no action required) to restore 
-                                your use of it.`
+                                your use of it.`,
+                type: ["Triggered"],
             },
 
         ]
@@ -3358,7 +3523,8 @@ export const Classes: classData[] = [{
                             ing ability for your Wizard spells.
                             Spellcasting Focus. You can use an Arcane Focus 
                             or your spellbook as a Spellcasting Focus for your 
-                            Wizard spells.`
+                            Wizard spells.`,
+            type: ["Passive"],
         },
         {
             level: 1,
@@ -3366,7 +3532,8 @@ export const Classes: classData[] = [{
             description: `You can cast any spell as a Ritual if that spell has 
                             the Ritual tag and the spell is in your spellbook. 
                             You needn't have the spell prepared, but you must read 
-                            from the book to cast a spell in this way.`
+                            from the book to cast a spell in this way.`,
+            type: ["Passive"],
         },
         {
             level: 1,
@@ -3382,7 +3549,8 @@ export const Classes: classData[] = [{
                             ing either one level 2 spell slot or two level 1 spell 
                             slots.
                             Once you use this feature, you can't do so again 
-                            until you finish a Long Rest.`
+                            until you finish a Long Rest.`,
+            type: ["Triggered"],
         },
         {
             level: 2,
@@ -3391,7 +3559,8 @@ export const Classes: classData[] = [{
                             other field of study. Choose one of the following 
                             skills in which you have proficiency: Arcana, His
                             tory, Investigation, Medicine, Nature, or Religion. 
-                            You have Expertise in the chosen skill.`
+                            You have Expertise in the chosen skill.`,
+            type: ["Choice"],
         },
         {
             level: 3,
@@ -3401,7 +3570,8 @@ export const Classes: classData[] = [{
                             scription. A subclass is a specialization that grants 
                             you features at certain Wizard levels. For the rest 
                             of your career, you gain each of your subclass's fea
-                            tures that are of your Wizard level or lower.`
+                            tures that are of your Wizard level or lower.`,
+            type: ["Choice"],
         },
         {
             level: 4,
@@ -3409,7 +3579,8 @@ export const Classes: classData[] = [{
             description: `You gain the Ability Score Improvement feat (see 
                             “Feats”) or another feat of your choice for which you 
                             qualify. You gain this feature again at Wizard levels 
-                            8, 12, and 16.`
+                            8, 12, and 16.`,
+            type: ["Choice"],
         },
         {
             level: 5,
@@ -3417,7 +3588,8 @@ export const Classes: classData[] = [{
             description: `Whenever you finish a Short Rest, you can study 
                             your spellbook and replace one of the level 1+ Wiz
                             ard spells you have prepared for your Spellcasting 
-                            feature with another level 1+ spell from the book.`
+                            feature with another level 1+ spell from the book.`,
+            type: ["Choice"],
         },
         {
             level: 18,
@@ -3431,14 +3603,16 @@ export const Classes: classData[] = [{
                             a higher level, you must expend a spell slot.
                             Whenever you finish a Long Rest, you can study 
                             your spellbook and replace one of those spells with 
-                            an eligible spell of the same level from the book.`
+                            an eligible spell of the same level from the book.`,
+            type: ["Choice"],
         },
         {
             level: 19,
             name: "Epic Boon",
             description: `You gain an Epic Boon feat (see “Feats”) or another 
                             feat of your choice for which you qualify. Boon of 
-                            Spell Recall is recommended.`
+                            Spell Recall is recommended.`,
+            type: ["Choice"],
         },
         {
             level: 20,
@@ -3449,7 +3623,8 @@ export const Classes: classData[] = [{
                             without expending a spell slot. When you do so, you 
                             can't cast them in this way again until you finish a 
                             Short or Long Rest. To cast either spell at a higher 
-                            level, you must expend a spell slot.`
+                            level, you must expend a spell slot.`,
+            type: ["Choice", "Passive"],
         },
         
     ],
@@ -3474,7 +3649,8 @@ export const Classes: classData[] = [{
                                 level of spell slots in this class, you can add one Wiz
                                 ard spell from the Evocation school to your spell
                                 book for free. The chosen spell must be of a level for 
-                                which you have spell slots.`
+                                which you have spell slots.`,
+                type: ["Choice"],
             },
             {
                 level: 3,
@@ -3485,7 +3661,8 @@ export const Classes: classData[] = [{
                                 or the target succeeds on a saving throw against the 
                                 cantrip, the target takes half the cantrip's damage 
                                 (if any) but suffers no additional effect from the 
-                                cantrip.`
+                                cantrip.`,
+                type: ["Passive"],
             },
             {
                 level: 6,
@@ -3497,14 +3674,16 @@ export const Classes: classData[] = [{
                                 plus the spell's level. The chosen creatures automat
                                 ically succeed on their saving throws against the 
                                 spell, and they take no damage if they would nor
-                                mally take half damage on a successful save.`
+                                mally take half damage on a successful save.`,
+                type: ["Triggered", "Choice"],
             },
             {
                 level: 10,
                 name: "Empowered Evocation",
                 description: `Whenever you cast a Wizard spell from the Evoca
                                 tion school, you can add your Intelligence modifier 
-                                to one damage roll of that spell.`
+                                to one damage roll of that spell.`,
+                type: ["Passive"],
             },
             {
                 level: 14,
@@ -3520,7 +3699,8 @@ export const Classes: classData[] = [{
                                 This damage ignores Resistance and Immunity.
                                 Each time you use this feature again before finish
                                 ing a Long Rest, the Necrotic damage per spell level 
-                                increases by 1d12.`
+                                increases by 1d12.`,
+                type: ["Triggered"],
             },
         ]
     }

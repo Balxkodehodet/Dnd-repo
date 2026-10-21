@@ -2,6 +2,16 @@ export type WeaponCategory =
     | "simple"
     | "martial";
 
+export type Weapons = {
+    simple: {
+        melee: string[],
+        ranged: string[]
+    }
+    martial:{
+        melee: string[],
+        ranged: string[]
+    }
+}
 export type WeaponProperty =
     | "Light"
     | "Finesse"

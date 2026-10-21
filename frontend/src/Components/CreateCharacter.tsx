@@ -9,50 +9,117 @@ import NameSelection from "./NameSelection.tsx";
 export default function CreateCharacter() {
 
     const { nameId, genderId, raceId, portraitId, classId } = useParams();
-    const [characterCreationStage, setCharacterCreationStage] = useState(0);
+    const [characterCreationStage, setCharacterCreationStage] = useState<number>(() => {
+        let stage = localStorage.getItem("characterCreationStage")
+        return Number(stage) ?? 0
+    });
+    const [showCharacterInfo, setShowCharacterInfo] = useState(false);
     //const [character, setCharacter] = useState([]);
-    const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : ""
+    const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
     return (
         <>
             {characterCreationStage === 0 && <>
-                <div className="racecontainer">
-                    <NameSelection stage={characterCreationStage} nameId={nameId} />
-                    <button disabled={nameId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage(1)}>Finish Name selection</button>
+                <div className="character-containerparent">
+                    <div className="nameTxt">
+                        <NameSelection stage={characterCreationStage} nameId={nameId} />
+                    </div>
+                    <button disabled={nameId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                        const newStage = prev + 1;
+                        localStorage.setItem("characterCreationStage", newStage.toString())
+                        return newStage
+                    })}>Finish Name selection</button>
                 </div></>}
             {characterCreationStage === 1 && <>
-                <div className="racecontainer">
-                    <NameSelection stage={characterCreationStage} nameId={nameId} />
-                    <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                    <button disabled={validatedGenderId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage(2)}>Finish Gender selection</button>
+                <div className="character-containerparent">
+                    <div className="characterInfo">
+                        {showCharacterInfo && <div className="item nameTxt">
+                            <NameSelection stage={characterCreationStage} nameId={nameId} />
+                        </div>}
+                        {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                    </div>
+                    <div className="genderContainer">
+                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                    </div>
+                    <button disabled={validatedGenderId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                        const newStage = prev + 1;
+                        localStorage.setItem("characterCreationStage", newStage.toString())
+                        return newStage
+                    })}>Finish Gender selection</button>
                 </div></>}
             {characterCreationStage === 2 && <>
-                <div className="racecontainer">
-                    <NameSelection stage={characterCreationStage} nameId={nameId} />
-                    <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                <div className="character-containerparent">
+                    <div className="characterInfo">
+                        {showCharacterInfo &&
+                            <><div className="item nameTxt">
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                            </div>
+                                <div className="item">
+                                    <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                </div>
+                            </>
+                        }
+                        {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                    </div>
                     <Races singleRace={raceId} stage={characterCreationStage} />
-                    <button disabled={raceId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage(3)}>Finish Race selection</button>
+                    <button disabled={raceId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                        const newStage = prev + 1;
+                        localStorage.setItem("characterCreationStage", newStage.toString())
+                        return newStage
+                    })}>Finish Race selection</button>
                 </div></>}
             {characterCreationStage === 3 && <>
-                <div className="portrait-containerparent">
-                    <NameSelection stage={characterCreationStage} nameId={nameId} />
-                    <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                    <Races singleRace={raceId} stage={characterCreationStage} />
+                <div className="character-containerparent">
+                    <div className="characterInfo">
+                        {showCharacterInfo && <>
+                            <div className="item">
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                            </div>
+                            <div className="item">
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                            </div>
+                            <div className="item">
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                            </div>
+                        </>}
+                        {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                    </div>
                     <Gallery className="selected" singleImg={portraitId} stage={characterCreationStage} />
-                    <button disabled={portraitId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage(4)}>Finish portrait selection</button>
+                    <button disabled={portraitId === undefined} className="selectionbtnPortrait" onClick={() => setCharacterCreationStage((prev) => {
+                        const newStage = prev + 1;
+                        localStorage.setItem("characterCreationStage", newStage.toString())
+                        return newStage
+                    })}>Finish portrait selection</button>
                 </div></>}
             {characterCreationStage === 4 && <>
                 <div className="classesParent">
                     <div className="classCardParent">
                         <h2 className="classes-h2">Classes</h2>
-                        <NameSelection stage={characterCreationStage} nameId={nameId} />
-                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                        <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
-                        <Races singleRace={raceId} stage={characterCreationStage} />
+                        <div className="characterInfo">
+                            {showCharacterInfo && <>
+                                <div className="item">
+                                    <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                </div>
+                                <div className="item">
+                                    <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                </div>
+                                <div className="item">
+                                    <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                </div>
+                                <div className="item">
+                                    <Races singleRace={raceId} stage={characterCreationStage} />
+                                </div>
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
                         <div className="classCardParent1">
                             <ClassesComponent singleClass={classId} stage={characterCreationStage} />
                         </div>
                     </div>
-                    <button disabled={classId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage(5)}>Finish Class selection</button>
+                    <button disabled={classId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                        const newStage = prev + 1;
+                        localStorage.setItem("characterCreationStage", newStage.toString())
+                        return newStage
+                    })}>Finish Class selection</button>
                 </div>
             </>}
             {characterCreationStage === 5 && <>
