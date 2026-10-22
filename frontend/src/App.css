@@ -384,7 +384,7 @@ header {
 }
 
 .selectionbtn {
-  margin-top: 0px;
+  margin-top: 10px;
   padding: 10px;
 }
 .selectionbtnPortrait{
@@ -418,7 +418,7 @@ header {
   align-items: center;
   flex-direction: column;
   margin-top: 2%;
-  width: 90vw;
+  width: 100vw;
 }
 
 .character-containerparent a {

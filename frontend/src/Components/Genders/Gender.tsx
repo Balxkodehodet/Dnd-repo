@@ -11,6 +11,7 @@ export default function Gender({ singleGender, stage }: genderProps) {
     return (
         <>
             {!singleGender && <>
+                <h2>Choose Gender</h2>
                 <div onClick={() => navigate(`/home/create-character/${nameId}/male`)} className='genderBtn' >
                     <p>Male</p>
                 </div>
@@ -18,7 +19,7 @@ export default function Gender({ singleGender, stage }: genderProps) {
                     <p>Female</p>
                 </div>
             </>}
-            {singleGender && <>{stage === 1 && <Link to={`/home/create-character/${nameId}`}><img className="x-gender" src={x} /></Link>}<div className="genderBtn2"><p>{singleGender}</p></div></>}
+            {singleGender && <>{stage === 1 && <Link to={`/home/create-character/${nameId}`}><img className="x-gender" src={x} /></Link>}<div className="genderBtn2"><h2>Chosen Gender</h2><p>{singleGender}</p></div></>}
         </>
 
     )

@@ -22,7 +22,7 @@ export default function NameSelection({ nameId, stage }: { nameId: string | unde
                     <input name="name" type="text"></input>
                     <button type="submit">Choose name</button>
                 </form>}
-            {nameId && <>{stage === 0 && <><Link to={`/home/create-character/`}><img className="x-gender" src={x} /></Link></>}<h2>{nameId}</h2></>}
+            {nameId && <>{stage === 0 && <><Link to={`/home/create-character/`}><img className="x-gender" src={x} /></Link></>}<h2>Chosen Name: </h2><p>{nameId}</p></>}
         </>
     )
 }
