@@ -7,15 +7,15 @@ import x from "../../assets/close.png"
 
 export default function Gallery({ singleImg, className, stage }: galleryProps): React.JSX.Element {
 
-    let portraitIndex = Number(singleImg);
-    let hasValidPortrait = Number.isInteger(portraitIndex) && portraitIndex !== undefined && portraitIndex >= 0;
+    let portraitName = singleImg;
+    let hasValidPortrait = portraitName !== undefined;
     const { nameId, genderId, raceId } = useParams();
-    let humanMaleportrait = hasValidPortrait ? humanMaleportraits[Number(singleImg)] : undefined;
-    let humanFemaleportrait = hasValidPortrait ? humanFemaleportraits[Number(singleImg)] : undefined;
-    let elfMaleportrait = hasValidPortrait ? elfMaleportraits[Number(singleImg)] : undefined;
-    let elfFemaleportrait = hasValidPortrait ? elfFemaleportraits[Number(singleImg)] : undefined;
-    let dwarfMaleportrait = hasValidPortrait ? dwarfMaleportraits[Number(singleImg)] : undefined;
-    let dwarfFemaleportrait = hasValidPortrait ? dwarfFemaleportraits[Number(singleImg)] : undefined;
+    let humanMaleportrait = hasValidPortrait ? humanMaleportraits.find((human) => human.name === singleImg) : undefined;
+    let humanFemaleportrait = hasValidPortrait ? humanFemaleportraits.find((human) => human.name === singleImg) : undefined;
+    let elfMaleportrait = hasValidPortrait ? elfMaleportraits.find((elf) => elf.name === singleImg) : undefined;
+    let elfFemaleportrait = hasValidPortrait ? elfFemaleportraits.find((elf)=> elf.name === singleImg) : undefined;
+    let dwarfMaleportrait = hasValidPortrait ? dwarfMaleportraits.find((dwarf) => dwarf.name === singleImg) : undefined;
+    let dwarfFemaleportrait = hasValidPortrait ? dwarfFemaleportraits.find((dwarf) => dwarf.name === singleImg) : undefined;
     
     return (
         <>
@@ -24,10 +24,10 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
                 <div className="portraitcontainer">
                     {humanMaleportraits.map((portrait, index) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -41,7 +41,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {humanMaleportrait && genderId === "male" && raceId === "human" && <><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={humanMaleportrait} />
+                    <img className={className} src={humanMaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}
@@ -49,12 +49,12 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!humanFemaleportrait && genderId === "female" && raceId === "human" &&<div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {humanFemaleportraits.map((portrait, index) => {
+                    {humanFemaleportraits.map((portrait) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -68,7 +68,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {humanFemaleportrait && genderId === "female" && raceId === "human" &&<><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={humanFemaleportrait} />
+                    <img className={className} src={humanFemaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}
@@ -76,12 +76,12 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!elfMaleportrait && genderId === "male" && raceId === "elf" &&<div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {elfMaleportraits.map((portrait, index) => {
+                    {elfMaleportraits.map((portrait) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -95,7 +95,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {elfMaleportrait && genderId === "male" && raceId === "elf" &&<><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={elfMaleportrait} />
+                    <img className={className} src={elfMaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}
@@ -103,12 +103,12 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!elfFemaleportrait && genderId === "female" && raceId === "elf" &&<div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {elfFemaleportraits.map((portrait, index) => {
+                    {elfFemaleportraits.map((portrait) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -122,7 +122,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {elfFemaleportrait && genderId === "female" && raceId === "elf" &&<><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={elfFemaleportrait} />
+                    <img className={className} src={elfFemaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}
@@ -130,12 +130,12 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!dwarfMaleportrait && genderId === "male" && raceId === "dwarf" &&<div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {dwarfMaleportraits.map((portrait, index) => {
+                    {dwarfMaleportraits.map((portrait) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -149,7 +149,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {dwarfMaleportrait && genderId === "male" && raceId === "dwarf" &&<><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={dwarfMaleportrait} />
+                    <img className={className} src={dwarfMaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}
@@ -157,12 +157,12 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!dwarfFemaleportrait && genderId === "female" && raceId === "dwarf" &&<div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {dwarfFemaleportraits.map((portrait, index) => {
+                    {dwarfFemaleportraits.map((portrait) => {
                         return (
-                            <div className="item" key={portrait}>
-                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${index}`}>
+                            <div className="item" key={portrait.src}>
+                                <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
                                     <img className="portrait"
-                                        src={portrait}
+                                        src={portrait.src}
                                         alt="Human character portrait" /></Link>
 
                             </div>
@@ -176,7 +176,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             }
             {dwarfFemaleportrait && genderId === "female" && raceId === "dwarf" &&<><h2>Chosen portrait</h2>
                 <div className="singleportrait">
-                    <img className={className} src={dwarfFemaleportrait} />
+                    <img className={className} src={dwarfFemaleportrait.src} />
                     {stage === 3 && <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}`}><img className="x-portrait" src={x} /></Link>}
                 </div>
             </>}

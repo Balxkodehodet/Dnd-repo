@@ -1,4 +1,5 @@
 // HUMANS 
+// Male
 // Importer alle bildene på en gang med import.meta.glob
 const humanMaleportraitsModules = import.meta.glob('../assets/PortraitsHuman/male/*.png',
         {
@@ -7,8 +8,14 @@ const humanMaleportraitsModules = import.meta.glob('../assets/PortraitsHuman/mal
         }
     );
 // Lagre bilde url i portraits 
-export const humanMaleportraits = Object.values(humanMaleportraitsModules) as string[];
-
+export const humanMaleportraits = Object.entries(humanMaleportraitsModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})
+// FEMALE
 // Importer alle bildene på en gang med import.meta.glob
 const humanFemalePortraitModules = import.meta.glob('../assets/PortraitsHuman/female/*.png',
         {
@@ -17,7 +24,13 @@ const humanFemalePortraitModules = import.meta.glob('../assets/PortraitsHuman/fe
         }
     );
 // Lagre bilde url i portraits 
-export const humanFemaleportraits = Object.values(humanFemalePortraitModules) as string[];
+export const humanFemaleportraits = Object.entries(humanFemalePortraitModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})
 
 // ELVES
 // MALE
@@ -29,7 +42,13 @@ const elfMaleportraitsModules = import.meta.glob('../assets/PortraitsElf/male/*.
         }
     );
 // Lagre bilde url i portraits 
-export const elfMaleportraits = Object.values(elfMaleportraitsModules) as string[];
+export const elfMaleportraits = Object.entries(elfMaleportraitsModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})
 // FEMALE
 // Importer alle bildene på en gang med import.meta.glob
 const ElfFemalePortraitModules = import.meta.glob('../assets/PortraitsElf/female/*.png',
@@ -39,7 +58,13 @@ const ElfFemalePortraitModules = import.meta.glob('../assets/PortraitsElf/female
         }
     );
 // Lagre bilde url i portraits 
-export const elfFemaleportraits = Object.values(ElfFemalePortraitModules) as string[];
+export const elfFemaleportraits = Object.entries(ElfFemalePortraitModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})
 
 // DWARVES
 // MALE
@@ -51,7 +76,13 @@ const dwarfMaleportraitsModules = import.meta.glob('../assets/PortraitsDwarf/mal
         }
     );
 // Lagre bilde url i portraits 
-export const dwarfMaleportraits = Object.values(dwarfMaleportraitsModules) as string[];
+export const dwarfMaleportraits = Object.entries(dwarfMaleportraitsModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})
 // FEMALE
 // Importer alle bildene på en gang med import.meta.glob
 const dwarfFemalePortraitModules = import.meta.glob('../assets/PortraitsDwarf/female/*.png',
@@ -61,4 +92,10 @@ const dwarfFemalePortraitModules = import.meta.glob('../assets/PortraitsDwarf/fe
         }
     );
 // Lagre bilde url i portraits 
-export const dwarfFemaleportraits = Object.values(dwarfFemalePortraitModules) as string[];
+export const dwarfFemaleportraits = Object.entries(dwarfFemalePortraitModules).map(([path, src]) => {
+    const filename = path.split("/").pop()?.replace(/\.(png|jpg|jpeg|webp)$/i, "");
+    return {
+        name: filename,
+        src: src as string
+    }
+})

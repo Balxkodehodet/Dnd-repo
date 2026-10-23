@@ -20,6 +20,7 @@ export default function CreateCharacter() {
         <>
             {characterCreationStage === 0 && <>
                 <div className="character-containerparent">
+                    <h2 className="classes-h2">Name</h2>
                     <div className="nameTxt">
                         <NameSelection stage={characterCreationStage} nameId={nameId} />
                     </div>
@@ -31,7 +32,8 @@ export default function CreateCharacter() {
                 </div></>}
             {characterCreationStage === 1 && <>
                 <div className="character-containerparent">
-                    <div className="characterInfo">
+                    <h2 className="classes-h2">Gender</h2>
+                    <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                         {showCharacterInfo && <div className="item nameTxt">
                             <NameSelection stage={characterCreationStage} nameId={nameId} />
                         </div>}
@@ -48,7 +50,8 @@ export default function CreateCharacter() {
                 </div></>}
             {characterCreationStage === 2 && <>
                 <div className="character-containerparent">
-                    <div className="characterInfo">
+                    <h2 className="classes-h2">Races</h2>
+                    <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                         {showCharacterInfo &&
                             <><div className="item nameTxt">
                                 <NameSelection stage={characterCreationStage} nameId={nameId} />
@@ -69,7 +72,8 @@ export default function CreateCharacter() {
                 </div></>}
             {characterCreationStage === 3 && <>
                 <div className="character-containerparent">
-                    <div className="characterInfo">
+                    <h2 className="classes-h2">Portraits</h2>
+                    <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                         {showCharacterInfo && <>
                             <div className="item">
                                 <NameSelection stage={characterCreationStage} nameId={nameId} />
@@ -94,7 +98,7 @@ export default function CreateCharacter() {
                 <div className="classesParent">
                     <div className="classCardParent">
                         <h2 className="classes-h2">Classes</h2>
-                        <div className="characterInfo">
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                             {showCharacterInfo && <>
                                 <div className="item">
                                     <NameSelection stage={characterCreationStage} nameId={nameId} />

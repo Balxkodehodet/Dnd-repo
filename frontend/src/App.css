@@ -111,6 +111,7 @@ header {
   height: 200px;
   border: 2px solid black;
 }
+
 .singleportrait {
   position: relative;
 }
@@ -177,13 +178,12 @@ header {
 
 .selected {
   display: block;
-  transform: scale(1.4);
   transition: ease-in;
   transition-duration: 0.5s;
   border: 2px solid gold;
-  width: 550px;
-  height: 550px;
-  margin-top: 50px;
+  width: 650px;
+  height: auto;
+  margin-top: 0px;
 }
 
 .portrait:hover {
@@ -207,8 +207,8 @@ header {
 
 .x-portrait {
   position: absolute;
-  top: -25px;
-  right: -100px;
+  top: 0px;
+  right: 0px;
   width: 40px;
   height: 40px;
 }
@@ -387,8 +387,9 @@ header {
   margin-top: 10px;
   padding: 10px;
 }
-.selectionbtnPortrait{
-  margin-top:120px;
+
+.selectionbtnPortrait {
+  margin-top: 20px;
   padding: 10px;
 }
 
@@ -396,8 +397,15 @@ header {
   flex: 0 0 auto;
 }
 
+.blackborder {
+  border: #1d1d1d solid 3px;
+}
+
 .characterInfo {
   display: flex;
+  padding:15px;
+  margin:5px;
+  border-radius: 15px;
   flex-direction: row;
   gap: 1rem;
   overflow-y: hidden;
@@ -408,10 +416,10 @@ header {
   align-items: center;
 }
 
-.character-containerparent h2
-{
+.character-containerparent h2 {
   margin-bottom: 10px;
 }
+
 .character-containerparent {
   display: flex;
   justify-content: center;
@@ -430,6 +438,19 @@ header {
   width: 200px;
   height: auto;
   border: 10px solid black
+}
+
+.nameCard {
+  background-color: #5441ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  border: #1d1d1d 2px solid
+}
+
+.nameCard:hover {
+  background-color: #9285ff;
+  cursor: pointer;
 }
 
 /* Responsive design */
@@ -468,7 +489,8 @@ header {
 
   .selected {
     width: 300px;
-    height: 300px;
+    height: auto;
+
   }
 
   .x {
@@ -487,34 +509,40 @@ header {
 }
 
 @media(max-width: 500px) {
-.classCard,
-.raceCard,
-.skillParent {
-  margin: 10px;
-  margin-left: 20px;
-  padding: 10px;
-  background-color: #7768ff;
-  border: 2px black solid;
-  width: 90vw;
-  height: auto;
-  border-radius: 10px;
-}
-.raceCard-info
-{
-  width:90vw;
-}
-.x-gender, .x,.x-class,.x-race,.x-portrait
-{
-  width:20px;
-  height:auto;
-  top:-2px;
-  right:-2px;
-}
+
+  .classCard,
+  .raceCard,
+  .skillParent {
+    margin: 10px;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #7768ff;
+    border: 2px black solid;
+    width: 90vw;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .raceCard-info {
+    width: 90vw;
+  }
+
+  .x-gender,
+  .x,
+  .x-class,
+  .x-race,
+  .x-portrait {
+    width: 20px;
+    height: auto;
+    top: -2px;
+    right: -2px;
+  }
+
   .selected {
     width: 90vw;
     height: auto;
     transform: scale(1.0);
-    margin-top:0px;
+    margin-top: 0px;
   }
 
   .x {
