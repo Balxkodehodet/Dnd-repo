@@ -36,7 +36,9 @@ export type CategoryData = {
 
 export type classProps = {
     singleClass: string | undefined,
-    stage: number
+    stage: number,
+    setClassStage: React.Dispatch<React.SetStateAction<number | null>>,
+    classStage: number | null
 };
 export type galleryProps = {
     singleImg: string | undefined,

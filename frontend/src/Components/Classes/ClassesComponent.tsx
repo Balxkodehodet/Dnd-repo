@@ -8,13 +8,12 @@ import { useState } from 'react';
 //import useGetData from '../../Hooks/useGetData.tsx';
 import { SkillsInfo } from '../../data/SkillsInfo.ts';
 
-export default function ClassesComponent({ singleClass, stage }: classProps): React.JSX.Element {
+export default function ClassesComponent({ singleClass, stage, setClassStage, classStage }: classProps): React.JSX.Element {
 
-    const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === singleClass);
+    const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === CreateSlug(singleClass));
     const { nameId, genderId, raceId, portraitId } = useParams();
-    const [classStage, setClassStage] = useState<Number | null>(null)
     const [skill, setSkill] = useState<string | undefined>(undefined);
-    const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === skill)
+    const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === CreateSlug(skill))
     //let skillUrl: string | null = skill ? `https://www.dnd5eapi.co/api/2024/skills/${skill?.toLowerCase()}` : null;
 
     //let {data: skillData, isLoading: skillLoading, isError: skillError} = useGetData(skillUrl)
@@ -99,8 +98,8 @@ export default function ClassesComponent({ singleClass, stage }: classProps): Re
                             </div>
                             <button className="classBtnNext" onClick={() => setClassStage(1)}>Next</button>
                         </div>}
-                    {!skill && classStage === 1 && <>{selectedClass.Proficiencies.skills.options.map((skill, index) => <div onClick={() => setSkill(skill.toLowerCase())} key={`${skill}-${index}`} className='skillParent'>{skill}</div>)}</>}
-                    {skill && classStage === 1 && singleSkill && <div className='skillParent'>Skill:{singleSkill.skill}<br></br>Ability:{singleSkill.ability}<br></br>Info:{singleSkill.information}</div>}
+                    {!skill && classStage === 1 && <><h3>Choose {selectedClass.Proficiencies.skills.choose} skills</h3>{selectedClass.Proficiencies.skills.options.map((skill, index) => <div onClick={() => setSkill(skill.toLowerCase())} key={`${skill}-${index}`} className='skillParent'>{skill}</div>)}</>}
+                    {skill && classStage === 1 && singleSkill && <div className='skillParent'>Skill:{singleSkill.skill}<br></br>Ability:{singleSkill.ability}<br></br>Info:{singleSkill.information}<br></br><button onClick={() => setSkill(undefined)}>Back</button></div>}
                 </>
             }
         </>)

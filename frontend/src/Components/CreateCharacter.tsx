@@ -5,6 +5,7 @@ import ClassesComponent from "./Classes/ClassesComponent.tsx";
 import Races from './Races/Races.tsx'
 import Gender from "./Genders/Gender.tsx";
 import NameSelection from "./NameSelection.tsx";
+import BottomTop from "./BottomTop.tsx";
 
 export default function CreateCharacter() {
 
@@ -14,6 +15,7 @@ export default function CreateCharacter() {
         return Number(stage) ?? 0
     });
     const [showCharacterInfo, setShowCharacterInfo] = useState(false);
+    const [classStage, setClassStage] = useState<number | null>(null)
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
     return (
@@ -116,14 +118,15 @@ export default function CreateCharacter() {
                             {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
                         <div className="classCardParent1">
-                            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
+                            <ClassesComponent classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
                         </div>
                     </div>
-                    <button disabled={classId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                    <button disabled={classId === undefined || classStage === null || classStage < 5} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
                         const newStage = prev + 1;
                         localStorage.setItem("characterCreationStage", newStage.toString())
                         return newStage
                     })}>Finish Class selection</button>
+                    {classId && classStage === null && <BottomTop/>}
                 </div>
             </>}
             {characterCreationStage === 5 && <>
@@ -134,7 +137,7 @@ export default function CreateCharacter() {
                         <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
                         <Races singleRace={raceId} stage={characterCreationStage} />
                         <div className="classCardParent1">
-                            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
+                            <ClassesComponent classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
                         </div>
                     </div>
                     <button className="selectionbtn" onClick={() => setCharacterCreationStage(6)}>Finish3</button>
@@ -148,7 +151,7 @@ export default function CreateCharacter() {
                         <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
                         <Races singleRace={raceId} stage={characterCreationStage} />
                         <div className="classCardParent1">
-                            <ClassesComponent singleClass={classId} stage={characterCreationStage} />
+                            <ClassesComponent classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
                         </div>
                     </div>
                     <button className="selectionbtn" onClick={() => setCharacterCreationStage(7)}>Finish 4</button>

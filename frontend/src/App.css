@@ -155,13 +155,34 @@ header {
   border: #1900ff solid 2px;
   margin-bottom: 10px;
 }
-
-.classBtnNext {
+.totheTop
+{
   padding: 10px;
   background-color: #ffc400;
   position: fixed;
-  bottom: 0%;
-  right: 680px;
+  bottom: 10px;
+  right: 60px;
+  border-radius: 15px;
+  border:#1d1d1d solid 1px;
+} 
+.totheBottom
+{
+  padding: 10px;
+  background-color: #ffc400;
+  position: fixed;
+  bottom: 10px;
+  right: 145px;
+  border-radius: 15px;
+  border:#1d1d1d solid 1px;
+}
+.classBtnNext  {
+  padding: 10px;
+  background-color: #ffc400;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 15px;
+  border:#1d1d1d solid 1px;
 }
 
 .singleClassCard {
