@@ -22,7 +22,7 @@ export default function Gallery({ singleImg, className, stage }: galleryProps): 
             {!humanMaleportrait && genderId === "male" && raceId === "human" && <div>
                 <h2>Choose portrait</h2>
                 <div className="portraitcontainer">
-                    {humanMaleportraits.map((portrait, index) => {
+                    {humanMaleportraits.map((portrait) => {
                         return (
                             <div className="item" key={portrait.src}>
                                 <Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portrait.name}`}>
