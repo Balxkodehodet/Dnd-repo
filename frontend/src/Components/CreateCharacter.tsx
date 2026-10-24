@@ -117,9 +117,9 @@ export default function CreateCharacter() {
                             </>}
                             {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
-                        <div className="classCardParent1">
-                            <ClassesComponent classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
-                        </div>
+                        <div className={`${classStage === null ? "classCardParent1" : ""}`}>
+                        <ClassesComponent classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                        </div>        
                     </div>
                     <button disabled={classId === undefined || classStage === null || classStage < 5} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
                         const newStage = prev + 1;
