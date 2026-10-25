@@ -16,6 +16,7 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
     const { nameId, genderId, raceId, portraitId } = useParams();
     const [skill, setSkill] = useState<string | undefined>(undefined);
     const [selectedSkill, setSelectedSkill] = useState<singleSkill[] | []>([]);
+    const [selectedTool, setSelectedTool] = useState<string[] | []>([]);
     const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined)
     const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === CreateSlug(skill))
     //let skillUrl: string | null = skill ? `https://www.dnd5eapi.co/api/2024/skills/${skill?.toLowerCase()}` : null;
@@ -138,8 +139,14 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                     }}
                         className="skillBtn">Select Skill</button></>}
                     {/* Button for finishing skill selection */}
-                    {selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => setClassStage(2)}>Next</button>}
-                    {classStage === 2}
+                    {classStage === 1 && selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => setClassStage(2)}>Next</button>}
+                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && <div>Tools: {selectedClass.Proficiencies.tool.map((tool) => <div><p>{tool.toolName}</p>
+                        <p>{tool.options}</p></div>)}</div>}
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && <><h3>Tools:</h3><p>{selectedClass.Proficiencies.tool?.toolName}</p>
+                        <p>Choose: {selectedClass.Proficiencies.tool?.choose}</p><div className="toolsParent">{selectedClass.Proficiencies.tool?.options?.map((op, i) => <p onClick={() => setSelectedTool((prev) => [...prev, op])} className="tools" key={i}>{op}</p>)}</div>
+                    </>}
+                    {classStage === 2 && selectedTool.length && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool.map(tool => <p className="tools">{tool}</p>)}</div></>}
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool([])}>Reset</button></>}
                     {errorMsg && <div className="errorMsg">{errorMsg}</div>}
                 </>
             }

@@ -391,10 +391,32 @@ header {
   width: 400px;
   height: auto;
 }
+.tools
+{
+  margin:10px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
 
+}
+.tools:hover
+{
+  background-color:#9285ff;
+  transform: scale(1.05);
+}
+.toolsParent
+{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left:20px;
+}
 .classCard,
 .raceCard,
-.skillParent {
+.skillParent{
   margin: 10px;
   margin-left: 20px;
   padding: 10px;
@@ -555,6 +577,23 @@ header {
 
 /* Responsive design */
 @media(max-width: 800px) {
+  .toolsParent
+  {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 90vw;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .tools
+  {
+    flex: 0 0 auto;
+    width:120px;
+  }
   .classCardParent1 {
     display: flex;
     flex-direction: row;
