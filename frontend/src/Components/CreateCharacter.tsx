@@ -17,7 +17,10 @@ export default function CreateCharacter() {
         return Number(stage) ?? 0
     });
     const [showCharacterInfo, setShowCharacterInfo] = useState(false);
-    const [classStage, setClassStage] = useState<number | null>(null);
+    const [classStage, setClassStage] = useState<number | null>(() => {
+        const stored = localStorage.getItem("classStage")
+        return stored ? Number(stored) : null; 
+    });
     const [btmMenu, setBtmMenu] = useState<boolean>(false);
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
@@ -124,11 +127,11 @@ export default function CreateCharacter() {
                         <ClassesComponent btmMenu={btmMenu} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
                         </div>        
                     </div>
-                    <button disabled={classId === undefined || classStage === null || classStage < 5} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                    {classId !== undefined || classStage !== null && classStage > 3 && <button className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
                         const newStage = prev + 1;
                         localStorage.setItem("characterCreationStage", newStage.toString())
                         return newStage
-                    })}>Finish Class selection</button>
+                    })}>Finish Class selection</button>}
                     {classId && classStage === null && btmMenu && <><BottomTop/><img onClick={() => setBtmMenu(prev => !prev)} className="btmMenuX" src={x}/></>} 
                     {classId && classStage === null && !btmMenu && <img onClick={() => setBtmMenu(prev => !prev)} className="btmMenu" src={menu}/>}
                 </div>

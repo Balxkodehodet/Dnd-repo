@@ -7,7 +7,6 @@ import x from '../../assets/close.png'
 import { useState, useEffect } from 'react';
 import type { singleSkill } from '../../types/Skills.ts';
 import check from '../../assets/check.png'
-//import useGetData from '../../Hooks/useGetData.tsx';
 import { SkillsInfo } from '../../data/SkillsInfo.ts';
 
 export default function ClassesComponent({ singleClass, stage, setClassStage, classStage, btmMenu }: classProps): React.JSX.Element {
@@ -15,13 +14,17 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
     const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === CreateSlug(singleClass));
     const { nameId, genderId, raceId, portraitId } = useParams();
     const [skill, setSkill] = useState<string | undefined>(undefined);
-    const [selectedSkill, setSelectedSkill] = useState<singleSkill[] | []>([]);
-    const [selectedTool, setSelectedTool] = useState<string[] | []>([]);
+    const [selectedSkill, setSelectedSkill] = useState<singleSkill[] | []>(() => {
+        const stored = localStorage.getItem("selectedSkills");
+        return stored ? JSON.parse(stored) : []
+    });
+    const [selectedTool, setSelectedTool] = useState<string[] | null>(() => {
+        const stored = localStorage.getItem("selectedTools");
+
+        return stored ? JSON.parse(stored) : null;
+    });
     const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined)
     const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === CreateSlug(skill))
-    //let skillUrl: string | null = skill ? `https://www.dnd5eapi.co/api/2024/skills/${skill?.toLowerCase()}` : null;
-
-    //let {data: skillData, isLoading: skillLoading, isError: skillError} = useGetData(skillUrl)
 
     // Setter timer på hver errorMsg på 3 sekunder
     useEffect(() => {
@@ -137,16 +140,18 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                         return setSelectedSkill(prev => [...prev, singleSkill]);
 
                     }}
-                        className="skillBtn">Select Skill</button></>}
+                        className="skillBtn">Select Skill</button>
+                        {localStorage.setItem("selectedSkills", JSON.stringify(selectedSkill))} {localStorage.setItem("classStage", "1")}</>}
                     {/* Button for finishing skill selection */}
                     {classStage === 1 && selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => setClassStage(2)}>Next</button>}
                     {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && <div>Tools: {selectedClass.Proficiencies.tool.map((tool) => <div><p>{tool.toolName}</p>
                         <p>{tool.options}</p></div>)}</div>}
                     {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && <><h3>Tools:</h3><p>{selectedClass.Proficiencies.tool?.toolName}</p>
-                        <p>Choose: {selectedClass.Proficiencies.tool?.choose}</p><div className="toolsParent">{selectedClass.Proficiencies.tool?.options?.map((op, i) => <p onClick={() => setSelectedTool((prev) => [...prev, op])} className="tools" key={i}>{op}</p>)}</div>
+                        <p>Choose: {selectedClass.Proficiencies.tool?.choose}</p><div className="toolsParent">{selectedClass.Proficiencies.tool?.options?.map((op, i) => <p onClick={() => setSelectedTool((prev) => prev !== null ? [...prev, op] : [op])} className="tools" key={i}>{op}</p>)}</div>
                     </>}
-                    {classStage === 2 && selectedTool.length && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool.map(tool => <p className="tools">{tool}</p>)}</div></>}
-                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool([])}>Reset</button></>}
+                    {classStage === 2 && selectedTool?.length !== null && selectedTool?.length !== undefined && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool?.map(tool => <p className="tools">{tool}</p>)}</div></>}
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool(null)}>Reset</button>
+                        {localStorage.setItem("selectedTools", JSON.stringify(selectedTool))} {localStorage.setItem("classStage", "2")}</>}
                     {errorMsg && <div className="errorMsg">{errorMsg}</div>}
                 </>
             }
