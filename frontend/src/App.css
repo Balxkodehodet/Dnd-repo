@@ -192,8 +192,34 @@ header {
   background-color: #9285ff;
   cursor: pointer;
 }
+.btmMenu
+{
+  background-color:white;
+  position:fixed;
+  padding:2px;
+  bottom:10px;
+  right:10px;
+  border-radius: 5px;
+  width:24px;
+  height:auto;
+}
+.btmMenuX
+{
+  position:fixed;
+  padding:2px;
+  bottom:40px;
+  right:2px;
+  border-radius: 5px;
+  width:24px;
+  height:auto;
+}
+.btmMenu:hover, .btmMenuX:hover
+{
+  transform: scale(1.1);
+}
 .classBtnNext  {
   padding: 10px;
+
   background-color: #ffc400;
   position: fixed;
   bottom: 10px;
@@ -509,10 +535,11 @@ header {
 {
   display: flex;
   margin: 10px;
+  margin-left:20px;
   padding: 10px;
   background-color: #7768ff;
   border: 2px black solid;
-  width: 90vw;
+  width: 400px;
   height: auto;
   border-radius: 10px;
   justify-content: space-between;
@@ -581,11 +608,38 @@ header {
   }
   .skillBtn
   {height:50px}
+  .skillParentCheck
+{
+  display: flex;
+  margin: 10px;
+  margin-left:20px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 90vw;
+  height: auto;
+  border-radius: 10px;
+  justify-content: space-between;
+  
+}
 }
 @media(max-width: 500px) {
   .skillBtn
   {height:50px}
-
+  .skillParentCheck
+{
+  display: flex;
+  margin: 10px;
+  margin-left:20px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 90vw;
+  height: auto;
+  border-radius: 10px;
+  justify-content: space-between;
+  
+}
   .classCard,
   .raceCard,
   .skillParent {

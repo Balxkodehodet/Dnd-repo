@@ -4,28 +4,39 @@ import type { classData } from '../../types/ClassData.ts'
 import { useParams, Link } from 'react-router-dom'
 import CreateSlug from '../CreateSlug.tsx'
 import x from '../../assets/close.png'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { singleSkill } from '../../types/Skills.ts';
 import check from '../../assets/check.png'
 //import useGetData from '../../Hooks/useGetData.tsx';
 import { SkillsInfo } from '../../data/SkillsInfo.ts';
 
-export default function ClassesComponent({ singleClass, stage, setClassStage, classStage }: classProps): React.JSX.Element {
+export default function ClassesComponent({ singleClass, stage, setClassStage, classStage, btmMenu }: classProps): React.JSX.Element {
 
     const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === CreateSlug(singleClass));
     const { nameId, genderId, raceId, portraitId } = useParams();
     const [skill, setSkill] = useState<string | undefined>(undefined);
-    const [selectedSkill, setSelectedSkill] = useState<singleSkill[]>([]);
+    const [selectedSkill, setSelectedSkill] = useState<singleSkill[] | []>([]);
+    const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined)
     const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === CreateSlug(skill))
     //let skillUrl: string | null = skill ? `https://www.dnd5eapi.co/api/2024/skills/${skill?.toLowerCase()}` : null;
 
     //let {data: skillData, isLoading: skillLoading, isError: skillError} = useGetData(skillUrl)
 
+    // Setter timer på hver errorMsg på 3 sekunder
+    useEffect(() => {
+        if (!errorMsg) return;
+
+        const timer = setTimeout(() => {
+            setErrorMsg("");
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [errorMsg]);
 
 
     return (
         <>
-
+            {/* All classes represented by sorting them through with cards*/}
             {!selectedClass && Classes.map((characterClass, index) => {
                 return (
 
@@ -41,6 +52,10 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
 
                 )
             })}
+            {/* Selected Class - When a Single class has been chosen through the URL Param ID chosen from the singleClass prop from
+                parent component CreateCharacter - set through a series of classStages not to be confused with stages, which is
+                stages inherited from parent createCharacter component - said shortly - there are stages in this class component
+                and also different stages to creating the rest of the character */}
             {selectedClass &&
                 <>
                     {!classStage &&
@@ -99,16 +114,33 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                             )
                             }
                             </div>
-                            <button className="classBtnNext" onClick={() => setClassStage(1)}>Next</button>
+                            {btmMenu && <button className="classBtnNext" onClick={() => setClassStage(1)}>Next</button>}
                         </div>}
                     {!skill && classStage === 1 && <>
-                        {selectedSkill.length < selectedClass.Proficiencies.skills.choose ? <h3>Choose {selectedSkill.length < selectedClass.Proficiencies.skills.choose} skills</h3> : <h3>You can't pick anymore skills</h3>}
+                        {selectedSkill.length < selectedClass.Proficiencies.skills.choose ? <h3>Choose {selectedClass.Proficiencies.skills.choose - selectedSkill.length} skills</h3> : <h3>You can't pick anymore skills</h3>}
                         <div className="classCardParent1">{selectedClass.Proficiencies.skills.options.map((skill, index) => <div onClick={() => setSkill(skill.toLowerCase())} key={`${skill}-${index}`} className='skillParent'>{skill}</div>)}</div>
                     </>}
-                    {selectedSkill && classStage === 1 && singleSkill && selectedSkill.length < selectedClass.Proficiencies.skills.choose ? <><h3>Chosen {selectedSkill.map((s) => s.skill)}</h3><p>Choose {selectedClass.Proficiencies.skills.choose - selectedSkill.length} more</p></> : <><p>You have Chosen:</p><div>{selectedSkill.map((skill, index) => <><div className="skillParentCheck" key={`${skill}-${index}`}>{skill.skill}<div className="checkDiv"><img className="check" src={check}/><img className="x-check" src={x}/></div></div></>)}</div></> }
+                    {classStage === 1 && selectedSkill.length < selectedClass.Proficiencies.skills.choose && <><p>Choose {selectedClass.Proficiencies.skills.choose - selectedSkill.length} more</p></>}
+                    {classStage === 1 && selectedSkill.length > 0 && <><h3>You have Chosen:</h3><div>{selectedSkill.map((skill, index) => <div className="skillParentCheck" key={`${skill.skill}-${index}`}>{skill.skill}<div className="checkDiv"><img className="check" src={check} />
+                        <img onClick={() => setSelectedSkill((prev) => prev.filter((s) => s.skill !== skill.skill))} className="x-check" src={x} /></div></div>)}</div></>}
                     {skill && classStage === 1 && singleSkill && <div className='skillParent'><p>Skill:{singleSkill.skill}</p><br></br><p>Ability:{singleSkill.ability}</p><br></br><p>Info:{singleSkill.information}</p><br></br><button className="backBtn" onClick={() => setSkill(undefined)}>Back</button></div>}
-                    {singleSkill && classStage === 1 && <><button onClick={() => selectedSkill.length < selectedClass.Proficiencies.skills.choose && setSelectedSkill((prev) => prev.some((obj) => obj.skill === singleSkill.skill) ? prev : [...prev, singleSkill])} className="skillBtn">Select Skill</button></>}
+                    {singleSkill && classStage === 1 && <><button onClick={() => {
+                        if (selectedSkill.some((skill) => skill.skill === singleSkill.skill)) {
+                            setErrorMsg("You already picked that skill");
+                            return;
+                        }
+                        if (selectedSkill.length >= selectedClass.Proficiencies.skills.choose) {
+                            setErrorMsg("You cant pick anymore skills");
+                            return;
+                        }
+                        return setSelectedSkill(prev => [...prev, singleSkill]);
 
+                    }}
+                        className="skillBtn">Select Skill</button></>}
+                    {/* Button for finishing skill selection */}
+                    {selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => setClassStage(2)}>Next</button>}
+                    {classStage === 2}
+                    {errorMsg && <div className="errorMsg">{errorMsg}</div>}
                 </>
             }
         </>)
