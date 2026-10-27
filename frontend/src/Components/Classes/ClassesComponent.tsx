@@ -23,6 +23,11 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
 
         return stored ? JSON.parse(stored) : null;
     });
+    const [selectedTool2, setSelectedTool2] = useState<string[] | null>(() => {
+        const stored = localStorage.getItem("selectedTools2");
+
+        return stored ? JSON.parse(stored) : null;
+    });
     const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined)
     const singleSkill = SkillsInfo.find((s) => CreateSlug(s.skill) === CreateSlug(skill))
 
@@ -38,6 +43,18 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
     }, [errorMsg]);
 
 
+    useEffect(() => {
+        localStorage.setItem("selectedSkills", JSON.stringify(selectedSkill))
+    }, [selectedSkill]);
+
+    useEffect(() => {
+        localStorage.setItem("selectedTools", JSON.stringify(selectedTool))
+        console.log("Selected a tool")
+    }, [selectedTool]);
+
+    function resetTools() {
+        localStorage.removeItem("selectedTools");
+    }
     return (
         <>
             {/* All classes represented by sorting them through with cards*/}
@@ -137,21 +154,45 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                             setErrorMsg("You cant pick anymore skills");
                             return;
                         }
-                        return setSelectedSkill(prev => [...prev, singleSkill]);
+                        return setSelectedSkill(prev => [...prev, singleSkill])
+
+
 
                     }}
-                        className="skillBtn">Select Skill</button>
-                        {localStorage.setItem("selectedSkills", JSON.stringify(selectedSkill))} {localStorage.setItem("classStage", "1")}</>}
-                    {/* Button for finishing skill selection */}
-                    {classStage === 1 && selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => setClassStage(2)}>Next</button>}
-                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && <div>Tools: {selectedClass.Proficiencies.tool.map((tool) => <div><p>{tool.toolName}</p>
-                        <p>{tool.options}</p></div>)}</div>}
-                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && <><h3>Tools:</h3><p>{selectedClass.Proficiencies.tool?.toolName}</p>
-                        <p>Choose: {selectedClass.Proficiencies.tool?.choose}</p><div className="toolsParent">{selectedClass.Proficiencies.tool?.options?.map((op, i) => <p onClick={() => setSelectedTool((prev) => prev !== null ? [...prev, op] : [op])} className="tools" key={i}>{op}</p>)}</div>
+                        className="skillBtn">Select Skill</button></>}
+
+                    {/* Button for finishing skill selection and resetting tools if refresh happened and tools still have items in localstorage*/}
+                    {classStage === 1 && selectedSkill.length === selectedClass.Proficiencies.skills.choose && <button className="classBtnNext" onClick={() => {
+                        setClassStage(2)
+                        resetTools();
+                    }}>Next</button>}
+
+                    {/* Map through all tools available and options for each tool */}
+
+                    {/* ClassStage 2 - If tools are an array */}
+
+                    {/* Set the Tools into 2 different tools by accessing the index of array tool*/}
+                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool[0].choose && selectedTool?.length !== null && selectedTool?.length !== undefined &&
+                        <><h3>Tool:</h3><div><h3> {selectedClass.Proficiencies.tool[0].toolName}</h3><h3>Choose: {selectedClass.Proficiencies.tool[0].choose - selectedTool?.length} : </h3>
+                            <div className="toolsParent">{selectedClass.Proficiencies.tool[0].options?.map((t, i) => <p key={i} onClick={() => setSelectedTool((prev) => prev !== null ? [...prev, t] : [t])} className='tools'>{t}</p>)}</div></div>)</>}
+                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool[1].choose && selectedTool2?.length !== null && selectedTool2?.length !== undefined &&
+                    <><h3>Tool:</h3><div><h3> {selectedClass.Proficiencies.tool[1].toolName}</h3><h3>Choose: {selectedClass.Proficiencies.tool[1].choose - selectedTool2.length} : </h3>
+                        <div className="toolsParent">{selectedClass.Proficiencies.tool[1].options?.map((t, i) => <p key={i} onClick={() => setSelectedTool2((prev) => prev !== null ? [...prev, t] : [t])} className='tools'>{t}</p>)}</div></div>)</>}
+                    {/* */}
+                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && selectedTool?.length !== null && selectedTool?.length !== undefined && selectedClass.Proficiencies.tool[0].choose !== undefined && selectedTool?.length <= selectedClass.Proficiencies.tool[0].choose &&
+                        <><h3>Chosen {selectedClass.Proficiencies.tool[0].toolName} Tools: </h3> <div className="toolsParent">{selectedTool.map((tool, id) => <p key={id} className="tools">{tool}</p>)}</div></>}
+                    {classStage === 2 && Array.isArray(selectedClass.Proficiencies.tool) && selectedTool2?.length !== null && selectedTool2?.length !== undefined && selectedClass.Proficiencies.tool[1].choose !== undefined && selectedTool2?.length <= selectedClass.Proficiencies.tool[1].choose &&
+                        <><h3>Chosen {selectedClass.Proficiencies.tool[1].toolName} Tools: </h3> <div className="toolsParent">{selectedTool2.map((tool, id) => <p key={id} className="tools">{tool}</p>)}</div></>}
+
+
+                    {/* ClassStage 2 - If tools are not an array but an object */}
+
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && <><h3>Tools:</h3><p>{selectedClass.Proficiencies.tool?.toolName}</p>
+                        <p>Choose: {selectedClass.Proficiencies.tool?.choose}</p><div className="toolsParent">{selectedClass.Proficiencies.tool?.options?.map((op, i) => <button disabled={!Array.isArray(selectedClass.Proficiencies.tool) && selectedTool?.length === selectedClass.Proficiencies.tool?.choose || selectedTool?.some(selected => selected === op)} onClick={() => setSelectedTool((prev) => prev !== null ? [...prev, op] : [op])} className="tools" key={i}>{op}</button>)}</div>
                     </>}
-                    {classStage === 2 && selectedTool?.length !== null && selectedTool?.length !== undefined && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool?.map(tool => <p className="tools">{tool}</p>)}</div></>}
-                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool(null)}>Reset</button>
-                        {localStorage.setItem("selectedTools", JSON.stringify(selectedTool))} {localStorage.setItem("classStage", "2")}</>}
+                    {classStage === 2 && selectedTool?.length !== null && selectedTool?.length !== undefined && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool?.map((tool, id) => <p key={id} className="tools">{tool}</p>)}</div></>}
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool(null)}>Reset</button><button onClick={() => setClassStage(3)}>Finish</button></>}
+                    {classStage === 3}
                     {errorMsg && <div className="errorMsg">{errorMsg}</div>}
                 </>
             }
