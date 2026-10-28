@@ -7,9 +7,9 @@ import RenderValueAll from '../RenderValueAll.tsx'
 import CreateSlug from '../CreateSlug.tsx'
 import { useParams } from 'react-router-dom';
 
-export default function Races ({singleRace, stage}: raceProps) {
+export default function Races ({singleRace, stage, isElf, elfStage, setElfStage}: raceProps) {
 
-    const selectedRace: singleRace | undefined = TotalRaces.find(race => CreateSlug(race.Race) === singleRace);
+    const selectedRace: singleRace | undefined = TotalRaces.find(race => CreateSlug(race.Race) === CreateSlug(singleRace));
     const {nameId, genderId} = useParams();
     return (
         <>
@@ -26,24 +26,24 @@ export default function Races ({singleRace, stage}: raceProps) {
                 </Link>
                 )
             })}
-            {singleRace && <>
+            {elfStage === 0 && singleRace && stage === 2 && <>
             <div className="selected-container-parent">
             <div className="selected-container">
             <div className="raceCard-info">
                 {stage===2 && <Link to={`/home/create-character/${nameId}/${genderId}`}><img className="x-race" src={x}/></Link>}
-                <h2>Chosen Race:</h2>
-
-                {selectedRace && stage===2 && Object.entries(selectedRace).map(([key, value]) => (
+                  {selectedRace && stage===2 && Object.entries(selectedRace).map(([key, value]) => (
                     
-                    <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: {RenderValueAll(value)}<br></br><br></br></div>
+                    <div key={key}><strong>{key.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([a-zA-Z])(\d)/g, "$1 $2").replace(/(\d)([a-zA-Z])/g, "$1 $2")}</strong>: <div>{RenderValueAll(value)}</div></div>
                                                                                                      
                  ))
                 }
-                {stage > 2 && <p>{selectedRace?.Race}</p>}
             </div>
             </div> 
         </div> 
         </>}
+        {stage > 2 && <div className="raceCard-info2"><h2>Chosen Race:</h2><p>{selectedRace?.Race}</p></div>}
+        {singleRace && stage === 2 && elfStage === 0 && isElf && <button className="elfBtn" onClick={() => setElfStage && setElfStage(1)}>Next</button>}
+        {isElf && elfStage === 1 && selectedRace && <><h2>Lineage:</h2> {selectedRace?.Lineages?.map((lineage, index) => <h3 key={index}>{lineage.Lineage}</h3>)}</>}
         </>
     )
 }

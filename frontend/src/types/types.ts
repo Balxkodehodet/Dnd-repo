@@ -48,7 +48,10 @@ export type galleryProps = {
 }
 export type raceProps = {
     singleRace: string | undefined,
-    stage: number 
+    stage: number,
+    isElf?: boolean,
+    elfStage?: number | null,
+    setElfStage?: React.Dispatch<React.SetStateAction<number | null>> | null, 
 }
 export type genderProps = {
     singleGender: Gender

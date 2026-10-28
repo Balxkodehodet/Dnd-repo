@@ -391,6 +391,14 @@ header {
   width: 400px;
   height: auto;
 }
+.raceCard-info2
+{
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  border-radius: 10px;
+  height: auto;
+}
 .tools
 {
   margin:10px;
@@ -441,7 +449,18 @@ header {
   background-color: rgb(153, 207, 255);
   cursor: pointer;
 }
-
+.elfBtn
+{
+  padding:10px;
+  background-color: #5441ff;
+  border: 2px black solid;
+  border-radius: 15px;
+}
+.elfBtn:hover
+{
+  background-color: #7768ff;
+  cursor: pointer;
+}
 .classCard:hover {
   transform: scale(1.1);
   background-color: #5441ff;

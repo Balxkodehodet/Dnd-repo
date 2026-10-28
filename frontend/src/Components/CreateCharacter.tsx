@@ -8,6 +8,7 @@ import NameSelection from "./NameSelection.tsx";
 import BottomTop from "./BottomTop.tsx";
 import menu from '../assets/menu.png'
 import x from '../assets/close.png'
+import CreateSlug from "./CreateSlug.tsx";
 
 export default function CreateCharacter() {
 
@@ -21,7 +22,9 @@ export default function CreateCharacter() {
         const stored = localStorage.getItem("classStage")
         return stored ? Number(stored) : null; 
     });
+    const [elfStage, setElfStage] = useState<number | null>(0);
     const [btmMenu, setBtmMenu] = useState<boolean>(false);
+    const validatedElf = CreateSlug(raceId) === CreateSlug("elf")
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
     return (
@@ -71,8 +74,8 @@ export default function CreateCharacter() {
                         }
                         {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                     </div>
-                    <Races singleRace={raceId} stage={characterCreationStage} />
-                    <button disabled={raceId === undefined} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
+                    <Races setElfStage={setElfStage} elfStage={elfStage} isElf={validatedElf} singleRace={raceId} stage={characterCreationStage} />
+                    <button disabled={raceId === undefined || elfStage !== null && elfStage < 3} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
                         const newStage = prev + 1;
                         localStorage.setItem("characterCreationStage", newStage.toString())
                         return newStage
