@@ -20,11 +20,12 @@ export default function CreateCharacter() {
     const [showCharacterInfo, setShowCharacterInfo] = useState(false);
     const [classStage, setClassStage] = useState<number | null>(() => {
         const stored = localStorage.getItem("classStage")
-        return stored ? Number(stored) : null; 
+        return stored ? Number(stored) : null;
     });
-    const [elfStage, setElfStage] = useState<number | null>(0);
+    const [raceStage, setraceStage] = useState<number>(0);
     const [btmMenu, setBtmMenu] = useState<boolean>(false);
-    const validatedElf = CreateSlug(raceId) === CreateSlug("elf")
+    const validatedHuman = CreateSlug(raceId) === CreateSlug("human");
+    const validatedElf = CreateSlug(raceId) === CreateSlug("elf");
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
     return (
@@ -74,12 +75,8 @@ export default function CreateCharacter() {
                         }
                         {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                     </div>
-                    <Races setElfStage={setElfStage} elfStage={elfStage} isElf={validatedElf} singleRace={raceId} stage={characterCreationStage} />
-                    <button disabled={raceId === undefined || elfStage !== null && elfStage < 3} className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
-                        const newStage = prev + 1;
-                        localStorage.setItem("characterCreationStage", newStage.toString())
-                        return newStage
-                    })}>Finish Race selection</button>
+                    <Races setStage={setCharacterCreationStage} setRaceStage={setraceStage} raceStage={raceStage} isHuman={validatedHuman} isElf={validatedElf} singleRace={raceId} stage={characterCreationStage} />
+
                 </div></>}
             {characterCreationStage === 3 && <>
                 <div className="character-containerparent">
@@ -127,30 +124,35 @@ export default function CreateCharacter() {
                             {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
                         <div className={`${classStage === null ? "classCardParent1" : ""}`}>
-                        <ClassesComponent btmMenu={btmMenu} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
-                        </div>        
+                            <ClassesComponent setStage={setCharacterCreationStage} btmMenu={btmMenu} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                        </div>
                     </div>
                     {classId !== undefined || classStage !== null && classStage > 3 && <button className="selectionbtn" onClick={() => setCharacterCreationStage((prev) => {
                         const newStage = prev + 1;
                         localStorage.setItem("characterCreationStage", newStage.toString())
                         return newStage
                     })}>Finish Class selection</button>}
-                    {classId && classStage === null && btmMenu && <><BottomTop/><img onClick={() => setBtmMenu(prev => !prev)} className="btmMenuX" src={x}/></>} 
-                    {classId && classStage === null && !btmMenu && <img onClick={() => setBtmMenu(prev => !prev)} className="btmMenu" src={menu}/>}
+                    {classId && classStage === null && btmMenu && <><BottomTop /><img onClick={() => setBtmMenu(prev => !prev)} className="btmMenuX" src={x} /></>}
+                    {classId && classStage === null && !btmMenu && <img onClick={() => setBtmMenu(prev => !prev)} className="btmMenu" src={menu} />}
                 </div>
             </>}
             {characterCreationStage === 5 && <>
                 <div className="classesParent">
                     <div className="classCardParent">
-                        <NameSelection stage={characterCreationStage} nameId={nameId} />
-                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                        <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
-                        <Races singleRace={raceId} stage={characterCreationStage} />
-                        <div className="classCardParent1">
-                            <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                            {showCharacterInfo && <>
+                            <NameSelection stage={characterCreationStage} nameId={nameId} />
+                            <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                            <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                            <Races singleRace={raceId} stage={characterCreationStage} />
+                            <div className="classCardParent1">
+                                <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                            </div>
+                             </>}       
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
                     </div>
-                    <button className="selectionbtn" onClick={() => setCharacterCreationStage(6)}>Finish3</button>
+                    <button className="selectionbtn" onClick={() => setCharacterCreationStage(6)}>Finish Character Origins</button>
                 </div>
             </>}
             {characterCreationStage === 6 && <>

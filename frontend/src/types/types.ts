@@ -36,6 +36,7 @@ export type CategoryData = {
 
 export type classProps = {
     singleClass: string | undefined,
+    setStage?: React.Dispatch<React.SetStateAction<number>>,
     stage: number,
     setClassStage: React.Dispatch<React.SetStateAction<number | null>>,
     classStage: number | null,
@@ -49,11 +50,13 @@ export type galleryProps = {
 export type raceProps = {
     singleRace: string | undefined,
     stage: number,
+    setStage?: React.Dispatch<React.SetStateAction<number>>,  
     isElf?: boolean,
-    elfStage?: number | null,
-    setElfStage?: React.Dispatch<React.SetStateAction<number | null>> | null, 
+    isHuman?: boolean,
+    raceStage?: number,
+    setRaceStage?: React.Dispatch<React.SetStateAction<number>>, 
 }
 export type genderProps = {
     singleGender: Gender
-    stage: number
+    stage: number,
 }

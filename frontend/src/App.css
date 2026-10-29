@@ -331,7 +331,21 @@ header {
   justify-content: center;
   align-items: center;
 }
+.raceBtn2{
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #9285ff;
+  border: 2px black solid;
+  cursor: pointer;
+  border-radius: 15px;
+  width:200px;
+  text-align: center;
 
+}
+.raceBtn2:active{
+
+  border: 2px orange solid;
+}
 .raceBtn {
   padding: 10px;
   margin-bottom: 10px;
@@ -443,6 +457,13 @@ header {
   margin:10px;
   height:40px;
   align-self: center;
+}
+.h2Lineage
+{
+  padding:10px;
+  background-color: #7768ff;
+  border:#1d1d1d 2px solid;
+  border-radius: 15px;
 }
 .skillBtn:hover 
 {

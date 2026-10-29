@@ -9,7 +9,7 @@ import type { singleSkill } from '../../types/Skills.ts';
 import check from '../../assets/check.png'
 import { SkillsInfo } from '../../data/SkillsInfo.ts';
 
-export default function ClassesComponent({ singleClass, stage, setClassStage, classStage, btmMenu }: classProps): React.JSX.Element {
+export default function ClassesComponent({ singleClass, setStage, stage, setClassStage, classStage, btmMenu }: classProps): React.JSX.Element {
 
     const selectedClass: classData | undefined = Classes.find(cls => CreateSlug(cls.class) === CreateSlug(singleClass));
     const { nameId, genderId, raceId, portraitId } = useParams();
@@ -93,7 +93,7 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                                 <br></br>-Weapons: {selectedClass.Proficiencies.weapon.map((wep, index) => {
                                     return (<div key={`${wep.category}-${index}`}>{wep.category} -
                                         {wep.requiredProperty && Array.isArray(wep.requiredProperty) ?
-                                            wep.requiredProperty.map((reqprop) => <div className="equipmentParent">Weapon Property Required: {reqprop}</div>) :
+                                            wep.requiredProperty.map((reqprop, i) => <div key={i} className="equipmentParent">Weapon Property Required: {reqprop}</div>) :
                                             wep.requiredProperty ?
                                                 <div className="equipmentParent">Required: {wep.requiredProperty}</div>
                                                 : null}</div>)
@@ -166,6 +166,9 @@ export default function ClassesComponent({ singleClass, stage, setClassStage, cl
                         setClassStage(2)
                         resetTools();
                     }}>Next</button>}
+
+                    {/* If not tools are available continue to next */} 
+                    {classStage === 2 && !selectedClass.Proficiencies.tool && <><button onClick={()=> setStage && setStage(5)}>Finish class selection</button></>}
 
                     {/* Map through all tools available and options for each tool */}
 
