@@ -58,7 +58,7 @@ export default function Races({ singleRace, stage, setStage, isElf, isHuman, rac
             && isHuman && selectedRace && setRaceStage &&  raceStage !== null && raceStage !== undefined 
             && <StageRaces race={selectedRace} setRaceStage={setRaceStage} raceStage={raceStage} />}
             {/* Button to finish race selection only at final stage of each race */}
-            {raceStage === 2 && <button disabled={singleRace === undefined} className="selectionbtn" onClick={() => setStage && setStage((prev) => {
+            {isHuman && raceStage === 1 && <button disabled={singleRace === undefined} className="selectionbtn" onClick={() => setStage && setStage((prev) => {
                 const newStage = prev + 1;
                 localStorage.setItem("characterCreationStage", newStage.toString())
                 return newStage

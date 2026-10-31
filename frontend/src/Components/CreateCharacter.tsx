@@ -9,6 +9,7 @@ import BottomTop from "./BottomTop.tsx";
 import menu from '../assets/menu.png'
 import x from '../assets/close.png'
 import CreateSlug from "./CreateSlug.tsx";
+import CharacterBackground from "./CharBackgrounds/CharacterBackground.tsx";
 
 export default function CreateCharacter() {
 
@@ -23,7 +24,7 @@ export default function CreateCharacter() {
         return stored ? Number(stored) : null;
     });
     const [raceStage, setraceStage] = useState<number>(0);
-    const [btmMenu, setBtmMenu] = useState<boolean>(false);
+    const [btmMenu, setBtmMenu] = useState<boolean>(true);
     const validatedHuman = CreateSlug(raceId) === CreateSlug("human");
     const validatedElf = CreateSlug(raceId) === CreateSlug("elf");
     //const [character, setCharacter] = useState([]);
@@ -139,6 +140,7 @@ export default function CreateCharacter() {
             {characterCreationStage === 5 && <>
                 <div className="classesParent">
                     <div className="classCardParent">
+                        <h2 className="classes-h2">Character Backgrounds</h2>
                         <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                             {showCharacterInfo && <>
                             <NameSelection stage={characterCreationStage} nameId={nameId} />
@@ -151,8 +153,8 @@ export default function CreateCharacter() {
                              </>}       
                             {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
+                        <CharacterBackground setCharacterCreationStage={setCharacterCreationStage}/>
                     </div>
-                    <button className="selectionbtn" onClick={() => setCharacterCreationStage(6)}>Finish Character Origins</button>
                 </div>
             </>}
             {characterCreationStage === 6 && <>

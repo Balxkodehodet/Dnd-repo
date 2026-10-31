@@ -16,10 +16,12 @@ export default function StageRaces({ race, setRaceStage, raceStage }: stageRaces
                 setChoose(() => true)
             }
             } key={index}>{item.Lineage}</h3>)}</>}
+            {/* Choices of the lineage of Elf */}
             {raceStage === 2 && CreateSlug(txtContent) === CreateSlug("Drow") && <><h2 className="raceBtn2">You picked Drow</h2><h3 className="raceBtn2">You gained: </h3><p className="raceBtn2">Darkvision increases from 60 feet to 120 feet</p>
             <p className="raceBtn2">You also know the Dancing Lights Cantrip</p></>}
             {raceStage === 2 && CreateSlug(txtContent) === CreateSlug("High Elf") && <><h2 className="raceBtn2">You picked High Elf</h2><h3 className="raceBtn2">You gained: </h3><p className="raceBtn2">You know the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list.</p></>}
             {raceStage === 2 && CreateSlug(txtContent) === CreateSlug("Wood Elf") && <><h2 className="raceBtn2">You picked Wood Elf</h2><h3 className="raceBtn2">You gained: </h3><p className="raceBtn2">Your Speed increases to 35 feet. You also know the Druidcraft cantrip.</p></>}
+            {/* Functionality of Versatile (Human and others may use this) */}
             {race.Versatile && raceStage === 1 && race && <><h2 className="raceBtn2">Versatile: </h2><p className="raceBtn2">{race.Versatile}</p></>}
             {/* {race.DraconicAncestors && raceStage === 1 && race && <><h2>Choose Draconic Ancestor</h2>{race?.DraconicAncestors.map((item, index) => <><h3 className="raceBtn2" onClick={() => setChoose((prev:boolean) => !prev)} key={index}>{item.Dragon}</h3><p>{item.DmgType}</p></>)}</>}
         {race.FiendishLegacies && raceStage === 1 && race && <><h2>Choose Fiendish Legacy</h2>{race.FiendishLegacies?.map((item, index) => <><h3 className="raceBtn2" onClick={() => setChoose((prev:boolean) => !prev)} key={index}>{item.Legacy}</h3></>)}</>}

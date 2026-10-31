@@ -315,7 +315,28 @@ header {
   margin-top: 6%;
 
 }
-
+.background-container
+{
+  background-color: #7768ff;
+  margin:10px;
+  padding:20px;
+  border:#1d1d1d 2px solid;
+  border-radius: 10px;
+}
+.background-img
+{
+  width:32px;
+  height:auto;
+}
+.background-container:hover
+{
+  background-color: #9285ff;
+  cursor: pointer;
+}
+.background-container p
+{
+   margin:1px;
+}
 .chooseportrait-link {
   position: absolute;
   bottom: -100px;
@@ -325,11 +346,30 @@ header {
 .chooseportrait-link button {
   padding: 10px;
 }
-
+.selectedClass{
+  padding:10px;
+  border-radius: 15px;
+  border:#1d1d1d 2px solid;
+  display:flex;
+  flex-direction: column;
+  background-color: #7768ff;
+}
 .selected-container-parent {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.finishClass
+{
+  display:flex;
+  flex-direction: column;
+}
+.finishClass img
+{
+  margin:15px;
+  width:64px;
+  height:auto;
+  align-self: center;
 }
 .raceBtn2{
   padding: 10px;
@@ -412,6 +452,19 @@ header {
   border: 2px black solid;
   border-radius: 10px;
   height: auto;
+}
+.tools-check
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:10px;
+  padding: 10px;
+  background-color: #7768ff;
+  border: 2px black solid;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
 }
 .tools
 {

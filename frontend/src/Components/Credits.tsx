@@ -4,6 +4,11 @@ export default function Credits() {
         <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by ZAK - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/success" title="success icons">Success icons created by hqrloveq - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by ariefstudio - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/medival" title="medival icons">Medival icons created by juicy_fish - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/acolyte" title="acolyte icons">Acolyte icons created by pbig - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/thief" title="thief icons">Thief icons created by surang - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/sage" title="sage icons">Sage icons created by Magnific - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/roman" title="roman icons">Roman icons created by Leremy - Flaticon</a>
         </>
     )
 }
