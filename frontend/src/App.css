@@ -180,10 +180,35 @@ header {
   width:16px;
   height:auto;
 }
+.equipmentBtn
+{
+  margin:2px;
+  padding:10px;
+  background-color:#7768ff;
+  border-radius: 15px;
+  border:#1d1d1d solid 2px;
+}
+.equipmentBtn:hover
+{
+  background-color: #9285ff;
+  cursor: pointer;
+}
+.toolsBtn
+{
+  padding:10px;
+  background-color:#7768ff;
+  border-radius: 15px;
+  border:#1d1d1d solid 1px;
+}
+.toolsBtn:hover, .equipmentBtn:hover
+{
+  background-color: #9285ff;
+  cursor: pointer;
+}
 .backBtn
 {
   padding:10px;
-  background-color: #5441ff;
+  background-color:#7768ff;
   border-radius: 15px;
   border:#1d1d1d solid 1px;
 }
@@ -219,7 +244,6 @@ header {
 }
 .classBtnNext  {
   padding: 10px;
-
   background-color: #ffc400;
   position: fixed;
   bottom: 10px;
@@ -346,7 +370,7 @@ header {
 .chooseportrait-link button {
   padding: 10px;
 }
-.selectedClass{
+.selectedClass, .selectedBackground{
   padding:10px;
   border-radius: 15px;
   border:#1d1d1d 2px solid;
@@ -419,7 +443,7 @@ header {
 }
 
 .genderBtn2 {
-  background-color: #5441ff;
+  background-color:#7768ff;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
@@ -635,7 +659,7 @@ header {
 }
 
 .nameCard {
-  background-color: #5441ff;
+  background-color:#7768ff;
   padding: 10px;
   border-radius: 10px;
   margin: 10px;

@@ -8,5 +8,9 @@ export type CharBackgroundTypes = {
 }[]
 
 export type setCharacterStage = {
-    setCharacterCreationStage: React.Dispatch<React.SetStateAction<number>>
+    setCharacterCreationStage?: React.Dispatch<React.SetStateAction<number>>,
+    backgroundStage: number,
+    setBackgroundStage: React.Dispatch<React.SetStateAction<number>>, 
+    chosenBackground: string, 
+    setChosenBackground: React.Dispatch<React.SetStateAction<string>>
 }

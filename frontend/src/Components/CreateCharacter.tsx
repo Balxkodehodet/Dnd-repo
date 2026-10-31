@@ -27,6 +27,8 @@ export default function CreateCharacter() {
     const [btmMenu, setBtmMenu] = useState<boolean>(true);
     const validatedHuman = CreateSlug(raceId) === CreateSlug("human");
     const validatedElf = CreateSlug(raceId) === CreateSlug("elf");
+    const [chosenBackground, setChosenBackground] = useState<string>("")
+    const [backgroundStage, setBackgroundStage] = useState<number>(0)
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
     return (
@@ -143,6 +145,26 @@ export default function CreateCharacter() {
                         <h2 className="classes-h2">Character Backgrounds</h2>
                         <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                             {showCharacterInfo && <>
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                                <div className="classCardParent1">
+                                    <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                                </div>
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
+                        <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                            chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                            setCharacterCreationStage={setCharacterCreationStage} />
+                    </div>
+                </div>
+            </>}
+            {characterCreationStage === 6 && <>
+                <div className="classesParent">
+                    <div className="classCardParent">
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                             <NameSelection stage={characterCreationStage} nameId={nameId} />
                             <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
                             <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
@@ -150,22 +172,9 @@ export default function CreateCharacter() {
                             <div className="classCardParent1">
                                 <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
                             </div>
-                             </>}       
-                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
-                        </div>
-                        <CharacterBackground setCharacterCreationStage={setCharacterCreationStage}/>
-                    </div>
-                </div>
-            </>}
-            {characterCreationStage === 6 && <>
-                <div className="classesParent">
-                    <div className="classCardParent">
-                        <NameSelection stage={characterCreationStage} nameId={nameId} />
-                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                        <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
-                        <Races singleRace={raceId} stage={characterCreationStage} />
-                        <div className="classCardParent1">
-                            <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                            <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                            chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                            setCharacterCreationStage={setCharacterCreationStage} />
                         </div>
                     </div>
                     <button className="selectionbtn" onClick={() => setCharacterCreationStage(7)}>Finish 4</button>

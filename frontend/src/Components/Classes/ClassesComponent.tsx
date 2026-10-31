@@ -210,7 +210,21 @@ export default function ClassesComponent({ singleClass, setStage, stage, setClas
                     </>}
                     {classStage === 2 && selectedTool?.length !== null && selectedTool?.length !== undefined && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length <= selectedClass.Proficiencies.tool?.choose && <><h3>Chosen Tools:</h3><div className="toolsParent">{selectedTool?.map((tool, id) => <p key={id} className="tools">{tool}</p>)}</div></>}
                     {/* Finish buttons and reset buttons for object tools (only one tool) */}
-                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button onClick={() => setSelectedTool(null)}>Reset</button><button className="selectionBtn" onClick={() => {
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && selectedClass.Proficiencies.tool?.choose && selectedTool?.length === selectedClass.Proficiencies.tool.choose && <><h3>Finished choosing tools</h3><button className="toolsBtn" onClick={() => setSelectedTool(null)}>Reset</button><button className="toolsBtn" onClick={() => {
+                        setClassStage && setClassStage((prev) => {
+                            if (prev === null) { return null }
+                            if (prev === undefined) { return null }
+                            const newClassStage = prev && prev + 1
+                            localStorage.setItem("classStage", newClassStage.toString());
+                            return newClassStage
+                        })
+                        setStage && setStage((prev) => {
+                            const newStage = prev + 1
+                            localStorage.setItem("characterCreationStage", newStage.toString())
+                            return newStage;
+                        })
+                    }}>Finish Class Selection</button></>}
+                    {classStage === 2 && !Array.isArray(selectedClass.Proficiencies.tool) && !selectedClass.Proficiencies.tool?.choose && <><h3>Finished choosing tools</h3><button className="toolsBtn" onClick={() => setSelectedTool(null)}>Reset</button><button className="toolsBtn" onClick={() => {
                         setClassStage && setClassStage((prev) => {
                             if (prev === null) { return null }
                             if (prev === undefined) { return null }
