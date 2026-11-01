@@ -651,13 +651,36 @@ header {
   text-decoration: none;
   color: #1d1d1d
 }
-
+.abilityscores
+{
+  display: flex;
+  flex-direction: row;
+}
+.ability
+{
+  border-radius: 10px;
+  border: 2px brown solid;
+  padding:10px;
+  background-color: #7768ff;
+  margin:2px;
+}
 .galleryimg-minimize {
   width: 200px;
   height: auto;
   border: 10px solid black
 }
-
+.throw-dices
+{
+  background-color:#7768ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  border: #1d1d1d 2px solid
+}
+.throw-dices:hover
+{
+  background-color: #9285ff;
+}
 .nameCard {
   background-color:#7768ff;
   padding: 10px;

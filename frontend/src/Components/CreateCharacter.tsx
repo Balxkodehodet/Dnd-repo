@@ -10,6 +10,8 @@ import menu from '../assets/menu.png'
 import x from '../assets/close.png'
 import CreateSlug from "./CreateSlug.tsx";
 import CharacterBackground from "./CharBackgrounds/CharacterBackground.tsx";
+import ThrowDices4d6 from "./ThrowDices4d6.tsx";
+import Dices from "./Utils/Dices.ts";
 
 export default function CreateCharacter() {
 
@@ -31,6 +33,14 @@ export default function CreateCharacter() {
     const [backgroundStage, setBackgroundStage] = useState<number>(0)
     //const [character, setCharacter] = useState([]);
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
+
+    // useState for Roll Dices for ability scores
+    const [diceThrow, setDiceThrow] = useState(() => Dices(4,6))
+    const [diceThrow2, setDiceThrow2] = useState(() => Dices(4,6))
+    const [diceThrow3, setDiceThrow3] = useState(() => Dices(4,6))
+    const [diceThrow4, setDiceThrow4] = useState(() => Dices(4,6))
+    const [diceThrow5, setDiceThrow5] = useState(() => Dices(4,6))
+    const [diceThrow6, setDiceThrow6] = useState(() => Dices(4,6))
     return (
         <>
             {characterCreationStage === 0 && <>
@@ -165,6 +175,7 @@ export default function CreateCharacter() {
                 <div className="classesParent">
                     <div className="classCardParent">
                         <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                            {showCharacterInfo && <>
                             <NameSelection stage={characterCreationStage} nameId={nameId} />
                             <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
                             <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
@@ -175,7 +186,12 @@ export default function CreateCharacter() {
                             <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
                             chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
                             setCharacterCreationStage={setCharacterCreationStage} />
+                        </>}
+                        {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                         </div>
+                        <ThrowDices4d6 diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                        diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                        setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6}/>
                     </div>
                     <button className="selectionbtn" onClick={() => setCharacterCreationStage(7)}>Finish 4</button>
                 </div>

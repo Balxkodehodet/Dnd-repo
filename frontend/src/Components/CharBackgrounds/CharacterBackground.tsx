@@ -5,6 +5,7 @@ import sage from '../../assets/graduation-owl.png'
 import soldier from '../../assets/greek.png'
 import acolyte from '../../assets/acolyte.png'
 import criminal from '../../assets/bandit.png'
+import { Link } from "react-router-dom";
 
 export default function CharacterBackground({ setCharacterCreationStage, backgroundStage, setBackgroundStage, chosenBackground, setChosenBackground }: setCharacterStage) {
     const [chosenA, setChosenA] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export default function CharacterBackground({ setCharacterCreationStage, backgro
         <>
             {backgroundStage === 0 && <div className="background-containerParent">{CharBackgrounds.map((background, index) => {
                 return (
-                    <>
+                    
                         <div onClick={() => setChosenBackground(background.Name)} key={index} className="background-container">
                             <img className="background-img" src={background.Name.toLowerCase() === "sage" ? sage :
                                 background.Name.toLowerCase() === "acolyte" ? acolyte : background.Name.toLowerCase() ===
@@ -29,7 +30,7 @@ export default function CharacterBackground({ setCharacterCreationStage, backgro
                             <p className="backgroundA"><strong>A:</strong>{Array.isArray(background.Equipment.A) ? background.Equipment.A.join(" / ") : background.Equipment.A}</p>
                             <p className="backgroundB"><strong>B:</strong>{background.Equipment.B}</p>
                         </div>
-                    </>)
+                    )
             })}</div>}
             {chosenBackground && backgroundStage === 0 && <><button onClick={() => {
                 setBackgroundStage(prev => prev + 1);

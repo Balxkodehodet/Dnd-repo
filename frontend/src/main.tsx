@@ -41,6 +41,7 @@ const router = createBrowserRouter([
       { path: 'create-character/:nameId/:genderId/:raceId', element: <CreateCharacter/>},
       { path: 'create-character/:nameId/:genderId/:raceId/:portraitId', element: <CreateCharacter/>},
       { path: 'create-character/:nameId/:genderId/:raceId/:portraitId/:classId', element: <CreateCharacter/>},
+      { path: 'create-character/:nameId/:genderId/:raceId/:portraitId/:classId/:background', element: <CreateCharacter/>},
     ]
   }    
 ],
