@@ -1,4 +1,5 @@
 export type DicesTypes = {
+    stage: number,
     diceThrow: number[],
     diceThrow2: number[],
     diceThrow3: number[],

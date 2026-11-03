@@ -2382,7 +2382,7 @@ export const Classes: classData[] = [{
                             Languages. You know two languages of your 
                             choice from the language tables in “Character 
                             Creation.”`,
-            type: ["Choice"],
+            type: ["Passive", "Choice"],
         },
         {
             level: 2,

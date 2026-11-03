@@ -1,8 +1,7 @@
 import Dices from "./Utils/Dices"
 import type { DicesTypes } from "../types/throwDices";
-import { useState } from "react";
 import AbilityScores from "./AbilityScores";
-export default function ThrowDices4d6({diceThrow,diceThrow2,diceThrow3,diceThrow4,diceThrow5,diceThrow6, setDiceThrow,
+export default function ThrowDices4d6({stage,diceThrow,diceThrow2,diceThrow3,diceThrow4,diceThrow5,diceThrow6, setDiceThrow,
     setDiceThrow2, setDiceThrow3,setDiceThrow4,setDiceThrow5,setDiceThrow6}:DicesTypes) 
     {
 
@@ -13,27 +12,21 @@ export default function ThrowDices4d6({diceThrow,diceThrow2,diceThrow3,diceThrow
         const adjustedThrow5 = [...diceThrow5].sort((a,b) => a - b).slice(1).reduce((sum, roll) => sum + roll, 0);
         const adjustedThrow6 = [...diceThrow6].sort((a,b) => a - b).slice(1).reduce((sum, roll) => sum + roll, 0);
 
-        const [modifierStrength, setModifierStrength] = useState<number>();
-        const [modifierDexterity, setModifierDexterity] = useState<number>();
-        const [modifierConstitution, setModifierConstitution] = useState<number>();
-        const [modifierIntelligence, setModifierIntelligence] = useState<number>();
-        const [modifierWisdom, setModifierWisdom] = useState<number>();
-        const [modifierCharisma, setModifierCharisma] = useState<number>();
-
 
     return(
         <>
             <AbilityScores abilityScoreStrength={adjustedThrow} abilityScoreDexterity={adjustedThrow2} abilityScoreConstitution={adjustedThrow3}
-            abilityScoreIntelligence={adjustedThrow4} abilityScoreWisdom={adjustedThrow5} abilityScoreCharisma={adjustedThrow6}/>
-            <button className="throw-dices" onClick={() => {
-                setDiceThrow(() => Dices(4,6))
-                setDiceThrow2(() => Dices(4,6))
-                setDiceThrow3(() => Dices(4,6))
-                setDiceThrow4(() => Dices(4,6))
-                setDiceThrow5(() => Dices(4,6))
+            abilityScoreIntelligence={adjustedThrow4} abilityScoreWisdom={adjustedThrow5} abilityScoreCharisma={adjustedThrow6} />
+            {stage === 6 && (
+                <button className="throw-dices" onClick={() => {
+                    setDiceThrow(() => Dices(4,6))
+                    setDiceThrow2(() => Dices(4,6))
+                    setDiceThrow3(() => Dices(4,6))
+                    setDiceThrow4(() => Dices(4,6))
+                    setDiceThrow5(() => Dices(4,6))
                 setDiceThrow6(() => Dices(4,6))
                 }}>Throw Dices</button>
-            <button className="throw-dices">Add points</button>
+            )}
         </>
     )
 }

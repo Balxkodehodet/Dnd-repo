@@ -6,11 +6,14 @@ import soldier from '../../assets/greek.png'
 import acolyte from '../../assets/acolyte.png'
 import criminal from '../../assets/bandit.png'
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import CreateSlug from "../CreateSlug.tsx";
 
 export default function CharacterBackground({ setCharacterCreationStage, backgroundStage, setBackgroundStage, chosenBackground, setChosenBackground }: setCharacterStage) {
     const [chosenA, setChosenA] = useState<boolean>(false);
     const [chosenB, setChosenB] = useState<boolean>(false);
     const [chosenTxt, setChosenTxt] = useState<string>("")
+    const { nameId, genderId, raceId, portraitId, classId } = useParams();
     const selectedBackground = CharBackgrounds.find(background => background.Name === chosenBackground)
     return (
         <>
@@ -32,11 +35,11 @@ export default function CharacterBackground({ setCharacterCreationStage, backgro
                         </div>
                     )
             })}</div>}
-            {chosenBackground && backgroundStage === 0 && <><button onClick={() => {
+            {chosenBackground && backgroundStage === 0 && <><Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portraitId}/${classId}/${CreateSlug(selectedBackground?.Name)}`}><button onClick={() => {
                 setBackgroundStage(prev => prev + 1);
             }}>
                 Choose Background: {chosenBackground}
-            </button></>}
+            </button></Link></>}
             {backgroundStage === 1 && <><h3>Choose Equipment: </h3>
                 <p className="equipmentBtn" onClick={(e) => {
                     return (

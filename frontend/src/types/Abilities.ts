@@ -8,5 +8,5 @@ export type AbilityTypes = {
     abilityScoreConstitution:number, 
     abilityScoreIntelligence:number,
     abilityScoreWisdom:number, 
-    abilityScoreCharisma:number
+    abilityScoreCharisma:number,
 }

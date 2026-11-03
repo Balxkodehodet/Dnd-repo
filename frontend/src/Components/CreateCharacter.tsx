@@ -12,6 +12,8 @@ import CreateSlug from "./CreateSlug.tsx";
 import CharacterBackground from "./CharBackgrounds/CharacterBackground.tsx";
 import ThrowDices4d6 from "./ThrowDices4d6.tsx";
 import Dices from "./Utils/Dices.ts";
+import Alignments from "./Alignments.tsx";
+import Languages from "./Languages/Languages.tsx";
 
 export default function CreateCharacter() {
 
@@ -35,12 +37,15 @@ export default function CreateCharacter() {
     const validatedGenderId = genderId === "male" || genderId === "female" ? genderId : undefined
 
     // useState for Roll Dices for ability scores
-    const [diceThrow, setDiceThrow] = useState(() => Dices(4,6))
-    const [diceThrow2, setDiceThrow2] = useState(() => Dices(4,6))
-    const [diceThrow3, setDiceThrow3] = useState(() => Dices(4,6))
-    const [diceThrow4, setDiceThrow4] = useState(() => Dices(4,6))
-    const [diceThrow5, setDiceThrow5] = useState(() => Dices(4,6))
-    const [diceThrow6, setDiceThrow6] = useState(() => Dices(4,6))
+    const [diceThrow, setDiceThrow] = useState(() => Dices(4, 6)); // 4d6 roll 4 dices with 6 sides, as this is needed for the ability scores, and we will drop the lowest dice
+    const [diceThrow2, setDiceThrow2] = useState(() => Dices(4, 6));
+    const [diceThrow3, setDiceThrow3] = useState(() => Dices(4, 6));
+    const [diceThrow4, setDiceThrow4] = useState(() => Dices(4, 6));
+    const [diceThrow5, setDiceThrow5] = useState(() => Dices(4, 6));
+    const [diceThrow6, setDiceThrow6] = useState(() => Dices(4, 6));
+
+    const [alignmentStage, setAlignmentStage] = useState<number>(0);
+    const [chosenAlignment, setChosenAlignment] = useState<string | null>(null);
     return (
         <>
             {characterCreationStage === 0 && <>
@@ -174,27 +179,154 @@ export default function CreateCharacter() {
             {characterCreationStage === 6 && <>
                 <div className="classesParent">
                     <div className="classCardParent">
+                        <h2 className="classes-h2">Abilities</h2>
                         <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
                             {showCharacterInfo && <>
-                            <NameSelection stage={characterCreationStage} nameId={nameId} />
-                            <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
-                            <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
-                            <Races singleRace={raceId} stage={characterCreationStage} />
-                            <div className="classCardParent1">
-                                <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
-                            </div>
-                            <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                                <div className="classCardParent1">
+                                    <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                                </div>
+                                <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                                    chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                                    setCharacterCreationStage={setCharacterCreationStage} />
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
+                        <ThrowDices4d6 stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                            diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                            setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+                    </div>
+
+                    <button className="selectionbtn" onClick={() => setCharacterCreationStage(7)}>Finish Ability Scores</button>
+
+                </div>
+            </>}
+            {characterCreationStage === 7 && <>
+                <div className="classesParent">
+                    <div className="classCardParent">
+                        <h2 className="classes-h2">Alignments</h2>
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                            {showCharacterInfo && <>
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                                <div className="classCardParent1">
+                                    <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                                </div>
+                                <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                                    chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                                    setCharacterCreationStage={setCharacterCreationStage} />
+                                <ThrowDices4d6 stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                                    diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                                    setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
+                            <Alignments chosenAlignment={chosenAlignment} setChosenAlignment={setChosenAlignment} alignmentStage={alignmentStage} setAlignmentStage={setAlignmentStage} setStage={setCharacterCreationStage} />
+                    </div>
+                </div>
+            </>}
+            {characterCreationStage === 8 && <>
+                <div className="classesParent">
+                    <div className="classCardParent">
+                        <h2 className="classes-h2">Languages</h2>
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                            {showCharacterInfo && <>
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                                <div className="classCardParent1">
+                                    <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                                </div>
+                                <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                                    chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                                    setCharacterCreationStage={setCharacterCreationStage} />
+                                <ThrowDices4d6 stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                                    diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                                    setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+                                <Alignments chosenAlignment={chosenAlignment} setChosenAlignment={setChosenAlignment} alignmentStage={alignmentStage} setAlignmentStage={setAlignmentStage} setStage={setCharacterCreationStage} />
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
+                        <Languages/>
+                    </div>
+                </div>
+            </>}
+            {characterCreationStage === 9 && <>
+                <div className="classesParent">
+                    <div className="classCardParent">
+                        <h2 className="classes-h2">Alignments</h2>
+                        <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                            {showCharacterInfo && <>
+                                <NameSelection stage={characterCreationStage} nameId={nameId} />
+                                <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                                <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                                <Races singleRace={raceId} stage={characterCreationStage} />
+                                <div className="classCardParent1">
+                                    <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                                </div>
+                                <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                                    chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                                    setCharacterCreationStage={setCharacterCreationStage} />
+                                <ThrowDices4d6 stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                                    diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                                    setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+                                <Alignments alignmentStage={alignmentStage} setAlignmentStage={setAlignmentStage} setStage={setCharacterCreationStage} chosenAlignment={chosenAlignment} setChosenAlignment={setChosenAlignment} />
+                            </>}
+                            {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                        </div>
+                    </div>
+                </div>
+            </>}
+            {characterCreationStage === 10 && <>
+                <h2 className="classes-h2">Alignments</h2>
+                <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                    {showCharacterInfo && <>
+                        <NameSelection stage={characterCreationStage} nameId={nameId} />
+                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                        <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                        <Races singleRace={raceId} stage={characterCreationStage} />
+                        <div className="classCardParent1">
+                            <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                        </div>
+                        <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
                             chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
                             setCharacterCreationStage={setCharacterCreationStage} />
-                        </>}
-                        {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
-                        </div>
-                        <ThrowDices4d6 diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
-                        diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
-                        setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6}/>
-                    </div>
-                    <button className="selectionbtn" onClick={() => setCharacterCreationStage(7)}>Finish 4</button>
+                        <ThrowDices4d6 stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                            diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                            setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+                    </>}
+                    {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
                 </div>
+                <Alignments alignmentStage={alignmentStage} setAlignmentStage={setAlignmentStage} setStage={setCharacterCreationStage} chosenAlignment={chosenAlignment} setChosenAlignment={setChosenAlignment} />
+            </>}
+            {characterCreationStage === 11 && <>
+                <h2 className="classes-h2">Alignments</h2>
+                <div className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}>
+                    {showCharacterInfo && <>
+                        <NameSelection stage={characterCreationStage} nameId={nameId} />
+                        <Gender singleGender={validatedGenderId} stage={characterCreationStage} />
+                        <Gallery className="galleryimg-minimize" singleImg={portraitId} stage={characterCreationStage} />
+                        <Races singleRace={raceId} stage={characterCreationStage} />
+                        <div className="classCardParent1">
+                            <ClassesComponent btmMenu={false} classStage={classStage} setClassStage={setClassStage} singleClass={classId} stage={characterCreationStage} />
+                        </div>
+                        <CharacterBackground backgroundStage={backgroundStage} setBackgroundStage={setBackgroundStage}
+                            chosenBackground={chosenBackground} setChosenBackground={setChosenBackground}
+                            setCharacterCreationStage={setCharacterCreationStage} />
+                        <ThrowDices4d6  stage={characterCreationStage} diceThrow={diceThrow} diceThrow2={diceThrow2} diceThrow3={diceThrow3} diceThrow4={diceThrow4}
+                            diceThrow5={diceThrow5} diceThrow6={diceThrow6} setDiceThrow={setDiceThrow} setDiceThrow2={setDiceThrow2} setDiceThrow3={setDiceThrow3} setDiceThrow4={setDiceThrow4}
+                            setDiceThrow5={setDiceThrow5} setDiceThrow6={setDiceThrow6} />
+                    </>}
+                    {!showCharacterInfo ? <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Show character Info</button> : <button onClick={() => setShowCharacterInfo((prev) => !prev)}>Hide character Info</button>}
+                </div>
+                <Alignments alignmentStage={alignmentStage} setAlignmentStage={setAlignmentStage} setStage={setCharacterCreationStage} chosenAlignment={chosenAlignment} setChosenAlignment={setChosenAlignment} />
             </>}
         </>
     )
