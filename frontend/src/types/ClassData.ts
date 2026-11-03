@@ -2,21 +2,21 @@ import type { Abilities } from "./Abilities.ts";
 import type { WeaponProficiency } from './WeaponsTypes.ts'
 import type { Weapons } from "./WeaponsTypes.ts";
 
-type skillInfo = {
+export type skillInfo = {
 
     choose: number;
     options: string[]
 
 }
 
-type toolInfo = {
+export type toolInfo = {
     toolName: string
     choose?: number,
     options?: string[]
 }
 
 
-type startInfo = {
+export type startInfo = {
 
     Choose: {
         A: string[] | string;
@@ -26,9 +26,9 @@ type startInfo = {
 
 }
 
-type armor = "light" | "medium" | "heavy" | "none"
+export type armor = "light" | "medium" | "heavy" | "none"
 
-type FeatureType =
+export type FeatureType =
     | "Passive"
     | "Action"
     | "Bonus Action"
@@ -37,7 +37,7 @@ type FeatureType =
     | "Triggered"
     | "Choice";
 
-type features = {
+export type features = {
     level: number,
     name: string,
     description: string,
