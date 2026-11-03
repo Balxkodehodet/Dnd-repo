@@ -1,6 +1,10 @@
 import { LanguagesData } from "./LanguagesData";
+import { useState } from "react";
+import check from "../../assets/check.png"
+import x from "../../assets/close.png"
 
-export default function Languages() {
+export default function Languages({setStage, stage}: {setStage: React.Dispatch<React.SetStateAction<number>>, stage: number}): React.JSX.Element {
+    const [languageChosenIndex, setLanguageChosenIndex] = useState<number[] | null>(null);
     return (
         <>
         <div className="languages-container">
@@ -8,7 +12,14 @@ export default function Languages() {
             <p>Choose the languages your character knows. You can choose more than two languages if your character's race or background allows it.</p>
             <p>Standard Languages: </p>
                     {LanguagesData.normalLanguages.map((language, index) => (
-                    <button key={index}>{language}</button>
+                    <button
+                        disabled={language === "Common"}
+                        className={languageChosenIndex?.includes(index) ? "chosen" : ""} 
+                        key={index} 
+                        onClick={() => !languageChosenIndex ? setLanguageChosenIndex([index]) : languageChosenIndex.length < 2 ? setLanguageChosenIndex((prev) => prev && [...prev, index]) : null}
+                    >
+                       <div className="language-icons"> {language} {languageChosenIndex?.includes(index) && <div><img src={check} /> <img onClick={() => languageChosenIndex.length === 2 ? setLanguageChosenIndex((prev) => prev && prev.filter((i) => i !== index)) : setLanguageChosenIndex(null)} src={x} /></div> }</div>
+                    </button>
                         ))}
              
             <p>Rare Languages: </p>
@@ -18,6 +29,7 @@ export default function Languages() {
                 ))}
             
         </div>
+        {languageChosenIndex && languageChosenIndex.length === 2 && <div className="chosen-languages"><button className="selectionbtn" onClick={() => setLanguageChosenIndex(null)}>Clear Selection</button><button onClick={() => setStage(stage + 1)} className="selectionbtn">Finish Language Selection</button></div>}
     </>
     )
 }

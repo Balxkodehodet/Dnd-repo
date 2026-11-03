@@ -3,7 +3,7 @@ import type { Gender } from '../../types/Gender.ts'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import x from "../../assets/close.png"
 
-export default function Gender({ singleGender, stage }: genderProps) {
+export default function Gender({singleGender, stage }: genderProps) {
     const navigate = useNavigate();
     const { nameId } = useParams();
 

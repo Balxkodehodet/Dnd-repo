@@ -50,7 +50,6 @@ export default function ClassesComponent({ singleClass, setStage, stage, setClas
 
     useEffect(() => {
         localStorage.setItem("selectedTools", JSON.stringify(selectedTool))
-        console.log("Selected a tool")
     }, [selectedTool]);
 
     function resetTools() {
