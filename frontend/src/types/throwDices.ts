@@ -11,5 +11,7 @@ export type DicesTypes = {
     setDiceThrow3: React.Dispatch<React.SetStateAction<number[]>>,
     setDiceThrow4: React.Dispatch<React.SetStateAction<number[]>>,
     setDiceThrow5: React.Dispatch<React.SetStateAction<number[]>>,
-    setDiceThrow6: React.Dispatch<React.SetStateAction<number[]>>
+    setDiceThrow6: React.Dispatch<React.SetStateAction<number[]>>,
+    abilityStage: number,
+    setAbilityStage: React.Dispatch<React.SetStateAction<number>>
 }

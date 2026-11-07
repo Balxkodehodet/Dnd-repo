@@ -1,8 +1,9 @@
 import Dices from "./Utils/Dices"
 import type { DicesTypes } from "../types/throwDices";
 import AbilityScores from "./AbilityScores";
+
 export default function ThrowDices4d6({stage,diceThrow,diceThrow2,diceThrow3,diceThrow4,diceThrow5,diceThrow6, setDiceThrow,
-    setDiceThrow2, setDiceThrow3,setDiceThrow4,setDiceThrow5,setDiceThrow6}:DicesTypes) 
+    setDiceThrow2, setDiceThrow3,setDiceThrow4,setDiceThrow5,setDiceThrow6, abilityStage, setAbilityStage}:DicesTypes) 
     {
 
         const adjustedThrow = [...diceThrow].sort((a,b) => a - b).slice(1).reduce((sum, roll) => sum + roll, 0);
@@ -12,11 +13,11 @@ export default function ThrowDices4d6({stage,diceThrow,diceThrow2,diceThrow3,dic
         const adjustedThrow5 = [...diceThrow5].sort((a,b) => a - b).slice(1).reduce((sum, roll) => sum + roll, 0);
         const adjustedThrow6 = [...diceThrow6].sort((a,b) => a - b).slice(1).reduce((sum, roll) => sum + roll, 0);
 
-
     return(
         <>
             <AbilityScores abilityScoreStrength={adjustedThrow} abilityScoreDexterity={adjustedThrow2} abilityScoreConstitution={adjustedThrow3}
-            abilityScoreIntelligence={adjustedThrow4} abilityScoreWisdom={adjustedThrow5} abilityScoreCharisma={adjustedThrow6} />
+            abilityScoreIntelligence={adjustedThrow4} abilityScoreWisdom={adjustedThrow5} abilityScoreCharisma={adjustedThrow6}
+            abilityStage={abilityStage} setAbilityStage={setAbilityStage} />
             {stage === 6 && (
                 <button className="throw-dices" onClick={() => {
                     setDiceThrow(() => Dices(4,6))
@@ -24,7 +25,8 @@ export default function ThrowDices4d6({stage,diceThrow,diceThrow2,diceThrow3,dic
                     setDiceThrow3(() => Dices(4,6))
                     setDiceThrow4(() => Dices(4,6))
                     setDiceThrow5(() => Dices(4,6))
-                setDiceThrow6(() => Dices(4,6))
+                    setDiceThrow6(() => Dices(4,6))
+
                 }}>Throw Dices</button>
             )}
         </>

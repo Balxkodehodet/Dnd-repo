@@ -761,12 +761,42 @@ header {
   box-shadow: 5px 4px 12px rgba(0, 0, 0, 0.9);
   width:800px;
 }
+.abilityscorestage1
+{
+  display:flex;
+  flex-direction: row;
+  background-color: #7768ff;
+  border: 2px black solid;
+  border-radius: 10px;
+  padding:10px;
+  margin:2px;
+  width:auto;
+}
+.ability1
+{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px black solid;
+  padding:10px;
+  background-color: #7768ff;
+  margin:2px;
+}
 .ability-modifier
 {
   display:flex;
   flex-direction: row;
 }
 .ability-modifier p
+{
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 5px;
+  margin:2px;
+}
+.ability p 
 {
   border: 2px black solid;
   border-radius: 10px;
@@ -838,6 +868,65 @@ header {
 
 /* Responsive design */
 @media(max-width: 800px) {
+  .languages-container
+  {
+    width:90svw;
+  }
+  .languages-container p, .languages-container button, .languages-container .chosen
+  {
+    width:90%;
+  }
+  .alignments
+  {
+    width:100svw;
+  }
+  .alignments p
+  {
+    width:90svw;
+  }
+  .alignment
+  {
+    
+    width:90svw;
+  }
+  .alignment p
+  {
+    padding:10px;
+  }
+  .chosen
+  {
+    width:95svw;
+  }
+  .abilityscores
+  {
+    display:flex;
+    flex-direction: row;
+    width: 90svw;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .ability
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100px;
+  }
+  .ability p 
+  {
+    width: 50px;
+    height: auto;
+    text-align: center;
+    font-size: 10px;
+  }
+  .ability-modifier p
+  {
+    width: 50px;
+    height: auto;
+    text-align: center;
+    font-size: 10px;
+  }
   .toolsParent
   {
     display: flex;

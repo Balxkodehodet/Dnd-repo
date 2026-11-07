@@ -9,4 +9,6 @@ export type AbilityTypes = {
     abilityScoreIntelligence:number,
     abilityScoreWisdom:number, 
     abilityScoreCharisma:number,
+    abilityStage:number,
+    setAbilityStage: React.Dispatch<React.SetStateAction<number>>
 }

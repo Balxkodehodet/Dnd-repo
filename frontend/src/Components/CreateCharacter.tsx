@@ -49,6 +49,8 @@ export default function CreateCharacter() {
   const [alignmentStage, setAlignmentStage] = useState<number>(0);
   const [chosenAlignment, setChosenAlignment] = useState<string | null>(null);
 
+  const [abilityStage, setAbilityStage] = useState<number>(0);
+
  
   return (
     <>
@@ -453,12 +455,18 @@ export default function CreateCharacter() {
                 setDiceThrow4={setDiceThrow4}
                 setDiceThrow5={setDiceThrow5}
                 setDiceThrow6={setDiceThrow6}
+                setAbilityStage={setAbilityStage}
+                abilityStage={abilityStage}
               />
             </div>
 
             <button
               className="selectionbtn"
-              onClick={() => setCharacterCreationStage(7)}
+              onClick={() => {
+                setAbilityStage(1);
+                setCharacterCreationStage(7)
+              }
+            }
             >
               Finish Ability Scores
             </button>
@@ -519,6 +527,8 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      setAbilityStage={setAbilityStage}
+                      abilityStage={abilityStage}
                     />
                   </>
                 )}
@@ -597,6 +607,8 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      setAbilityStage={setAbilityStage}
+                      abilityStage={abilityStage}
                     />
                     <Alignments
                       chosenAlignment={chosenAlignment}
@@ -676,6 +688,8 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      setAbilityStage={setAbilityStage}
+                      abilityStage={abilityStage}
                     />
                     <Alignments
                       alignmentStage={alignmentStage}
@@ -749,6 +763,8 @@ export default function CreateCharacter() {
                   setDiceThrow4={setDiceThrow4}
                   setDiceThrow5={setDiceThrow5}
                   setDiceThrow6={setDiceThrow6}
+                  setAbilityStage={setAbilityStage}
+                  abilityStage={abilityStage}
                 />
               </>
             )}
@@ -820,6 +836,8 @@ export default function CreateCharacter() {
                   setDiceThrow4={setDiceThrow4}
                   setDiceThrow5={setDiceThrow5}
                   setDiceThrow6={setDiceThrow6}
+                  setAbilityStage={setAbilityStage}
+                  abilityStage={abilityStage}
                 />
               </>
             )}

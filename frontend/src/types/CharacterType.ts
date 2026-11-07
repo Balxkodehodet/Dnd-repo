@@ -30,6 +30,7 @@ export type CharacterType = {
     },
     level: number,
     experience: number,
+    nextlevel: number,
     hitPoints: number,
     subClass?: string,
 }

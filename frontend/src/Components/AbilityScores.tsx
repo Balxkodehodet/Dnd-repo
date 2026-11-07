@@ -10,6 +10,7 @@ export default function AbilityScores({
   abilityScoreIntelligence,
   abilityScoreWisdom,
   abilityScoreCharisma,
+  abilityStage,
 }: AbilityTypes) {
   const { classId } = useParams();
   const classSlug = CreateSlug(classId);
@@ -83,55 +84,82 @@ export default function AbilityScores({
 
   return (
     <>
-      <div className="abilityscores">
+      {abilityStage === 0 && <div className="abilityscores">
         <div className="ability">
           {primaryStrength && <div>Primary Ability</div>}
           <strong>Strength</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreStrength}</p>
+          <div className="ability-modifier">
             <p>Modifier: {modifierStr}</p>
           </div>
         </div>
         <div className="ability">
           {primaryDexterity && <div>Primary Ability</div>}
           <strong>Dexterity</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreDexterity}</p>
+          <div className="ability-modifier">
             <p> Modifier: {modifierDex}</p>
           </div>
         </div>
         <div className="ability">
           <strong>Constitution</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreConstitution}</p>
+          <div className="ability-modifier">
             <p> Modifier: {modifierCon}</p>
           </div>
         </div>
         <div className="ability">
           {primaryIntelligence && <div>Primary Ability</div>}
           <strong>Intelligence</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreIntelligence}</p>
+          <div className="ability-modifier">
             <p> Modifier: {modifierInt}</p>
           </div>
         </div>
         <div className="ability">
           {primaryWisdom && <div>Primary Ability</div>}
           <strong>Wisdom</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreWisdom}</p>
+          <div className="ability-modifier">
             <p> Modifier: {modifierWis}</p>
           </div>
         </div>
         <div className="ability">
           {primaryCharisma && <div>Primary Ability</div>}
           <strong>Charisma</strong>
-          <div className="ability-modifier">
             <p>{abilityScoreCharisma}</p>
+          <div className="ability-modifier">
             <p> Modifier: {modifierCha}</p>
           </div>
         </div>
-      </div>
+      </div>}
+      {/* A compacted version of ability scores inside character info */}
+      {abilityStage === 1 && <div className="abilityscorestage1">
+        <div className="ability1">
+          <strong>Strength</strong>
+          <p>{abilityScoreStrength}</p>
+        </div>
+        <div className="ability1">
+          <strong>Dexterity</strong>
+          <p>{abilityScoreDexterity}</p>
+        </div>
+        <div className="ability1">
+          <strong>Constitution</strong>
+          <p>{abilityScoreConstitution}</p>
+        </div>
+        <div className="ability1">
+          <strong>Intelligence</strong>
+          <p>{abilityScoreIntelligence}</p>
+        </div>
+        <div className="ability1">
+          <strong>Wisdom</strong>
+          <p>{abilityScoreWisdom}</p>
+        </div>
+        <div className="ability1">
+          <strong>Charisma</strong>
+          <p>{abilityScoreCharisma}</p>
+        </div>
+      </div>}
     </>
   );
 }
