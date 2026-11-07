@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import CreateSlug from "./CreateSlug.tsx";
 import type { AbilityTypes } from "../types/Abilities.ts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {CharBackgrounds} from "./CharBackgrounds/CharBackgrounds.ts";
 
 export default function AbilityScores({
   abilityScoreStrength,
@@ -10,10 +11,22 @@ export default function AbilityScores({
   abilityScoreIntelligence,
   abilityScoreWisdom,
   abilityScoreCharisma,
+  setAbilityScoreStrength,
+  setAbilityScoreDexterity,
+  setAbilityScoreConstitution,
+  setAbilityScoreIntelligence,
+  setAbilityScoreWisdom,
+  setAbilityScoreCharisma,
   abilityStage,
+  abilityChosenBackground
 }: AbilityTypes) {
   const { classId } = useParams();
   const classSlug = CreateSlug(classId);
+
+  const selectedBackground = CharBackgrounds.find(background => background.Name === abilityChosenBackground);
+  const backgroundAbilityScores = selectedBackground?.AbilityScores || [];
+
+  const [totalAbilityPoints, setTotalAbilityPoints] = useState<number>(3)
 
   const primaryStrength =
     classSlug === "fighter" ||
@@ -133,8 +146,67 @@ export default function AbilityScores({
           </div>
         </div>
       </div>}
+      {/* Ability scores for stage 1 - Adding the background ability scores to the ability Scores */}
+      {abilityStage === 1 && <><div className="abilityscores">
+        <div className="ability">
+          {primaryStrength && <div>Primary Ability</div>}
+          <strong>Strength</strong>
+            <p>{abilityScoreStrength}</p>
+          <div className="ability-modifier">
+            <p>Modifier: {modifierStr}</p>
+          </div>
+        </div>
+        <div className="ability">
+          {primaryDexterity && <div>Primary Ability</div>}
+          <strong>Dexterity</strong>
+            <p>{abilityScoreDexterity}</p>
+          <div className="ability-modifier">
+            <p> Modifier: {modifierDex}</p>
+          </div>
+        </div>
+        <div className="ability">
+          <strong>Constitution</strong>
+            <p>{abilityScoreConstitution}</p>
+          <div className="ability-modifier">
+            <p> Modifier: {modifierCon}</p>
+          </div>
+        </div>
+        <div className="ability">
+          {primaryIntelligence && <div>Primary Ability</div>}
+          <strong>Intelligence</strong>
+            <p>{abilityScoreIntelligence}</p>
+          <div className="ability-modifier">
+            <p> Modifier: {modifierInt}</p>
+          </div>
+        </div>
+        <div className="ability">
+          {primaryWisdom && <div>Primary Ability</div>}
+          <strong>Wisdom</strong>
+            <p>{abilityScoreWisdom}</p>
+          <div className="ability-modifier">
+            <p> Modifier: {modifierWis}</p>
+          </div>
+        </div>
+        <div onClick={() => {
+          totalAbilityPoints > 0 ? setTotalAbilityPoints(prev => prev - 1) : setTotalAbilityPoints(0);
+          totalAbilityPoints > 0 ? setAbilityScoreCharisma(prev => prev +1): abilityScoreCharisma;
+        }} className="ability">
+          {primaryCharisma && <div>Primary Ability</div>}
+          <strong>Charisma</strong>
+            <p>{abilityScoreCharisma}</p>
+          <div className="ability-modifier">
+            <p> Modifier: {modifierCha}</p>
+          </div>
+        </div>
+      </div>
+      <div className="background-ability-scores">
+        <h3>{abilityChosenBackground} Background Ability Scores:</h3>
+        <p>You can add 1 point in each ability or 2 in one and 1 in one.</p>
+        {backgroundAbilityScores.map(bas => <p>{bas}</p>)}
+        <p>Points left: {totalAbilityPoints}</p>
+      </div></>}
       {/* A compacted version of ability scores inside character info */}
-      {abilityStage === 1 && <div className="abilityscorestage1">
+      {abilityStage === 2 && <div className="abilityscorestage1">
         <div className="ability1">
           <strong>Strength</strong>
           <p>{abilityScoreStrength}</p>

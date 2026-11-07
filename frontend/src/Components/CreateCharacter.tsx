@@ -46,14 +46,24 @@ export default function CreateCharacter() {
   const [diceThrow5, setDiceThrow5] = useState<number[]>(() => Dices(4, 6));
   const [diceThrow6, setDiceThrow6] = useState<number[]>(() => Dices(4, 6));
 
+  const [abilityScoreStrength, setAbilityScoreStrength] = useState<number>(10);
+  const [abilityScoreDexterity, setAbilityScoreDexterity] =
+    useState<number>(10);
+  const [abilityScoreConstitution, setAbilityScoreConstitution] =
+    useState<number>(10);
+  const [abilityScoreIntelligence, setAbilityScoreIntelligence] =
+    useState<number>(10);
+  const [abilityScoreWisdom, setAbilityScoreWisdom] = useState<number>(10);
+  const [abilityScoreCharisma, setAbilityScoreCharisma] = useState<number>(10);
+
   const [alignmentStage, setAlignmentStage] = useState<number>(0);
   const [chosenAlignment, setChosenAlignment] = useState<string | null>(null);
 
   const [abilityStage, setAbilityStage] = useState<number>(0);
 
- 
   return (
     <>
+      {/* Name Selection */}
       {characterCreationStage === 0 && (
         <>
           <div className="character-containerparent">
@@ -80,6 +90,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Gender Selection */}
       {characterCreationStage === 1 && (
         <>
           <div className="character-containerparent">
@@ -130,6 +141,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Race Selection */}
       {characterCreationStage === 2 && (
         <>
           <div className="character-containerparent">
@@ -175,6 +187,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Portrait Selection */}
       {characterCreationStage === 3 && (
         <>
           <div className="character-containerparent">
@@ -235,6 +248,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Class Selection */}
       {characterCreationStage === 4 && (
         <>
           <div className="classesParent">
@@ -333,6 +347,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Character Background Selection */}
       {characterCreationStage === 5 && (
         <>
           <div className="classesParent">
@@ -389,6 +404,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Ability Scores */}
       {characterCreationStage === 6 && (
         <>
           <div className="classesParent">
@@ -455,24 +471,39 @@ export default function CreateCharacter() {
                 setDiceThrow4={setDiceThrow4}
                 setDiceThrow5={setDiceThrow5}
                 setDiceThrow6={setDiceThrow6}
+                abilityScoreStrength={abilityScoreStrength}
+                abilityScoreDexterity={abilityScoreDexterity}
+                abilityScoreConstitution={abilityScoreConstitution}
+                abilityScoreIntelligence={abilityScoreIntelligence}
+                abilityScoreWisdom={abilityScoreWisdom}
+                abilityScoreCharisma={abilityScoreCharisma}
+                setAbilityScoreStrength={setAbilityScoreStrength}
+                setAbilityScoreDexterity={setAbilityScoreDexterity}
+                setAbilityScoreConstitution={setAbilityScoreConstitution}
+                setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                setAbilityScoreWisdom={setAbilityScoreWisdom}
+                setAbilityScoreCharisma={setAbilityScoreCharisma}
                 setAbilityStage={setAbilityStage}
                 abilityStage={abilityStage}
+                abilityChosenBackground={chosenBackground}
               />
             </div>
 
-            <button
-              className="selectionbtn"
-              onClick={() => {
-                setAbilityStage(1);
-                setCharacterCreationStage(7)
-              }
-            }
-            >
-              Finish Ability Scores
-            </button>
+            {abilityStage === 1 && (
+              <button
+                className="selectionbtn"
+                onClick={() => {
+                  setAbilityStage(2);
+                  setCharacterCreationStage(7);
+                }}
+              >
+                Finish Ability Scores
+              </button>
+            )}
           </div>
         </>
       )}
+      {/* Alignment Selection */}
       {characterCreationStage === 7 && (
         <>
           <div className="classesParent">
@@ -527,8 +558,21 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      abilityScoreStrength={abilityScoreStrength}
+                      abilityScoreDexterity={abilityScoreDexterity}
+                      abilityScoreConstitution={abilityScoreConstitution}
+                      abilityScoreIntelligence={abilityScoreIntelligence}
+                      abilityScoreWisdom={abilityScoreWisdom}
+                      abilityScoreCharisma={abilityScoreCharisma}
+                      setAbilityScoreStrength={setAbilityScoreStrength}
+                      setAbilityScoreDexterity={setAbilityScoreDexterity}
+                      setAbilityScoreConstitution={setAbilityScoreConstitution}
+                      setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                      setAbilityScoreWisdom={setAbilityScoreWisdom}
+                      setAbilityScoreCharisma={setAbilityScoreCharisma}
                       setAbilityStage={setAbilityStage}
                       abilityStage={abilityStage}
+                      abilityChosenBackground={chosenBackground}
                     />
                   </>
                 )}
@@ -553,6 +597,7 @@ export default function CreateCharacter() {
           </div>
         </>
       )}
+      {/* Languages */}
       {characterCreationStage === 8 && (
         <>
           <div className="classesParent">
@@ -607,8 +652,21 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      abilityScoreStrength={abilityScoreStrength}
+                      abilityScoreDexterity={abilityScoreDexterity}
+                      abilityScoreConstitution={abilityScoreConstitution}
+                      abilityScoreIntelligence={abilityScoreIntelligence}
+                      abilityScoreWisdom={abilityScoreWisdom}
+                      abilityScoreCharisma={abilityScoreCharisma}
+                      setAbilityScoreStrength={setAbilityScoreStrength}
+                      setAbilityScoreDexterity={setAbilityScoreDexterity}
+                      setAbilityScoreConstitution={setAbilityScoreConstitution}
+                      setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                      setAbilityScoreWisdom={setAbilityScoreWisdom}
+                      setAbilityScoreCharisma={setAbilityScoreCharisma}
                       setAbilityStage={setAbilityStage}
                       abilityStage={abilityStage}
+                      abilityChosenBackground={chosenBackground}
                     />
                     <Alignments
                       chosenAlignment={chosenAlignment}
@@ -629,7 +687,10 @@ export default function CreateCharacter() {
                   </button>
                 )}
               </div>
-              <Languages setStage={setCharacterCreationStage} stage={characterCreationStage} />
+              <Languages
+                setStage={setCharacterCreationStage}
+                stage={characterCreationStage}
+              />
             </div>
           </div>
         </>
@@ -688,8 +749,21 @@ export default function CreateCharacter() {
                       setDiceThrow4={setDiceThrow4}
                       setDiceThrow5={setDiceThrow5}
                       setDiceThrow6={setDiceThrow6}
+                      abilityScoreStrength={abilityScoreStrength}
+                      abilityScoreDexterity={abilityScoreDexterity}
+                      abilityScoreConstitution={abilityScoreConstitution}
+                      abilityScoreIntelligence={abilityScoreIntelligence}
+                      abilityScoreWisdom={abilityScoreWisdom}
+                      abilityScoreCharisma={abilityScoreCharisma}
+                      setAbilityScoreStrength={setAbilityScoreStrength}
+                      setAbilityScoreDexterity={setAbilityScoreDexterity}
+                      setAbilityScoreConstitution={setAbilityScoreConstitution}
+                      setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                      setAbilityScoreWisdom={setAbilityScoreWisdom}
+                      setAbilityScoreCharisma={setAbilityScoreCharisma}
                       setAbilityStage={setAbilityStage}
                       abilityStage={abilityStage}
+                      abilityChosenBackground={chosenBackground}
                     />
                     <Alignments
                       alignmentStage={alignmentStage}
@@ -763,8 +837,21 @@ export default function CreateCharacter() {
                   setDiceThrow4={setDiceThrow4}
                   setDiceThrow5={setDiceThrow5}
                   setDiceThrow6={setDiceThrow6}
+                  abilityScoreStrength={abilityScoreStrength}
+                  abilityScoreDexterity={abilityScoreDexterity}
+                  abilityScoreConstitution={abilityScoreConstitution}
+                  abilityScoreIntelligence={abilityScoreIntelligence}
+                  abilityScoreWisdom={abilityScoreWisdom}
+                  abilityScoreCharisma={abilityScoreCharisma}
+                  setAbilityScoreStrength={setAbilityScoreStrength}
+                  setAbilityScoreDexterity={setAbilityScoreDexterity}
+                  setAbilityScoreConstitution={setAbilityScoreConstitution}
+                  setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                  setAbilityScoreWisdom={setAbilityScoreWisdom}
+                  setAbilityScoreCharisma={setAbilityScoreCharisma}
                   setAbilityStage={setAbilityStage}
                   abilityStage={abilityStage}
+                  abilityChosenBackground={chosenBackground}
                 />
               </>
             )}
@@ -836,8 +923,21 @@ export default function CreateCharacter() {
                   setDiceThrow4={setDiceThrow4}
                   setDiceThrow5={setDiceThrow5}
                   setDiceThrow6={setDiceThrow6}
+                  abilityScoreStrength={abilityScoreStrength}
+                  abilityScoreDexterity={abilityScoreDexterity}
+                  abilityScoreConstitution={abilityScoreConstitution}
+                  abilityScoreIntelligence={abilityScoreIntelligence}
+                  abilityScoreWisdom={abilityScoreWisdom}
+                  abilityScoreCharisma={abilityScoreCharisma}
+                  setAbilityScoreStrength={setAbilityScoreStrength}
+                  setAbilityScoreDexterity={setAbilityScoreDexterity}
+                  setAbilityScoreConstitution={setAbilityScoreConstitution}
+                  setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+                  setAbilityScoreWisdom={setAbilityScoreWisdom}
+                  setAbilityScoreCharisma={setAbilityScoreCharisma}
                   setAbilityStage={setAbilityStage}
                   abilityStage={abilityStage}
+                  abilityChosenBackground={chosenBackground}
                 />
               </>
             )}
