@@ -15,6 +15,11 @@
   width: 200px;
   padding: 0.5rem;
 }
+.background-ability-scores:hover
+{
+  background-color: #9285ff;
+  border:#ffc400 2px solid;
+}
 .background-ability-scores
 {
   background-color: #7768ff;
@@ -809,6 +814,11 @@ header {
   border-radius: 10px;
   padding: 5px;
   margin:2px;
+}
+.ability:hover
+{
+  background-color: #9285ff;
+  border:#ffc400 2px solid;
 }
 .ability
 {

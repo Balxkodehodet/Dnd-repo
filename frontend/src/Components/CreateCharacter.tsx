@@ -107,11 +107,11 @@ export default function CreateCharacter() {
                 </div>
               )}
               {!showCharacterInfo ? (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Show character Info
                 </button>
               ) : (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Hide character Info
                 </button>
               )}
@@ -166,11 +166,11 @@ export default function CreateCharacter() {
                 </>
               )}
               {!showCharacterInfo ? (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Show character Info
                 </button>
               ) : (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Hide character Info
                 </button>
               )}
@@ -215,11 +215,11 @@ export default function CreateCharacter() {
                 </>
               )}
               {!showCharacterInfo ? (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Show character Info
                 </button>
               ) : (
-                <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                   Hide character Info
                 </button>
               )}
@@ -384,11 +384,11 @@ export default function CreateCharacter() {
                   </>
                 )}
                 {!showCharacterInfo ? (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Show character Info
                   </button>
                 ) : (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Hide character Info
                   </button>
                 )}
@@ -448,11 +448,11 @@ export default function CreateCharacter() {
                   </>
                 )}
                 {!showCharacterInfo ? (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Show character Info
                   </button>
                 ) : (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Hide character Info
                   </button>
                 )}
@@ -577,11 +577,11 @@ export default function CreateCharacter() {
                   </>
                 )}
                 {!showCharacterInfo ? (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Show character Info
                   </button>
                 ) : (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Hide character Info
                   </button>
                 )}
@@ -678,11 +678,11 @@ export default function CreateCharacter() {
                   </>
                 )}
                 {!showCharacterInfo ? (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Show character Info
                   </button>
                 ) : (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Hide character Info
                   </button>
                 )}
@@ -775,11 +775,11 @@ export default function CreateCharacter() {
                   </>
                 )}
                 {!showCharacterInfo ? (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Show character Info
                   </button>
                 ) : (
-                  <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+                  <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                     Hide character Info
                   </button>
                 )}
@@ -856,11 +856,11 @@ export default function CreateCharacter() {
               </>
             )}
             {!showCharacterInfo ? (
-              <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+              <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                 Show character Info
               </button>
             ) : (
-              <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+              <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                 Hide character Info
               </button>
             )}
@@ -942,11 +942,11 @@ export default function CreateCharacter() {
               </>
             )}
             {!showCharacterInfo ? (
-              <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+              <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                 Show character Info
               </button>
             ) : (
-              <button onClick={() => setShowCharacterInfo((prev) => !prev)}>
+              <button className="selectionbtn" onClick={() => setShowCharacterInfo((prev) => !prev)}>
                 Hide character Info
               </button>
             )}

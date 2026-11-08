@@ -35,7 +35,7 @@ export default function CharacterBackground({ setCharacterCreationStage, backgro
                         </div>
                     )
             })}</div>}
-            {chosenBackground && backgroundStage === 0 && <><Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portraitId}/${classId}/${CreateSlug(selectedBackground?.Name)}`}><button onClick={() => {
+            {chosenBackground && backgroundStage === 0 && <><Link to={`/home/create-character/${nameId}/${genderId}/${raceId}/${portraitId}/${classId}/${CreateSlug(selectedBackground?.Name)}`}><button className="selectionbtn" onClick={() => {
                 setBackgroundStage(prev => prev + 1);
             }}>
                 Choose Background: {chosenBackground}

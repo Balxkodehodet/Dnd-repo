@@ -102,6 +102,25 @@ export default function ThrowDices4d6({
           abilityChosenBackground={abilityChosenBackground}
         />
       )}
+      {abilityStage === 2 && (
+        <AbilityScores
+          abilityScoreStrength={abilityScoreStrength}
+          abilityScoreDexterity={abilityScoreDexterity}
+          abilityScoreConstitution={abilityScoreConstitution}
+          abilityScoreIntelligence={abilityScoreIntelligence}
+          abilityScoreWisdom={abilityScoreWisdom}
+          abilityScoreCharisma={abilityScoreCharisma}
+          setAbilityScoreStrength={setAbilityScoreStrength}
+          setAbilityScoreDexterity={setAbilityScoreDexterity}
+          setAbilityScoreConstitution={setAbilityScoreConstitution}
+          setAbilityScoreIntelligence={setAbilityScoreIntelligence}
+          setAbilityScoreWisdom={setAbilityScoreWisdom}
+          setAbilityScoreCharisma={setAbilityScoreCharisma}
+          abilityStage={abilityStage}
+          setAbilityStage={setAbilityStage}
+          abilityChosenBackground={abilityChosenBackground}
+        />
+      )}
       {stage === 6 && abilityStage === 0 && (
         <button
           className="throw-dices"
