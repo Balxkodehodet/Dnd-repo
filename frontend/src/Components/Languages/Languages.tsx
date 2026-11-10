@@ -29,7 +29,7 @@ export default function Languages({setStage, stage}: {setStage: React.Dispatch<R
                 ))}
             
         </div>
-        {languageChosenIndex && languageChosenIndex.length === 2 && <div className="chosen-languages"><button className="selectionbtn" onClick={() => setLanguageChosenIndex(null)}>Clear Selection</button><button onClick={() => setStage(stage + 1)} className="selectionbtn">Finish Language Selection</button></div>}
+        {languageChosenIndex && languageChosenIndex.length === 2 && <div className="chosen-languages"><button className="selectionbtn" onClick={() => setLanguageChosenIndex(null)}>Clear Selection</button><button onClick={() => setStage(prev => prev + 1)} className="selectionbtn">Finish Language Selection</button></div>}
     </>
     )
 }

@@ -15,6 +15,28 @@
   width: 200px;
   padding: 0.5rem;
 }
+.skillRaceTraitsParent
+{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding:10px;
+  border-radius: 10px;
+  gap:10px;
+}
+.skillRaceTraits
+{
+  background-color: #7768ff;
+  padding: 10px;
+  border:solid 2px black;
+  border-radius: 10px;
+  width:100px;
+}
+.skillRaceTraits:hover
+{
+  background-color: #9285ff;
+  border:solid 2px #ffc400
+}
 .background-ability-scores:hover
 {
   background-color: #9285ff;
@@ -881,10 +903,41 @@ header {
   height:auto;
   margin-left:10px;
 }
-
-
+.skillRaceTraitParent-checkx
+{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  padding:10px;
+  background-color: #7768ff;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.feat
+{
+  background-color: #7768ff;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding:10px;
+  margin:4px;
+}
+.feat:hover
+{
+  background-color: #9285ff;
+  border-color: #ffc400;
+}
 /* Responsive design */
 @media(max-width: 800px) {
+  .skillRaceTraitsParent
+  {
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width:90vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
   .languages-container
   {
     width:90svw;

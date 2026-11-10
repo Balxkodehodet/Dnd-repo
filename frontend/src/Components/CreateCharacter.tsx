@@ -14,9 +14,12 @@ import ThrowDices4d6 from "./ThrowDices4d6.tsx";
 import Dices from "./Utils/Dices.ts";
 import Alignments from "./Alignments.tsx";
 import Languages from "./Languages/Languages.tsx";
+import RaceTraits from "./Races/RaceTraits.tsx";
+import { Link } from "react-router-dom";
 
 export default function CreateCharacter() {
   const { nameId, genderId, raceId, portraitId, classId } = useParams();
+
   const [characterCreationStage, setCharacterCreationStage] = useState<number>(
     () => {
       let stage = localStorage.getItem("characterCreationStage");
@@ -87,6 +90,7 @@ export default function CreateCharacter() {
             >
               Finish Name selection
             </button>
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -138,6 +142,7 @@ export default function CreateCharacter() {
             >
               Finish Gender selection
             </button>
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -184,6 +189,7 @@ export default function CreateCharacter() {
               singleRace={raceId}
               stage={characterCreationStage}
             />
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -245,6 +251,7 @@ export default function CreateCharacter() {
             >
               Finish portrait selection
             </button>
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -326,6 +333,7 @@ export default function CreateCharacter() {
                 >
                   Finish Class selection
                 </button>
+                
               ))}
             {classId && classStage === null && btmMenu && (
               <>
@@ -344,6 +352,7 @@ export default function CreateCharacter() {
                 src={menu}
               />
             )}
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -400,6 +409,7 @@ export default function CreateCharacter() {
                 setChosenBackground={setChosenBackground}
                 setCharacterCreationStage={setCharacterCreationStage}
               />
+              <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
             </div>
           </div>
         </>
@@ -500,6 +510,7 @@ export default function CreateCharacter() {
                 Finish Ability Scores
               </button>
             )}
+            <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
           </div>
         </>
       )}
@@ -593,6 +604,7 @@ export default function CreateCharacter() {
                 setAlignmentStage={setAlignmentStage}
                 setStage={setCharacterCreationStage}
               />
+              <Link to="/home/dashboard"><button className="selectionbtn">Restart Everything</button></Link>
             </div>
           </div>
         </>
@@ -699,7 +711,7 @@ export default function CreateCharacter() {
         <>
           <div className="classesParent">
             <div className="classCardParent">
-              <h2 className="classes-h2"></h2>
+              <h2 className="classes-h2">Race Traits Selection</h2>
               <div
                 className={`characterInfo ${showCharacterInfo ? "blackborder" : ""}`}
               >
@@ -784,6 +796,7 @@ export default function CreateCharacter() {
                   </button>
                 )}
               </div>
+              <RaceTraits race={raceId}/>
             </div>
           </div>
         </>
