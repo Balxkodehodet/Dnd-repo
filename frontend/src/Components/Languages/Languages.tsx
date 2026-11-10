@@ -3,7 +3,7 @@ import { useState } from "react";
 import check from "../../assets/check.png"
 import x from "../../assets/close.png"
 
-export default function Languages({setStage, stage}: {setStage: React.Dispatch<React.SetStateAction<number>>, stage: number}): React.JSX.Element {
+export default function Languages({setStage}: {setStage: React.Dispatch<React.SetStateAction<number>>, stage: number}): React.JSX.Element {
     const [languageChosenIndex, setLanguageChosenIndex] = useState<number[] | null>(null);
     return (
         <>
